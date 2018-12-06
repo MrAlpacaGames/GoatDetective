@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style type="text/css">
+        body
+        {
+            background: #e6034f;
+            padding: 0%;
+            margin: 0%;
+        }
+        canvas
+        {
+            display: block;
+            margin: 0;
+            position:absolute;
+            top:50%;
+            left:50%;
+            transform: translate(-50%,-50%);
+        }
+    </style>
+    <script src="phaser/phaser.js"></script>
+    <script src="scripts/main.js"></script>
+    <script src="scripts/config.js"></script>
+    <!-- <script src="scripts/ReScaleClass.js"></script> --> 
+</head>
+<body>
+    <script>
+
+
+    /**
+    var config = 
+    {
+        type: Phaser.AUTO,
+        width: window.innerWidth * window.devicePixelRatio,
+        height: window.innerHeight * window.devicePixelRatio,
+        physics: {
+        default: 'arcade',
+        arcade: {
+            gravity: { y: 300 },
+            debug: false
+        }
+    },
+
+        scene: {
+            preload: preload,
+            create: create,
+            update: update
+        }
+    };
+    */
+
+    //var game = new Phaser.Game(gameConfig);
+
+
+    /**
+    
+    var config = 
+    {
+        type: Phaser.AUTO,
+        width: window.innerWidth * window.devicePixelRatio,
+        height: window.innerHeight * window.devicePixelRatio,
+        physics: {
+        default: 'arcade',
+        arcade: {
+            gravity: { y: 300 },
+            debug: false
+        }
+    },
+
+        scene: {
+            preload: preload,
+            create: create,
+            update: update
+        }
+    };
+
+    var game = new Phaser.Game(config);
+
+    function preload ()
+    {
+        this.load.image('farBuildings', 'assets/sprites/far-buildings.png');
+        this.load.image('backBuildings', 'assets/sprites/back-buildings.png');
+        this.load.image('foreground', 'assets/sprites/foreground.png');
+
+        this.load.spritesheet('sirGoat', 'assets/sprites/DetectiveCabra.png',
+                                        {frameWidth: 158, frameHeight: 388});
+        //this.load.image('sirGoat', 'assets/sprites/DetectiveCabra.png');
+    }
+
+    var floor;
+
+    function create ()
+    {
+        //Set the games background colour
+        windowWidth = window.innerWidth;
+        windowHeight = window.innerHeight;
+
+        scaleRatio = window.devicePixelRatio / 3;
+
+        // Find the center of the top space
+        topBackgroundXOrigin = windowWidth / 2;
+        topBackgroundYOrigin = 300;
+        topBackgroundHeight = (windowHeight / 5) * 3;
+        
+        // Base width and height of the images
+        imageBaseWidth = windowWidth;
+        imageBaseHeight = windowHeight;
+        heightRatio = topBackgroundHeight / imageBaseHeight;
+
+        // Add the sky image at the right location and resize it to take all the space, no scaling needed
+        skyImage = this.add.image(topBackgroundXOrigin, topBackgroundYOrigin, 'farBuildings');
+        skyImage.setDisplaySize(windowWidth, windowHeight);
+
+        //floor = this.physics.add.staticGroup();
+    }
+
+    function update ()
+    {
+      
+    }
+    */    
+
+    function resize() 
+    {
+        var canvas = document.querySelector("canvas");
+        var windowWidth = window.innerWidth;
+        var windowHeight = window.innerHeight;
+        var windowRatio = windowWidth / windowHeight;
+        var gameRatio = game.config.width / game.config.height;
+        if(windowRatio < gameRatio){
+            canvas.style.width = windowWidth + "px";
+            canvas.style.height = (windowWidth / gameRatio) + "px";
+        }
+        else{
+            canvas.style.width = (windowHeight * gameRatio) + "px";
+            canvas.style.height = windowHeight + "px";
+        }
+    }
+
+    </script>
+
+</body>
+</html>
