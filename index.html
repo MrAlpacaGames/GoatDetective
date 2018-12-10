@@ -4,7 +4,7 @@
     <style type="text/css">
         body
         {
-            background: #f3e307;
+            background: #e20333;
             padding: 0%;
             margin: 0%;
         }
@@ -17,21 +17,28 @@
             left:50%;
             transform: translate(-50%,-50%);
         }
-
+        @font-face 
+        {
+            font-family: Ailerons;
+            src: url('assets/fonts/Ailerons-Regular.otf');
+            font-weight:400;
+            font-weight:normal;
+        }
     </style>
-    <script src="scripts/util/webfont.js"></script>
+    <!--<script src="scripts/util/webfont.js"></script>-->
     <script src="phaser.js"></script>
     <script src="scenes/BootScene.js"></script>
     <script src="scenes/MainMenu.js"></script>
-
-    <script src="scripts/config.js"></script>
+    <script src="scenes/HallScene.js"></script>
+    <script src="scenes/OfficeScene.js"></script>
     <script src="scripts/main.js"></script>
 
-    <!-- <script src="scripts/ReScaleClass.js"></script> --> 
 </head>
 <body>
+        <div style="font-family:'Ailerons-Regular';position: absolute;left: -1000px;visibility: hidden;">.</div>
+
     <script>
-    
+
     /**
     var config = 
     {

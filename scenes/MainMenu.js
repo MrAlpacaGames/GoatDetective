@@ -7,50 +7,58 @@ class MainMenu extends Phaser.Scene
         });
     }
 
-        
-    init()
-    {
-            //  Inject our CSS with the fonts to be used in the game
-        var element = document.createElement('style');
-
-        document.head.appendChild(element);
-
-        var sheet = element.sheet;
-
-        var styles = '@font-face { font-family: "ailerons"; src: url("assets/fonts/Ailerons-Regular.otf") format("opentype"); }\n';
-
-        sheet.insertRule(styles, 0);
-
-        styles = '@font-face { font-family: "anurati"; src: url("assets/fonts/Anurati-Regular.otf") format("opentype"); }';
-
-        sheet.insertRule(styles, 0);
-
-        styles = '@font-face { font-family: "geometrich"; src: url("assets/fonts/geometricHurricane.ttf") format("opentype"); }';
-
-        sheet.insertRule(styles, 0);
-    }
-
-
     preload()
     {
-        
+        this.load.image('startGame', 'assets/sprites/Menus/startbtn.png');
+        this.add.text(0, 0, '', 
+        { fontFamily: 'Ailerons', fontSize: 80 , color: '#f3e307', align: 'left'});
     }
 
     create()
     {
-        this.add.text(180, 136, 'GOAT DETECTIVE \n SUPAH STARR', 
+        this.add.text(180, 136, 'GOAT DETECTIVE \n SUPAH STAR', 
         { fontFamily: 'Ailerons', fontSize: 80 , color: '#f3e307', align: 'left'});
 
         //this.add.text(350, 350, 'Start', 
         //{ fontFamily: 'Ailerons', fontSize: 80 , color: '#f3e307', align: 'center'});
 
-        this.createButton(1, 'startGame', 350, 350);
+        this.createButton(1, 'Start Game' ,'startGame', topBackgroundXOrigin, topBackgroundYOrigin + 120);
     }
 
-    createButton(id, name, posX, posY)
+    createButton(id, name, imageID, posX, posY)
     {
-        let btn = this.add.image(x,y, )
+        let btn = this.add.image(posX, posY, imageID);
+        btn.setScale(0.6);
+
+        // We set the button information
+        btn.setData('id', id);
+        btn.setData('name', name);
+        btn.setData('active', false);
+
+        btn.setInteractive();
+
+        // Toggle Options
+        let toggleBtn = this.add.image(posX, posY, imageID);
+        toggleBtn.setScale(0.6);     
+        toggleBtn.setAlpha(0.4);
+        toggleBtn.setTint(0xff0000);
+        toggleBtn.visible = false;
+
+        // Button Text
+        this.add.text(posX-105, posY-20, name, 
+            { fontFamily: 'Ailerons', fontSize: 36 , color: '#000000', align: 'center'});
+
+        btn.on('pointerdown', () => this.makeItShine(toggleBtn, true));
+        btn.on('pointerup', () => this.makeItShine(toggleBtn, false));
     }
 
-
+    makeItShine(theBtn, newValue)
+    {
+        theBtn.visible = newValue;
+        if(newValue == false)
+        {
+            //loadScene('HallScene');
+            this.scene.start('HallScene');
+        }
+    }
 }

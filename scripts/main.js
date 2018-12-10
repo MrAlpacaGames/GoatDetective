@@ -20,16 +20,7 @@ const gameConfig =
             }
         }
     },
-    scene: [MainMenu]
-    /*
-    ,
-    scene: 
-    {
-        preload: preload,
-        create: create,
-        update: update
-    }
-    */
+    scene: [/*BootScene, MainMenu, HallScene, */ OfficeScene]
 };
 
 //---------------------------------------------
@@ -54,9 +45,50 @@ var topBackgroundYOrigin = windowHeight /2;
 // Functions
 //-----------------------------------
 
-function create()
+function preload()
 {
+    
+}
+/*
+function init()
+{
+    //  Inject our CSS with the fonts to be used in the game
+    var element = document.createElement('style');
 
+    document.head.appendChild(element);
+
+    var sheet = element.sheet;
+
+    var styles = '@font-face { font-family: "ailerons"; src: url("assets/fonts/Ailerons-Regular.otf") format("opentype"); }\n';
+
+    sheet.insertRule(styles, 0);
+
+    styles = '@font-face { font-family: "anurati"; src: url("assets/fonts/Anurati-Regular.otf") format("opentype"); }';
+
+    sheet.insertRule(styles, 0);
+
+    styles = '@font-face { font-family: "geometrich"; src: url("assets/fonts/geometricHurricane.ttf") format("opentype"); }';
+
+    sheet.insertRule(styles, 0);
+}
+*/
+
+/**
+ * Method that loads a scene. If it is switch it sleeps the current scene
+ * @param {*} newScene 
+ * @param {*} isSwitch 
+ */
+function loadScene(newScene, isSwitch)
+{
+    switch(isSwitch)
+    {
+        case true:
+            this.scene.switch(newScene);
+        break;
+        case false:
+            this.scene.start(newScene);
+        break;
+    }
 }
 
 /** 
