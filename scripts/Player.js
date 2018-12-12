@@ -15,7 +15,7 @@ class Player
         this.playerSpeed = speed;
 
         this.scene.cameras.main.startFollow(this.player, true);
-        this.scene.cameras.main.setDeadzone(100, 150);
+        this.scene.cameras.main.setDeadzone(150, 150);
     }
 
     //--------------------------------
@@ -39,6 +39,7 @@ class Player
      */
     clickAction(thePointer)
     {
+        this.scene.tweens.killAll();
         let theDistance = Phaser.Math.Distance.Between(this.player.x, this.player.y, thePointer.worldX, this.player.y);
         let theDuration = theDistance / this.playerSpeed*1000;
 
@@ -60,6 +61,7 @@ class Player
 
     stopMoving()
     {
+        this.scene.tweens.killAll();
         this.player.anims.play('quiet');
     }
 
