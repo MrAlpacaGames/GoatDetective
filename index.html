@@ -28,6 +28,7 @@
     <!--<script src="scripts/util/webfont.js"></script>-->
     <script src="phaser.js"></script>
     <script src="scripts/util/SpriteManagement.js"></script>
+    <script src="scripts/util/InteractionManagement.js"></script>
     <script src="scripts/audio/MusicManager.js"></script>
     <script src="scripts/Player.js"></script>
     <script src="scenes/BootScene.js"></script>
@@ -38,103 +39,9 @@
 
 </head>
 <body>
-        <div style="font-family:'Ailerons-Regular';position: absolute;left: -1000px;visibility: hidden;">.</div>
+    <div style="font-family:'Ailerons-Regular';position: absolute;left: -1000px;visibility: hidden;">.</div>
 
     <script>
-
-    /**
-    var config = 
-    {
-        type: Phaser.AUTO,
-        width: window.innerWidth * window.devicePixelRatio,
-        height: window.innerHeight * window.devicePixelRatio,
-        physics: {
-        default: 'arcade',
-        arcade: {
-            gravity: { y: 300 },
-            debug: false
-        }
-    },
-
-        scene: {
-            preload: preload,
-            create: create,
-            update: update
-        }
-    };
-    */
-
-    //var game = new Phaser.Game(gameConfig);
-
-
-    /**
-    
-    var config = 
-    {
-        type: Phaser.AUTO,
-        width: window.innerWidth * window.devicePixelRatio,
-        height: window.innerHeight * window.devicePixelRatio,
-        physics: {
-        default: 'arcade',
-        arcade: {
-            gravity: { y: 300 },
-            debug: false
-        }
-    },
-
-        scene: {
-            preload: preload,
-            create: create,
-            update: update
-        }
-    };
-
-    var game = new Phaser.Game(config);
-
-    function preload ()
-    {
-        this.load.image('farBuildings', 'assets/sprites/far-buildings.png');
-        this.load.image('backBuildings', 'assets/sprites/back-buildings.png');
-        this.load.image('foreground', 'assets/sprites/foreground.png');
-
-        this.load.spritesheet('sirGoat', 'assets/sprites/DetectiveCabra.png',
-                                        {frameWidth: 158, frameHeight: 388});
-        //this.load.image('sirGoat', 'assets/sprites/DetectiveCabra.png');
-    }
-
-    var floor;
-
-    function create ()
-    {
-        //Set the games background colour
-        windowWidth = window.innerWidth;
-        windowHeight = window.innerHeight;
-
-        scaleRatio = window.devicePixelRatio / 3;
-
-        // Find the center of the top space
-        topBackgroundXOrigin = windowWidth / 2;
-        topBackgroundYOrigin = 300;
-        topBackgroundHeight = (windowHeight / 5) * 3;
-        
-        // Base width and height of the images
-        imageBaseWidth = windowWidth;
-        imageBaseHeight = windowHeight;
-        heightRatio = topBackgroundHeight / imageBaseHeight;
-
-        // Add the sky image at the right location and resize it to take all the space, no scaling needed
-        skyImage = this.add.image(topBackgroundXOrigin, topBackgroundYOrigin, 'farBuildings');
-        skyImage.setDisplaySize(windowWidth, windowHeight);
-
-        //floor = this.physics.add.staticGroup();
-    }
-
-    function update ()
-    {
-      
-    }
-    */    
-
     function resize() 
     {
         var canvas = document.querySelector("canvas");

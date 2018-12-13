@@ -5,6 +5,11 @@ class MainMenu extends Phaser.Scene
         super({
             key: 'MainMenu'
         });
+
+        //--------------------
+        // Attributes
+        //--------------------
+        this.musicManager;
     }
 
     preload()
@@ -12,10 +17,22 @@ class MainMenu extends Phaser.Scene
         this.load.image('startGame', 'assets/sprites/Menus/startbtn.png');
         this.add.text(0, 0, '', 
         { fontFamily: 'Ailerons', fontSize: 80 , color: '#f3e307', align: 'left'});
+        this.musicManager = new MusicManager(this);
+        this.musicManager.preloadMusic('Main');
+
+        this.input.once('pointerdown', function(){
+            this.scene.sound.context.resume();
+        });
     }
 
     create()
     {
+        //window.alert("Before");
+        this.musicManager.createTheme('Main');
+        //window.alert('Exists: '+this.musicManager.currentThemeIntro.duration);
+        this.musicManager.playTheme(true);
+        //window.alert("Feel the love");
+
         this.add.text(180, 136, 'GOAT DETECTIVE \n SUPAH STAR', 
         { fontFamily: 'Ailerons', fontSize: 80 , color: '#f3e307', align: 'left'});
 
@@ -24,7 +41,7 @@ class MainMenu extends Phaser.Scene
 
         this.createButton(1, 'Start Game' ,'startGame', topBackgroundXOrigin, topBackgroundYOrigin + 120);
     }
-
+    
     createButton(id, name, imageID, posX, posY)
     {
         let btn = this.add.image(posX, posY, imageID);
@@ -60,5 +77,10 @@ class MainMenu extends Phaser.Scene
             //loadScene('HallScene');
             this.scene.start('HallScene');
         }
+    }
+
+    update()
+    {
+        //this.musicManager.checkIfIntroFinished();
     }
 }

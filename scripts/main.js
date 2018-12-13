@@ -18,7 +18,7 @@ const gameConfig =
             }
         }
     },
-    scene: [/*BootScene, MainMenu,*/ HallScene /*, OfficeScene */]
+    scene: [/*BootScene,*/ MainMenu, HallScene /*, OfficeScene */]
 };
 
 //---------------------------------------------

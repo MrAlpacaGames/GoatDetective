@@ -24,7 +24,10 @@ class HallScene extends Phaser.Scene
         var playerScript;
 
         // Script that handles the sprites of the interactuables
-        var spriteMngScript;
+        var spriteManager;
+
+        // Script that handles the interaction between objects
+        var interactManager;
     }
 
     //-------------------------
@@ -33,8 +36,10 @@ class HallScene extends Phaser.Scene
 
     preload()
     {
-        this.spriteMngScript = new SpriteManagement(this);
-        this.spriteMngScript.preloadCharacters();
+        this.spriteManager = new SpriteManagement(this);
+        this.spriteManager.preloadCharacters();
+
+        this.interactManager = new InteractionManagement(this);
     }
 
     create()
@@ -44,48 +49,38 @@ class HallScene extends Phaser.Scene
         
         this.cameras.main.setBounds(0, 0, gameConfig.width * 2.7, gameConfig.height);
         this.physics.world.setBounds(0, 0, gameConfig.width * 2.7, gameConfig.height -40 );
-
+        
         // Characters Creation
-
+        
+        // Characters
         this.interactuables = this.add.container();
 
-        let newCharacter;
+        let park = this.spriteManager.createStaticCharacter('Park', topBackgroundXOrigin+800, topBackgroundYOrigin+200, 0.25);
+        this.interactuables.add(park);
 
-        newCharacter = this.spriteMngScript.createStaticCharacter('Assatari', topBackgroundXOrigin+1000, topBackgroundYOrigin+80, 0.42);
-        this.interactuables.add(newCharacter);
+        let assattari = this.spriteManager.createStaticCharacter('Assatari', topBackgroundXOrigin+1000, topBackgroundYOrigin+80, 0.42);
+        this.interactuables.add(assattari);
 
-        /** 
-        this.highInteractuables = this.add.container();
+        let lee = this.spriteManager.createStaticCharacter('Lee', topBackgroundXOrigin+520, topBackgroundYOrigin+80, 0.25);
+        lee.setFlip(true);
+        this.interactuables.add(lee);
 
-        this.spriteMngScript.createStaticCharacter(this.interactuables, "Park", topBackgroundXOrigin+800,topBackgroundYOrigin+200);
-        this.spriteMngScript.createStaticCharacter(this.highInteractuables, "ParkHigh", topBackgroundXOrigin+800,topBackgroundYOrigin+200);
+        let ruru = this.spriteManager.createStaticCharacter('Ruru', topBackgroundXOrigin+950, topBackgroundYOrigin+110, 0.25);
+        this.interactuables.add(ruru);
 
-        this.spriteMngScript.createStaticCharacter(this.interactuables, "Jung", topBackgroundXOrigin+1000,topBackgroundYOrigin+50);
-        this.spriteMngScript.createStaticCharacter(this.highInteractuables, "JungHigh", topBackgroundXOrigin+1000,topBackgroundYOrigin+50);
-
-        this.highInteractuables.getAt(0).setVisible(false);
-        this.interactuables.getAt(0).setInteractive();
-        this.interactuables.getAt(0).on('pointerdown',() =>this.highlightInteractuable(0, true));
-        this.interactuables.getAt(0).on('pointerup',() =>this.highlightInteractuable(0, false));
-
-
-        this.highInteractuables.getAt(1).setVisible(false);
-        this.interactuables.getAt(1).setInteractive();
-        this.interactuables.getAt(1).on('pointerdown',() =>this.highlightInteractuable(1, true));
-        this.interactuables.getAt(1).on('pointerup',() =>this.highlightInteractuable(1, false));
-        //this.physics.add.collider(this.player, this.interactuables.getAt(0));
-        this.physics.add.overlap(this.player, this.interactuables.getAt(0), this.interact);
-        */
-
-        this.player = this.spriteMngScript.createPlayer(topBackgroundXOrigin+550,  topBackgroundYOrigin+90);
-
-        this.clickFx = this.spriteMngScript.createClickFx();    
-       
+        // Main Player
+        this.player = this.spriteManager.createPlayer(topBackgroundXOrigin+550,  topBackgroundYOrigin+90);
         this.playerScript = new Player(this, this.player, 200);
         this.input.on('pointerdown', () => this.playerScript.clickAction(this.input.activePointer));
-        this.input.on('pointerdown', () => this.spriteMngScript.clickEffect(this.clickFx, this.input.activePointer));
+        this.interactManager.assignPlayer(this.playerScript, this.player);
 
+        // Click FX
+        this.clickFx = this.spriteManager.createClickFx();    
+        this.input.on('pointerdown', () => this.spriteManager.clickEffect(this.clickFx, this.input.activePointer));
 
+        // Interactions
+        this.interactManager.setInteractionWithPlayer(park); 
+        this.interactManager.setInteractionWithPlayer(assattari);
     }
 
     interact(player, interactItem)

@@ -15,21 +15,24 @@ class SpriteManagement
 
     preloadCharacters()
     {
-        this.scene.load.image('hall', 'assets/sprites/theHall.png');
+        this.scene.load.image('hall', 'assets/sprites/Scenarios/theHall.png');
         this.scene.load.spritesheet('ClickFire', 'assets/sprites/Particles/Click.png',
         {frameWidth: 64, frameHeight: 64});
 
-        this.scene.load.spritesheet('Peterson', 'assets/sprites/Goatman.png',
-        {frameWidth: 587.42, frameHeight: 1268});
+        this.scene.load.spritesheet('Peterson', 'assets/sprites/Characters/Cabra.png',
+        {frameWidth: 370.57, frameHeight: 758});
 
         this.scene.load.spritesheet('Assatari', 'assets/sprites/Characters/Productora.png',
         {frameWidth: 266.75, frameHeight: 636});
 
-        this.scene.load.image('Park', 'assets/sprites/Park.png');
-        this.scene.load.image('ParkHigh', 'assets/sprites/ParkHigh.png');
+        this.scene.load.image('Park', 'assets/sprites/Characters/Park.png');
 
-        this.scene.load.image('Jung', 'assets/sprites/Jung.png');
-        this.scene.load.image('JungHigh', 'assets/sprites/JungHigh.png');
+        this.scene.load.spritesheet('Lee', 'assets/sprites/Characters/Lee2.png',
+        {frameWidth: 395.5, frameHeight: 1133});
+
+        this.scene.load.spritesheet('Ruru', 'assets/sprites/Characters/Ruru.png',
+        {frameWidth: 422.75, frameHeight: 1002});
+
     }
 
     /**
@@ -40,7 +43,7 @@ class SpriteManagement
     createPlayer(posX, posY)
     {
         let player = this.scene.physics.add.sprite(posX, posY, 'Peterson');
-        player.setScale(0.25);
+        player.setScale(0.42);
         player.setCollideWorldBounds(true);
         
         //  Our player animations, turning, walking left and walking right.
@@ -71,14 +74,18 @@ class SpriteManagement
     {
         let newCharacter;
         newCharacter = this.scene.physics.add.staticSprite(posX, posY, character).setScale(scale);
+        newCharacter.refreshBody();
 
-        this.scene.anims.create({
-            key: character + 'Idle',
-            frames: this.scene.anims.generateFrameNumbers(character,{start: 0, end: 7}),
-            frameRate: 8,
-            repeat: -1
-        })
-        newCharacter.anims.play(character+'Idle');
+        if(character != 'Park')
+        {
+            this.scene.anims.create({
+                key: character + 'Idle',
+                frames: this.scene.anims.generateFrameNumbers(character,{start: 0, end: 7}),
+                frameRate: 6,
+                repeat: -1
+            })
+            newCharacter.anims.play(character+'Idle');
+        }
 
         newCharacter.setInteractive();
         newCharacter.on('pointerdown', () => this.onCharacterClicked(newCharacter, true));
