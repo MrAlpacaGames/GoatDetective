@@ -5,49 +5,54 @@ class OfficeScene extends Phaser.Scene
         super({
             key: 'OfficeScene'
         });
-        //var theText;
+        //-------------------------
+        // Attributes
+        //-------------------------
+        // Goatman Peterson
+        var playerSprite;
+
+        // List of interactuables to be displayed
+        var interactuables;
+
+        // Click FX
+        var clickFx;
     }
 
     preload()
     {
-        this.add.text(0, 0, '', 
-        { fontFamily: 'Ailerons', fontSize: 80 , color: '#f3e307', align: 'left'});
-
-        this.load.spritesheet('ClickFire', 'assets/sprites/Particles/Click.png',
-        {frameWidth: 64, frameHeight: 64});
+        currentScene = this;
+        spriteManager.preloadCharacters();
+        spriteManager.preloadEnvironment();
     }
 
-    create()
+    create(newClue)
     {
-        var theText = this.add.text(180, 136, 'Mouse Position is X: 0 & Y: 0', 
-        { fontFamily: 'Ailerons', fontSize: 40 , color: '#f3e307', align: 'left'});
+        let theClue = newClue;
+        console.log(theClue.getName());
+        spriteManager.createEnvironment('office', topBackgroundXOrigin+ 815, topBackgroundYOrigin - 2, 0.72);
 
-        this.anims.create({
-            key: 'ShowClick',
-            frames: this.anims.generateFrameNumbers('ClickFire',{start:0, end: 15}),
-            frameRate: 30,
-        })
+         // Environment
+         let studioDoor = spriteManager.createEnvironment('hallDoor', topBackgroundXOrigin+1790.5, topBackgroundYOrigin+32.5, 0.72);
+         //this.interactuables.add(studioDoor);
 
-        let clickFx = this.add.sprite(0, 0);
-        clickFx.setScale(1.5);
+        this.cameras.main.setBounds(0, 0, gameConfig.width * 2.7, gameConfig.height);
+        this.physics.world.setBounds(560, 0, gameConfig.width * 2.7, gameConfig.height -40 );   
 
-        this.input.on('pointermove', function (pointer){
-            //this.updateText(pointer);
-            theText.setText('Mouse Position is \n at X: '+ pointer.x + ' \n & Y:' + pointer.y + ')');
+        // Main Player
+        this.playerSprite = spriteManager.createPlayer(topBackgroundXOrigin+1500,  topBackgroundYOrigin+100);
+        this.playerSprite.setFlip(true);
+        thePlayer.assignScene(this.playerSprite);
+        thePlayer.assignOnEvents();
 
-        })
 
-        this.input.on('pointerdown', function(pointer)
+        // Click FX
+        this.clickFx = spriteManager.createClickFx();    
+        this.input.on('pointerdown', () => spriteManager.clickEffect(this.clickFx, this.input.activePointer));
+        if(hasStartedGame == false)
         {
-            clickFx.setPosition(pointer.x , pointer.y);
-            clickFx.play('ShowClick');
-        } );
+            // If this is the first time we get to this scene we initialize the main game objects like the notebook
+            hasStartedGame = true;
+        }
     }
-
-    updateText(mousePosition)
-    {
-        //this.theText.setText('Mouse Position is at X: '+ mousePosition.x + ' & Y:' + mousePosition.y + ')');
-    }
-
 
 }

@@ -1,35 +1,43 @@
 class InteractionManagement
 {
-    constructor(theScene)
+    constructor()
     {
         //-------------------------
         // Attributes
         //-------------------------
         // Current Scene
-        this.scene = theScene;
-
-        // Player Script
-        this.playerScript;
-
-        // Player Sprite
-        this.playerSprite;
+        
     }
 
-    assignPlayer(theScript, theSprite)
+    interact(interactionObject)
     {
-        this.playerScript = theScript;
-        this.playerSprite = theSprite;
+        console.log("You want to interact with: "+interactionObject);
+        let parkTemp = GameManager.getCharacter();
+        if(interactionObject == "hallDoor" || interactionObject == "officeDoor" || interactionObject == "studioDoor" || interactionObject == "dressromDoor")
+        {
+            // If we are interacting with a door we load the new scene
+           this.interactDoors(interactionObject);
+        }
+        //
     }
 
-    setInteractionWithPlayer(theInteractive)
+    interactDoors(interactionObject)
     {
-        this.scene.physics.add.collider(this.playerSprite, theInteractive);
-        this.scene.physics.add.overlap(this.playerSprite, theInteractive, () => this.checkIfClicked(theInteractive));
+        let newSceneName;
+        switch(interactionObject)
+        {
+            case "hallDoor":
+                newSceneName = "HallScene";
+            break;
+            case "officeDoor":
+                newSceneName = "OfficeScene";
+            break;
+        }
+        loadScene(newSceneName, true);
     }
 
-    checkIfClicked(theInteractive)
+    interactPeople(interactionObject)
     {
-        //console.log("Tocaste a: "+theInteractive.toString());
+        
     }
-
 }

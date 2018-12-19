@@ -14,15 +14,12 @@ class MainMenu extends Phaser.Scene
 
     preload()
     {
-        this.load.image('startGame', 'assets/sprites/Menus/startbtn.png');
+        currentScene = this;
+        this.load.image('menuButton', 'assets/sprites/Menus/startbtn.png');
         this.add.text(0, 0, '', 
         { fontFamily: 'Ailerons', fontSize: 80 , color: '#f3e307', align: 'left'});
         this.musicManager = new MusicManager(this);
         this.musicManager.preloadMusic('Main');
-
-        this.input.once('pointerdown', function(){
-            this.scene.sound.context.resume();
-        });
     }
 
     create()
@@ -36,19 +33,16 @@ class MainMenu extends Phaser.Scene
         this.add.text(180, 136, 'GOAT DETECTIVE \n SUPAH STAR', 
         { fontFamily: 'Ailerons', fontSize: 80 , color: '#f3e307', align: 'left'});
 
-        //this.add.text(350, 350, 'Start', 
-        //{ fontFamily: 'Ailerons', fontSize: 80 , color: '#f3e307', align: 'center'});
-
-        this.createButton(1, 'Start Game' ,'startGame', topBackgroundXOrigin, topBackgroundYOrigin + 120);
+        createButton(this, 'Start Game', 'menuButton', topBackgroundXOrigin, topBackgroundYOrigin + 120, 0.6, 0.6, 105, 20);
+        createButton(this, 'Mute', 'menuButton', topBackgroundXOrigin + 400, topBackgroundYOrigin + 200, 0.3, 0.6, 45, 20);
     }
     
-    createButton(id, name, imageID, posX, posY)
+    createXXXButton(name, imageID, posX, posY)
     {
         let btn = this.add.image(posX, posY, imageID);
         btn.setScale(0.6);
 
         // We set the button information
-        btn.setData('id', id);
         btn.setData('name', name);
         btn.setData('active', false);
 
@@ -74,7 +68,6 @@ class MainMenu extends Phaser.Scene
         theBtn.visible = newValue;
         if(newValue == false)
         {
-            //loadScene('HallScene');
             this.scene.start('HallScene');
         }
     }

@@ -9,25 +9,13 @@ class HallScene extends Phaser.Scene
         // Attributes
         //-------------------------
         // Goatman Peterson
-        var player;
+        var playerSprite;
 
         // List of interactuables to be displayed
         var interactuables;
 
-        // List of highlighted interactuables to be displayed
-        var highInteractuables;
-
         // Click FX
         var clickFx;
-
-        // Script that handles the player 
-        var playerScript;
-
-        // Script that handles the sprites of the interactuables
-        var spriteManager;
-
-        // Script that handles the interaction between objects
-        var interactManager;
     }
 
     //-------------------------
@@ -36,62 +24,60 @@ class HallScene extends Phaser.Scene
 
     preload()
     {
-        this.spriteManager = new SpriteManagement(this);
-        this.spriteManager.preloadCharacters();
-
-        this.interactManager = new InteractionManagement(this);
+        currentScene = this;
+        spriteManager.preloadCharacters();
+        spriteManager.preloadEnvironment();
+        //this.load.scenePlugin('DialogModalPlugin', 'scripts/ui/dialogue_plugin.js', 'dialogPlugin', 'dialog');
+        this.dialogue.assignScene(this);
     }
 
     create()
-    {        
-        let hallBack = this.add.image(topBackgroundXOrigin+815, topBackgroundYOrigin-2, 'hall');
-        hallBack.setScale(0.72);
+    {      
+
+        spriteManager.createEnvironment('hall', topBackgroundXOrigin+ 815, topBackgroundYOrigin - 2, 0.72);
         
         this.cameras.main.setBounds(0, 0, gameConfig.width * 2.7, gameConfig.height);
-        this.physics.world.setBounds(0, 0, gameConfig.width * 2.7, gameConfig.height -40 );
-        
-        // Characters Creation
+        this.physics.world.setBounds(0, 0, gameConfig.width * 2.7, gameConfig.height -40 );        
         
         // Characters
         this.interactuables = this.add.container();
+        
+        // Environment
+        let studioDoor = spriteManager.createEnvironment('studioDoor', 244.1, topBackgroundYOrigin+33, 0.72);
+        this.interactuables.add(studioDoor);
 
-        let park = this.spriteManager.createStaticCharacter('Park', topBackgroundXOrigin+800, topBackgroundYOrigin+200, 0.25);
+        let stairs = spriteManager.createEnvironment('officeDoor', topBackgroundXOrigin+813, topBackgroundYOrigin+78, 0.72);
+        this.interactuables.add(stairs);
+
+        let dressroom = spriteManager.createEnvironment('dressromDoor', topBackgroundXOrigin+1790.5, topBackgroundYOrigin+32.5, 0.72);
+        this.interactuables.add(dressroom);
+        
+        // Characters Creation
+        let park = spriteManager.createStaticCharacter('Park', topBackgroundXOrigin+800, topBackgroundYOrigin+200, 0.25);
         this.interactuables.add(park);
 
-        let assattari = this.spriteManager.createStaticCharacter('Assatari', topBackgroundXOrigin+1000, topBackgroundYOrigin+80, 0.42);
-        this.interactuables.add(assattari);
-
-        let lee = this.spriteManager.createStaticCharacter('Lee', topBackgroundXOrigin+520, topBackgroundYOrigin+80, 0.25);
-        lee.setFlip(true);
-        this.interactuables.add(lee);
-
-        let ruru = this.spriteManager.createStaticCharacter('Ruru', topBackgroundXOrigin+950, topBackgroundYOrigin+110, 0.25);
-        this.interactuables.add(ruru);
+        let jung = spriteManager.createStaticCharacter('Jung', topBackgroundXOrigin+1000, topBackgroundYOrigin+80, 0.42);
+        this.interactuables.add(jung);
 
         // Main Player
-        this.player = this.spriteManager.createPlayer(topBackgroundXOrigin+550,  topBackgroundYOrigin+90);
-        this.playerScript = new Player(this, this.player, 200);
-        this.input.on('pointerdown', () => this.playerScript.clickAction(this.input.activePointer));
-        this.interactManager.assignPlayer(this.playerScript, this.player);
+        this.playerSprite = spriteManager.createPlayer(topBackgroundXOrigin+250,  topBackgroundYOrigin+90);
+        thePlayer.assignScene(this.playerSprite);
+        thePlayer.assignOnEvents();
 
+        this.dialogue.createDialogueWindow();
+  
         // Click FX
-        this.clickFx = this.spriteManager.createClickFx();    
-        this.input.on('pointerdown', () => this.spriteManager.clickEffect(this.clickFx, this.input.activePointer));
+        this.clickFx = spriteManager.createClickFx();    
+        this.input.on('pointerdown', () => spriteManager.clickEffect(this.clickFx, this.input.activePointer));
 
-        // Interactions
-        this.interactManager.setInteractionWithPlayer(park); 
-        this.interactManager.setInteractionWithPlayer(assattari);
+        if(hasStartedGame == false)
+        {
+            // If this is the first time we get to this scene we initialize the main game objects like the notebook
+            hasStartedGame = true;
+            
+            this.dialogue.hero();
+           // this.dialog.init();
+            //console.log(this.dialog);
+        }
     }
-
-    interact(player, interactItem)
-    {
-        console.log("Heeerooooo Mon");
-    }
-
-    highlightInteractuable(index, newValue)
-    {
-        this.highInteractuables.getAt(index).setVisible(newValue);
-    }
-
-
 }

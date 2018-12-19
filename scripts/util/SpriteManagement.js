@@ -1,12 +1,11 @@
 class SpriteManagement
 {
-    constructor(theScene)
+    constructor()
     {
         //-------------------------
         // Attributes
         //-------------------------
-        // Current Scene
-        this.scene = theScene;
+        
     }
 
     //--------------------------------
@@ -15,24 +14,58 @@ class SpriteManagement
 
     preloadCharacters()
     {
-        this.scene.load.image('hall', 'assets/sprites/Scenarios/theHall.png');
-        this.scene.load.spritesheet('ClickFire', 'assets/sprites/Particles/Click.png',
+        currentScene.load.spritesheet('ClickFire', 'assets/sprites/Particles/Click.png',
         {frameWidth: 64, frameHeight: 64});
 
-        this.scene.load.spritesheet('Peterson', 'assets/sprites/Characters/Cabra.png',
+        currentScene.load.spritesheet('Peterson', 'assets/sprites/Characters/Cabra.png',
         {frameWidth: 370.57, frameHeight: 758});
 
-        this.scene.load.spritesheet('Assatari', 'assets/sprites/Characters/Productora.png',
+        currentScene.load.spritesheet('Assatari', 'assets/sprites/Characters/Productora.png',
         {frameWidth: 266.75, frameHeight: 636});
 
-        this.scene.load.image('Park', 'assets/sprites/Characters/Park.png');
+        currentScene.load.image('Park', 'assets/sprites/Characters/Park.png');
 
-        this.scene.load.spritesheet('Lee', 'assets/sprites/Characters/Lee2.png',
+        currentScene.load.spritesheet('Lee', 'assets/sprites/Characters/Lee2.png',
         {frameWidth: 395.5, frameHeight: 1133});
 
-        this.scene.load.spritesheet('Ruru', 'assets/sprites/Characters/Ruru.png',
-        {frameWidth: 422.75, frameHeight: 1002});
+        currentScene.load.spritesheet('Jung', 'assets/sprites/Characters/Jung.png',
+        {frameWidth: 326.125, frameHeight: 691});
 
+        currentScene.load.spritesheet('Ruru', 'assets/sprites/Characters/Ruru.png',
+        {frameWidth: 422.75, frameHeight: 1002});
+    }
+
+    preloadEnvironment()
+    {
+        let sceneName = currentScene.scene.key;
+        switch(sceneName)
+        {
+            case 'HallScene':
+                currentScene.load.image('hall', 'assets/sprites/Scenarios/Hall/theHall.png');
+                currentScene.load.image('studioDoor', 'assets/sprites/Scenarios/Hall/studio_doors.png');
+                currentScene.load.image('dressromDoor', 'assets/sprites/Scenarios/Hall/dressroom_doors.png');
+                currentScene.load.image('officeDoor', 'assets/sprites/Scenarios/Hall/stairs.png');
+            break;
+            case 'OfficeScene':
+                currentScene.load.image('office', 'assets/sprites/Scenarios/Office/Office.png');
+                currentScene.load.image('hallDoor', 'assets/sprites/Scenarios/Office/hallDoor.png');
+            break;
+        }
+    }
+
+    preloadNoteBook()
+    {
+        currentScene.load.image('noteBBack', 'assets/sprites/Items/Notebook.png');
+    }
+
+    preloadItems()
+    {
+        switch(currentScene)
+        {
+            case currentScene.name = 'UINotebook':
+                currentScene.load.image('hall', 'assets/sprites/Items/Notebook.png');
+            break;
+        }
     }
 
     /**
@@ -42,22 +75,26 @@ class SpriteManagement
      */
     createPlayer(posX, posY)
     {
-        let player = this.scene.physics.add.sprite(posX, posY, 'Peterson');
+        let player = currentScene.physics.add.sprite(posX, posY, 'Peterson');
+        player.setName('Peterson');
         player.setScale(0.42);
         player.setCollideWorldBounds(true);
         
-        //  Our player animations, turning, walking left and walking right.
-        this.scene.anims.create({
-            key: 'walking',
-            frames: this.scene.anims.generateFrameNumbers('Peterson', { start: 1, end: 6 }),
-            frameRate: 6,
-            repeat: -1
-        });        
-        this.scene.anims.create({
-            key: 'quiet',
-            frames: [ { key: 'Peterson', frame: 0 } ],
-            frameRate: 1
-        });
+        if(hasStartedGame == false)
+        {
+            //  Our player animations, turning, walking left and walking right.
+            currentScene.anims.create({
+                key: 'walking',
+                frames: currentScene.anims.generateFrameNumbers('Peterson', { start: 1, end: 6 }),
+                frameRate: 6,
+                repeat: -1
+            });        
+            currentScene.anims.create({
+                key: 'quiet',
+                frames: [ { key: 'Peterson', frame: 0 } ],
+                frameRate: 1
+            });
+        }
         player.anims.play('quiet');
 
         return player;
@@ -73,25 +110,45 @@ class SpriteManagement
     createStaticCharacter(character, posX, posY, scale)
     {
         let newCharacter;
-        newCharacter = this.scene.physics.add.staticSprite(posX, posY, character).setScale(scale);
+        newCharacter = currentScene.physics.add.staticSprite(posX, posY, character).setScale(scale);
+        newCharacter.setName(character);
         newCharacter.refreshBody();
-
         if(character != 'Park')
         {
-            this.scene.anims.create({
-                key: character + 'Idle',
-                frames: this.scene.anims.generateFrameNumbers(character,{start: 0, end: 7}),
-                frameRate: 6,
-                repeat: -1
-            })
+            if(hasStartedGame == false)
+            {
+                currentScene.anims.create({
+                    key: character + 'Idle',
+                    frames: currentScene.anims.generateFrameNumbers(character,{start: 0, end: 7}),
+                    frameRate: 6,
+                    repeat: -1
+                })
+            }
             newCharacter.anims.play(character+'Idle');
         }
-
+        
         newCharacter.setInteractive();
-        newCharacter.on('pointerdown', () => this.onCharacterClicked(newCharacter, true));
-        newCharacter.on('pointerup', () => this.onCharacterClicked(newCharacter, false));
-        newCharacter.on('pointerout', () => this.onCharacterClicked(newCharacter, false));
+        newCharacter.on('pointerdown', () => this.onElementClicked(newCharacter, true));
+        newCharacter.on('pointerup', () => this.onElementClicked(newCharacter, false));
+        newCharacter.on('pointerout', () => this.onElementClicked(newCharacter, false));
         return newCharacter;
+    }
+
+    createEnvironment(element, posX, posY, scale)
+    {
+        let environment = currentScene.physics.add.staticSprite(posX, posY, element);
+        environment.setName(element);
+        environment.setScale(scale);
+        environment.refreshBody();
+
+        if(element != 'hall' && element != 'office')
+        {
+            environment.setInteractive();
+            environment.on('pointerdown', () => this.onElementClicked(environment, true));
+            environment.on('pointerup', () => this.onElementClicked(environment, false));
+            environment.on('pointerout', () => this.onElementClicked(environment, false));
+        }
+        return environment;
     }
 
     /**
@@ -100,18 +157,21 @@ class SpriteManagement
     createClickFx()
     {
         let clickFx;
-        this.scene.anims.create({
-            key: 'ShowClick',
-            frames: this.scene.anims.generateFrameNumbers('ClickFire',{start:0, end: 15}),
-            frameRate: 30,
-        })
-        clickFx = this.scene.add.sprite(0, 0);
+        if(hasStartedGame == false)
+        {
+            currentScene.anims.create({
+                key: 'ShowClick',
+                frames: currentScene.anims.generateFrameNumbers('ClickFire',{start:0, end: 15}),
+                frameRate: 30,
+            })
+        }
+        clickFx = currentScene.add.sprite(0, 0);
         clickFx.setScale(1.5);
 
         return clickFx;
     }
 
-    onCharacterClicked(character, newValue)
+    onElementClicked(character, newValue)
     {
         if(newValue == true)
         {
@@ -134,5 +194,11 @@ class SpriteManagement
         clickFx.play('ShowClick', false);
     }
 
+
+    createNoteBook()
+    {
+        currentScene.add.image(topBackgroundXOrigin, topBackgroundYOrigin, 'noteBBack');
+
+    }
 
 }
