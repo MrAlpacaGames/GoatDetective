@@ -5,16 +5,158 @@ class DialoguePlugin extends Phaser.Plugins.BasePlugin
     super(pluginManager);
     this.scene;
     this.systems;
+    this.dialogueText;
+    this.dialogueBackground;
+    this.nextButton;
+    this.eventCounter = 0;
+    this.timedEvent;
+    this.dialogueSpeed = 3;
+    this.animatedText;
+
+    this.interactiveOptions;
   }
 
-  assignScene(theScene)
+  preloadDialogue()
   {
-    this.scene = theScene;
-    this.systems = theScene.sys;
-    if(!this.scene.sys.settings.isBooted)
+    this.systems = currentScene.sys;
+    if(!currentScene.sys.settings.isBooted)
     {
-      this.scene.events.once('boot', () => this.boot(), this);
+      currentScene.events.once('boot', () => this.boot(), this);
     }
+
+    currentScene.load.image('dialBack', 'assets/sprites/UI/DialogueBox.png');
+    currentScene.load.image('nextBtn', 'assets/sprites/UI/NextBtn.png');
+  }
+
+  createDialogueWindow()
+  {
+    // We create the static dialogue window
+    this.dialogueBackground = currentScene.physics.add.staticSprite(500, 100, 'dialBack');
+    this.dialogueBackground.scrollFactorX = 0;
+    this.dialogueBackground.setScale(1.6, 1.3);
+
+    // We create the static text
+    this.dialogueText = currentScene.add.text(200, 45, "", { fontFamily: 'Ailerons', fontSize: 35 , color: '#e20333', align: 'left',
+    wordWrap: {width: 570},
+    wordWrapUseAdvanced: true
+    });
+    this.dialogueText.scrollFactorX = 0;
+
+    // We create the dynamic interactive options elements
+    let xPositions = [205, 205, 505, 505];
+    let YPositions = [55, 100, 55, 100];
+
+    this.interactiveOptions = currentScene.add.container();
+
+    for(let i = 0; i < 4; i++)
+    {
+      let newOption = currentScene.add.text(xPositions[i], YPositions[i], "Pista "+i, { fontFamily: 'Ailerons', fontSize: 35 , color: '#e20333', align: 'left',
+      wordWrap: {width: 570},
+      wordWrapUseAdvanced: true
+      });
+      newOption.scrollFactorX = 0;
+      
+      newOption.setInteractive();
+      newOption.on('pointerdown' , function()
+      {
+        this.setTint(0x0EE612);
+      });
+      newOption.on('pointerup' , function()
+      {
+        this.clearTint();
+      });
+      newOption.on('pointerout' , function()
+      {
+        this.clearTint();
+      });
+
+      this.interactiveOptions.add(newOption);
+    }
+
+    this.createNextButton();
+    this.toogleWindow(false);
+    this.toogleNextBttn(false);
+    this.toogleDialogTexts(true, false);
+    this.toogleDialogTexts(false, false);
+  }
+
+  createNextButton()
+  {
+    let self = this;
+    this.nextButton = currentScene.physics.add.staticSprite(785, 135, 'nextBtn');  
+    this.nextButton.scrollFactorX = 0;
+    this.nextButton.setScale(0.2);
+    this.nextButton.setInteractive();
+
+    this.nextButton.on('pointerdown', () => interacionManager.printJojo());
+    this.nextButton.on('pointerdown', function()
+    {
+      this.setTint(0xff0000);
+    });
+    this.nextButton.on('pointerout', function()
+    {
+      this.clearTint();
+    });
+    this.nextButton.on('pointerup', function()
+    {
+      this.clearTint();
+    });
+  }
+
+  setDialogueText(text)
+  {
+    if(this.dialogueText.text != "") this.dialogueText.setText("");
+    this.eventCounter = 0;
+    if(this.timedEvent) this.timedEvent.remove();
+
+    this.animatedText = text.split('');
+
+    this.timedEvent = currentScene.time.addEvent(
+      {
+        delay: 150 - (this.dialogueSpeed * 30),
+        callback: this.animateText,
+        callbackScope: this,
+        loop: true
+      }
+    );
+    //this.dialogueText.setText(text);
+  }
+
+  animateText()
+  {
+    this.eventCounter++;
+    this.dialogueText.text += this.animatedText[this.eventCounter -1];
+    if(this.eventCounter === this.animatedText.length)
+    {
+      this.timedEvent.remove();
+    }
+  }
+
+  toogleWindow(newValue)
+  {
+    if(this.dialogueBackground) this.dialogueBackground.visible = newValue;
+  }
+
+  toogleDialogTexts(isMultiple, newValue)
+  {
+    if(isMultiple == false)
+    {
+      this.dialogueText.visible = newValue;
+    }
+    else
+    {
+      this.interactiveOptions.visible = newValue;
+    }
+  }
+
+  toogleNextBttn(newValue)
+  {
+    if(this.nextButton) this.nextButton.visible = newValue;
+  }
+
+  hero()
+  {
+    console.log("Bwonswandiiii We gat a Deeeaaal");
   }
 
   boot()
@@ -26,169 +168,14 @@ class DialoguePlugin extends Phaser.Plugins.BasePlugin
   shutdown()
   {
     //if(this.timedEvent) this.timedEvent.remove();
-    //if(this.text) this.text.destroy();
+    if(this.dialogueBackground) this.dialogueBackground.destroy();
+    if(this.dialogueText) this.dialogueText.destroy();
+    if(this.nextButton) this.nextButton.destroy();
   }
 
   destroy()
   {
     this.shutdown();
-    this.scene = undefined;
   }
 
-  createDialogueWindow(opts)
-  {
-     // Check to see if any optional parameters were passed
-     if (!opts) opts = {};
-     // set properties from opts object or use defaults
-     this.borderThickness = opts.borderThickness || 3;
-     this.borderColor = opts.borderColor || 0x907748;
-     this.borderAlpha = opts.borderAlpha || 1;
-     this.windowAlpha = opts.windowAlpha || 0.8;
-     this.windowColor = opts.windowColor || 0x303030;
-     this.windowHeight = opts.windowHeight || 150;
-     this.padding = opts.padding || 32;
-     this.closeBtnColor = opts.closeBtnColor || 'darkgoldenrod';
-     this.dialogSpeed = opts.dialogSpeed || 3;
- 
-     this.eventCounter = 0;
-     this.visible = true;
-     this.text;
-     this.dialog;
-     this.graphics;
-     this.closeBtn;
- 
-     // Create the dialog window
-     this.createUIWindow();
-  }
-
-  createUIWindow()
-  {
-    let xgraphics = currentScene.add.graphics({ fillStyle: { color: 0x907748 } });
-        
-    let x = 900;
-    let y = 360;
-    
-    let rect1 = new Phaser.Geom.Rectangle(x, y, 250, 100);
-    
-    //xgraphics.fillRectShape(rect1);
-    xgraphics.fillRect(x,y,250, 100);
-    xgraphics.strokeRect(x, y, 250, 100);
-  }
-
-
-  hero()
-  {
-    console.log("Bwonswandiiii We gat a Deeeaaal");
-  }
 }
-
-/** 
-var DialoguePlugin = function (scene) 
-{
-  this.scene = scene;
-  this.systems = scene.sys;
-
-  if (!scene.sys.settings.isBooted) {
-    scene.sys.events.once('boot', this.boot, this);
-  }
-};
-
-DialogModalPlugin.register = function (PluginManager) 
-{
-  PluginManager.register('DialoguePlugin', DialogModalPlugin, 'dialogue');
-};
-
-DialogModalPlugin.prototype = 
-{
-  boot: function () {
-    var eventEmitter = this.systems.events;
-    eventEmitter.on('shutdown', this.shutdown, this);
-    eventEmitter.on('destroy', this.destroy, this);
-  },
-
-  shutdown: function () {},
-
-  destroy: function () {
-    this.shutdown();
-    this.scene = undefined;
-  },
-
-  // Initialize the dialog modal
-  init: function (opts) 
-  {
-    // Check to see if any optional parameters were passed
-    if (!opts) opts = {};
-    // set properties from opts object or use defaults
-    this.borderThickness = opts.borderThickness || 3;
-    this.borderColor = opts.borderColor || 0x907748;
-    this.borderAlpha = opts.borderAlpha || 1;
-    this.windowAlpha = opts.windowAlpha || 0.8;
-    this.windowColor = opts.windowColor || 0x303030;
-    this.windowHeight = opts.windowHeight || 150;
-    this.padding = opts.padding || 32;
-    this.closeBtnColor = opts.closeBtnColor || 'darkgoldenrod';
-    this.dialogSpeed = opts.dialogSpeed || 3;
-
-    // used for animating the text
-    this.eventCounter = 0;
-    // if the dialog window is shown
-    this.visible = true;
-    // the current text in the window
-    this.text;
-    // the text that will be displayed in the window
-    this.dialog;
-    this.graphics;
-    this.closeBtn;
-
-    // Create the dialog window
-    this._createWindow();
-  },
-
-  // Creates the dialog window
-  _createWindow: function () {
-    const gameHeight = this._getGameHeight();
-    const gameWidth = this._getGameWidth();
-    const dimensions = this._calculateWindowDimensions(gameWidth, gameHeight);
-    this.graphics = this.scene.add.graphics();
-
-    this._createOuterWindow(dimensions.x, dimensions.y, dimensions.rectWidth, dimensions.rectHeight);
-    this._createInnerWindow(dimensions.x, dimensions.y, dimensions.rectWidth, dimensions.rectHeight);
-  },
-
-  // Gets the width of the game (based on the scene)
-  _getGameWidth: function () {
-    return this.scene.sys.game.config.width;
-  },
-
-  // Gets the height of the game (based on the scene)
-  _getGameHeight: function () {
-    return this.scene.sys.game.config.height;
-  },
-
-  // Calculates where to place the dialog window based on the game size
-  _calculateWindowDimensions: function (width, height) {
-    const x = this.padding;
-    const y = height - this.windowHeight - this.padding;
-    const rectWidth = width - (this.padding * 2);
-    const rectHeight = this.windowHeight;
-    return {
-      x,
-      y,
-      rectWidth,
-      rectHeight
-    };
-  },
-
-  // Creates the inner dialog window (where the text is displayed)
-  _createInnerWindow: function (x, y, rectWidth, rectHeight) {
-    this.graphics.fillStyle(this.windowColor, this.windowAlpha);
-    this.graphics.fillRect(x + 1, y + 1, rectWidth - 1, rectHeight - 1);
-  },
-
-  // Creates the border rectangle of the dialog window
-  _createOuterWindow: function (x, y, rectWidth, rectHeight) {
-    this.graphics.lineStyle(this.borderThickness, this.borderColor, this.borderAlpha);
-    this.graphics.strokeRect(x, y, rectWidth, rectHeight);
-  }
-};
-*/

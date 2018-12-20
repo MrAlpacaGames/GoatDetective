@@ -10,7 +10,7 @@ class FrontPlayer
         this.player;
 
         // Player Speed
-        this.playerSpeed = 200;        
+        this.playerSpeed = 800;        
     }
 
     //--------------------------------
@@ -100,16 +100,20 @@ class FrontPlayer
     {
         currentScene.tweens.killAll();
         this.player.anims.play('quiet');
+        //currentScene.dialogue.toogleWindow(true);
         
         // We face the item/ character because it means we're interacting with him
         if(currentClickedElement != null)
         {
-            let theDirection = this.player.x - currentClickedElement.x;
-            let isFlip = (theDirection > 0) ? true: false;
-            this.player.setFlip(isFlip);
-
-            // Before we erase the currentClickedElement we open the chat window with him
-            interacionManager.interact(currentClickedElement.name);
+            if(currentClickedElement.name != "")
+            {
+                let theDirection = this.player.x - currentClickedElement.x;
+                let isFlip = (theDirection > 0) ? true: false;
+                this.player.setFlip(isFlip);
+    
+                // Before we erase the currentClickedElement we open the chat window with him
+                interacionManager.interact(currentClickedElement.name);
+            }
         }
         currentClickedElement = null;
     }

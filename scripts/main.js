@@ -63,6 +63,9 @@ var interacionManager = new InteractionManagement();
 // Script that manages the music and SFX of the game
 var musicManager;
 
+// Script that manages the dialogues
+var dialogueManager = new DialogueManager();
+
 //---------------------------------------------
 // Screen Settings
 //---------------------------------------------
@@ -130,7 +133,7 @@ function assignButtonBehaviour(scene, button, highButton, name)
     switch(name)
     {
         case "Start Game":
-           button.on('pointerup', () => loadScene(scene, 'HallScene', false));
+           button.on('pointerup', () => loadScene(scene, 'HallScene'));
         break;
         case "Mute":
             button.on('pointerup', () => muteTheWorld(scene));
@@ -163,9 +166,8 @@ function muteTheWorld(scene)
 /**
  * Method that loads a scene. If it is switch it sleeps the current scene
  * @param {*} newScene 
- * @param {*} isSwitch 
  */
-function loadScene(newScene, isSwitch)
+function loadScene(newScene)
 {
     currentScene.input.stopPropagation();
     let destScene = theGame.scene.getScene(newScene);

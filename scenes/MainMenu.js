@@ -14,27 +14,32 @@ class MainMenu extends Phaser.Scene
 
     preload()
     {
+        // We assign the current scene to the main menu
         currentScene = this;
-        this.load.image('menuButton', 'assets/sprites/Menus/startbtn.png');
+        // We preload the images required for the menu
+        spriteManager.preloadMenu();  
+        
         this.add.text(0, 0, '', 
         { fontFamily: 'Ailerons', fontSize: 80 , color: '#f3e307', align: 'left'});
         this.musicManager = new MusicManager(this);
+
         this.musicManager.preloadMusic('Main');
     }
 
     create()
     {
-        //window.alert("Before");
+        spriteManager.createMenu();
+        
+        /** 
         this.musicManager.createTheme('Main');
-        //window.alert('Exists: '+this.musicManager.currentThemeIntro.duration);
         this.musicManager.playTheme(true);
-        //window.alert("Feel the love");
 
         this.add.text(180, 136, 'GOAT DETECTIVE \n SUPAH STAR', 
         { fontFamily: 'Ailerons', fontSize: 80 , color: '#f3e307', align: 'left'});
 
         createButton(this, 'Start Game', 'menuButton', topBackgroundXOrigin, topBackgroundYOrigin + 120, 0.6, 0.6, 105, 20);
         createButton(this, 'Mute', 'menuButton', topBackgroundXOrigin + 400, topBackgroundYOrigin + 200, 0.3, 0.6, 45, 20);
+        */
     }
     
     createXXXButton(name, imageID, posX, posY)

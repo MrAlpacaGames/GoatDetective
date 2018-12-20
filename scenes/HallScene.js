@@ -28,11 +28,14 @@ class HallScene extends Phaser.Scene
         spriteManager.preloadCharacters();
         spriteManager.preloadEnvironment();
         //this.load.scenePlugin('DialogModalPlugin', 'scripts/ui/dialogue_plugin.js', 'dialogPlugin', 'dialog');
-        this.dialogue.assignScene(this);
+        this.dialogue.preloadDialogue();
+
+        dialogueManager.preloadJson();
     }
 
     create()
     {      
+        dialogueManager.createDialogues();
 
         spriteManager.createEnvironment('hall', topBackgroundXOrigin+ 815, topBackgroundYOrigin - 2, 0.72);
         
@@ -60,11 +63,13 @@ class HallScene extends Phaser.Scene
         this.interactuables.add(jung);
 
         // Main Player
-        this.playerSprite = spriteManager.createPlayer(topBackgroundXOrigin+250,  topBackgroundYOrigin+90);
+        this.playerSprite = spriteManager.createPlayer(topBackgroundXOrigin+600,  topBackgroundYOrigin+90);
         thePlayer.assignScene(this.playerSprite);
         thePlayer.assignOnEvents();
 
         this.dialogue.createDialogueWindow();
+        //this.dialogue.setDialogueText("Ostia Puta Madre! Is Park! And he's dead! Who would have killed him?");
+        
   
         // Click FX
         this.clickFx = spriteManager.createClickFx();    

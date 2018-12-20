@@ -1,0 +1,29 @@
+{
+    "Dialogues":
+    [        
+        {   
+            "ID" : "S01D01",
+            "Character" : "Peterson",
+            "Text": "His name is Park. He's the lead of XXX Band",
+            "NextAction": "Dialogue",
+            "Requirements":
+            {
+                "Characters": "None",
+                "Places": "None",
+                "Items": "None"
+            }
+        },
+        {   
+            "ID" : "S01D01",
+            "Character" : "Peterson",
+            "Text": "His name is Park. He's the lead of XXX Band",
+            "NextAction": "Dialogue",
+            "Requirements":
+            {
+                "Characters": "None",
+                "Places": "None",
+                "Items": "None"
+            }
+        }
+    ]      
+}

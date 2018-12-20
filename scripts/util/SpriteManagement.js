@@ -201,4 +201,53 @@ class SpriteManagement
 
     }
 
+
+
+    //-------------------------------------------------
+    // MAIN MENU
+    //-------------------------------------------------
+    /**
+     * We preload the menu sprites
+     */
+    preloadMenu()
+    {
+        currentScene.load.image('Fondo', 'assets/sprites/Menus/Fondo.png');
+        currentScene.load.image('GoatMenu', 'assets/sprites/Menus/GoatMenu.png');
+        currentScene.load.image('Fondo2', 'assets/sprites/Menus/Fondo2.png');
+        currentScene.load.image('Logo', 'assets/sprites/Menus/Logo.png');
+    }
+
+    /**
+     * We create the menu
+     */
+    createMenu()
+    {
+        currentScene.add.image(topBackgroundXOrigin, topBackgroundYOrigin, 'Fondo');
+        let goat = currentScene.add.image(-100, topBackgroundYOrigin+35, 'GoatMenu');
+        let fondo2 = currentScene.add.image(topBackgroundXOrigin, topBackgroundYOrigin, 'Fondo2');
+        fondo2.visible = false;
+        let logo = currentScene.add.image(topBackgroundXOrigin, topBackgroundYOrigin, 'Logo');
+
+        let timeline = currentScene.tweens.createTimeline();
+
+        timeline.add(
+            {
+                targets: goat,
+                x: topBackgroundXOrigin + 175,
+                duration: 2500
+            }
+        );
+
+        timeline.add(            
+            {
+                targets: fondo2,
+                onStart: function()
+                {
+                    fondo2.visible = true;
+                } 
+            }          
+        );
+
+        timeline.play();
+    }
 }

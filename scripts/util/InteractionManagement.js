@@ -40,4 +40,9 @@ class InteractionManagement
     {
         
     }
+
+    printJojo()
+    {
+        console.log("-Jojo! \n-Dio!");
+    }
 }
