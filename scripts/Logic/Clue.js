@@ -1,8 +1,7 @@
 class Clue
 {
-    constructor(theID, theName, theDescription)
+    constructor(theName, theDescription)
     {
-        this.id = theID;
         this.name = theName;
         this.description = theDescription;
         this.discovered = false;

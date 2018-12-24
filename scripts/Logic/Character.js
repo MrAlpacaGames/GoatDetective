@@ -1,9 +1,9 @@
 class Character extends Clue
 {
-    constructor(theID, theName, theDescription)
+    constructor(theName, theDescription)
     {
-        super(theID, theName, theDescription);
-        this.dialogues;
+        super(theName, theDescription);
+        this.dialogues = [];
     }  
 
 

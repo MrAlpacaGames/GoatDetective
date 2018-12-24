@@ -30,12 +30,12 @@ class HallScene extends Phaser.Scene
         //this.load.scenePlugin('DialogModalPlugin', 'scripts/ui/dialogue_plugin.js', 'dialogPlugin', 'dialog');
         this.dialogue.preloadDialogue();
 
-        dialogueManager.preloadJson();
+       // dialogueManager.preloadJson();
     }
 
     create()
     {      
-        dialogueManager.createDialogues();
+        //dialogueManager.createDialogues();
 
         spriteManager.createEnvironment('hall', topBackgroundXOrigin+ 815, topBackgroundYOrigin - 2, 0.72);
         
