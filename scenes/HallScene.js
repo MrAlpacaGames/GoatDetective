@@ -30,13 +30,14 @@ class HallScene extends Phaser.Scene
         //this.load.scenePlugin('DialogModalPlugin', 'scripts/ui/dialogue_plugin.js', 'dialogPlugin', 'dialog');
         this.dialogue.preloadDialogue();
 
-       // dialogueManager.preloadJson();
+        if(hasStartedGame == false)
+        {
+            dialogueManager.preloadJson();
+        }
     }
 
     create()
     {      
-        //dialogueManager.createDialogues();
-
         spriteManager.createEnvironment('hall', topBackgroundXOrigin+ 815, topBackgroundYOrigin - 2, 0.72);
         
         this.cameras.main.setBounds(0, 0, gameConfig.width * 2.7, gameConfig.height);
@@ -63,14 +64,12 @@ class HallScene extends Phaser.Scene
         this.interactuables.add(jung);
 
         // Main Player
-        this.playerSprite = spriteManager.createPlayer(topBackgroundXOrigin+600,  topBackgroundYOrigin+90);
+        this.playerSprite = spriteManager.createPlayer(topBackgroundXOrigin-200,  topBackgroundYOrigin+90);
         thePlayer.assignScene(this.playerSprite);
         thePlayer.assignOnEvents();
 
         this.dialogue.createDialogueWindow();
-        //this.dialogue.setDialogueText("Ostia Puta Madre! Is Park! And he's dead! Who would have killed him?");
-        
-  
+         
         // Click FX
         this.clickFx = spriteManager.createClickFx();    
         this.input.on('pointerdown', () => spriteManager.clickEffect(this.clickFx, this.input.activePointer));
@@ -80,9 +79,20 @@ class HallScene extends Phaser.Scene
             // If this is the first time we get to this scene we initialize the main game objects like the notebook
             hasStartedGame = true;
             
+            dialogueManager.createDialogues();
+
             this.dialogue.hero();
            // this.dialog.init();
             //console.log(this.dialog);
         }
+
+        this.beginScene();
+    }
+
+    beginScene()
+    {
+        GameManager.canMove = false;
+        this.dialogue.enableDialogueUI(false, true);
+
     }
 }

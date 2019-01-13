@@ -1,8 +1,7 @@
 class MusicManager
 {
-    constructor(theScene)
+    constructor()
     {
-        this.scene = theScene;
         this.sceneTheme;
 
         this.currentThemeIntro;
@@ -11,14 +10,14 @@ class MusicManager
 
     preloadMusic(sceneName)
     {
-        this.scene.load.audio('MainIntro','assets/audio/music/MainIntro.mp3');
-        this.scene.load.audio('MainLoop','assets/audio/music/MainLoop.mp3');
+        currentScene.load.audio('MainIntro','assets/audio/music/MainIntro.mp3');
+        currentScene.load.audio('MainLoop','assets/audio/music/MainLoop.mp3');
     }
 
     createTheme(themeSong)
     {
-        this.currentThemeIntro = this.scene.sound.add(themeSong+'Intro');
-        this.currentThemeLoop = this.scene.sound.add(themeSong+'Loop');
+        this.currentThemeIntro = currentScene.sound.add(themeSong+'Intro');
+        this.currentThemeLoop = currentScene.sound.add(themeSong+'Loop');
         this.currentThemeLoop.loop = true;
     }
 
@@ -34,6 +33,18 @@ class MusicManager
         else
         {
             this.currentThemeLoop.play();
+        }
+    }
+
+    muteMusic()
+    {
+        if(currentScene.sound.volume == 0)
+        {
+            currentScene.sound.volume = 1;
+        }
+        else if(currentScene.sound.volume == 1)
+        {
+            currentScene.sound.volume = 0;
         }
     }
 

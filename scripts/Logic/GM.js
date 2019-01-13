@@ -20,8 +20,15 @@ class GM
         this.items = [];
 
         this.places = [];
+        let mainHall = new Place('Main Hall', 'This is where Park died.');
+        let office = new Place('Office', "Assattari's office. Maybe I could find something interesting here.");
+        let dressroom = new Place('Dressroom', "This is where the band got their clothes");
+        let recordingStudio = new Place('Recording Studio', 'This is where the supah songs are recorded');
+        this.places.push(mainHall, office, dressroom, recordingStudio);
 
         this.dialogues = [];
+
+        this.canMove = true;
 
     }
 

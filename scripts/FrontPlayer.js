@@ -41,9 +41,12 @@ class FrontPlayer
      */
     movePlayer(direction)
     {
-        let isFlip = (direction == 1) ? false: true;
-        this.player.setVelocityX(this.playerSpeed * direction);
-        this.player.setFlip(isFlip);
+        if(GameManager.canMove == true)
+        {
+            let isFlip = (direction == 1) ? false: true;
+            this.player.setVelocityX(this.playerSpeed * direction);
+            this.player.setFlip(isFlip);
+        }
     }
 
     
@@ -54,26 +57,29 @@ class FrontPlayer
      */
     clickAction(thePointer)
     {
-        currentScene.tweens.killAll();
-        let xAdditive = this.calculateDistanceToMove(); // This is 0 until the player selects an interactive element. Then it will change to a new distance
-        let destination = thePointer.worldX + xAdditive;
-
-        let theDistance = Phaser.Math.Distance.Between(this.player.x, this.player.y, destination, this.player.y);
-        let theDuration = theDistance / this.playerSpeed*1000;
-
-        let theDirection = this.player.x - destination;
-        if(theDirection != 0)
+        if(GameManager.canMove == true)
         {
-            this.player.anims.play('walking', true);
-            let isFlip = (theDirection > 0) ? true: false;
-            this.player.setFlip(isFlip);
-
-            var tween = currentScene.tweens.add({
-                targets: this.player,
-                x: destination,
-                duration: theDuration,
-                onComplete: ()=> this.stopMoving()
-            });
+            currentScene.tweens.killAll();
+            let xAdditive = this.calculateDistanceToMove(); // This is 0 until the player selects an interactive element. Then it will change to a new distance
+            let destination = thePointer.worldX + xAdditive;
+    
+            let theDistance = Phaser.Math.Distance.Between(this.player.x, this.player.y, destination, this.player.y);
+            let theDuration = theDistance / this.playerSpeed*1000;
+    
+            let theDirection = this.player.x - destination;
+            if(theDirection != 0)
+            {
+                this.player.anims.play('walking', true);
+                let isFlip = (theDirection > 0) ? true: false;
+                this.player.setFlip(isFlip);
+    
+                var tween = currentScene.tweens.add({
+                    targets: this.player,
+                    x: destination,
+                    duration: theDuration,
+                    onComplete: ()=> this.stopMoving()
+                });
+            }
         }
     }
     

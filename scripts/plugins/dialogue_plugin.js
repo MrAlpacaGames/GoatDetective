@@ -74,11 +74,16 @@ class DialoguePlugin extends Phaser.Plugins.BasePlugin
     }
 
     this.createNextButton();
-    this.toogleWindow(false);
-    this.toogleNextBttn(false);
-    this.toogleDialogTexts(true, false);
-    this.toogleDialogTexts(false, false);
+    this.enableDialogueUI(false, false);
   }
+
+  enableDialogueUI(isMultiple, newValue)
+  {
+    this.toogleWindow(newValue);
+    this.toogleNextBttn(newValue);
+    this.toogleDialogTexts(isMultiple, newValue);
+  }
+  
 
   createNextButton()
   {
@@ -113,7 +118,7 @@ class DialoguePlugin extends Phaser.Plugins.BasePlugin
 
     this.timedEvent = currentScene.time.addEvent(
       {
-        delay: 150 - (this.dialogueSpeed * 30),
+        delay: 140 - (this.dialogueSpeed * 30),
         callback: this.animateText,
         callbackScope: this,
         loop: true
@@ -141,10 +146,12 @@ class DialoguePlugin extends Phaser.Plugins.BasePlugin
   {
     if(isMultiple == false)
     {
+      this.interactiveOptions.visible = false;
       this.dialogueText.visible = newValue;
     }
     else
     {
+      this.dialogueText.visible = false;
       this.interactiveOptions.visible = newValue;
     }
   }
@@ -153,6 +160,8 @@ class DialoguePlugin extends Phaser.Plugins.BasePlugin
   {
     if(this.nextButton) this.nextButton.visible = newValue;
   }
+
+  
 
   hero()
   {

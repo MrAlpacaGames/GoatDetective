@@ -4,7 +4,13 @@ class Character extends Clue
     {
         super(theName, theDescription);
         this.dialogues = [];
+        this.availableOptions = [];
     }  
+
+    addDialogue(newDialogue)
+    {
+        this.dialogues.push(newDialogue);
+    }
 
 
 }

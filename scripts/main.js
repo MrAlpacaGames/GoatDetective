@@ -25,7 +25,7 @@ const gameConfig =
         }]
     }
     ,
-    scene: [/*BootScene, MainMenu, */HallScene, OfficeScene, UINotebook]
+    scene: [/*BootScene, MainMenu,*/ HallScene, OfficeScene, UINotebook]
 };
 
 
@@ -60,8 +60,11 @@ var spriteManager = new SpriteManagement();;
 // Script that manages the interactions in the scenes
 var interacionManager = new InteractionManagement();
 
-// Script that manages the music and SFX of the game
-var musicManager;
+// Script that manages the music of the game
+var musicManager = new MusicManager();
+
+// Script that manages the SFX of the game
+var sfxManager = new SFXManager();
 
 // Script that manages the dialogues
 var dialogueManager = new DialogueManager();
@@ -87,6 +90,11 @@ var soundContextResumed = false;
 //-----------------------------------
 // Functions
 //-----------------------------------
+
+function init()
+{
+    console.log("Herooo Mon");
+}
 
 function createButton(scene, name, imageID, posX, posY, scaleX, scaleY, textX, textY)
 {

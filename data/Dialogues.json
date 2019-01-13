@@ -4,7 +4,7 @@
         {   
             "ID" : "S01D01",
             "Character" : "Peterson",
-            "Text": "His name is Park. He's the lead of XXX Band",
+            "Text": "This is it! I! Goatman Peterson will become the best detective Supah Star of History!",
             "NextAction": "Dialogue",
             "Requirements":
             {
@@ -14,9 +14,35 @@
             }
         },
         {   
-            "ID" : "S01D01",
+            "ID" : "S01D02",
             "Character" : "Peterson",
-            "Text": "His name is Park. He's the lead of XXX Band",
+            "Text": "To do that, I will resolve this murder by finding the <b> Right KILLER, WEAPON OF MURDER and PLACE.",
+            "NextAction": "Dialogue",
+            "Requirements":
+            {
+                "Characters": "None",
+                "Places": "None",
+                "Items": "None"
+            }
+        }
+        ,
+        {   
+            "ID" : "S01D03",
+            "Character" : "Peterson",
+            "Text": "I will write every bit of evidence on my SUPAH STAR NOTEBOOK!",
+            "NextAction": "Dialogue",
+            "Requirements":
+            {
+                "Characters": "None",
+                "Places": "None",
+                "Items": "None"
+            }
+        }
+        ,
+        {   
+            "ID" : "S01D013",
+            "Character" : "Jung",
+            "Text": "Oh my Park! He had so much talent baaabyyyyy",
             "NextAction": "Dialogue",
             "Requirements":
             {
