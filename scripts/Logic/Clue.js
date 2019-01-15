@@ -4,12 +4,8 @@ class Clue
     {
         this.name = theName;
         this.description = theDescription;
+        this.dialogues;
         this.discovered = false;
-    }
-
-    getID()
-    {
-        return this.id;
     }
 
     getName()

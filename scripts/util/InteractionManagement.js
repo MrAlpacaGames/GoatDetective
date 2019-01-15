@@ -11,8 +11,7 @@ class InteractionManagement
 
     interact(interactionObject)
     {
-        console.log("You want to interact with: "+interactionObject);
-        let parkTemp = GameManager.getCharacter();
+        //console.log("You want to interact with: "+interactionObject);
         if(interactionObject == "hallDoor" || interactionObject == "officeDoor" || interactionObject == "studioDoor" || interactionObject == "dressromDoor")
         {
             if(GameManager.canMove == true)
@@ -21,7 +20,14 @@ class InteractionManagement
                this.interactDoors(interactionObject);
             }
         }
-        //
+        else if(interactionObject == "Park" || interactionObject == "Jung" || interactionObject == "Assattari" || interactionObject == "Lee" || interactionObject == "Ruru")
+        {
+            if(GameManager.canMove == true)
+            {
+                // We interact with a character
+                this.interactPeople(interactionObject);
+            }
+        }
     }
 
     /**
@@ -59,13 +65,78 @@ class InteractionManagement
         loadScene(newSceneName, true);
     }
 
-    interactPeople(interactionObject)
+    openNotebook(newValue)
     {
-        
+        if(newValue == true)
+        {
+            // We open the Notebook
+            previousScene = currentScene;
+            currentScene.scene.switch('UINotebook');
+            currentScene = "UINotebook";
+        }
+        else
+        {
+            // We open the Notebook
+            currentScene.scene.switch(previousScene);
+            currentScene = previousScene;
+            previousScene = "UINotebook";
+        }
     }
 
-    printJojo()
+    nextDialogue()
     {
-        console.log("-Jojo! \n-Dio!");
+        // We first check if we are already writing some text. If yes we skip. If not we pass to the next option
+        if(currentScene.dialogue.isWriting == true) 
+        {
+            currentScene.dialogue.skipText();
+        }
+        else
+        {
+            dialogueManager.checkNextD(0);
+        }
     }
+
+    /**
+     * The longest method in the whole game D: Controls the dialogues to be shown according to each character
+     * @param {*Character with whom we are interacting} interactionObject 
+     */
+    interactPeople(interactionObject)
+    {
+        switch(interactionObject)
+        {
+            case "Park":
+                if(playerNotebook.characters[0].discovered == false)
+                {
+                    playerNotebook.discoverClue(0, "Character");
+                }
+                    switch(GameManager.stateOfGame)
+                    {
+                        case 0:
+                            dialogueManager.setDialogue("GS0D04");
+                            GameManager.stateOfGame = 1;
+                        break;
+                        case 1:
+                            dialogueManager.setDialogue("GS1D00");
+                        break;
+                    }
+            break;
+            case "Jung":
+                if(playerNotebook.characters[1].discovered == false)
+                {
+                    playerNotebook.discoverClue(1, "Character");
+                }
+                    switch(GameManager.stateOfGame)
+                    {
+                        case 0:
+                            dialogueManager.setDialogue("GS0D08");
+                        break;
+                        case 1:
+                            dialogueManager.setDialogue("GS1D05");
+                        break;
+                    }
+            break;
+        }
+    }
+
+
 }

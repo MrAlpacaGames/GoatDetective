@@ -30,7 +30,7 @@ class FrontPlayer
         currentScene.input.on('pointerdown', () => this.clickAction(currentScene.input.activePointer));
         currentScene.input.on('gameobjectdown', function(pointer, gameObject)
         {
-            //console.log("Clicked: "+gameObject.name);
+            //console.log("Down Clicked: "+gameObject.name);
             currentClickedElement = gameObject;
         });
     }
@@ -57,7 +57,7 @@ class FrontPlayer
      */
     clickAction(thePointer)
     {
-        if(GameManager.canMove == true)
+        if(GameManager.canMove == true && GameManager.HUDInteracted == false)
         {
             currentScene.tweens.killAll();
             let xAdditive = this.calculateDistanceToMove(); // This is 0 until the player selects an interactive element. Then it will change to a new distance
@@ -111,7 +111,7 @@ class FrontPlayer
         // We face the item/ character because it means we're interacting with him
         if(currentClickedElement != null)
         {
-            if(currentClickedElement.name != "")
+            if(currentClickedElement.name != "" && currentClickedElement.name != "HUD")
             {
                 let theDirection = this.player.x - currentClickedElement.x;
                 let isFlip = (theDirection > 0) ? true: false;

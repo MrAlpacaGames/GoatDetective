@@ -27,6 +27,7 @@ class HallScene extends Phaser.Scene
         currentScene = this;
         spriteManager.preloadCharacters();
         spriteManager.preloadEnvironment();
+        HUDSpriteManager.preload();
         //this.load.scenePlugin('DialogModalPlugin', 'scripts/ui/dialogue_plugin.js', 'dialogPlugin', 'dialog');
         this.dialogue.preloadDialogue();
 
@@ -42,7 +43,7 @@ class HallScene extends Phaser.Scene
         
         this.cameras.main.setBounds(0, 0, gameConfig.width * 2.7, gameConfig.height);
         this.physics.world.setBounds(0, 0, gameConfig.width * 2.7, gameConfig.height -40 );        
-        
+                
         // Characters
         this.interactuables = this.add.container();
         
@@ -55,20 +56,27 @@ class HallScene extends Phaser.Scene
 
         let dressroom = spriteManager.createEnvironment('dressromDoor', topBackgroundXOrigin+1790.5, topBackgroundYOrigin+32.5, 0.72);
         this.interactuables.add(dressroom);
-        
+
         // Characters Creation
         let park = spriteManager.createStaticCharacter('Park', topBackgroundXOrigin+800, topBackgroundYOrigin+200, 0.25);
         this.interactuables.add(park);
 
-        let jung = spriteManager.createStaticCharacter('Jung', topBackgroundXOrigin+1000, topBackgroundYOrigin+80, 0.42);
-        this.interactuables.add(jung);
-
-        // Main Player
-        this.playerSprite = spriteManager.createPlayer(topBackgroundXOrigin-200,  topBackgroundYOrigin+90);
+        if(GameManager.stateOfGame == 0)
+        {
+            let jung = spriteManager.createStaticCharacter('Jung', topBackgroundXOrigin+1000, topBackgroundYOrigin+80, 0.42);
+            this.interactuables.add(jung);
+            
+            // Main Player
+            this.playerSprite = spriteManager.createPlayer(topBackgroundXOrigin,  topBackgroundYOrigin+90);
+        }        
         thePlayer.assignScene(this.playerSprite);
         thePlayer.assignOnEvents();
-
+        
+        // Dialogue Window
         this.dialogue.createDialogueWindow();
+
+        // Mute Button 
+        HUDSpriteManager.createHUD();
          
         // Click FX
         this.clickFx = spriteManager.createClickFx();    
@@ -89,10 +97,17 @@ class HallScene extends Phaser.Scene
         this.beginScene();
     }
 
+
     beginScene()
     {
-        GameManager.canMove = false;
-        this.dialogue.enableDialogueUI(false, true);
+        switch(GameManager.stateOfGame)
+        {
+            case 0:
+                //dialogueManager.setDialogue("GS0D01");
+            break;
+            case 1:
 
+            break;
+        }
     }
 }

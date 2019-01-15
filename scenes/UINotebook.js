@@ -8,17 +8,18 @@ class UINotebook extends Phaser.Scene
         this.characters;
         this.items;
         this.places;
-
-        this.spritesManagement = theSpriteManager;
     }
 
     preload()
     {
-        this.spritesManagement.preloadItems();
+        currentScene = this;
+        notebookSpriteManager.preload();
     }
 
     create()
     {
-        this.spritesManagement.createNoteBook();
+        notebookSpriteManager.create();
     }
+
+    
 }

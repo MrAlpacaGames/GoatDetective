@@ -43,19 +43,32 @@ var thePlayer = new FrontPlayer();
 // Current clicked element by the user
 var currentClickedElement;
 
-// UI Notebook
-var playerNotebook;
+// Notebook
+var playerNotebook = new Notebook();
 
 var hasStartedGame = false;
 
+// CurrentScene of the Game
 var currentScene;
+
+// Previous Scene of the Game
+var previousScene;
 
 //---------------------------------------------
 // Global Scripts
 //---------------------------------------------
 
 // Script that manages all the sprites in the scenes
-var spriteManager = new SpriteManagement();;
+var spriteManager = new SpriteManagement();
+
+// Script that manages the menus sprites
+var menuSpriteManager = new UIMenuManager();
+
+// Script that manages the Notebook sprites
+var notebookSpriteManager = new UINotebookManager();
+
+// Script that manages the HUD sprites
+var HUDSpriteManager = new HUDManager();
 
 // Script that manages the interactions in the scenes
 var interacionManager = new InteractionManagement();
@@ -182,6 +195,7 @@ function loadScene(newScene)
     let theCluee = new Clue('CAS', "Hero Moon", "We have a deal");
     currentScene.scene.start(newScene, theCluee);
     
+    previousScene = currentScene;
     currentScene = destScene;
     //spriteManager.assignScene(newScene);
 }

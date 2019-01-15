@@ -2,6 +2,9 @@ class DialoguePlugin extends Phaser.Plugins.BasePlugin
 {
   constructor(pluginManager)
   {
+    //----------------------------
+    // VARIABLES
+    //----------------------------
     super(pluginManager);
     this.scene;
     this.systems;
@@ -12,10 +15,21 @@ class DialoguePlugin extends Phaser.Plugins.BasePlugin
     this.timedEvent;
     this.dialogueSpeed = 3;
     this.animatedText;
+    this.possibleText;
+
+    this.isWriting;
+    this.isEnabled = false;
 
     this.interactiveOptions;
   }
 
+  //----------------------------
+  // METHODS
+  //----------------------------
+
+  /**
+   * Method that preloads the dialogues in the plugin
+   */
   preloadDialogue()
   {
     this.systems = currentScene.sys;
@@ -27,7 +41,10 @@ class DialoguePlugin extends Phaser.Plugins.BasePlugin
     currentScene.load.image('dialBack', 'assets/sprites/UI/DialogueBox.png');
     currentScene.load.image('nextBtn', 'assets/sprites/UI/NextBtn.png');
   }
-
+  
+  /**
+   * Method that creates the dialogue Window in the UI
+   */
   createDialogueWindow()
   {
     // We create the static dialogue window
@@ -65,6 +82,7 @@ class DialoguePlugin extends Phaser.Plugins.BasePlugin
       {
         this.clearTint();
       });
+      newOption.on('pointerup' , ()=> dialogueManager.checkNextD(i));
       newOption.on('pointerout' , function()
       {
         this.clearTint();
@@ -77,14 +95,22 @@ class DialoguePlugin extends Phaser.Plugins.BasePlugin
     this.enableDialogueUI(false, false);
   }
 
+  /**
+   * Method that Enables or Disables the Window in the UI
+   * @param {* Defines if the window is to be multiple option or not} isMultiple 
+   * @param {* Defines if the window is to be set on or off} newValue 
+   */
   enableDialogueUI(isMultiple, newValue)
   {
+    this.isEnabled = newValue;
     this.toogleWindow(newValue);
     this.toogleNextBttn(newValue);
     this.toogleDialogTexts(isMultiple, newValue);
   }
   
-
+  /**
+   * Method that creates the next button in the Window
+   */
   createNextButton()
   {
     let self = this;
@@ -93,7 +119,6 @@ class DialoguePlugin extends Phaser.Plugins.BasePlugin
     this.nextButton.setScale(0.2);
     this.nextButton.setInteractive();
 
-    this.nextButton.on('pointerdown', () => interacionManager.printJojo());
     this.nextButton.on('pointerdown', function()
     {
       this.setTint(0xff0000);
@@ -106,42 +131,87 @@ class DialoguePlugin extends Phaser.Plugins.BasePlugin
     {
       this.clearTint();
     });
+    this.nextButton.on('pointerup', () => interacionManager.nextDialogue());
   }
 
-  setDialogueText(text)
+
+  setDialogueText(isMultiple, dialogue)
   {
     if(this.dialogueText.text != "") this.dialogueText.setText("");
     this.eventCounter = 0;
     if(this.timedEvent) this.timedEvent.remove();
 
-    this.animatedText = text.split('');
+    if(isMultiple == false)
+    {
+      this.possibleText = dialogue.Text;
+      this.animatedText = dialogue.Text.split('');
+  
+      this.timedEvent = currentScene.time.addEvent(
+        {
+          delay: 140 - (this.dialogueSpeed * 30),
+          callback: this.animateText,
+          callbackScope: this,
+          loop: true
+        }
+      );
+    }
+    else
+    {
+      this.dialogueText.text += dialogue.Text+"\n";
+      let availableOptions = dialogue.getAvailableOptions();
 
-    this.timedEvent = currentScene.time.addEvent(
+      for(let i = 0; i < this.interactiveOptions.length; i++)
       {
-        delay: 140 - (this.dialogueSpeed * 30),
-        callback: this.animateText,
-        callbackScope: this,
-        loop: true
+        let x = availableOptions[i];
+        if(x == null)
+        {
+          this.interactiveOptions.getAt(i).visible = false;
+        }
+        else
+        {
+          this.interactiveOptions.getAt(i).visible = true;
+          this.interactiveOptions.getAt(i).text = x.Text;
+        }
       }
-    );
-    //this.dialogueText.setText(text);
+    }
   }
 
+  /**
+   * Method that animates the text
+   */
   animateText()
   {
+    this.isWriting = true;
     this.eventCounter++;
     this.dialogueText.text += this.animatedText[this.eventCounter -1];
     if(this.eventCounter === this.animatedText.length)
     {
       this.timedEvent.remove();
+      this.isWriting = false;
     }
   }
 
+  skipText()
+  {
+    this.timedEvent.remove();
+    this.isWriting = false;
+    this.dialogueText.text = this.possibleText;
+  }
+
+  /**
+   * We show or disable the dialogue window
+   * @param {* New Value to define if we hide or show the window} newValue 
+   */
   toogleWindow(newValue)
   {
     if(this.dialogueBackground) this.dialogueBackground.visible = newValue;
   }
 
+  /**
+   * Method that toogles on/off the texts
+   * @param {*If is true is multiple option} isMultiple 
+   * @param {*The new value of the window state. True = Show. False = Hide} newValue 
+   */
   toogleDialogTexts(isMultiple, newValue)
   {
     if(isMultiple == false)
@@ -152,17 +222,23 @@ class DialoguePlugin extends Phaser.Plugins.BasePlugin
     else
     {
       this.dialogueText.visible = false;
+      this.nextButton.visible = false;
       this.interactiveOptions.visible = newValue;
     }
   }
 
+  /**
+   *  Method that shows or hides the next button
+   * @param {* New Next Button Value} newValue 
+   */
   toogleNextBttn(newValue)
   {
     if(this.nextButton) this.nextButton.visible = newValue;
   }
-
   
-
+  //----------------------------
+  // PLUGIN METHODS
+  //----------------------------
   hero()
   {
     console.log("Bwonswandiiii We gat a Deeeaaal");

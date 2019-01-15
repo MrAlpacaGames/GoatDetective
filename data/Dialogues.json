@@ -1,11 +1,14 @@
 {
     "Dialogues":
-    [        
+    [    
         {   
-            "ID" : "S01D01",
+            "ID": "GS0D01",
+            "Scene" : "HallScene",
+            "GameState" : "0",
             "Character" : "Peterson",
-            "Text": "This is it! I! Goatman Peterson will become the best detective Supah Star of History!",
-            "NextAction": "Dialogue",
+            "Type" : "Single",
+            "Text": "This is it! I! Goatman Peterson will become the best detective Supah Star!",
+            "NextAction": "GS0D02",
             "Requirements":
             {
                 "Characters": "None",
@@ -14,10 +17,13 @@
             }
         },
         {   
-            "ID" : "S01D02",
+            "ID": "GS0D02",
+            "Scene" : "HallScene",
+            "GameState" : "0",
             "Character" : "Peterson",
-            "Text": "To do that, I will resolve this murder by finding the <b> Right KILLER, WEAPON OF MURDER and PLACE.",
-            "NextAction": "Dialogue",
+            "Type" : "Single",
+            "Text": "I need to find the Right KILLER, WEAPON OF MURDER and PLACE.",
+            "NextAction": "GS0D03",
             "Requirements":
             {
                 "Characters": "None",
@@ -27,10 +33,88 @@
         }
         ,
         {   
-            "ID" : "S01D03",
+            "ID": "GS0D03",
+            "Scene" : "HallScene",
+            "GameState" : "0",
             "Character" : "Peterson",
+            "Type" : "Single",
             "Text": "I will write every bit of evidence on my SUPAH STAR NOTEBOOK!",
-            "NextAction": "Dialogue",
+            "NextAction": "End",
+            "Requirements":
+            {
+                "Characters": "None",
+                "Places": "None",
+                "Items": "None"
+            }
+        },
+        {   
+            "ID": "GS0D04",
+            "Scene" : "HallScene",
+            "GameState" : "0",
+            "Character" : "Park",
+            "Type" : "Single",
+            "Text": "OHHH NO! Park! Ohhh Baby! You are DEAD!",
+            "NextAction": "GS0D05",
+            "Requirements":
+            {
+                "Characters": "None",
+                "Places": "None",
+                "Items": "None"
+            }
+        },
+        {   
+            "ID": "GS0D05",
+            "Scene" : "HallScene",
+            "GameState" : "0",
+            "Character" : "Park",
+            "Type" : "Single",
+            "Text": "Let's study your bodyyy bae!",
+            "NextAction": "GS0D06",
+            "Requirements":
+            {
+                "Characters": "None",
+                "Places": "None",
+                "Items": "None"
+            }
+        },
+        {   
+            "ID": "GS0D06",
+            "Scene" : "HallScene",
+            "GameState" : "0",
+            "Character" : "Park",
+            "Type" : "Single",
+            "Text": "Your back is broken, your eyes are red, you're completely wet...",
+            "NextAction": "GS0D07",
+            "Requirements":
+            {
+                "Characters": "None",
+                "Places": "None",
+                "Items": "None"
+            }
+        },
+        {   
+            "ID": "GS0D07",
+            "Scene" : "HallScene",
+            "GameState" : "0",
+            "Character" : "Park",
+            "Type" : "Single",
+            "Text": "Oh my! It seems you have given your soul to Bwonswandi",
+            "NextAction": "End",
+            "Requirements":
+            {
+                "Characters": "None",
+                "Places": "None",
+                "Items": "None"
+            }
+        },
+        {   
+            "ID": "GS0D08",
+            "Scene" : "HallScene",
+            "GameState" : "0",
+            "Character" : "Jung",
+            "Type" : "Single",
+            "Text": "So, who are you mon? What are you doing here? Huh?",
+            "NextAction": "End",
             "Requirements":
             {
                 "Characters": "None",
@@ -38,12 +122,96 @@
                 "Items": "None"
             }
         }
+
+
+
         ,
         {   
-            "ID" : "S01D013",
+            "ID": "GS1D00",
+            "Scene" : "HallScene",
+            "GameState" : "0",
+            "Character" : "Park",
+            "Type" : "Multiple",
+            "Text": "Let's see...",
+            "NextAction": "GS1D01-GS1D02-GS1D03-GS1D04",
+            "Requirements":
+            {
+                "Characters": "None",
+                "Places": "None",
+                "Items": "None"
+            }
+        },
+        {   
+            "ID": "GS1D01",
+            "Scene" : "HallScene",
+            "GameState" : "0",
+            "Character" : "Park",
+            "Type" : "Single",
+            "Text": "Check Body",
+            "NextAction": "GS0D04",
+            "Requirements":
+            {
+                "Characters": "None",
+                "Places": "None",
+                "Items": "None"
+            }
+        },
+        {   
+            "ID": "GS1D02",
+            "Scene" : "HallScene",
+            "GameState" : "0",
+            "Character" : "Park",
+            "Type" : "Single",
+            "Text": "Person",
+            "NextAction": "End",
+            "Requirements":
+            {
+                "Characters": "Park",
+                "Places": "None",
+                "Items": "None"
+            }
+        },
+        {   
+            "ID": "GS1D03",
+            "Scene" : "HallScene",
+            "GameState" : "0",
+            "Character" : "Park",
+            "Type" : "Single",
+            "Text": "Item",
+            "NextAction": "End",
+            "Requirements":
+            {
+                "Characters": "None",
+                "Places": "None",
+                "Items": "None"
+            }
+        },
+        {   
+            "ID": "GS1D04",
+            "Scene" : "HallScene",
+            "GameState" : "0",
+            "Character" : "Park",
+            "Type" : "Single",
+            "Text": "Place",
+            "NextAction": "End",
+            "Requirements":
+            {
+                "Characters": "None",
+                "Places": "None",
+                "Items": "None"
+            }
+        },
+
+
+
+        {   
+            "ID": "GS1D05",
+            "Scene" : "HallScene",
+            "GameState" : "0",
             "Character" : "Jung",
-            "Text": "Oh my Park! He had so much talent baaabyyyyy",
-            "NextAction": "Dialogue",
+            "Type" : "Single",
+            "Text": "So, who are you mon? What are you doing here? Huh?",
+            "NextAction": "End",
             "Requirements":
             {
                 "Characters": "None",
