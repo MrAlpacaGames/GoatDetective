@@ -2,112 +2,6 @@
     "Dialogues":
     [    
         {   
-            "ID": "GS0D01",
-            "Scene" : "HallScene",
-            "GameState" : "0",
-            "Character" : "Peterson",
-            "Type" : "Single",
-            "Text": "This is it! I! Goatman Peterson will become the best detective Supah Star!",
-            "NextAction": "GS0D02",
-            "Requirements":
-            {
-                "Characters": "None",
-                "Places": "None",
-                "Items": "None"
-            }
-        },
-        {   
-            "ID": "GS0D02",
-            "Scene" : "HallScene",
-            "GameState" : "0",
-            "Character" : "Peterson",
-            "Type" : "Single",
-            "Text": "I need to find the Right KILLER, WEAPON OF MURDER and PLACE.",
-            "NextAction": "GS0D03",
-            "Requirements":
-            {
-                "Characters": "None",
-                "Places": "None",
-                "Items": "None"
-            }
-        }
-        ,
-        {   
-            "ID": "GS0D03",
-            "Scene" : "HallScene",
-            "GameState" : "0",
-            "Character" : "Peterson",
-            "Type" : "Single",
-            "Text": "I will write every bit of evidence on my SUPAH STAR NOTEBOOK!",
-            "NextAction": "End",
-            "Requirements":
-            {
-                "Characters": "None",
-                "Places": "None",
-                "Items": "None"
-            }
-        },
-        {   
-            "ID": "GS0D04",
-            "Scene" : "HallScene",
-            "GameState" : "0",
-            "Character" : "Park",
-            "Type" : "Single",
-            "Text": "OHHH NO! Park! Ohhh Baby! You are DEAD!",
-            "NextAction": "GS0D05",
-            "Requirements":
-            {
-                "Characters": "None",
-                "Places": "None",
-                "Items": "None"
-            }
-        },
-        {   
-            "ID": "GS0D05",
-            "Scene" : "HallScene",
-            "GameState" : "0",
-            "Character" : "Park",
-            "Type" : "Single",
-            "Text": "Let's study your bodyyy bae!",
-            "NextAction": "GS0D06",
-            "Requirements":
-            {
-                "Characters": "None",
-                "Places": "None",
-                "Items": "None"
-            }
-        },
-        {   
-            "ID": "GS0D06",
-            "Scene" : "HallScene",
-            "GameState" : "0",
-            "Character" : "Park",
-            "Type" : "Single",
-            "Text": "Your back is broken, your eyes are red, you're completely wet...",
-            "NextAction": "GS0D07",
-            "Requirements":
-            {
-                "Characters": "None",
-                "Places": "None",
-                "Items": "None"
-            }
-        },
-        {   
-            "ID": "GS0D07",
-            "Scene" : "HallScene",
-            "GameState" : "0",
-            "Character" : "Park",
-            "Type" : "Single",
-            "Text": "Oh my! It seems you have given your soul to Bwonswandi",
-            "NextAction": "End",
-            "Requirements":
-            {
-                "Characters": "None",
-                "Places": "None",
-                "Items": "None"
-            }
-        },
-        {   
             "ID": "GS0D08",
             "Scene" : "HallScene",
             "GameState" : "0",
@@ -166,7 +60,7 @@
             "NextAction": "End",
             "Requirements":
             {
-                "Characters": "Park",
+                "Characters": "Jung",
                 "Places": "None",
                 "Items": "None"
             }

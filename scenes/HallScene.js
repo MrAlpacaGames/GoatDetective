@@ -103,7 +103,7 @@ class HallScene extends Phaser.Scene
         switch(GameManager.stateOfGame)
         {
             case 0:
-                //dialogueManager.setDialogue("GS0D01");
+                dialogueManager.setDialogue("Pet00x00");
             break;
             case 1:
 

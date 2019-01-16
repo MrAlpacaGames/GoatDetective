@@ -1,0 +1,32 @@
+{
+    "SingleDialogues":
+    [
+        {
+            "ID":"SPet00x00",
+            "Character": "Peterson",
+            "GameState": 0,
+            "Color": "e20333",
+            "Texts":
+            [
+                "This is it! I! Goatman Peterson will become the best detective Supah Star!",
+                "I need to find the Right KILLER, WEAPON OF MURDER and PLACE.",
+                "I will write every bit of evidence on my SUPAH STAR NOTEBOOK!"
+            ],
+            "Next": "End"
+        },   
+        {
+            "ID":"SPark00x00",
+            "Character": "Peterson",
+            "GameState": 0,
+            "Color": "e20333",
+            "Texts":
+            [
+                "OHHH NO! Park! Ohhh Baby! You are DEAD!",
+                "Let's study your bodyyy bae!",
+                "Your back is broken, your eyes are red, you're completely wet...",
+                "Oh my! It seems you have given your soul to Bwonswandi"
+            ],
+            "Next": "End"
+        }   
+    ]
+}

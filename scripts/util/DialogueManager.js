@@ -2,12 +2,12 @@ class DialogueManager
 {
     constructor()
     {
-        this.data;
         this.loadJson(function(response){
             var actual_JSON = JSON.parse(response);
         });
 
-        this.dialogues;
+        this.sDialogues;
+        this.mOptions;
 
         this.currentDialogue;
     }
@@ -16,7 +16,9 @@ class DialogueManager
     {
         var xobj = new XMLHttpRequest();
         xobj.overrideMimeType("application/json");
-        xobj.open('GET', 'data/Dialogues.json', true); // Replace 'my_data' with the path to your file
+        xobj.open('GET', 'data/SingleDialogues.json', true); // Replace 'my_data' with the path to your file
+        xobj.open('GET', 'data/MultipleDialogues.json', true); // Replace 'my_data' with the path to your file
+
         xobj.onreadystatechange = function () {
             if (xobj.readyState == 4 && xobj.status == "200") {
                 // Required use of an anonymous callback as .open will NOT return a value but simply returns undefined in asynchronous mode
@@ -28,54 +30,57 @@ class DialogueManager
 
     preloadJson()
     {
-        currentScene.load.json('dialogues', 'data/Dialogues.json');
+        currentScene.load.json('singleD', 'data/SingleDialogues.json');
+        currentScene.load.json('multipleD', 'data/MultipleDialogues.json');
+
     }
 
     createDialogues()
     {
-        this.data = currentScene.cache.json.get('dialogues').Dialogues;
+        let sData = currentScene.cache.json.get('singleD').SingleDialogues;
+        let mData = currentScene.cache.json.get('multipleD').MultipleDialogues;
 
-        this.dialogues = new HashTable();
+
+        this.sDialogues = new HashTable();
         
-        this.data.forEach(temp => 
+        sData.forEach(temp => 
         {
-            let newD = new Dialogue(temp.ID, temp.Scene, temp.GameState, temp.Character, temp.Type, temp.Text, temp.NextAction, temp.Requirements);
-            this.dialogues.add(newD.ID, newD);
+            let newD = new Dialogue(temp.ID, temp.Character, temp.GameState, temp.Color, temp.Texts, temp.Next);
+            this.sDialogues.add(newD.ID, newD);
         });
+
 
         //let testo = this.dialogues.get("GS1D05");
         //console.log(testo.Text);           
     }
 
+
     setDialogue(DialogueID)
     {
-        this.currentDialogue = this.dialogues.get(DialogueID);
-        let isMultiple = false;
-        switch(this.currentDialogue.Type)
-        {
-            case "Single":
-                isMultiple = false;
-            break;
-            case "Multiple":
-                isMultiple = true;
-            break;
-        }
+        this.currentDialogue = this.sDialogues.get(DialogueID);
+        let text = this.currentDialogue.getNextDialogue();
+        
 
         if(currentScene.dialogue.isEnabled === false)
         {
             GameManager.canMove = false;
-            currentScene.dialogue.enableDialogueUI(isMultiple, true);
+            currentScene.dialogue.enableDialogueUI(true);
         }
 
-        currentScene.dialogue.setDialogueText(isMultiple, this.currentDialogue);
+        currentScene.dialogue.setDialogueText(this.currentDialogue);
     }
+
+    checkNextAction()
+    {
+        let nexAction = this.currentDialogue.getNextDialogue
+    }    
 
     /**
      * We check the next action to be done when someone presses the continue button.
      */
-    checkNextD(index)
+    checkNextD()
     {
-        let nextAction = this.currentDialogue.NextAction[index];
+        let nextAction = this.currentDialogue.getNextDialogue();
         if(nextAction === "End" || nextAction === "NextState")
         {
             // We close the dialog window
@@ -88,7 +93,8 @@ class DialogueManager
         }
         else
         {
-            this.currentDialogue = this.dialogues.get(nextAction);
+
+            this.currentDialogue = this.sDialogues.get(nextAction);
             // We check the type of the next Dialogue. If it is single, we show it. If it is multiple, we show the multiple options
             if(this.currentDialogue.Type == "Single")
             {

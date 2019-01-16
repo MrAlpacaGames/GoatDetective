@@ -100,12 +100,12 @@ class DialoguePlugin extends Phaser.Plugins.BasePlugin
    * @param {* Defines if the window is to be multiple option or not} isMultiple 
    * @param {* Defines if the window is to be set on or off} newValue 
    */
-  enableDialogueUI(isMultiple, newValue)
+  enableDialogueUI(newValue)
   {
     this.isEnabled = newValue;
     this.toogleWindow(newValue);
     this.toogleNextBttn(newValue);
-    this.toogleDialogTexts(isMultiple, newValue);
+    this.toogleDialogTexts(false, newValue);
   }
   
   /**
@@ -135,12 +135,33 @@ class DialoguePlugin extends Phaser.Plugins.BasePlugin
   }
 
 
-  setDialogueText(isMultiple, dialogue)
+  setDialogueText(dialogue)
   {
     if(this.dialogueText.text != "") this.dialogueText.setText("");
     this.eventCounter = 0;
     if(this.timedEvent) this.timedEvent.remove();
 
+    let nextText = dialogue.getNextDialogue();
+    if(nextText == "End")
+    {
+      return;
+    }
+    else
+    {
+      this.possibleText = nextText;
+      this.animatedText = nextText.split('');
+  
+      this.timedEvent = currentScene.time.addEvent(
+        {
+          delay: 140 - (this.dialogueSpeed * 30),
+          callback: this.animateText,
+          callbackScope: this,
+          loop: true
+        }
+      );
+    }
+
+    /** 
     if(isMultiple == false)
     {
       this.possibleText = dialogue.Text;
@@ -174,6 +195,7 @@ class DialoguePlugin extends Phaser.Plugins.BasePlugin
         }
       }
     }
+    */
   }
 
   /**

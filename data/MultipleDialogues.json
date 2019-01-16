@@ -1,0 +1,40 @@
+{
+    "MultipleDialogues":
+    [
+        {
+            "ID": "MPark01x000",
+            "Help": "Capa 1 - 4 Opciones",
+            "Options":
+            {
+                "A":"SPark00x00",
+                "B":"MPark01x010",
+                "C":"MPark01x020",
+                "D":"MPark01x030"
+            },
+            "Requirements":
+            {
+                "C":"",
+                "P":"",
+                "I":""
+            }
+        },
+        {
+            "ID": "MPark01x010",
+            "Help": "Capa 2 - Personajes",
+            "Options":
+            {
+                "A":"MPark01x011",
+                "B":"MPark01x012",
+                "C":"MPark01x013",
+                "D":"MPark01x014"
+            },
+            "Requirements":
+            {
+                "C":"",
+                "P":"",
+                "I":""
+            }
+        }
+
+    ]
+}

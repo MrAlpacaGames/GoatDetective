@@ -1,15 +1,30 @@
 class Dialogue
 {
-    constructor(theID, Scene, GameState, Character, theType, theText, NextAction, Requirements)
+    constructor(theID, Character, GameState, theColor, theTexts, NextAction)
     {
         this.ID = theID;
-        this.SceneName = Scene;
-        this.GameState = GameState;
         this.Character = Character;
-        this.Type = theType;
-        this.Text = theText;
-        this.NextAction = NextAction.split('-');
-        this.Requirements = Requirements;
+        this.GameState = GameState;
+        this.Color = theColor;
+        this.Texts = theTexts;
+        this.NextAction = NextAction;
+
+        this.currentIndex = -1;
+    }
+
+    getNextDialogue()
+    {
+        let answer = "";
+        this.currentIndex++;
+        if(this.currentIndex < this.Texts.length)
+        {
+            answer = this.Texts[this.currentIndex];
+        }
+        else
+        {
+            answer = "End";
+        }
+        return answer;
     }
 
     getAvailableOptions()
