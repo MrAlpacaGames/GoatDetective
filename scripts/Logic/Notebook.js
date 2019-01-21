@@ -11,7 +11,7 @@ class Notebook
 
         this.characters.push(park, jung, lee, assattari, ruru);
         
-        this.items = [];
+        this.weapons = [];
 
         this.places = [];
         let mainHall = new Place('Main Hall', 'This is where Park died.');
@@ -19,7 +19,28 @@ class Notebook
         let dressroom = new Place('Dressroom', "This is where the band got their clothes");
         let recordingStudio = new Place('Recording Studio', 'This is where the supah songs are recorded');
         this.places.push(mainHall, office, dressroom, recordingStudio);
+
+        this.dialoguesTaken = new HashTable();
     }
+
+    addDialogueTaken(Dialogue)
+    {
+        this.dialoguesTaken.add(Dialogue.ID, Dialogue);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     discoverClue(index, type)
     {
@@ -28,20 +49,43 @@ class Notebook
             case "Character":
                 this.characters[index].discovered = true;
             break;
-            case "Item":
-                this.items[index].discovered = true;
+            case "Weapon":
+                this.weapons[index].discovered = true;
             break;
             case "Place":
                 this.places[index].discovered = true;
             break;
         }
+        sfxManager.playSFX(2);
+        let timedEvent = currentScene.time.addEvent({
+            delay: 250, callback: this.enableNote, callbackScope: currentScene, repeat: 4 
+        });
+    }
+
+    enableNote()
+    {
+        let newS = !HUDSpriteManager.noteHigh.visible;
+        HUDSpriteManager.noteHigh.visible = newS;
+    }
+
+    getClue(type, index)
+    {
+        switch(type)
+        {
+            case "Suspect":
+                return this.characters[index];
+            case "Place":
+                return this.places[index];
+            case "Weapon":
+                return this.weapons[index];
+        }
     }
 
     checkRequirements(Requirements)
     {
-        if(Requirements.Characters != "None")
+        if(Requirements.Suspects.length > 0)
         {
-            let xChars = Requirements.Characters.split('-');
+            let xChars = Requirements.Suspects.split('-');
             xChars.forEach(temp => 
             {
                 let exists = this.checkIfExists(temp, this.characters);
@@ -51,19 +95,19 @@ class Notebook
                 }
             });
         }
-        if(Requirements.Items != "None")
+        if(Requirements.Weapons.length > 0)
         {
-            let xItems = Requirements.Items.split('-');
+            let xItems = Requirements.Weapons.split('-');
             xItems.forEach(temp => 
             {
-                let exists = this.checkIfExists(temp, this.items);
+                let exists = this.checkIfExists(temp, this.weapons);
                 if(exists == false)
                 {
                     return false;
                 }
             });
         }
-        if(Requirements.Places != "None")
+        if(Requirements.Places.length > 0)
         {
             let xPlaces = Requirements.Places.split('-');
             xPlaces.forEach(temp => 
@@ -89,5 +133,31 @@ class Notebook
             }
         });
         return exists;
+    }
+
+    getInformation(ClueType)
+    {
+        switch(ClueType)
+        {
+            case "S":
+                return this.characters;
+            case "P":
+                return this.places;
+            case "W":
+                return this.weapons;
+        }
+    }
+
+    resetAllClueStates()
+    {        
+        for(let i = 0; i < this.characters.length; i++)
+        {
+            let character = this.characters[i];
+            let place = (i < this.places.length) ? this.places[i] : null;
+            let weapon = (i < this.weapons.length) ? this.weapons[i] : null;
+            character.clueState = 0;
+            if(place != null) place.clueState = 0;
+            if(weapon != null) weapon.clueState = 0;
+        }
     }
 }

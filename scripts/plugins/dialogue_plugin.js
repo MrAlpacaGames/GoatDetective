@@ -8,17 +8,41 @@ class DialoguePlugin extends Phaser.Plugins.BasePlugin
     super(pluginManager);
     this.scene;
     this.systems;
-    this.dialogueText;
-    this.dialogueBackground;
-    this.nextButton;
+
+
+    // Single Dialog Background
+    this.singleDialogueBackground;
+
+    // Multiple Choice Dialog Background
+    this.multipleDialogueBackground;
+
     this.eventCounter = 0;
     this.timedEvent;
     this.dialogueSpeed = 3;
+
+    //------------------------------
+    // TEXTS
+    //-------------------------------
+
+    // Name of the person speaking
+    this.characterName;
+
+    // This is the text of the dialogues
+    this.dialogueText;
     this.animatedText;
-    this.possibleText;
+    this.possibleText;    
 
     this.isWriting;
     this.isEnabled = false;
+
+    // Buttons
+    this.nextButton;
+
+    // Accuse Button
+    this.accuseBtn;
+
+    // Close Button
+    this.closeBtn;
 
     this.interactiveOptions;
   }
@@ -38,8 +62,12 @@ class DialoguePlugin extends Phaser.Plugins.BasePlugin
       currentScene.events.once('boot', () => this.boot(), this);
     }
 
-    currentScene.load.image('dialBack', 'assets/sprites/UI/DialogueBox.png');
-    currentScene.load.image('nextBtn', 'assets/sprites/UI/NextBtn.png');
+    currentScene.load.image('SDialogBack', 'assets/sprites/HUD/Dialogo.png');
+    currentScene.load.image('MDialogBack', 'assets/sprites/HUD/SeleccionMultiple.png');
+
+    currentScene.load.image('nextBtn', 'assets/sprites/HUD/Siguiente.png');
+    currentScene.load.image('closeBtn', 'assets/sprites/HUD/x.png');
+    currentScene.load.image('AccuseBtn', 'assets/sprites/HUD/BotonAcusar.png');
   }
   
   /**
@@ -47,52 +75,81 @@ class DialoguePlugin extends Phaser.Plugins.BasePlugin
    */
   createDialogueWindow()
   {
+    //-------------------------------
+    // SINGLE DIALOG WINDOW
+    //-------------------------------
+
     // We create the static dialogue window
-    this.dialogueBackground = currentScene.physics.add.staticSprite(500, 100, 'dialBack');
-    this.dialogueBackground.scrollFactorX = 0;
-    this.dialogueBackground.setScale(1.6, 1.3);
+    this.singleDialogueBackground = currentScene.physics.add.staticSprite(500, 100, 'SDialogBack');
+    this.singleDialogueBackground.scrollFactorX = 0;
+
+    this.characterName = currentScene.add.text(140, 60, "", { fontFamily: 'Asap', fontSize: 25 , color: '#f9e26e', align: 'left',
+    wordWrap: {width: 200},
+    wordWrapUseAdvanced: true
+    });
+    this.characterName.scrollFactorX = 0;
 
     // We create the static text
-    this.dialogueText = currentScene.add.text(200, 45, "", { fontFamily: 'Ailerons', fontSize: 35 , color: '#e20333', align: 'left',
-    wordWrap: {width: 570},
+    this.dialogueText = currentScene.add.text(300, 45, "", { fontFamily: 'Asap', fontSize: 25 , color: '#f9e26e', align: 'left',
+    wordWrap: {width: 530},
     wordWrapUseAdvanced: true
     });
     this.dialogueText.scrollFactorX = 0;
 
+    //---------------------------------
+    // MULTIPLE CHOICE DIALOG WINDOW
+    //---------------------------------
+
+    // We create the static dialogue window
+    this.multipleDialogueBackground = currentScene.physics.add.staticSprite(500, 100, 'MDialogBack');
+    this.multipleDialogueBackground.scrollFactorX = 0;
+    this.multipleDialogueBackground.visible = false;
+
+
     // We create the dynamic interactive options elements
-    let xPositions = [205, 205, 505, 505];
-    let YPositions = [55, 100, 55, 100];
+    let xPositions = [175, 365, 555, 745];
 
     this.interactiveOptions = currentScene.add.container();
 
     for(let i = 0; i < 4; i++)
     {
-      let newOption = currentScene.add.text(xPositions[i], YPositions[i], "Pista "+i, { fontFamily: 'Ailerons', fontSize: 35 , color: '#e20333', align: 'left',
-      wordWrap: {width: 570},
+      let xOption = currentScene.add.text(xPositions[i], 70, "Option "+i, { fontFamily: 'Asap', fontSize: 25 , color: '#f9e26e', align: 'center',
+      wordWrap: {width: 90},
       wordWrapUseAdvanced: true
       });
-      newOption.scrollFactorX = 0;
-      
-      newOption.setInteractive();
-      newOption.on('pointerdown' , function()
-      {
+      xOption.name = i;
+      xOption.scrollFactorX = 0;
+
+      xOption.setInteractive();
+      xOption.on('pointerdown', function(){
         this.setTint(0x0EE612);
       });
-      newOption.on('pointerup' , function()
-      {
+      xOption.on('pointerup', function(){
         this.clearTint();
+        dialogueManager.selectOption(i);
       });
-      newOption.on('pointerup' , ()=> dialogueManager.checkNextD(i));
-      newOption.on('pointerout' , function()
-      {
+      xOption.on('pointerout', function(){
         this.clearTint();
       });
 
-      this.interactiveOptions.add(newOption);
+      this.interactiveOptions.add(xOption);
     }
 
-    this.createNextButton();
-    this.enableDialogueUI(false, false);
+    //---------------------------------
+    // BUTTONS
+    //---------------------------------
+
+    this.nextButton = currentScene.physics.add.staticSprite(855, 130, 'nextBtn');  
+    this.createButtonBehaviour(this.nextButton,'nextBtn');
+
+    this.closeBtn = currentScene.physics.add.staticSprite(885, 30, 'closeBtn');  
+    this.createButtonBehaviour(this.closeBtn, 'closeBtn');
+
+    this.accuseBtn = currentScene.physics.add.staticSprite(835,505, 'AccuseBtn');  
+    this.createButtonBehaviour(this.accuseBtn, 'AccuseBtn');
+    this.accuseBtn.visible = false;
+
+    this.switchWindows(false);
   }
 
   /**
@@ -103,99 +160,115 @@ class DialoguePlugin extends Phaser.Plugins.BasePlugin
   enableDialogueUI(newValue)
   {
     this.isEnabled = newValue;
-    this.toogleWindow(newValue);
-    this.toogleNextBttn(newValue);
-    this.toogleDialogTexts(false, newValue);
+    dialogueManager.currentDialogueLvl = 0;
+    // We first hide/show all the Single Dialog Elements
+    this.singleDialogueBackground.visible = newValue;
+    this.nextButton.visible = newValue;
+    this.dialogueText.visible = newValue;
+    this.characterName.visible = newValue;
+
+    // We now activate/deactivate the multiple choice dialog elements
+    this.multipleDialogueBackground.visible = false;
+    this.interactiveOptions.visible = false;
+
+    // We activate/deactivate
+    this.closeBtn.visible = newValue;
+    this.accuseBtn.visible = false;
+
+    if(newValue == false)
+    {
+      let timedEvent = currentScene.time.delayedCall(100, function(){
+        GameManager.canMove = true;
+      } , currentScene);
+    }
+  }
+
+  /**
+   * Allow us to switch between the single and multiple option dialogues UI elements
+   * @param {*New Value to define the show/hide behaviours} toMultiple 
+   */
+  switchWindows(toMultiple)
+  {
+    dialogueManager.currentDialogueLvl = (toMultiple == true)? 1 : 0;
+    // We first hide/show all the Single Dialog Elements
+    this.singleDialogueBackground.visible = !toMultiple;
+    this.nextButton.visible = !toMultiple;
+    this.dialogueText.visible = !toMultiple;
+    this.characterName.visible = !toMultiple;
+
+    // We now activate/deactivate the multiple choice dialog elements
+    this.multipleDialogueBackground.visible = toMultiple;
+    this.interactiveOptions.visible = toMultiple;
+  }
+
+  setOptionsNames(names)
+  {
+    for(let i = 0; i < names.length; i++)
+    {
+      this.interactiveOptions[i].text = names[i];
+    }
   }
   
   /**
-   * Method that creates the next button in the Window
+   * Method that creates behaviours for the Dialogues Buttons
+   * @param {*The button to have a new behaviour} theButton 
+   * @param {*The behaviour to be implemented to the button} behaviour 
    */
-  createNextButton()
+  createButtonBehaviour(theButton, behaviour)
   {
-    let self = this;
-    this.nextButton = currentScene.physics.add.staticSprite(785, 135, 'nextBtn');  
-    this.nextButton.scrollFactorX = 0;
-    this.nextButton.setScale(0.2);
-    this.nextButton.setInteractive();
+    theButton.scrollFactorX = 0;
+    theButton.setInteractive();
+    
+    theButton.on('pointerdown', function()
+    {
+      this.setScale(1.1);
+    });
+    theButton.on('pointerout', function()
+    {
+      this.setScale(1);
+    });
+    theButton.on('pointerup', function()
+    {
+      this.setScale(1);
+    });
 
-    this.nextButton.on('pointerdown', function()
+    switch(behaviour)
     {
-      this.setTint(0xff0000);
-    });
-    this.nextButton.on('pointerout', function()
-    {
-      this.clearTint();
-    });
-    this.nextButton.on('pointerup', function()
-    {
-      this.clearTint();
-    });
-    this.nextButton.on('pointerup', () => interacionManager.nextDialogue());
+      case "nextBtn":
+        theButton.on('pointerdown', ()=> dialogueManager.checkNextAction());
+      break;
+      case "closeBtn":
+        // We close the dialogue
+        theButton.on('pointerdown', ()=> this.enableDialogueUI(false));
+      break;
+      case "AccuseBtn":
+        // We accuse the character who we are talking to
+        
+      break;
+    }
   }
 
-
+  /**
+   * Method that sets the text for the new dialogue and animates it
+   * @param {*New Dialogue to be used in the dialogue window} dialogue 
+   */
   setDialogueText(dialogue)
   {
     if(this.dialogueText.text != "") this.dialogueText.setText("");
     this.eventCounter = 0;
     if(this.timedEvent) this.timedEvent.remove();
 
-    let nextText = dialogue.getNextDialogue();
-    if(nextText == "End")
-    {
-      return;
-    }
-    else
-    {
-      this.possibleText = nextText;
-      this.animatedText = nextText.split('');
-  
-      this.timedEvent = currentScene.time.addEvent(
-        {
-          delay: 140 - (this.dialogueSpeed * 30),
-          callback: this.animateText,
-          callbackScope: this,
-          loop: true
-        }
-      );
-    }
+    this.possibleText = dialogue;
+    this.animatedText = dialogue.split('');
 
-    /** 
-    if(isMultiple == false)
-    {
-      this.possibleText = dialogue.Text;
-      this.animatedText = dialogue.Text.split('');
-  
-      this.timedEvent = currentScene.time.addEvent(
-        {
-          delay: 140 - (this.dialogueSpeed * 30),
-          callback: this.animateText,
-          callbackScope: this,
-          loop: true
-        }
-      );
-    }
-    else
-    {
-      this.dialogueText.text += dialogue.Text+"\n";
-      let availableOptions = dialogue.getAvailableOptions();
-
-      for(let i = 0; i < this.interactiveOptions.length; i++)
+    this.timedEvent = currentScene.time.addEvent(
       {
-        let x = availableOptions[i];
-        if(x == null)
-        {
-          this.interactiveOptions.getAt(i).visible = false;
-        }
-        else
-        {
-          this.interactiveOptions.getAt(i).visible = true;
-          this.interactiveOptions.getAt(i).text = x.Text;
-        }
+        delay: 140 - (this.dialogueSpeed * 30),
+        callback: this.animateText,
+        callbackScope: this,
+        loop: true
       }
-    }
-    */
+    );
   }
 
   /**
@@ -213,6 +286,9 @@ class DialoguePlugin extends Phaser.Plugins.BasePlugin
     }
   }
 
+  /**
+   * Method used to skip the current animation of the text
+   */
   skipText()
   {
     this.timedEvent.remove();
@@ -220,52 +296,11 @@ class DialoguePlugin extends Phaser.Plugins.BasePlugin
     this.dialogueText.text = this.possibleText;
   }
 
-  /**
-   * We show or disable the dialogue window
-   * @param {* New Value to define if we hide or show the window} newValue 
-   */
-  toogleWindow(newValue)
-  {
-    if(this.dialogueBackground) this.dialogueBackground.visible = newValue;
-  }
-
-  /**
-   * Method that toogles on/off the texts
-   * @param {*If is true is multiple option} isMultiple 
-   * @param {*The new value of the window state. True = Show. False = Hide} newValue 
-   */
-  toogleDialogTexts(isMultiple, newValue)
-  {
-    if(isMultiple == false)
-    {
-      this.interactiveOptions.visible = false;
-      this.dialogueText.visible = newValue;
-    }
-    else
-    {
-      this.dialogueText.visible = false;
-      this.nextButton.visible = false;
-      this.interactiveOptions.visible = newValue;
-    }
-  }
-
-  /**
-   *  Method that shows or hides the next button
-   * @param {* New Next Button Value} newValue 
-   */
-  toogleNextBttn(newValue)
-  {
-    if(this.nextButton) this.nextButton.visible = newValue;
-  }
-  
+ 
   //----------------------------
   // PLUGIN METHODS
   //----------------------------
-  hero()
-  {
-    console.log("Bwonswandiiii We gat a Deeeaaal");
-  }
-
+ 
   boot()
   {
     var eventEmitter = this.systems.events;

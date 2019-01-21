@@ -7,9 +7,25 @@ class DialogueManager
         });
 
         this.sDialogues;
-        this.mOptions;
 
+        // Current Active Dialogue
         this.currentDialogue;
+
+        // This is the lvl of the conversation.
+        // Level 0 = Single Dialog, showing text and next option
+        // Level 1 = Multiple Dialog - Level 1. We show Dialogue options:
+        //  a) Repeat last dialogue, b) Ask about a person, c) Ask about a place or d) Ask about a weapon
+        // Level 2 = Multiple Dialog - Level 2. We show the names of the characters, places or weapons. 
+        this.currentDialogueLvl = 0;
+
+        // Clues List of Requirements and Order of Dialogues
+        this.parkIDs;
+        this.jungIDs;
+        this.leeIDs;
+        this.ruruIDs;
+        this.assattariIDs;
+
+        
     }
 
     loadJson(callback)
@@ -17,7 +33,7 @@ class DialogueManager
         var xobj = new XMLHttpRequest();
         xobj.overrideMimeType("application/json");
         xobj.open('GET', 'data/SingleDialogues.json', true); // Replace 'my_data' with the path to your file
-        xobj.open('GET', 'data/MultipleDialogues.json', true); // Replace 'my_data' with the path to your file
+        xobj.open('GET', 'data/Requirements.json', true); // Replace 'my_data' with the path to your file
 
         xobj.onreadystatechange = function () {
             if (xobj.readyState == 4 && xobj.status == "200") {
@@ -31,48 +47,84 @@ class DialogueManager
     preloadJson()
     {
         currentScene.load.json('singleD', 'data/SingleDialogues.json');
-        currentScene.load.json('multipleD', 'data/MultipleDialogues.json');
+        currentScene.load.json('requirements', 'data/Requirements.json');
 
     }
 
     createDialogues()
     {
         let sData = currentScene.cache.json.get('singleD').SingleDialogues;
-        let mData = currentScene.cache.json.get('multipleD').MultipleDialogues;
-
+        let requirData = currentScene.cache.json.get('requirements');
+        this.parkIDs = requirData.Park;
+        this.jungIDs = requirData.Jung;
 
         this.sDialogues = new HashTable();
         
         sData.forEach(temp => 
         {
-            let newD = new Dialogue(temp.ID, temp.Character, temp.GameState, temp.Color, temp.Texts, temp.Next);
+            let newD = new Dialogue(temp.ID, temp.Character, temp.GameState, temp.Texts, temp.Next);
             this.sDialogues.add(newD.ID, newD);
         });
-
-
-        //let testo = this.dialogues.get("GS1D05");
-        //console.log(testo.Text);           
     }
 
+    selectOption(optionSelected)
+    {
+        this.currentDialogueLvl = (this.currentDialogueLvl == 1) ? 2: 1;
+        switch(optionSelected)
+        {
+            case 0:
+                
+            break;
+        }
 
-    setDialogue(DialogueID)
+        console.log("Option selected is: "+optionSelected);
+    }
+
+    startDialogue(DialogueID)
     {
         this.currentDialogue = this.sDialogues.get(DialogueID);
-        let text = this.currentDialogue.getNextDialogue();
-        
-
         if(currentScene.dialogue.isEnabled === false)
         {
             GameManager.canMove = false;
             currentScene.dialogue.enableDialogueUI(true);
         }
+        this.setDialogueText(0);
+    }
 
-        currentScene.dialogue.setDialogueText(this.currentDialogue);
+    setDialogueText(index)
+    {
+        if(index == 0) this.currentDialogue.currentIndex = 0;
+        let text = this.currentDialogue.Texts[index].split("|||");
+        currentScene.dialogue.characterName.text = text[0];
+        currentScene.dialogue.setDialogueText(text[1]);
     }
 
     checkNextAction()
     {
-        let nexAction = this.currentDialogue.getNextDialogue
+        if(currentScene.dialogue.isWriting == true)
+        {
+            currentScene.dialogue.skipText();
+        }
+        else
+        {
+            let nextLine = this.currentDialogue.getNextLine();
+            if(nextLine == "LastLine")
+            {
+                let nextAction = this.currentDialogue.NextAction;
+                if(nextAction == "End")  // We check if the next action is End. If it is we close the dialog.
+                {
+                    currentScene.dialogue.enableDialogueUI(false);
+                }
+                else // If not, we proceed to open the multiple options dialogue
+                {
+    
+                }
+            }
+            else // If is not last line, we continue to the next line
+            {
+                this.setDialogueText(this.currentDialogue.currentIndex);
+            }
+        }
     }    
 
     /**

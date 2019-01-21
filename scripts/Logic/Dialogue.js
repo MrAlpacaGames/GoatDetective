@@ -1,18 +1,17 @@
 class Dialogue
 {
-    constructor(theID, Character, GameState, theColor, theTexts, NextAction)
+    constructor(theID, Character, GameState, theTexts, NextAction)
     {
         this.ID = theID;
         this.Character = Character;
         this.GameState = GameState;
-        this.Color = theColor;
         this.Texts = theTexts;
         this.NextAction = NextAction;
 
-        this.currentIndex = -1;
-    }
+        this.currentIndex = 0;
+    }    
 
-    getNextDialogue()
+    getNextLine()
     {
         let answer = "";
         this.currentIndex++;
@@ -22,7 +21,7 @@ class Dialogue
         }
         else
         {
-            answer = "End";
+            answer = "LastLine";
         }
         return answer;
     }

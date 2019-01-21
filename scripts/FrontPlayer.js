@@ -88,6 +88,7 @@ class FrontPlayer
         let answer = 0;
         if(currentClickedElement != null)
         {   
+            console.log("U clicked on: "+currentClickedElement.name);
             answer = 150;
             // We first determine if the player is on the right or the left of the item.
             // If it is < 0 it is on the left of the item. If it is > 0 is on the right side of the element

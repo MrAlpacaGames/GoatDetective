@@ -28,12 +28,16 @@ class OfficeScene extends Phaser.Scene
     create(newClue)
     {
         let theClue = newClue;
-        console.log(theClue.getName());
+        //console.log(theClue.getName());
         spriteManager.createEnvironment('office', topBackgroundXOrigin+ 815, topBackgroundYOrigin - 2, 0.72);
 
          // Environment
          let studioDoor = spriteManager.createEnvironment('hallDoor', topBackgroundXOrigin+1790.5, topBackgroundYOrigin+32.5, 0.72);
          //this.interactuables.add(studioDoor);
+
+         // Characters Creation
+        let assattari = spriteManager.createStaticCharacter('Assattari', topBackgroundXOrigin+220, topBackgroundYOrigin+78, 0.45);
+        assattari.setFlip(true);
 
         this.cameras.main.setBounds(0, 0, gameConfig.width * 2.7, gameConfig.height);
         this.physics.world.setBounds(560, 0, gameConfig.width * 2.7, gameConfig.height -40 );   

@@ -20,7 +20,7 @@ class SpriteManagement
         currentScene.load.spritesheet('Peterson', 'assets/sprites/Characters/Cabra.png',
         {frameWidth: 370.57, frameHeight: 758});
 
-        currentScene.load.spritesheet('Assatari', 'assets/sprites/Characters/Productora.png',
+        currentScene.load.spritesheet('Assattari', 'assets/sprites/Characters/Productora.png',
         {frameWidth: 266.75, frameHeight: 636});
 
         currentScene.load.image('Park', 'assets/sprites/Characters/Park.png');
@@ -124,8 +124,6 @@ class SpriteManagement
         
         newCharacter.setInteractive();
         newCharacter.on('pointerdown', () => this.onElementClicked(newCharacter, true));
-        newCharacter.on('pointerup', () => this.onElementClicked(newCharacter, false));
-        newCharacter.on('pointerout', () => this.onElementClicked(newCharacter, false));
         return newCharacter;
     }
 
@@ -140,8 +138,6 @@ class SpriteManagement
         {
             environment.setInteractive();
             environment.on('pointerdown', () => this.onElementClicked(environment, true));
-            environment.on('pointerup', () => this.onElementClicked(environment, false));
-            environment.on('pointerout', () => this.onElementClicked(environment, false));
         }
         return environment;
     }
@@ -166,22 +162,19 @@ class SpriteManagement
         return clickFx;
     }
 
-    onElementClicked(character, newValue)
+    onElementClicked(character)
     {
+        /** 
         if(character.name == "HUD")
         {
             GameManager.HUDInteracted = newValue;
-        }
+        }*/
         if(GameManager.canMove == true)
         {
-            if(newValue == true)
-            {
-                character.setTint(0xff00ff, 0xff0000, 0x00ff00, 0x0000ff);
-            }
-            else
-            {
+            character.setTint(0xff00ff, 0xff0000, 0x00ff00, 0x0000ff);
+            let timedEvent = currentScene.time.delayedCall(200, function(){
                 character.clearTint();
-            }
+                } , currentScene);
         }
     }
 

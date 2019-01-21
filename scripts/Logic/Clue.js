@@ -4,8 +4,20 @@ class Clue
     {
         this.name = theName;
         this.description = theDescription;
-        this.dialogues;
         this.discovered = false;
+        
+        this.gameStateID = 0;
+        this.lineID = 0;
+    }
+
+    checkIfRequirementsMet()
+    {
+        let requirementsID = "";
+        if(GameManager.stateOfGame != this.gameStateID)
+        {
+            requirementsID = "S"+this.name + GameManager.stateOfGame +  "x" + this.lineID;
+            
+        }
     }
 
     getName()
@@ -17,6 +29,9 @@ class Clue
     {
         return this.description;
     }
+    
+
+
 
 
 }

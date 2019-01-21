@@ -28,12 +28,12 @@ class HallScene extends Phaser.Scene
         spriteManager.preloadCharacters();
         spriteManager.preloadEnvironment();
         HUDSpriteManager.preload();
-        //this.load.scenePlugin('DialogModalPlugin', 'scripts/ui/dialogue_plugin.js', 'dialogPlugin', 'dialog');
         this.dialogue.preloadDialogue();
 
         if(hasStartedGame == false)
         {
             dialogueManager.preloadJson();
+            sfxManager.preloadSFX();
         }
     }
 
@@ -67,7 +67,7 @@ class HallScene extends Phaser.Scene
             this.interactuables.add(jung);
             
             // Main Player
-            this.playerSprite = spriteManager.createPlayer(topBackgroundXOrigin,  topBackgroundYOrigin+90);
+            this.playerSprite = spriteManager.createPlayer(topBackgroundXOrigin+600,  topBackgroundYOrigin+90);
         }        
         thePlayer.assignScene(this.playerSprite);
         thePlayer.assignOnEvents();
@@ -75,7 +75,7 @@ class HallScene extends Phaser.Scene
         // Dialogue Window
         this.dialogue.createDialogueWindow();
 
-        // Mute Button 
+        // HUD
         HUDSpriteManager.createHUD();
          
         // Click FX
@@ -88,8 +88,7 @@ class HallScene extends Phaser.Scene
             hasStartedGame = true;
             
             dialogueManager.createDialogues();
-
-            this.dialogue.hero();
+            sfxManager.createSFX();
            // this.dialog.init();
             //console.log(this.dialog);
         }
@@ -103,7 +102,7 @@ class HallScene extends Phaser.Scene
         switch(GameManager.stateOfGame)
         {
             case 0:
-                dialogueManager.setDialogue("Pet00x00");
+                dialogueManager.startDialogue("SPet0x0");
             break;
             case 1:
 

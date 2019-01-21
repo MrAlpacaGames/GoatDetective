@@ -18,8 +18,7 @@ class UINotebook extends Phaser.Scene
 
     create()
     {
+        currentScene = this;
         notebookSpriteManager.create();
-    }
-
-    
+    }    
 }

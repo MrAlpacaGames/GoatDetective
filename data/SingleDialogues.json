@@ -2,31 +2,100 @@
     "SingleDialogues":
     [
         {
-            "ID":"SPet00x00",
-            "Character": "Peterson",
+            "ID":"SPet0x0",
+            "Character": "Goatman",
             "GameState": 0,
-            "Color": "e20333",
             "Texts":
             [
-                "This is it! I! Goatman Peterson will become the best detective Supah Star!",
-                "I need to find the Right KILLER, WEAPON OF MURDER and PLACE.",
-                "I will write every bit of evidence on my SUPAH STAR NOTEBOOK!"
+                "Goatman Peterson|||This is it! I! Goatman Peterson will become the best detective Supah Star!",
+                "Goatman Peterson|||I need to find the Right KILLER, WEAPON OF MURDER and PLACE.",
+                "Goatman Peterson|||I will write every bit of evidence on my SUPAH STAR NOTEBOOK! Let's do this babe!"
             ],
             "Next": "End"
         },   
         {
-            "ID":"SPark00x00",
-            "Character": "Peterson",
+            "ID":"SPark0x0",
+            "Character": "Goatman",
             "GameState": 0,
-            "Color": "e20333",
             "Texts":
             [
-                "OHHH NO! Park! Ohhh Baby! You are DEAD!",
-                "Let's study your bodyyy bae!",
-                "Your back is broken, your eyes are red, you're completely wet...",
-                "Oh my! It seems you have given your soul to Bwonswandi"
+                "Goatman Peterson|||OHHH NO! Park! Ohhh Baby! You are DEAD!",
+                "Goatman Peterson|||Let's study your bodyyy bae!",
+                "Goatman Peterson|||Your back is broken, your eyes are red, you're completely wet...",
+                "Goatman Peterson|||Oh my! It seems you have given your soul to Bwonswandi"
             ],
             "Next": "End"
-        }   
+        },
+        {
+            "ID":"SPark1x0",
+            "Character": "Goatman",
+            "GameState": 0,
+            "Texts":
+            [
+                "Goatman Peterson|||Ok, let's see what is in the body again...",
+                "Goatman Peterson|||Your back is broken, your eyes are red, you're completely wet...",
+                "Goatman Peterson|||Oh my! It seems you have given your soul to Bwonswandi"
+            ],
+            "Next": "End"
+        },
+        {
+            "ID":"SJung0x0",
+            "Character": "Jung",
+            "GameState": 0,
+            "Texts":
+            [
+                "Jung|||And who are you, huh?",                
+                "Goatman Peterson|||I am Goatman Peterson and I'm here to investigate the death of Park!",
+                "Jung|||Cool story bro...",     
+                "Goatman Peterson|||Who are you?",
+                "Jung|||I am Jung... I'm the most sexy motherfucker",
+                "Goatman Peterson|||Tell me more",
+                "Jung|||Sexy motherfucker! Don't you get it? Bye!"
+            ],
+            "Next": "End"
+        },
+        {
+            "ID":"SJung0x1",
+            "Character": "Jung",
+            "GameState": 0,
+            "Texts":
+            [
+                "Jung|||Sexy motherfucker! Don't you get it? Bye!"
+            ],
+            "Next": "End"
+        },
+        {
+            "ID":"SJung1x0",
+            "Character": "Jung",
+            "GameState": 0,
+            "Texts":
+            [
+                "Goatman Peterson|||I have examined the body... Tell me, what do you know about",
+                "Jung|||Oh boy... Ok, here's the thing, I came from a recording session and",     
+                "Jung|||found him like this, ok? I don't know more. Ask the others."
+            ],
+            "Next": "End"
+        },
+        {
+            "ID":"SJung1x1",
+            "Character": "Jung",
+            "GameState": 1,
+            "Texts":
+            [
+                "Goatman Peterson|||I wanna ask some questions..."
+            ],
+            "Next": "Multiple"
+        },
+        {
+            "ID":"SJung1x2",
+            "Character": "Jung",
+            "GameState": 1,
+            "Texts":
+            [
+                "Goatman Peterson|||What do you know about Park?",
+                "Jung|||I knew him since we started this band... he was the best!?"
+            ],
+            "Next": "End"
+        }  
     ]
 }

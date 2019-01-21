@@ -25,7 +25,7 @@ const gameConfig =
         }]
     }
     ,
-    scene: [/*BootScene, MainMenu,*/ HallScene, OfficeScene, UINotebook]
+    scene: [/*BootScene, MainMenu, */HallScene, OfficeScene, UINotebook]
 };
 
 
@@ -53,6 +53,9 @@ var currentScene;
 
 // Previous Scene of the Game
 var previousScene;
+
+// Flag to delay scene switching after we change scene
+var canSceneSwitch = true;
 
 //---------------------------------------------
 // Global Scripts
@@ -103,11 +106,6 @@ var soundContextResumed = false;
 //-----------------------------------
 // Functions
 //-----------------------------------
-
-function init()
-{
-    console.log("Herooo Mon");
-}
 
 function createButton(scene, name, imageID, posX, posY, scaleX, scaleY, textX, textY)
 {
@@ -198,4 +196,26 @@ function loadScene(newScene)
     previousScene = currentScene;
     currentScene = destScene;
     //spriteManager.assignScene(newScene);
+}
+
+function openNotebook(newValue)
+{
+    if(canSceneSwitch == true)
+    {
+        let destScene = (newValue == true) ?  this.getScene("UINotebook") : this.getScene(previousScene.scene.key);
+    
+        previousScene = currentScene;
+        currentScene.scene.switch(destScene);
+        canSceneSwitch = false;
+        currentScene = destScene;    
+        let timedEvent = currentScene.time.delayedCall(150, function(){
+            canSceneSwitch = true;
+            if(destScene.scene.key == "UINotebook") notebookSpriteManager.updateOnOpen();
+            } , currentScene);
+    }
+}
+
+function getScene(sceneName)
+{
+    return theGame.scene.getScene(sceneName);
 }

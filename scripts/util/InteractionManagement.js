@@ -92,51 +92,40 @@ class InteractionManagement
         }
         else
         {
-            dialogueManager.checkNextD(0);
+            dialogueManager.checkNextD();
         }
     }
 
     /**
      * The longest method in the whole game D: Controls the dialogues to be shown according to each character
+     * The ID of the Dialogue is constructed in this way:
+     * S + Suspect Name + Game State + x + Line
+     * For example:
+     * SPark00x0
      * @param {*Character with whom we are interacting} interactionObject 
      */
     interactPeople(interactionObject)
     {
+        let suspect;
+        //let DialogID;
         switch(interactionObject)
         {
             case "Park":
-                if(playerNotebook.characters[0].discovered == false)
+                suspect = playerNotebook.characters[0];
+                if(suspect.discovered == false)
                 {
                     playerNotebook.discoverClue(0, "Character");
                 }
-                    switch(GameManager.stateOfGame)
-                    {
-                        case 0:
-                            dialogueManager.setDialogue("GS0D04");
-                            GameManager.stateOfGame = 1;
-                        break;
-                        case 1:
-                            dialogueManager.setDialogue("GS1D00");
-                        break;
-                    }
             break;
             case "Jung":
-                if(playerNotebook.characters[1].discovered == false)
+                suspect = playerNotebook.characters[1];
+                if(suspect.discovered == false)
                 {
                     playerNotebook.discoverClue(1, "Character");
                 }
-                    switch(GameManager.stateOfGame)
-                    {
-                        case 0:
-                            dialogueManager.setDialogue("GS0D08");
-                        break;
-                        case 1:
-                            dialogueManager.setDialogue("GS1D05");
-                        break;
-                    }
             break;
         }
+        let dialogueID = playerNotebook.getNextDialogue(interactionObject);
+        dialogueManager.startDialogue(dialogueID);
     }
-
-
 }
