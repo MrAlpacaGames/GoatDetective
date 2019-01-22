@@ -11,22 +11,46 @@ class InteractionManagement
 
     interact(interactionObject)
     {
+        let theType;
         //console.log("You want to interact with: "+interactionObject);
         if(interactionObject == "hallDoor" || interactionObject == "officeDoor" || interactionObject == "studioDoor" || interactionObject == "dressromDoor")
         {
-            if(GameManager.canMove == true)
-            {
-                // If we are interacting with a door we load the new scene
-               this.interactDoors(interactionObject);
-            }
+            theType = "Doors";
         }
         else if(interactionObject == "Park" || interactionObject == "Jung" || interactionObject == "Assattari" || interactionObject == "Lee" || interactionObject == "Ruru")
         {
-            if(GameManager.canMove == true)
+            theType = "Suspects";  
+        }
+        if(GameManager.canMove == true)
+        {
+            // We interact with a character
+            this.interactWithClue(theType, interactionObject);
+        }
+    }
+
+    /**
+     * Searchs for the ID of the clue and starts a Dialogue
+     * @param {*Type of the Clue that we are interacting.} type 
+     * @param {*Name of the object that we are interacting with} interactionObject 
+     */
+    interactWithClue(type, interactionObject)
+    {
+        if(type == "Doors")
+        {
+            this.interactDoors(interactionObject);
+        }
+        else
+        {
+            let clue = playerNotebook.searchClue(type, interactionObject);
+            let dialogueID;
+            if(clue.name == "Park" && GameManager.stateOfGame == 0)
+                GameManager.stateOfGame = 1;     
+            dialogueID = clue.getCurrentInitialDialogue();
+            if(clue.discovered == false && GameManager.stateOfGame == 1)
             {
-                // We interact with a character
-                this.interactPeople(interactionObject);
+                playerNotebook.discoverClue(clue.index, type);
             }
+            dialogueManager.startDialogue(dialogueID);
         }
     }
 
@@ -94,38 +118,5 @@ class InteractionManagement
         {
             dialogueManager.checkNextD();
         }
-    }
-
-    /**
-     * The longest method in the whole game D: Controls the dialogues to be shown according to each character
-     * The ID of the Dialogue is constructed in this way:
-     * S + Suspect Name + Game State + x + Line
-     * For example:
-     * SPark00x0
-     * @param {*Character with whom we are interacting} interactionObject 
-     */
-    interactPeople(interactionObject)
-    {
-        let suspect;
-        //let DialogID;
-        switch(interactionObject)
-        {
-            case "Park":
-                suspect = playerNotebook.characters[0];
-                if(suspect.discovered == false)
-                {
-                    playerNotebook.discoverClue(0, "Character");
-                }
-            break;
-            case "Jung":
-                suspect = playerNotebook.characters[1];
-                if(suspect.discovered == false)
-                {
-                    playerNotebook.discoverClue(1, "Character");
-                }
-            break;
-        }
-        let dialogueID = playerNotebook.getNextDialogue(interactionObject);
-        dialogueManager.startDialogue(dialogueID);
     }
 }

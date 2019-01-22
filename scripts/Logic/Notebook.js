@@ -3,33 +3,66 @@ class Notebook
     constructor()
     {
         this.characters = [];
-        let park = new Character('Park', 'This is the body of the Park, the leader of the famous K-Pop Band Alpaca Supah Star');
-        let jung = new Character('Jung', 'This is the bad boy');
-        let lee = new Character('Lee', 'The cute one');
-        let assattari = new Character('Assattari', 'The producer stah');
-        let ruru = new Character('Ruru', 'Numbah 1 Fan');
+        let park = new Character('Park', 0);
+        park.addInitialDialogues(["","SPark1xPR", "SPark1xUN"]);
+        let jung = new Character('Jung', 1);
+        jung.addInitialDialogues(["SJung0xPrro", "SJung1xPR", "SJung1xUN"]);
+        let lee = new Character('Lee', 2);
+        lee.addInitialDialogues(["SLee0xPrro", "SLee1xPR", "SLee1xUN"]);
+        let assattari = new Character('Assattari', 3);
+        lee.addInitialDialogues(["SAssattari0xPrro", "SAssattari1xPR", "SAssattari1xUN"]);
+        let ruru = new Character('Ruru', 4);
+        ruru.addInitialDialogues(["","SRuru1xPR", "SRuru1xUN"]);
 
         this.characters.push(park, jung, lee, assattari, ruru);
         
         this.weapons = [];
 
         this.places = [];
-        let mainHall = new Place('Main Hall', 'This is where Park died.');
-        let office = new Place('Office', "Assattari's office. Maybe I could find something interesting here.");
-        let dressroom = new Place('Dressroom', "This is where the band got their clothes");
-        let recordingStudio = new Place('Recording Studio', 'This is where the supah songs are recorded');
+        let mainHall = new Place('Main Hall');
+        let office = new Place('Office');
+        let dressroom = new Place('Dressroom');
+        let recordingStudio = new Place('Recording Studio');
         this.places.push(mainHall, office, dressroom, recordingStudio);
 
         this.dialoguesTaken = new HashTable();
     }
 
+    
     addDialogueTaken(Dialogue)
     {
         this.dialoguesTaken.add(Dialogue.ID, Dialogue);
     }
 
+    /**
+     * Method that retrieves a clue based on its type and its name
+     * @param {*Type of clue that we are getting} Type 
+     * @param {*Name of the clue} Name 
+     */
+    searchClue(Type, Name)
+    {
+        let theClue;
+        let tArray;
+        switch(Type)
+        {
+            case "Suspects":
+                tArray = this.characters;
+            break;
+            case "Weapons":
+                tArray = this.weapons;
+            break;
+            case "Places":
+                tArray = this.places;
+            break;
+        }
 
-
+        for(let i = 0; i < tArray.length && theClue == null; i++)
+        {
+            if(tArray[i].name == Name)
+                theClue = tArray[i];
+        }
+        return theClue;
+    }
 
 
 
@@ -46,7 +79,7 @@ class Notebook
     {
         switch(type)
         {
-            case "Character":
+            case "Suspects":
                 this.characters[index].discovered = true;
             break;
             case "Weapon":
@@ -66,19 +99,6 @@ class Notebook
     {
         let newS = !HUDSpriteManager.noteHigh.visible;
         HUDSpriteManager.noteHigh.visible = newS;
-    }
-
-    getClue(type, index)
-    {
-        switch(type)
-        {
-            case "Suspect":
-                return this.characters[index];
-            case "Place":
-                return this.places[index];
-            case "Weapon":
-                return this.weapons[index];
-        }
     }
 
     checkRequirements(Requirements)

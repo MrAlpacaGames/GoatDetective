@@ -28,6 +28,10 @@ class DialogueManager
         
     }
 
+    /**
+     * Method that loads the json files
+     * @param {*} callback 
+     */
     loadJson(callback)
     {
         var xobj = new XMLHttpRequest();
@@ -114,6 +118,10 @@ class DialogueManager
                 if(nextAction == "End")  // We check if the next action is End. If it is we close the dialog.
                 {
                     currentScene.dialogue.enableDialogueUI(false);
+                }
+                else if("Multiple")
+                {
+                    
                 }
                 else // If not, we proceed to open the multiple options dialogue
                 {

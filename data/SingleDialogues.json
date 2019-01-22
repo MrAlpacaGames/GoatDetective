@@ -8,94 +8,376 @@
             "Texts":
             [
                 "Goatman Peterson|||This is it! I! Goatman Peterson will become the best detective Supah Star!",
-                "Goatman Peterson|||I need to find the Right KILLER, WEAPON OF MURDER and PLACE.",
+                "Goatman Peterson|||I need to find the Right KILLER and WEAPON OF MURDER.",
                 "Goatman Peterson|||I will write every bit of evidence on my SUPAH STAR NOTEBOOK! Let's do this babe!"
             ],
             "Next": "End"
         },   
         {
-            "ID":"SPark0x0",
+            "ID":"SJung0xPrro",
+            "Character": "Jung",
+            "GameState": 0,
+            "Texts":
+            [
+                "Jung|||Hmmm... What do you want?"
+            ],
+            "Next": "End"
+        },
+        {
+            "ID":"SAssattari0xPrro",
+            "Character": "Assattari",
+            "GameState": 0,
+            "Texts":
+            [
+                "Assattari|||So, you are the dective...Have you already checked the body?",
+                "Goatman Peterson|||If you mean yours... Oh yeah baby!",
+                "Assattari|||Get out of here!"
+            ],
+            "Next": "GameOver"
+        },
+        {
+            "ID":"SLee0xPrro",
+            "Character": "Lee",
+            "GameState": 0,
+            "Texts":
+            [
+                "Lee|||He's dead! My best friend is dead! Leave me alone!"
+            ],
+            "Next": "End"
+        },
+
+
+        {
+            "ID":"SPark1xPR",
             "Character": "Goatman",
             "GameState": 0,
             "Texts":
             [
                 "Goatman Peterson|||OHHH NO! Park! Ohhh Baby! You are DEAD!",
-                "Goatman Peterson|||Let's study your bodyyy bae!",
-                "Goatman Peterson|||Your back is broken, your eyes are red, you're completely wet...",
-                "Goatman Peterson|||Oh my! It seems you have given your soul to Bwonswandi"
+                "Goatman Peterson|||Let's study your bodyyy baby!",
+                "Goatman Peterson|||Your body is so bruised! You look like a Panda!",
+                "Goatman Peterson|||Your seem to be stung by something on your chest.",
+                "Goatman Peterson|||And what is this? You are drenched. I guess it was a steamy fall. "
             ],
             "Next": "End"
         },
         {
-            "ID":"SPark1x0",
-            "Character": "Goatman",
-            "GameState": 0,
-            "Texts":
-            [
-                "Goatman Peterson|||Ok, let's see what is in the body again...",
-                "Goatman Peterson|||Your back is broken, your eyes are red, you're completely wet...",
-                "Goatman Peterson|||Oh my! It seems you have given your soul to Bwonswandi"
-            ],
-            "Next": "End"
-        },
-        {
-            "ID":"SJung0x0",
+            "ID":"SJung1xPR",
             "Character": "Jung",
             "GameState": 0,
             "Texts":
             [
-                "Jung|||And who are you, huh?",                
-                "Goatman Peterson|||I am Goatman Peterson and I'm here to investigate the death of Park!",
-                "Jung|||Cool story bro...",     
-                "Goatman Peterson|||Who are you?",
-                "Jung|||I am Jung... I'm the most sexy motherfucker",
-                "Goatman Peterson|||Tell me more",
-                "Jung|||Sexy motherfucker! Don't you get it? Bye!"
-            ],
-            "Next": "End"
-        },
-        {
-            "ID":"SJung0x1",
-            "Character": "Jung",
-            "GameState": 0,
-            "Texts":
-            [
-                "Jung|||Sexy motherfucker! Don't you get it? Bye!"
-            ],
-            "Next": "End"
-        },
-        {
-            "ID":"SJung1x0",
-            "Character": "Jung",
-            "GameState": 0,
-            "Texts":
-            [
-                "Goatman Peterson|||I have examined the body... Tell me, what do you know about",
-                "Jung|||Oh boy... Ok, here's the thing, I came from a recording session and",     
-                "Jung|||found him like this, ok? I don't know more. Ask the others."
-            ],
-            "Next": "End"
-        },
-        {
-            "ID":"SJung1x1",
-            "Character": "Jung",
-            "GameState": 1,
-            "Texts":
-            [
-                "Goatman Peterson|||I wanna ask some questions..."
+                "Goatman Peterson|||I have examined the body Boy! Now... Thou shall tell me what happened here!",
+                "Jung|||Ugh...Fine... I was changing clothes in the dressroom when I heard a noice in the Hall... ",
+                "Jung|||When I came out, I found Assattari, our producer, moving the body... ",
+                "Jung|||She told me to take care of the body while she was going to call the Supah Unit."
             ],
             "Next": "Multiple"
         },
         {
-            "ID":"SJung1x2",
+            "ID":"SAssattari1xPR",
+            "Character": "Assattari",
+            "GameState": 0,
+            "Texts":
+            [
+                "Assattari|||What have you found detective? What happened to Park?!",
+                "Goatman Peterson|||Oh, my dear lady... I'm working on it!",
+                "Goatman Peterson|||I shall find whoever killed him and bring him to sweeeeet JUSTICE! Oh Yeah!",
+                "Goatman Peterson|||Now, I need you to tell me what happened here...",
+                "Assattari|||I was working on my office, Park came here to say goodbye and we he left the office",
+                "Assattari|||I heard a noise coming from the Hall. I went out and found him dead below the stairs.",
+                "Assattari|||I tried to move him to see if he was still alive but he wasn't... Damn!",
+                "Goatman Peterson|||I will find the killer, It's a SUPAAAH PROMISE!"
+            ],
+            "Next": "Multiple"
+        },
+        {
+            "ID":"SLee1xPR",
+            "Character": "Lee",
+            "GameState": 0,
+            "Texts":
+            [
+                "Goatman Peterson|||Oh... Lee... Your best friend is dead... I cannot believe neither!",
+                "Lee|||I...I just can't believe it...",
+                "Goatman Peterson|||Don't worry bro, I'll find the killer! Now, tell me what happened...",
+                "Lee|||I was working on the studio with Park and Jung.",
+                "Lee|||When we finished, I went to the hair saloon to wait for Park. We where going to get a haircut",
+                "Goatman Peterson|||I see... Thank you you beautiful bro!"
+            ],
+            "Next": "Multiple"
+        },
+        {
+            "ID":"SRuru1xPR",
+            "Character": "Ruru",
+            "GameState": 0,
+            "Texts":
+            [
+                "Goatman Peterson|||Oh my, my, my sweet baby Goat Savior... What do we have here?",
+                "Ruru|||Oh...oh.... hi?",
+                "Goatman Peterson|||And who might you be little one?",
+                "Ruru|||My...my name is Ruru",
+                "Goatman Peterson|||I see. So, Ruru, what are you doing here? Hidden away from everyone?",
+                "Ruru|||I was waiting to see my beautiful Park!",
+                "Goatman Peterson|||And how did you get in here?",
+                "Ruru|||I sneaked in looking for my Park when I was about to meet him,",
+                "Ruru|||I got nervous and hide here",
+                "Goatman Peterson|||I see"
+            ],
+            "Next": "Multiple"
+        },
+
+
+
+        {
+            "ID":"SPark1xUN",
+            "Character": "Goatman",
+            "GameState": 0,
+            "Texts":
+            [
+                "Goatman Peterson|||Ok, let's see what is in your body again...",
+                "Goatman Peterson|||Your body is so bruised! You look like a Panda!",
+                "Goatman Peterson|||Your seem to be stung by something on your chest.",
+                "Goatman Peterson|||And what is this? You are drenched. I guess it was a steamy fall. "
+            ],
+            "Next": "End"
+        },
+        {
+            "ID":"SJung1xUN",
+            "Character": "Jung",
+            "GameState": 0,
+            "Texts":
+            [
+                "Jung|||So...What have you found?"
+            ],
+            "Next": "Multiple"
+        },
+        {
+            "ID":"SAssattari1xUN",
+            "Character": "Assattari",
+            "GameState": 1,
+            "Texts":
+            [
+                "Assattari|||Tell me... Do you already know who murder Park?"
+            ],
+            "Next": "Multiple"
+        },
+        {
+            "ID":"SLee1xUN",
+            "Character": "Lee",
+            "GameState": 1,
+            "Texts":
+            [
+                "Lee|||Please, tell me you found the killer!"
+            ],
+            "Next": "Multiple"
+        }  
+        ,
+        {
+            "ID":"SRuru1xUN",
+            "Character": "Ruru",
+            "GameState": 1,
+            "Texts":
+            [
+                "Ruru|||Yes?"
+            ],
+            "Next": "Multiple"
+        }, 
+
+
+
+
+
+
+        {
+            "ID":"JungLeex1x0",
             "Character": "Jung",
             "GameState": 1,
             "Texts":
             [
-                "Goatman Peterson|||What do you know about Park?",
-                "Jung|||I knew him since we started this band... he was the best!?"
+                "Jung|||He’s been acting weird and he seems distressed… No wonder his best mate just died.",
+                "Jung|||Though his constant interrogation and lack of trust is starting to get annoying."
             ],
-            "Next": "End"
-        }  
+            "Next": "Multiple"
+        },
+        {
+            "ID":"JungAssattarix1x0",
+            "Character": "Jung",
+            "GameState": 1,
+            "Texts":
+            [
+                "Jung|||I don’t trust her. She was moving Park’s body when I found them. ",
+                "Jung|||I don’t know exactly what happened but I’m pretty sure she has something to do with his death.",
+                "Jung|||Don’t buy into that cold pretty face…"
+            ],
+            "Next": "Multiple"
+        },
+        {
+            "ID":"JungRurux1x0",
+            "Character": "Jung",
+            "GameState": 1,
+            "Texts":
+            [
+                "Jung|||Crazy fan girl, very annoying and obsessive.",
+                "Jung|||I wonder what her life is like if she has nothing better to do than being a stalker."            ],
+            "Next": "Multiple"
+        }
+        ,
+        {
+            "ID":"JungParkx1x0",
+            "Character": "Jung",
+            "GameState": 1,
+            "Texts":
+            [
+                "Jung|||As annoying as he was, that dumb diva did not deserve to die.",
+                "Jung|||It would be a lie to say I’m not glad he’s out of my life."            ],
+            "Next": "Multiple"
+        },
+
+
+
+        {
+            "ID":"AssattariLeex1x0",
+            "Character": "Assattari",
+            "GameState": 1,
+            "Texts":
+            [
+                "Assattari|||He seems to be in shock and doesn’t trust anyone. I’m worried about him."
+            ],
+            "Next": "Multiple"
+        },
+        {
+            "ID":"AssattariJungx1x0",
+            "Character": "Assattari",
+            "GameState": 1,
+            "Texts":
+            [
+                "Assattari|||He may seem stoic at first sight but he’s short fused and emotional when he’s off guard."
+            ],
+            "Next": "Multiple"
+        },
+        {
+            "ID":"AssattariRurux1x0",
+            "Character": "Assattari",
+            "GameState": 1,
+            "Texts":
+            [
+                "Assattari|||That girl has been very annoying lately, sending weird letters to Park,",
+                "Assattari|||stalking him and leaving weird stuff outside the studio and even his home.",
+                "Assattari|||He used to tell me he was pretty creeped out on this matter."
+            ],
+            "Next": "Multiple"
+        }
+        ,
+        {
+            "ID":"AssattariParkx1x0",
+            "Character": "Assattari",
+            "GameState": 1,
+            "Texts":
+            [
+                "Assattari|||He seemed tired when he came to say bye, and as he was about",
+                "Assattari|||to leave, he fell down the stairs. When I got to him, he was already dead,",            
+                "Assattari|||I tried moving him but he wouldn’t budge… That’s when Jung came by…"
+            ],
+            "Next": "Multiple"
+        },
+
+
+        {
+            "ID":"LeeJungx1x0",
+            "Character": "Lee",
+            "GameState": 1,
+            "Texts":
+            [
+                "Lee|||We have had our problems as any group in the industry.",
+                "Lee|||But lately, Jung has been very aggressive with both of us, particularly with Park…",
+                "Lee|||I don’t get what is his problem."
+            ],
+            "Next": "Multiple"
+        },
+        {
+            "ID":"LeeAssattarix1x0",
+            "Character": "Lee",
+            "GameState": 1,
+            "Texts":
+            [
+                "Lee|||Park and her seemed pretty close...",
+                "Lee|||There was some kind of special treatment between those two although I couldn’t confirm it…",
+                "Lee|||He would talk about her with me."
+            ],
+            "Next": "Multiple"
+        },
+        {
+            "ID":"LeeRurux1x0",
+            "Character": "Lee",
+            "GameState": 1,
+            "Texts":
+            [
+                "Lee|||A complete creep, her letters were disgusting.",
+                "Lee|||Park used to talk about how annoyed he was with her.",
+                "Lee|||I had to keep her from getting near him a couple of times."
+            ],
+            "Next": "Multiple"
+        }
+        ,
+        {
+            "ID":"LeeParkx1x0",
+            "Character": "Lee",
+            "GameState": 1,
+            "Texts":
+            [
+                "Lee|||This… this wasn’t an accident! Someone here killed him, I know it!",
+                "Lee|||He helped me in my darkest moment. He wasn’t perfect but he had a big heart!",            
+                "Lee|||…he …he didn’t deserve death. I will find the culprit with or without you."
+            ],
+            "Next": "Multiple"
+        },
+
+
+        {
+            "ID":"RuruLeex1x0",
+            "Character": "Ruru",
+            "GameState": 1,
+            "Texts":
+            [
+                "Ruru|||That man is too close to my Park! He won’t have him, he’s just a snake that wants to prey on him!",
+                "Ruru|||He’s too quiet and sneaky, I don’t trust that guy!!"
+            ],
+            "Next": "Multiple"
+        },
+        {
+            "ID":"RuruJungx1x0",
+            "Character": "Ruru",
+            "GameState": 1,
+            "Texts":
+            [
+                "Ruru|||I don’t like him! He is scary and very mean.",
+                "Ruru|||The few times I have been close to him, he’s been cold and rude.",
+                "Ruru|||I fear he might shout or hit me out of nowhere."
+            ],
+            "Next": "Multiple"
+        },
+        {
+            "ID":"RuruAssattarix1x0",
+            "Character": "Ruru",
+            "GameState": 1,
+            "Texts":
+            [
+                "Ruru|||Crazy fan girl, very annoying and obsessive.",
+                "Ruru|||I wonder what her life is like if she has nothing better to do than being a stalker."
+            ],
+            "Next": "Multiple"
+        }
+        ,
+        {
+            "ID":"RuruParkx1x0",
+            "Character": "Ruru",
+            "GameState": 1,
+            "Texts":
+            [
+                "Ruru|||As annoying as he was, that dumb diva did not deserve to die.",
+                "Ruru|||It would be a lie to say I’m not glad he’s out of my life."
+            ],
+            "Next": "Multiple"
+        }
     ]
 }

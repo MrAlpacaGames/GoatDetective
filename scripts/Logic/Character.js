@@ -1,8 +1,8 @@
 class Character extends Clue
 {
-    constructor(theName, theDescription)
+    constructor(theName, Index)
     {
-        super(theName, theDescription);
+        super(theName, Index);
     }  
 
 
