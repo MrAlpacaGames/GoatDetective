@@ -51,6 +51,7 @@ class InteractionManagement
                 playerNotebook.discoverClue(clue.index, type);
             }
             dialogueManager.startDialogue(dialogueID);
+            currentScene.dialogue.currentPersonTalkingTo = clue;
         }
     }
 

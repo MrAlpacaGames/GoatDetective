@@ -189,7 +189,7 @@
 
 
         {
-            "ID":"JungLeex1x0",
+            "ID":"JungLee1x1",
             "Character": "Jung",
             "GameState": 1,
             "Texts":
@@ -200,7 +200,7 @@
             "Next": "Multiple"
         },
         {
-            "ID":"JungAssattarix1x0",
+            "ID":"JungAssattari1x1",
             "Character": "Jung",
             "GameState": 1,
             "Texts":
@@ -212,7 +212,7 @@
             "Next": "Multiple"
         },
         {
-            "ID":"JungRurux1x0",
+            "ID":"JungRuru1x1",
             "Character": "Jung",
             "GameState": 1,
             "Texts":
@@ -223,7 +223,7 @@
         }
         ,
         {
-            "ID":"JungParkx1x0",
+            "ID":"JungPark1x1",
             "Character": "Jung",
             "GameState": 1,
             "Texts":
@@ -236,7 +236,7 @@
 
 
         {
-            "ID":"AssattariLeex1x0",
+            "ID":"AssattariLee1x1",
             "Character": "Assattari",
             "GameState": 1,
             "Texts":
@@ -246,7 +246,7 @@
             "Next": "Multiple"
         },
         {
-            "ID":"AssattariJungx1x0",
+            "ID":"AssattariJung1x1",
             "Character": "Assattari",
             "GameState": 1,
             "Texts":
@@ -256,7 +256,7 @@
             "Next": "Multiple"
         },
         {
-            "ID":"AssattariRurux1x0",
+            "ID":"AssattariRuru1x1",
             "Character": "Assattari",
             "GameState": 1,
             "Texts":
@@ -269,7 +269,7 @@
         }
         ,
         {
-            "ID":"AssattariParkx1x0",
+            "ID":"AssattariPark1x1",
             "Character": "Assattari",
             "GameState": 1,
             "Texts":
@@ -283,7 +283,7 @@
 
 
         {
-            "ID":"LeeJungx1x0",
+            "ID":"LeeJung1x1",
             "Character": "Lee",
             "GameState": 1,
             "Texts":
@@ -295,7 +295,7 @@
             "Next": "Multiple"
         },
         {
-            "ID":"LeeAssattarix1x0",
+            "ID":"LeeAssattari1x1",
             "Character": "Lee",
             "GameState": 1,
             "Texts":
@@ -307,7 +307,7 @@
             "Next": "Multiple"
         },
         {
-            "ID":"LeeRurux1x0",
+            "ID":"LeeRuru1x1",
             "Character": "Lee",
             "GameState": 1,
             "Texts":
@@ -320,7 +320,7 @@
         }
         ,
         {
-            "ID":"LeeParkx1x0",
+            "ID":"LeePark1x1",
             "Character": "Lee",
             "GameState": 1,
             "Texts":
@@ -334,7 +334,7 @@
 
 
         {
-            "ID":"RuruLeex1x0",
+            "ID":"RuruLee1x1",
             "Character": "Ruru",
             "GameState": 1,
             "Texts":
@@ -345,7 +345,7 @@
             "Next": "Multiple"
         },
         {
-            "ID":"RuruJungx1x0",
+            "ID":"RuruJung1x1",
             "Character": "Ruru",
             "GameState": 1,
             "Texts":
@@ -357,7 +357,7 @@
             "Next": "Multiple"
         },
         {
-            "ID":"RuruAssattarix1x0",
+            "ID":"RuruAssattari1x1",
             "Character": "Ruru",
             "GameState": 1,
             "Texts":
@@ -369,7 +369,7 @@
         }
         ,
         {
-            "ID":"RuruParkx1x0",
+            "ID":"RuruPark1x1",
             "Character": "Ruru",
             "GameState": 1,
             "Texts":

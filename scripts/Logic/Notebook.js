@@ -3,29 +3,68 @@ class Notebook
     constructor()
     {
         this.characters = [];
-        let park = new Character('Park', 0);
+        let park = new Clue('Park', 0);
         park.addInitialDialogues(["","SPark1xPR", "SPark1xUN"]);
-        let jung = new Character('Jung', 1);
+
+        let jung = new Clue('Jung', 1);
         jung.addInitialDialogues(["SJung0xPrro", "SJung1xPR", "SJung1xUN"]);
-        let lee = new Character('Lee', 2);
+        jung.suspect1Dialogues = ["JungLeex1x0"]; // Lee
+        jung.suspect2Dialogues = ["JungAssattarix1x0"]; // Assattari
+        jung.suspect3Dialogues = ["JungRurux1x0"]; // Ruru
+        jung.suspect4Dialogues = ["JungParkx1x0"]; // Park
+        jung.weaponsDialogue = ["Puddle", "DiamondChicken", "Standard", "Venomous"]; // Weapons
+
+
+
+        let lee = new Clue('Lee', 2);
         lee.addInitialDialogues(["SLee0xPrro", "SLee1xPR", "SLee1xUN"]);
-        let assattari = new Character('Assattari', 3);
-        lee.addInitialDialogues(["SAssattari0xPrro", "SAssattari1xPR", "SAssattari1xUN"]);
-        let ruru = new Character('Ruru', 4);
+        lee.suspect1Dialogues = ["LeeJungx1x0"]; // Jung
+        lee.suspect2Dialogues = ["LeeAssattarix1x0"]; // Assattari
+        lee.suspect3Dialogues = ["LeeRurux1x0"]; // Ruru
+        lee.suspect4Dialogues = ["LeeParkx1x0"]; // Park
+        lee.weaponsDialogue = ["Puddle", "DiamondChicken", "Standard", "Venomous"]; // Weapons
+
+        let assattari = new Clue('Assattari', 3);
+        assattari.addInitialDialogues(["SAssattari0xPrro", "SAssattari1xPR", "SAssattari1xUN"]);
+        assattari.suspect1Dialogues = ["AssattariLeex1x0"]; // Lee
+        assattari.suspect2Dialogues = ["AssattariJungx1x0"]; // Jung
+        assattari.suspect3Dialogues = ["AssattariRurux1x0"]; // Ruru
+        assattari.suspect4Dialogues = ["AssattariParkx1x0"]; // Park
+        assattari.weaponsDialogue = ["Puddle", "DiamondChicken", "Standard", "Venomous"]; // Weapons
+
+        let ruru = new Clue('Ruru', 4);
         ruru.addInitialDialogues(["","SRuru1xPR", "SRuru1xUN"]);
+        ruru.suspect1Dialogues = ["RuruLeex1x0"]; // Lee
+        ruru.suspect2Dialogues = ["RuruJungx1x0"]; // Jung
+        ruru.suspect3Dialogues = ["RuruAssattarix1x0"]; // Assattari
+        ruru.suspect4Dialogues = ["RuruParkx1x0"]; // Park
+        ruru.weaponsDialogue = ["Puddle", "DiamondChicken", "Standard", "Venomous"]; // Weapons
 
         this.characters.push(park, jung, lee, assattari, ruru);
         
-        this.weapons = [];
+        this.weapons1 = [];
+        let puddle = new Clue('Puddle', 0);
+        let diamondChicken = new Clue('Diamond Chicken', 1);
+        let standardPin = new Clue('Standard Pin', 2);
+        let venomousPin = new Clue('Venomous Pin', 3);
+        this.weapons1.push(puddle, diamondChicken, standardPin, venomousPin);
+
+        this.weapons2 = [];
+        let loveLetter = new Clue('LoveLetter', 0);
+        this.weapons2.push(loveLetter);
 
         this.places = [];
-        let mainHall = new Place('Main Hall');
-        let office = new Place('Office');
-        let dressroom = new Place('Dressroom');
-        let recordingStudio = new Place('Recording Studio');
+        let mainHall = new Clue('Main Hall', 0);
+        let office = new Clue('Office', 1);
+        let dressroom = new Clue('Dressroom', 2);
+        let recordingStudio = new Clue('Recording Studio', 3);
         this.places.push(mainHall, office, dressroom, recordingStudio);
 
         this.dialoguesTaken = new HashTable();
+
+        this.discoveredCharacters = false;
+        this.discoveredWeapons1 = false;
+        this.discoveredWeapons2 = false;
     }
 
     
@@ -63,30 +102,22 @@ class Notebook
         }
         return theClue;
     }
-
-
-
-
-
-
-
-
-
-
-
-
+    
     discoverClue(index, type)
     {
         switch(type)
         {
             case "Suspects":
                 this.characters[index].discovered = true;
+                if(this.discoveredCharacters == false) this.discoveredCharacters = true;
             break;
-            case "Weapon":
+            case "Weapon1":
                 this.weapons[index].discovered = true;
+                if(this.discoveredWeapons1 == false) this.discoveredWeapons1 = true;
             break;
-            case "Place":
+            case "Weapon2":
                 this.places[index].discovered = true;
+                if(this.discoveredWeapons2 == false) this.discoveredWeapons2 = true;
             break;
         }
         sfxManager.playSFX(2);
@@ -101,60 +132,6 @@ class Notebook
         HUDSpriteManager.noteHigh.visible = newS;
     }
 
-    checkRequirements(Requirements)
-    {
-        if(Requirements.Suspects.length > 0)
-        {
-            let xChars = Requirements.Suspects.split('-');
-            xChars.forEach(temp => 
-            {
-                let exists = this.checkIfExists(temp, this.characters);
-                if(exists == false)
-                {
-                    return false;
-                }
-            });
-        }
-        if(Requirements.Weapons.length > 0)
-        {
-            let xItems = Requirements.Weapons.split('-');
-            xItems.forEach(temp => 
-            {
-                let exists = this.checkIfExists(temp, this.weapons);
-                if(exists == false)
-                {
-                    return false;
-                }
-            });
-        }
-        if(Requirements.Places.length > 0)
-        {
-            let xPlaces = Requirements.Places.split('-');
-            xPlaces.forEach(temp => 
-            {
-                let exists = this.checkIfExists(temp, this.places); 
-                if(exists == false)
-                {
-                    return false;
-                }
-            });
-        }
-        return true;
-    }
-
-    checkIfExists(element, array)
-    {
-        let exists = false;
-        array.forEach(temp => 
-        {
-            if(temp.name == element && temp.discovered == true)
-            {
-                exists = true;
-            }
-        });
-        return exists;
-    }
-
     getInformation(ClueType)
     {
         switch(ClueType)
@@ -167,7 +144,7 @@ class Notebook
                 return this.weapons;
         }
     }
-
+    
     resetAllClueStates()
     {        
         for(let i = 0; i < this.characters.length; i++)
@@ -179,5 +156,11 @@ class Notebook
             if(place != null) place.clueState = 0;
             if(weapon != null) weapon.clueState = 0;
         }
+    }
+
+    getCurrentDialogueID(suspectTalkingTo, clueName)
+    {
+        let dialogueID = suspectTalkingTo.name + clueName +"1x"+ GameManager.stateOfGame;
+        return dialogueID;
     }
 }

@@ -2,6 +2,9 @@ class DialogueManager
 {
     constructor()
     {
+        //----------------------------
+        // VARIABLES
+        //----------------------------
         this.loadJson(function(response){
             var actual_JSON = JSON.parse(response);
         });
@@ -23,9 +26,7 @@ class DialogueManager
         this.jungIDs;
         this.leeIDs;
         this.ruruIDs;
-        this.assattariIDs;
-
-        
+        this.assattariIDs;        
     }
 
     /**
@@ -71,19 +72,6 @@ class DialogueManager
         });
     }
 
-    selectOption(optionSelected)
-    {
-        this.currentDialogueLvl = (this.currentDialogueLvl == 1) ? 2: 1;
-        switch(optionSelected)
-        {
-            case 0:
-                
-            break;
-        }
-
-        console.log("Option selected is: "+optionSelected);
-    }
-
     startDialogue(DialogueID)
     {
         this.currentDialogue = this.sDialogues.get(DialogueID);
@@ -91,6 +79,10 @@ class DialogueManager
         {
             GameManager.canMove = false;
             currentScene.dialogue.enableDialogueUI(true);
+        }
+        else
+        {
+            currentScene.dialogue.switchWindows(false, false);
         }
         this.setDialogueText(0);
     }
@@ -119,11 +111,11 @@ class DialogueManager
                 {
                     currentScene.dialogue.enableDialogueUI(false);
                 }
-                else if("Multiple")
+                else if("Multiple") // We open a multiple dialogue options
                 {
-                    
+                    currentScene.dialogue.enableMultiple(false, "");
                 }
-                else // If not, we proceed to open the multiple options dialogue
+                else 
                 {
     
                 }
@@ -133,42 +125,5 @@ class DialogueManager
                 this.setDialogueText(this.currentDialogue.currentIndex);
             }
         }
-    }    
-
-    /**
-     * We check the next action to be done when someone presses the continue button.
-     */
-    checkNextD()
-    {
-        let nextAction = this.currentDialogue.getNextDialogue();
-        if(nextAction === "End" || nextAction === "NextState")
-        {
-            // We close the dialog window
-            currentScene.dialogue.enableDialogueUI(false, false);
-            GameManager.canMove = true;
-            if(nextAction === "NextState")
-            {
-                GameManager.stateOfGame ++;
-            }
-        }
-        else
-        {
-
-            this.currentDialogue = this.sDialogues.get(nextAction);
-            // We check the type of the next Dialogue. If it is single, we show it. If it is multiple, we show the multiple options
-            if(this.currentDialogue.Type == "Single")
-            {
-                currentScene.dialogue.setDialogueText(false, this.currentDialogue);
-            }
-            else
-            {
-                currentScene.dialogue.enableDialogueUI(true, true);
-                
-                let options = nextAction.split('-');
-                
-                
-                
-            }
-        }
-    }
+    } 
 }

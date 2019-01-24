@@ -13,10 +13,24 @@ class Clue
         this.description;
         // Tells if this clue has been discovered or not
         this.discovered = false;
+
+        //----------------------------------
+        // Initial Dialogues
+        //----------------------------------
         // Array of indexes of the initial dialogues
         this.initialDialogues = [];
         // Initial Dialogues Current Index
         this.inDialoguesIndex = 0;
+
+        //---------------------------------
+        // Array of index of the dialogues
+        //--------------------------------
+        this.suspect1Dialogues;
+        this.suspect2Dialogues;
+        this.suspect3Dialogues;
+        this.suspect4Dialogues;
+
+        this.weaponsDialogues;
     }
 
     //------------------------------

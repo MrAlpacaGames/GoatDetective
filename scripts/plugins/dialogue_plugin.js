@@ -16,6 +16,9 @@ class DialoguePlugin extends Phaser.Plugins.BasePlugin
     // Multiple Choice Dialog Background
     this.multipleDialogueBackground;
 
+    // Acusation Dialog Background
+    this.acusationDialogueBackground;
+
     this.eventCounter = 0;
     this.timedEvent;
     this.dialogueSpeed = 3;
@@ -37,6 +40,7 @@ class DialoguePlugin extends Phaser.Plugins.BasePlugin
 
     // Buttons
     this.nextButton;
+    this.backButton;
 
     // Accuse Button
     this.accuseBtn;
@@ -44,7 +48,17 @@ class DialoguePlugin extends Phaser.Plugins.BasePlugin
     // Close Button
     this.closeBtn;
 
+    // Array of interactive options 
     this.interactiveOptions;
+
+    // State of the multiple options dialogue. It can only be 0 or 1
+    this.multipleOptionsState = 0;
+
+    // Current Type of Clue Selected
+    this.currentClueTypeSelected;
+
+    // Current Clue Selected
+    this.currentPersonTalkingTo;
   }
 
   //----------------------------
@@ -64,10 +78,11 @@ class DialoguePlugin extends Phaser.Plugins.BasePlugin
 
     currentScene.load.image('SDialogBack', 'assets/sprites/HUD/Dialogo.png');
     currentScene.load.image('MDialogBack', 'assets/sprites/HUD/SeleccionMultiple.png');
+    currentScene.load.image('ADialogBack', 'assets/sprites/HUD/SeleccionAcusar.png');
 
     currentScene.load.image('nextBtn', 'assets/sprites/HUD/Siguiente.png');
     currentScene.load.image('closeBtn', 'assets/sprites/HUD/x.png');
-    currentScene.load.image('AccuseBtn', 'assets/sprites/HUD/BotonAcusar.png');
+    currentScene.load.image('ConfrontBtn', 'assets/sprites/HUD/BotonAcusar.png');
   }
   
   /**
@@ -107,7 +122,7 @@ class DialoguePlugin extends Phaser.Plugins.BasePlugin
 
 
     // We create the dynamic interactive options elements
-    let xPositions = [175, 365, 555, 745];
+    let xPositions = [170, 360, 550, 740];
 
     this.interactiveOptions = currentScene.add.container();
 
@@ -122,18 +137,53 @@ class DialoguePlugin extends Phaser.Plugins.BasePlugin
 
       xOption.setInteractive();
       xOption.on('pointerdown', function(){
-        this.setTint(0x0EE612);
+        this.setScale(1.05);
       });
       xOption.on('pointerup', function(){
-        this.clearTint();
-        dialogueManager.selectOption(i);
+        this.setScale(1);
       });
+      xOption.on('pointerup', () => this.selectOption(xOption));
       xOption.on('pointerout', function(){
-        this.clearTint();
+        this.setScale(1);
       });
 
       this.interactiveOptions.add(xOption);
+      xOption.visible = false;
     }
+
+    //---------------------------------
+    // ACUSATION DIALOG WINDOW
+    //---------------------------------
+    this.acusationDialogueBackground = currentScene.physics.add.staticSprite(500, 100, 'ADialogBack');
+    this.acusationDialogueBackground.scrollFactorX = 0;
+    this.acusationDialogueBackground.visible = false;
+
+    let xAc = [180, 530];
+    for(let i = 0; i < 2; i++)
+    {
+      let text;
+      (i==0) ? text = "Check Body" : text = "Accuse of Murder";
+      let xOption = currentScene.add.text(xAc[i], 70, text, { fontFamily: 'Asap', fontSize: 25 , color: '#f9e26e', align: 'center',
+      wordWrap: {width: 90},
+      wordWrapUseAdvanced: true
+      });
+      xOption.name = i;
+      xOption.scrollFactorX = 0;
+
+      xOption.setInteractive();
+      xOption.on('pointerdown', function(){
+        this.setScale(1.05);
+      });
+      xOption.on('pointerup', function(){
+        this.setScale(1);
+      });
+      xOption.on('pointerup', () => this.selectOption(xOption));
+      xOption.on('pointerout', function(){
+        this.setScale(1);
+      });
+
+      xOption.visible = false;
+    }    
 
     //---------------------------------
     // BUTTONS
@@ -142,23 +192,29 @@ class DialoguePlugin extends Phaser.Plugins.BasePlugin
     this.nextButton = currentScene.physics.add.staticSprite(855, 130, 'nextBtn');  
     this.createButtonBehaviour(this.nextButton,'nextBtn');
 
+    this.backButton = currentScene.physics.add.staticSprite(145, 130, 'nextBtn'); 
+    this.backButton.setFlip(true);
+    this.createButtonBehaviour(this.backButton,'backBtn');
+    this.backButton.visible = false;
+
     this.closeBtn = currentScene.physics.add.staticSprite(885, 30, 'closeBtn');  
     this.createButtonBehaviour(this.closeBtn, 'closeBtn');
 
-    this.accuseBtn = currentScene.physics.add.staticSprite(835,505, 'AccuseBtn');  
-    this.createButtonBehaviour(this.accuseBtn, 'AccuseBtn');
+    this.accuseBtn = currentScene.physics.add.staticSprite(835,505, 'ConfrontBtn');  
+    this.createButtonBehaviour(this.accuseBtn, 'ConfrontBtn');
     this.accuseBtn.visible = false;
 
     this.switchWindows(false);
+    this.enableDialogueUI(false);
   }
 
   /**
    * Method that Enables or Disables the Window in the UI
-   * @param {* Defines if the window is to be multiple option or not} isMultiple 
    * @param {* Defines if the window is to be set on or off} newValue 
    */
   enableDialogueUI(newValue)
   {
+    this.multipleOptionsState = 0;
     this.isEnabled = newValue;
     dialogueManager.currentDialogueLvl = 0;
     // We first hide/show all the Single Dialog Elements
@@ -177,6 +233,7 @@ class DialoguePlugin extends Phaser.Plugins.BasePlugin
 
     if(newValue == false)
     {
+      this.backButton.visible = false;
       let timedEvent = currentScene.time.delayedCall(100, function(){
         GameManager.canMove = true;
       } , currentScene);
@@ -184,10 +241,62 @@ class DialoguePlugin extends Phaser.Plugins.BasePlugin
   }
 
   /**
+   * Method that enables the multiple options dialogue
+   * @param {*If it is Park, show the multiple option for Park} isPark 
+   */
+  enableMultiple(isPark)
+  {
+    let hasSuspects = playerNotebook.discoveredCharacters;
+    let hasWeapons = playerNotebook.discoveredWeapons1;
+    let hasWeapons2 = playerNotebook.discoveredWeapons2;
+    if(hasSuspects || hasWeapons || hasWeapons2) // If we have disovered any clue we show that group of clues
+    {
+      let names = [];
+      this.switchWindows(true, isPark);
+      if(this.multipleOptionsState == 0)
+      {
+        this.backButton.visible = false;
+        if(isPark == true)
+        {
+          
+        }
+        else
+        {
+          if(hasSuspects) names.push('Suspects');
+          if(hasWeapons) names.push('Weapons I');
+          if(hasWeapons2) names.push('Weapons II');
+        }
+      }
+      else
+      {
+        let array;
+        if(this.currentClueTypeSelected == "Suspects") array = playerNotebook.characters;
+        if(this.currentClueTypeSelected == "Weapons1") array = playerNotebook.weapons1;
+        if(this.currentClueTypeSelected == "Weapons2") array = playerNotebook.weapons2;
+
+        array.forEach(element => 
+        {
+          if((this.currentPersonTalkingTo.name != element.name) && element.discovered == true)
+          {
+            names.push(element.name);
+          }
+        });
+        // We enable Back Button
+        this.backButton.visible = true;
+      }
+      this.setOptionsTexts(names);
+    }
+    else
+    {
+      this.enableDialogueUI(false);
+    }
+  }
+
+  /**
    * Allow us to switch between the single and multiple option dialogues UI elements
    * @param {*New Value to define the show/hide behaviours} toMultiple 
    */
-  switchWindows(toMultiple)
+  switchWindows(toMultiple, isPark)
   {
     dialogueManager.currentDialogueLvl = (toMultiple == true)? 1 : 0;
     // We first hide/show all the Single Dialog Elements
@@ -201,11 +310,23 @@ class DialoguePlugin extends Phaser.Plugins.BasePlugin
     this.interactiveOptions.visible = toMultiple;
   }
 
-  setOptionsNames(names)
+  /**
+   * Method that set the text for the different options
+   */
+  setOptionsTexts(texts)
   {
-    for(let i = 0; i < names.length; i++)
+    for(let i = 0; i < 4; i++)
     {
-      this.interactiveOptions[i].text = names[i];
+      let text = texts[i];
+      if(text == undefined)
+      {
+        this.interactiveOptions.getAt(i).visible = false;
+      }
+      else
+      {
+        this.interactiveOptions.getAt(i).visible = true;
+        this.interactiveOptions.getAt(i).text = texts[i];
+      }
     }
   }
   
@@ -237,11 +358,14 @@ class DialoguePlugin extends Phaser.Plugins.BasePlugin
       case "nextBtn":
         theButton.on('pointerdown', ()=> dialogueManager.checkNextAction());
       break;
+      case "backBtn":
+        theButton.on('pointerdown', ()=> this.selectOption("Back"));
+      break;
       case "closeBtn":
         // We close the dialogue
         theButton.on('pointerdown', ()=> this.enableDialogueUI(false));
       break;
-      case "AccuseBtn":
+      case "ConfrontBtn":
         // We accuse the character who we are talking to
         
       break;
@@ -296,6 +420,33 @@ class DialoguePlugin extends Phaser.Plugins.BasePlugin
     this.dialogueText.text = this.possibleText;
   }
 
+  /**
+   * Method that selects an option from the multiple options dialogue
+   */
+  selectOption(theOption)
+  {
+    if(this.multipleOptionsState == 0)
+    {
+      this.multipleOptionsState = 1;
+      this.currentClueTypeSelected = theOption.text;
+      this.enableMultiple(false);
+    }
+    else
+    {
+      if(theOption == "Back")
+      {
+        this.multipleOptionsState = 0;
+        this.currentClueTypeSelected = "";
+        this.enableMultiple(false);
+      }
+      else
+      {
+        let dialogueID = playerNotebook.getCurrentDialogueID(this.currentPersonTalkingTo, theOption.text);
+        dialogueManager.startDialogue(dialogueID);
+        this.backButton.visible = false;
+      }
+    }
+  }
  
   //----------------------------
   // PLUGIN METHODS
