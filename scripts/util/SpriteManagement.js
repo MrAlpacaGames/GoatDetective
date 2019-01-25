@@ -48,7 +48,7 @@ class SpriteManagement
             break;
             case 'OfficeScene':
                 currentScene.load.image('office', 'assets/sprites/Scenarios/Office/Office.png');
-                currentScene.load.image('hallDoor', 'assets/sprites/Scenarios/Office/hallDoor.png');
+                currentScene.load.image('offToHall', 'assets/sprites/Scenarios/Office/officeDoor.png');
             break;
         }
     }
@@ -75,23 +75,22 @@ class SpriteManagement
         player.setScale(0.42);
         player.setCollideWorldBounds(true);
         
-        if(hasStartedGame == false)
+        //  Our player animations, turning, walking left and walking right.
+        if(currentScene.anims.get('walking') == undefined && currentScene.anims.get('quiet') == undefined)
         {
-            //  Our player animations, turning, walking left and walking right.
             currentScene.anims.create({
                 key: 'walking',
                 frames: currentScene.anims.generateFrameNumbers('Peterson', { start: 1, end: 6 }),
                 frameRate: 6,
                 repeat: -1
-            });        
+            });
             currentScene.anims.create({
                 key: 'quiet',
                 frames: [ { key: 'Peterson', frame: 0 } ],
                 frameRate: 1
             });
+            player.anims.play('quiet');
         }
-        player.anims.play('quiet');
-
         return player;
     }
 
@@ -110,14 +109,14 @@ class SpriteManagement
         newCharacter.refreshBody();
         if(character != 'Park')
         {
-            if(hasStartedGame == false)
+            if(currentScene.anims.get(character+'Idle') == undefined)
             {
                 currentScene.anims.create({
                     key: character + 'Idle',
                     frames: currentScene.anims.generateFrameNumbers(character,{start: 0, end: 7}),
                     frameRate: 6,
                     repeat: -1
-                })
+                });
             }
             newCharacter.anims.play(character+'Idle');
         }
@@ -148,7 +147,7 @@ class SpriteManagement
     createClickFx()
     {
         let clickFx;
-        if(hasStartedGame == false)
+        if(currentScene.anims.get('ShowClick') == undefined)
         {
             currentScene.anims.create({
                 key: 'ShowClick',

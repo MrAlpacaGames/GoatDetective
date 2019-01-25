@@ -16,5 +16,11 @@ class GM
          * 2 = 
          */
         this.stateOfGame = 0;
+
+        this.caseSolution = ["Lee", "VenomousPin"];
     }
+
+    
+
+    
 }

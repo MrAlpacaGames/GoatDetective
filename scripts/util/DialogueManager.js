@@ -29,6 +29,10 @@ class DialogueManager
         this.assattariIDs;        
     }
 
+    //-----------------------------------------
+    // FUNCTIONS
+    //-----------------------------------------
+
     /**
      * Method that loads the json files
      * @param {*} callback 
@@ -49,13 +53,18 @@ class DialogueManager
         xobj.send(null);  
     }
 
+    /**
+     * Method that preloads the .json to be used
+     */
     preloadJson()
     {
         currentScene.load.json('singleD', 'data/SingleDialogues.json');
         currentScene.load.json('requirements', 'data/Requirements.json');
-
     }
 
+    /**
+     * Method that creates the dialogues of the game and puts them in the hash tables
+     */
     createDialogues()
     {
         let sData = currentScene.cache.json.get('singleD').SingleDialogues;
@@ -72,6 +81,10 @@ class DialogueManager
         });
     }
 
+    /**
+     * Method that opens the dialog window, searchs for the dialogue in the hash table according to the parameter ID
+     * @param {*ID of the dialogue} DialogueID 
+     */
     startDialogue(DialogueID)
     {
         this.currentDialogue = this.sDialogues.get(DialogueID);
@@ -79,6 +92,10 @@ class DialogueManager
         {
             GameManager.canMove = false;
             currentScene.dialogue.enableDialogueUI(true);
+            if(DialogueID == "SPark1xUN") // The Dialogue where we have already checked Park's body for the 1st time
+            {
+                
+            }
         }
         else
         {
@@ -87,6 +104,10 @@ class DialogueManager
         this.setDialogueText(0);
     }
 
+    /**
+     * Sets the new text in the dialogue window 
+     * @param {*Index of the text inside the array of texts inside a dialogue} index 
+     */
     setDialogueText(index)
     {
         if(index == 0) this.currentDialogue.currentIndex = 0;
@@ -95,6 +116,9 @@ class DialogueManager
         currentScene.dialogue.setDialogueText(text[1]);
     }
 
+    /**
+     * Method that checks the next action to be executed
+     */
     checkNextAction()
     {
         if(currentScene.dialogue.isWriting == true)
@@ -111,13 +135,17 @@ class DialogueManager
                 {
                     currentScene.dialogue.enableDialogueUI(false);
                 }
-                else if("Multiple") // We open a multiple dialogue options
+                else if(nextAction == "Multiple") // We open a multiple dialogue options
                 {
                     currentScene.dialogue.enableMultiple(false, "");
                 }
-                else 
+                else if(nextAction == "LeeMenu")
                 {
-    
+                    
+                }
+                else if(nextAction == "GameOver")
+                {
+                    HUDSpriteManager.openSpecialScreen(false, true);
                 }
             }
             else // If is not last line, we continue to the next line

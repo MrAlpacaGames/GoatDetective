@@ -69,7 +69,7 @@ class HallScene extends Phaser.Scene
             // Main Player
             this.playerSprite = spriteManager.createPlayer(topBackgroundXOrigin+600,  topBackgroundYOrigin+90);
         }        
-        thePlayer.assignScene(this.playerSprite);
+        thePlayer.reloadPlayer();
         thePlayer.assignOnEvents();
         
         // Dialogue Window
@@ -99,14 +99,17 @@ class HallScene extends Phaser.Scene
 
     beginScene()
     {
-        switch(GameManager.stateOfGame)
+        let timedEvent = currentScene.time.delayedCall(120, function()
         {
-            case 0:
-                //dialogueManager.startDialogue("SPet0x0");
-            break;
-            case 1:
+            switch(GameManager.stateOfGame)
+            {
+                case 0:
+                    //dialogueManager.startDialogue("SPet0x0");
+                break;
+                case 1:
 
-            break;
-        }
+                break;
+            }    
+        } , currentScene);
     }
 }

@@ -9,19 +9,12 @@ class DialoguePlugin extends Phaser.Plugins.BasePlugin
     this.scene;
     this.systems;
 
+    //------------------------
+    // SINGLE DIALOGUES
+    //------------------------
 
     // Single Dialog Background
     this.singleDialogueBackground;
-
-    // Multiple Choice Dialog Background
-    this.multipleDialogueBackground;
-
-    // Acusation Dialog Background
-    this.acusationDialogueBackground;
-
-    this.eventCounter = 0;
-    this.timedEvent;
-    this.dialogueSpeed = 3;
 
     //------------------------------
     // TEXTS
@@ -43,13 +36,17 @@ class DialoguePlugin extends Phaser.Plugins.BasePlugin
     this.backButton;
 
     // Accuse Button
-    this.accuseBtn;
+    this.confrontBtn;
 
     // Close Button
     this.closeBtn;
 
-    // Array of interactive options 
-    this.interactiveOptions;
+    //---------------------------------------
+    // MULTIPLE OPTIONS DIALOGUES
+    //--------------------------------------
+
+    // Multiple Choice Dialog Background
+    this.multipleDialogueBackground;
 
     // State of the multiple options dialogue. It can only be 0 or 1
     this.multipleOptionsState = 0;
@@ -59,6 +56,58 @@ class DialoguePlugin extends Phaser.Plugins.BasePlugin
 
     // Current Clue Selected
     this.currentPersonTalkingTo;
+
+    //-------------------------------------
+    // PARK OPTIONS DIALOGUE
+    //-------------------------------------
+    
+    // Park Dialog Background
+    this.parkDialogueBackground;
+
+    // Park Selected Options
+    this.parkOptions;
+
+    //-------------------------------------
+    // ACCUSATION OPTIONS DIALOGUE
+    //-------------------------------------
+
+    // Acusation Dialog Background
+    this.acusationDialogueBackground;
+
+    // Accuse Button
+    this.accusationButton;
+
+    // Character Left Arrow
+    this.charLeftArrow;
+
+    // Character Right Arrow
+    this.charRightArrow;
+
+    // Weapon Left Arrow
+    this.weapLeftArrow;
+
+    // Weapon Right Arrow
+    this.weapRightArrow;
+
+    // Arcade Sprite of the Character
+    this.accusedCharacter;
+
+    // Arcade Sprite of the Weapon
+    this.accusedWeapon;
+
+    // Array of Suspects Images
+    this.suspectsImgs;
+
+    // Array of Weapons Images
+    this.weaponsImgs;
+
+    //-------------------------------------
+    // Plugin Stuff
+    //-------------------------------------
+
+    this.eventCounter = 0;
+    this.timedEvent;
+    this.dialogueSpeed = 3;
   }
 
   //----------------------------
@@ -78,11 +127,17 @@ class DialoguePlugin extends Phaser.Plugins.BasePlugin
 
     currentScene.load.image('SDialogBack', 'assets/sprites/HUD/Dialogo.png');
     currentScene.load.image('MDialogBack', 'assets/sprites/HUD/SeleccionMultiple.png');
-    currentScene.load.image('ADialogBack', 'assets/sprites/HUD/SeleccionAcusar.png');
+    currentScene.load.image('LeeDialogBack', 'assets/sprites/HUD/SeleccionLee.png');
+    currentScene.load.image('ADialogBack', 'assets/sprites/HUD/AccuseDialogo.png');
 
     currentScene.load.image('nextBtn', 'assets/sprites/HUD/Siguiente.png');
     currentScene.load.image('closeBtn', 'assets/sprites/HUD/x.png');
     currentScene.load.image('ConfrontBtn', 'assets/sprites/HUD/BotonAcusar.png');
+
+    currentScene.load.image('AssaAccuse', 'assets/sprites/HUD/Accuse/AssattariAccuse.png');
+    currentScene.load.image('JungAccuse', 'assets/sprites/HUD/Accuse/JungAccuse.png');
+    currentScene.load.image('LeeAccuse', 'assets/sprites/HUD/Accuse/LeeAccuse.png');
+    currentScene.load.image('RuruAccuse', 'assets/sprites/HUD/Accuse/RuruAccuse.png');
   }
   
   /**
@@ -120,71 +175,76 @@ class DialoguePlugin extends Phaser.Plugins.BasePlugin
     this.multipleDialogueBackground.scrollFactorX = 0;
     this.multipleDialogueBackground.visible = false;
 
-
     // We create the dynamic interactive options elements
     let xPositions = [170, 360, 550, 740];
-
     this.interactiveOptions = currentScene.add.container();
 
     for(let i = 0; i < 4; i++)
     {
-      let xOption = currentScene.add.text(xPositions[i], 70, "Option "+i, { fontFamily: 'Asap', fontSize: 25 , color: '#f9e26e', align: 'center',
-      wordWrap: {width: 90},
-      wordWrapUseAdvanced: true
-      });
-      xOption.name = i;
-      xOption.scrollFactorX = 0;
-
-      xOption.setInteractive();
-      xOption.on('pointerdown', function(){
-        this.setScale(1.05);
-      });
-      xOption.on('pointerup', function(){
-        this.setScale(1);
-      });
-      xOption.on('pointerup', () => this.selectOption(xOption));
-      xOption.on('pointerout', function(){
-        this.setScale(1);
-      });
-
-      this.interactiveOptions.add(xOption);
-      xOption.visible = false;
+      this.createTextOption(this.interactiveOptions, xPositions[i], 70, "Option "+i);
     }
 
     //---------------------------------
-    // ACUSATION DIALOG WINDOW
+    // PARK DIALOG WINDOW
+    //---------------------------------
+    this.parkDialogueBackground = currentScene.physics.add.staticSprite(500, 100, 'LeeDialogBack');
+    this.parkDialogueBackground.scrollFactorX = 0;
+    this.parkDialogueBackground.visible = false;
+
+    let xAc = [280, 650];
+    this.parkOptions = currentScene.add.container();
+
+    for(let i = 0; i < 2; i++)
+    {
+      let text;
+      let yP;
+      if(i==0)
+      {
+        text = "Check Body";
+        yP = 60;
+      }
+      else
+      {
+        text = "Accuse of Murder";
+        yP = 50;
+      }
+      this.createTextOption(this.parkOptions, xAc[i], yP, text);
+    }    
+
+    //---------------------------------
+    // ACCUSE DIALOG WINDOW
     //---------------------------------
     this.acusationDialogueBackground = currentScene.physics.add.staticSprite(500, 100, 'ADialogBack');
     this.acusationDialogueBackground.scrollFactorX = 0;
     this.acusationDialogueBackground.visible = false;
 
-    let xAc = [180, 530];
-    for(let i = 0; i < 2; i++)
-    {
-      let text;
-      (i==0) ? text = "Check Body" : text = "Accuse of Murder";
-      let xOption = currentScene.add.text(xAc[i], 70, text, { fontFamily: 'Asap', fontSize: 25 , color: '#f9e26e', align: 'center',
-      wordWrap: {width: 90},
-      wordWrapUseAdvanced: true
-      });
-      xOption.name = i;
-      xOption.scrollFactorX = 0;
+    this.createTextOption(this.accusationButton, 720, 75, "ACCUSE!");
+    
+    this.charLeftArrow = currentScene.physics.add.staticSprite(180, 90, 'nextBtn'); 
+    this.charLeftArrow.setFlip(true);
+    this.createButtonBehaviour(this.charLeftArrow,'charLeftArrow');
+    this.charLeftArrow.visible = false;
 
-      xOption.setInteractive();
-      xOption.on('pointerdown', function(){
-        this.setScale(1.05);
-      });
-      xOption.on('pointerup', function(){
-        this.setScale(1);
-      });
-      xOption.on('pointerup', () => this.selectOption(xOption));
-      xOption.on('pointerout', function(){
-        this.setScale(1);
-      });
+    this.charRightArrow = currentScene.physics.add.staticSprite(330, 90, 'nextBtn');  
+    this.createButtonBehaviour(this.charRightArrow,'charRightArrow');
+    this.charRightArrow.visible = false;
 
-      xOption.visible = false;
-    }    
+    this.weapLeftArrow = currentScene.physics.add.staticSprite(420, 90, 'nextBtn'); 
+    this.weapLeftArrow.setFlip(true);
+    this.createButtonBehaviour(this.weapLeftArrow,'weapLeftArrow');
+    this.weapLeftArrow.visible = false;
 
+    this.weapRightArrow = currentScene.physics.add.staticSprite(570, 90, 'nextBtn');  
+    this.createButtonBehaviour(this.weapRightArrow,'weapRightArrow');
+    this.weapRightArrow.visible = false;
+
+    this.accusedCharacter = currentScene.physics.add.staticSprite(255, 90, 'AssaAccuse');
+    this.accusedCharacter.scrollFactorX = 0;
+    this.accusedCharacter.visible = false;
+    this.accusedWeapon = currentScene.physics.add.staticSprite(495, 90, 'RuruAccuse');
+    this.accusedWeapon.scrollFactorX = 0;
+    this.accusedWeapon.visible = false;
+    
     //---------------------------------
     // BUTTONS
     //---------------------------------
@@ -200,12 +260,54 @@ class DialoguePlugin extends Phaser.Plugins.BasePlugin
     this.closeBtn = currentScene.physics.add.staticSprite(885, 30, 'closeBtn');  
     this.createButtonBehaviour(this.closeBtn, 'closeBtn');
 
-    this.accuseBtn = currentScene.physics.add.staticSprite(835,505, 'ConfrontBtn');  
-    this.createButtonBehaviour(this.accuseBtn, 'ConfrontBtn');
-    this.accuseBtn.visible = false;
+    this.confrontBtn = currentScene.physics.add.staticSprite(835,505, 'ConfrontBtn');  
+    this.createButtonBehaviour(this.confrontBtn, 'ConfrontBtn');
+    this.confrontBtn.visible = false;
 
     this.switchWindows(false);
     this.enableDialogueUI(false);
+    
+    //this.openParkOptions(false);
+  }
+
+  /**
+   * Method that creates a text option in the dialogue
+   * @param {*Array where we will add the current text Option} array 
+   * @param {*X Position where the Text Option will be positioned} xPosition 
+   * @param {*Y Position where the Text Option will be positioned} yPosition 
+   * @param {*Name of the Text Option} optionName 
+   */
+  createTextOption(array, xPosition, yPosition, optionName)
+  {
+    let xOption = currentScene.add.text(xPosition, yPosition, optionName, { fontFamily: 'Asap', fontSize: 25 , color: '#f9e26e', align: 'center',
+    wordWrap: {width: 90},
+    wordWrapUseAdvanced: true
+    });
+    xOption.name = optionName;
+    xOption.scrollFactorX = 0;
+    
+    xOption.setInteractive();
+    xOption.on('pointerdown', function(){
+      this.setScale(1.05);
+    });
+    xOption.on('pointerup', function(){
+      this.setScale(1);
+    });
+    xOption.on('pointerup', () => this.selectOption(xOption));
+    xOption.on('pointerout', function(){
+      this.setScale(1);
+    });
+
+    if(array == undefined) 
+    {
+      this.accusationButton = xOption;
+      this.accusationButton.visible = false;
+    }
+    else
+    {
+      array.add(xOption);
+      array.visible = false;
+    }
   }
 
   /**
@@ -227,15 +329,23 @@ class DialoguePlugin extends Phaser.Plugins.BasePlugin
     this.multipleDialogueBackground.visible = false;
     this.interactiveOptions.visible = false;
 
+    // We deactivate all the park options
+    this.parkDialogueBackground.visible = false;
+    this.parkOptions.visible = false;
+
+    // We deactivate all the accusations options
+    this.acusationDialogueBackground.visible = false;
+    this.confrontBtn.visible = false;
+
     // We activate/deactivate
     this.closeBtn.visible = newValue;
-    this.accuseBtn.visible = false;
+    this.confrontBtn.visible = false;
 
     if(newValue == false)
     {
       this.backButton.visible = false;
       let timedEvent = currentScene.time.delayedCall(100, function(){
-        GameManager.canMove = true;
+          GameManager.canMove = true;
       } , currentScene);
     }
   }
@@ -296,7 +406,7 @@ class DialoguePlugin extends Phaser.Plugins.BasePlugin
    * Allow us to switch between the single and multiple option dialogues UI elements
    * @param {*New Value to define the show/hide behaviours} toMultiple 
    */
-  switchWindows(toMultiple, isPark)
+  switchWindows(toMultiple)
   {
     dialogueManager.currentDialogueLvl = (toMultiple == true)? 1 : 0;
     // We first hide/show all the Single Dialog Elements
@@ -308,6 +418,44 @@ class DialoguePlugin extends Phaser.Plugins.BasePlugin
     // We now activate/deactivate the multiple choice dialog elements
     this.multipleDialogueBackground.visible = toMultiple;
     this.interactiveOptions.visible = toMultiple;
+
+    // We deactivate all the park and accusations options
+    this.parkDialogueBackground.visible = false;
+    this.parkOptions.visible = false;
+
+    this.acusationDialogueBackground.visible = false;
+    this.accusationButton.visible = false;
+    this.charLeftArrow.visible = false;
+    this.charRightArrow.visible = false;
+    this.weapLeftArrow.visible = false;
+    this.weapRightArrow.visible = false;
+    this.accusedCharacter.visible = false;
+    this.accusedWeapon.visible = false;
+  }
+
+  /**
+   * Method that opens the park accusation options
+   * @param {*Defines if it is an accusation} isAccusation 
+   */
+  openParkOptions(isAccusation)
+  {
+    this.switchWindows(true);
+    // We now activate/deactivate the multiple choice dialog elements
+    this.multipleDialogueBackground.visible = false;
+    this.interactiveOptions.visible = false;
+
+    // We activate/deactivate the park and accusations options
+    this.parkDialogueBackground.visible = !isAccusation;
+    this.parkOptions.visible = !isAccusation;
+
+    this.acusationDialogueBackground.visible = isAccusation;
+    this.accusationButton.visible = isAccusation;
+    this.charLeftArrow.visible = isAccusation;
+    this.charRightArrow.visible = isAccusation;
+    this.weapLeftArrow.visible = isAccusation;
+    this.weapRightArrow.visible = isAccusation;
+    this.accusedCharacter.visible = isAccusation;
+    this.accusedWeapon.visible = isAccusation;
   }
 
   /**
@@ -368,6 +516,18 @@ class DialoguePlugin extends Phaser.Plugins.BasePlugin
       case "ConfrontBtn":
         // We accuse the character who we are talking to
         
+      break;
+      case "charLeftArrow":
+
+      break;
+      case "charRightArrow":
+          
+      break;
+      case "weapLeftArrow":
+
+      break;
+      case "weapRightArrow":
+
       break;
     }
   }

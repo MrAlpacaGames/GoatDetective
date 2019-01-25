@@ -25,7 +25,7 @@ const gameConfig =
         }]
     }
     ,
-    scene: [/*BootScene, MainMenu, */HallScene, OfficeScene, UINotebook]
+    scene: [/*BootScene, MainMenu,*/ HallScene, OfficeScene, UINotebook]
 };
 
 
@@ -188,14 +188,21 @@ function muteTheWorld(scene)
  */
 function loadScene(newScene)
 {
-    currentScene.input.stopPropagation();
-    let destScene = theGame.scene.getScene(newScene);
-    let theCluee = new Clue('CAS', "Hero Moon", "We have a deal");
-    currentScene.scene.start(newScene, theCluee);
-    
-    previousScene = currentScene;
-    currentScene = destScene;
-    //spriteManager.assignScene(newScene);
+    if(canSceneSwitch == true)
+    {
+        //currentScene.input.stopPropagation();
+        let destScene = this.getScene(newScene);
+        previousScene = currentScene;
+        currentScene.scene.switch(destScene);
+        canSceneSwitch = false;
+        currentScene = destScene;
+        thePlayer.reloadPlayer();
+        thePlayer.assignOnEvents();
+
+        let timedEvent = currentScene.time.delayedCall(150, function(){
+            canSceneSwitch = true;
+            } , currentScene);
+    }
 }
 
 function openNotebook(newValue)

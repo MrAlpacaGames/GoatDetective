@@ -9,11 +9,18 @@ class InteractionManagement
         
     }
 
+    //------------------------------
+    // FUNCTIONS
+    //------------------------------
+    /**
+     * Method that interacts with a clue, item in the game
+     * @param {*Object with who we are interacting with} interactionObject 
+     */
     interact(interactionObject)
     {
         let theType;
         //console.log("You want to interact with: "+interactionObject);
-        if(interactionObject == "hallDoor" || interactionObject == "officeDoor" || interactionObject == "studioDoor" || interactionObject == "dressromDoor")
+        if(interactionObject == "hallDoor" || interactionObject == "offToHall" || interactionObject == "officeDoor" || interactionObject == "studDoor" || interactionObject == "dressDoor")
         {
             theType = "Doors";
         }
@@ -78,14 +85,18 @@ class InteractionManagement
     interactDoors(interactionObject)
     {
         let newSceneName;
-        switch(interactionObject)
+        if(interactionObject == "offToHall" || interactionObject == "hallDoor")
         {
-            case "hallDoor":
-                newSceneName = "HallScene";
-            break;
-            case "officeDoor":
-                newSceneName = "OfficeScene";
-            break;
+            newSceneName = "HallScene";
+        }
+        else
+        {
+            switch(interactionObject)
+            {
+                case "officeDoor":
+                    newSceneName = "OfficeScene";
+                break;
+            }
         }
         loadScene(newSceneName, true);
     }

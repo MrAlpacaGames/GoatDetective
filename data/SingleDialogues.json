@@ -29,9 +29,9 @@
             "GameState": 0,
             "Texts":
             [
-                "Assattari|||So, you are the dective...Have you already checked the body?",
-                "Goatman Peterson|||If you mean yours... Oh yeah baby!",
-                "Assattari|||Get out of here!"
+                "Assattari|||So, you are the detective...Have you already checked the body?",
+                "Goatman Peterson|||If you mean yours... OH YEAH BABY! YOU'RE SMOKING HOT!",
+                "Assattari|||......................GET OUT OF HERE!!!"
             ],
             "Next": "GameOver"
         },

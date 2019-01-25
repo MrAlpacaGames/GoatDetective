@@ -9,6 +9,13 @@ class HUDManager
         this.muteHigh;
         // Highlight of the Notebook button
         this.noteHigh;        
+
+        //-----------------------------
+        // GAME OVER SCREEN
+        //----------------------------
+        this.gameOverScreen;
+        this.retryButton;
+        this.titleScreen;
     }
 
     //-------------------------
@@ -20,6 +27,8 @@ class HUDManager
         currentScene.load.image('MuteHigh', 'assets/sprites/HUD/MuteHigh.png');
         currentScene.load.image('BotonAgenda', 'assets/sprites/HUD/BotonAgenda.png');
         currentScene.load.image('BotonAgendaHigh', 'assets/sprites/HUD/BotonAgendaIluminado.png');
+        currentScene.load.image('GameOver', 'assets/sprites/HUD/WinLoseScreens/GameOver.png');
+        currentScene.load.image('Winner', 'assets/sprites/HUD/WinLoseScreens/Victory.png');
     }
 
     /**
@@ -38,9 +47,28 @@ class HUDManager
          let notebook = currentScene.add.image(topBackgroundXOrigin-400, topBackgroundYOrigin+190, 'BotonAgenda');
          this.assignBehaviour(notebook, "Notebook");
 
-         this.noteHigh = currentScene.add.image(topBackgroundXOrigin-400, topBackgroundYOrigin+190, 'BotonAgendaHigh');
+         this.noteHigh = currentScene.add.image(topBackgroundXOrigin-390, topBackgroundYOrigin+190, 'BotonAgendaHigh');
          this.assignBehaviour(this.noteHigh, "NoteHigh");
-         this.noteHigh.visible = false;         
+         this.noteHigh.visible = false;     
+         
+         this.gameOverScreen = currentScene.add.image(topBackgroundXOrigin, topBackgroundYOrigin, 'GameOver');
+         this.assignBehaviour(this.gameOverScreen, "GameOver");
+
+         this.retryButton = currentScene.add.text(topBackgroundXOrigin-80, topBackgroundYOrigin+77, "RETRY", 
+         { fontFamily: 'Asap', fontSize: 23 , color: '#f9e26e', align: 'center',
+         wordWrap: {width: 200},
+         wordWrapUseAdvanced: true
+         });
+         this.assignBehaviour(this.retryButton, "Retry");
+
+         this.titleScreen = currentScene.add.text(topBackgroundXOrigin+35, topBackgroundYOrigin+77, "TITLE SCREEN", 
+         { fontFamily: 'Asap', fontSize: 23 , color: '#f9e26e', align: 'center',
+         wordWrap: {width: 200},
+         wordWrapUseAdvanced: true
+         });
+         this.assignBehaviour(this.titleScreen, "Title");
+
+         this.openSpecialScreen(false, false);
     }
 
     /**
@@ -69,7 +97,57 @@ class HUDManager
                 theButton.on('pointerup', ()=> openNotebook(true));
                 theButton.on('pointerout', ()=> this.enableHighlight(this.noteHigh, false));
             break;
+            case "Retry":
+                theButton.setInteractive();
+                theButton.on('pointerdown', function(){
+                    this.setScale(1.2);
+                    GameManager.HUDInteracted = true;
+                });
+                theButton.on('pointerup', function(){
+                    this.setScale(1);
+                    HUDSpriteManager.losingAction(false);
+                });
+                theButton.on('pointerout', function(){
+                    this.setScale(1);
+                    HUDSpriteManager.losingAction(false);
+                });
+            break;
+            case "Title":
+                theButton.setInteractive();
+                theButton.on('pointerdown', function(){
+                    this.setScale(1.2);
+                    GameManager.HUDInteracted = true;
+                });
+                theButton.on('pointerup', function(){
+                    this.setScale(1);
+                    HUDSpriteManager.losingAction(true);
+                });
+                theButton.on('pointerout', function(){
+                    this.setScale(1);
+                    HUDSpriteManager.losingAction(true);
+                });
+            break;
         }
+    }
+
+    openSpecialScreen(isVictory, newValue)
+    {
+       // GameManager.canMove = !newValue;
+        if(isVictory == false)
+        {
+            this.gameOverScreen.visible = newValue;
+            this.retryButton.visible = newValue;
+            this.titleScreen.visible = newValue;
+        }
+        else
+        {
+
+        }
+    }
+
+    losingAction(isTitle)
+    {
+        GameManager.HUDInteracted = false;
     }
 
     /**
