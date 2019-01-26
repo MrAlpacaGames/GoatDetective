@@ -92,10 +92,6 @@ class DialogueManager
         {
             GameManager.canMove = false;
             currentScene.dialogue.enableDialogueUI(true);
-            if(DialogueID == "SPark1xUN") // The Dialogue where we have already checked Park's body for the 1st time
-            {
-                
-            }
         }
         else
         {
@@ -137,11 +133,12 @@ class DialogueManager
                 }
                 else if(nextAction == "Multiple") // We open a multiple dialogue options
                 {
-                    currentScene.dialogue.enableMultiple(false, "");
+                    currentScene.dialogue.enableMultiple();
                 }
                 else if(nextAction == "LeeMenu")
                 {
-                    
+                    currentScene.dialogue.openParkOptions(false);
+                    GameManager.canMove = false;
                 }
                 else if(nextAction == "GameOver")
                 {

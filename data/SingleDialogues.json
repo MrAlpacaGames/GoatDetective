@@ -139,7 +139,7 @@
                 "Goatman Peterson|||Your seem to be stung by something on your chest.",
                 "Goatman Peterson|||And what is this? You are drenched. I guess it was a steamy fall. "
             ],
-            "Next": "End"
+            "Next": "LeeMenu"
         },
         {
             "ID":"SJung1xUN",

@@ -329,13 +329,18 @@ class DialoguePlugin extends Phaser.Plugins.BasePlugin
     this.multipleDialogueBackground.visible = false;
     this.interactiveOptions.visible = false;
 
-    // We deactivate all the park options
+    // We deactivate all the park and accusations options
     this.parkDialogueBackground.visible = false;
     this.parkOptions.visible = false;
 
-    // We deactivate all the accusations options
     this.acusationDialogueBackground.visible = false;
-    this.confrontBtn.visible = false;
+    this.accusationButton.visible = false;
+    this.charLeftArrow.visible = false;
+    this.charRightArrow.visible = false;
+    this.weapLeftArrow.visible = false;
+    this.weapRightArrow.visible = false;
+    this.accusedCharacter.visible = false;
+    this.accusedWeapon.visible = false;
 
     // We activate/deactivate
     this.closeBtn.visible = newValue;
@@ -352,9 +357,8 @@ class DialoguePlugin extends Phaser.Plugins.BasePlugin
 
   /**
    * Method that enables the multiple options dialogue
-   * @param {*If it is Park, show the multiple option for Park} isPark 
    */
-  enableMultiple(isPark)
+  enableMultiple()
   {
     let hasSuspects = playerNotebook.discoveredCharacters;
     let hasWeapons = playerNotebook.discoveredWeapons1;
@@ -362,20 +366,13 @@ class DialoguePlugin extends Phaser.Plugins.BasePlugin
     if(hasSuspects || hasWeapons || hasWeapons2) // If we have disovered any clue we show that group of clues
     {
       let names = [];
-      this.switchWindows(true, isPark);
+      this.switchWindows(true);
       if(this.multipleOptionsState == 0)
       {
         this.backButton.visible = false;
-        if(isPark == true)
-        {
-          
-        }
-        else
-        {
-          if(hasSuspects) names.push('Suspects');
-          if(hasWeapons) names.push('Weapons I');
-          if(hasWeapons2) names.push('Weapons II');
-        }
+        if(hasSuspects) names.push('Suspects');
+        if(hasWeapons) names.push('Weapons I');
+        if(hasWeapons2) names.push('Weapons II');
       }
       else
       {
@@ -456,6 +453,11 @@ class DialoguePlugin extends Phaser.Plugins.BasePlugin
     this.weapRightArrow.visible = isAccusation;
     this.accusedCharacter.visible = isAccusation;
     this.accusedWeapon.visible = isAccusation;
+
+    if(isAccusation == true)
+    {
+      
+    }
   }
 
   /**
@@ -587,9 +589,20 @@ class DialoguePlugin extends Phaser.Plugins.BasePlugin
   {
     if(this.multipleOptionsState == 0)
     {
-      this.multipleOptionsState = 1;
-      this.currentClueTypeSelected = theOption.text;
-      this.enableMultiple(false);
+      if(theOption.text == "Check Body")
+      {
+        dialogueManager.startDialogue("SPark1xUN");
+      }
+      else if(theOption.text == "Accuse of Murder")
+      {
+        this.openParkOptions(true);
+      }
+      else
+      {
+        this.multipleOptionsState = 1;
+        this.currentClueTypeSelected = theOption.text;
+        this.enableMultiple(false);
+      }
     }
     else
     {

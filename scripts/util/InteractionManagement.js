@@ -53,12 +53,21 @@ class InteractionManagement
             if(clue.name == "Park" && GameManager.stateOfGame == 0)
                 GameManager.stateOfGame = 1;     
             dialogueID = clue.getCurrentInitialDialogue();
-            if(clue.discovered == false && GameManager.stateOfGame == 1)
+            
+            if(interactionObject == "Park" && clue.discovered == true)
             {
-                playerNotebook.discoverClue(clue.index, type);
+                currentScene.dialogue.openParkOptions(false);
+                GameManager.canMove = false;
             }
-            dialogueManager.startDialogue(dialogueID);
-            currentScene.dialogue.currentPersonTalkingTo = clue;
+            else
+            {
+                if(clue.discovered == false && GameManager.stateOfGame == 1)
+                {
+                    playerNotebook.discoverClue(clue.index, type);
+                }
+                dialogueManager.startDialogue(dialogueID);
+                currentScene.dialogue.currentPersonTalkingTo = clue;
+            }
         }
     }
 
