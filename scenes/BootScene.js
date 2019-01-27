@@ -22,7 +22,7 @@ class BootScene extends Phaser.Scene
         let alpacaLogo = this.add.image(topBackgroundXOrigin, topBackgroundYOrigin, 'gameLogo');
         alpacaLogo.setScale(gameScaleRatio);
 
-        this.time.delayedCall(2000, this.changeScene, [], this);
+        this.time.delayedCall(1500, this.changeScene, [], this);
     }
 
 

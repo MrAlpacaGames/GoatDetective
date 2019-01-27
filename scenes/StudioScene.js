@@ -46,14 +46,12 @@ class StudioScene extends Phaser.Scene
         // Environment
         let hallDoor = spriteManager.createEnvironment('studioToHall', topBackgroundXOrigin+ 1735, topBackgroundYOrigin+97.1, 0.72);
 
-        if(GameManager.stateOfGame == 0)
-        {
-            let ruru = spriteManager.createStaticCharacter('Ruru', topBackgroundXOrigin+900, topBackgroundYOrigin+114, 0.26);
-            ruru.setFlip(true);
-            // Main Player
-            this.playerSprite = spriteManager.createPlayer(topBackgroundXOrigin+1550,  topBackgroundYOrigin+90);
-            this.playerSprite.setFlip(true);
-        }        
+        let ruru = spriteManager.createStaticCharacter('Ruru', topBackgroundXOrigin+900, topBackgroundYOrigin+114, 0.26);
+        ruru.setFlip(true);
+        // Main Player
+        this.playerSprite = spriteManager.createPlayer(topBackgroundXOrigin+1550,  topBackgroundYOrigin+90);
+        this.playerSprite.setFlip(true);
+       
         thePlayer.reloadPlayer();
         thePlayer.assignOnEvents();
         
@@ -67,16 +65,6 @@ class StudioScene extends Phaser.Scene
         // Click FX
         this.clickFx = spriteManager.createClickFx();    
         this.input.on('pointerdown', () => spriteManager.clickEffect(this.clickFx, this.input.activePointer));
-
-        if(hasStartedGame == false)
-        {
-            // If this is the first time we get to this scene we initialize the main game objects like the notebook
-            hasStartedGame = true;
-            
-            dialogueManager.createDialogues();
-            sfxManager.createSFX();
-
-        }
 
         this.beginScene();
     }

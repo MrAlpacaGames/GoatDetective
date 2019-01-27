@@ -339,8 +339,8 @@
             "GameState": 1,
             "Texts":
             [
-                "Ruru|||That man is too close to my Park! He won’t have him, he’s just a snake that wants to prey on him!",
-                "Ruru|||He’s too quiet and sneaky, I don’t trust that guy!!"
+                "Ruru|||He's Park best friend... ",
+                "Ruru|||He's kinda cute as long as he keeps his hands off my Park i guess..."
             ],
             "Next": "Multiple"
         },
@@ -350,9 +350,7 @@
             "GameState": 1,
             "Texts":
             [
-                "Ruru|||I don’t like him! He is scary and very mean.",
-                "Ruru|||The few times I have been close to him, he’s been cold and rude.",
-                "Ruru|||I fear he might shout or hit me out of nowhere."
+                "Ruru|||He's really cool, sometimes kinda scary... in a good way"
             ],
             "Next": "Multiple"
         },
@@ -362,8 +360,11 @@
             "GameState": 1,
             "Texts":
             [
-                "Ruru|||Crazy fan girl, very annoying and obsessive.",
-                "Ruru|||I wonder what her life is like if she has nothing better to do than being a stalker."
+                "Ruru|||That witch! She seduced my Park!",
+                "Ruru|||When i sneaked in, i went to look for him and found them arguin like a couple... ",
+                "Ruru|||She even threw something at him...like a shiny bottle.",
+                "Ruru|||I couldn't understand what they were talking about",
+                "Ruru|||I got nervous and ran away as he was about to leave the office. "
             ],
             "Next": "Multiple"
         }

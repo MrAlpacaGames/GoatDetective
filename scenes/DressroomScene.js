@@ -46,13 +46,11 @@ class DressroomScene extends Phaser.Scene
         // Environment
         let hallDoor = spriteManager.createEnvironment('dressToHall', 245.5, topBackgroundYOrigin+93, 0.72);
 
-        if(GameManager.stateOfGame == 0)
-        {
-            let lee = spriteManager.createStaticCharacter('Lee', topBackgroundXOrigin+1600, topBackgroundYOrigin+100, 0.25);
-            
-            // Main Player
-            this.playerSprite = spriteManager.createPlayer(topBackgroundXOrigin-200,  topBackgroundYOrigin+90);
-        }        
+        let lee = spriteManager.createStaticCharacter('Lee', topBackgroundXOrigin+1600, topBackgroundYOrigin+100, 0.25);
+        
+        // Main Player
+        this.playerSprite = spriteManager.createPlayer(topBackgroundXOrigin-200,  topBackgroundYOrigin+90);
+
         thePlayer.reloadPlayer();
         thePlayer.assignOnEvents();
         
@@ -66,16 +64,6 @@ class DressroomScene extends Phaser.Scene
         // Click FX
         this.clickFx = spriteManager.createClickFx();    
         this.input.on('pointerdown', () => spriteManager.clickEffect(this.clickFx, this.input.activePointer));
-
-        if(hasStartedGame == false)
-        {
-            // If this is the first time we get to this scene we initialize the main game objects like the notebook
-            hasStartedGame = true;
-            
-            dialogueManager.createDialogues();
-            sfxManager.createSFX();
-
-        }
 
         this.beginScene();
     }

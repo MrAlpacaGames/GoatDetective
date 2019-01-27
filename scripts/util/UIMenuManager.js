@@ -19,8 +19,8 @@ class UIMenuManager
 
         currentScene.load.image('StartBtn', 'assets/sprites/Menus/Start.png');
         currentScene.load.image('StartHigh', 'assets/sprites/Menus/Start2.png');
-        currentScene.load.image('MuteBtn', 'assets/sprites/Menus/Mute.png');
-        currentScene.load.image('MuteHigh', 'assets/sprites/Menus/Mute2.png');
+        currentScene.load.image('MenuMuteBtn', 'assets/sprites/Menus/Mute.png');
+        currentScene.load.image('MenuMuteHigh', 'assets/sprites/Menus/Mute2.png');
         currentScene.load.image('CreditsBtn', 'assets/sprites/Menus/Credits.png');
         currentScene.load.image('CreditsHigh', 'assets/sprites/Menus/Credits2.png');
     }
@@ -33,10 +33,10 @@ class UIMenuManager
         currentScene.add.image(topBackgroundXOrigin, topBackgroundYOrigin, 'Fondo');
 
         // The first button that will enable audio
-        let firstBtn = currentScene.add.image(topBackgroundXOrigin, topBackgroundYOrigin, 'MuteBtn');
+        let firstBtn = currentScene.add.image(topBackgroundXOrigin, topBackgroundYOrigin, 'MenuMuteBtn');
         firstBtn.setScale(4);
 
-        let firstHigh = currentScene.add.image(topBackgroundXOrigin, topBackgroundYOrigin, 'MuteHigh');
+        let firstHigh = currentScene.add.image(topBackgroundXOrigin, topBackgroundYOrigin, 'MenuMuteHigh');
         firstHigh.setScale(4);
         firstHigh.visible = false;
 
@@ -89,8 +89,8 @@ class UIMenuManager
         creditsBtn.visible = false;
         creditsHigh.visible = false;
 
-        let muteBtn = currentScene.add.image(topBackgroundXOrigin-280, topBackgroundYOrigin+128, 'MuteBtn');
-        let muteHigh = currentScene.add.image(topBackgroundXOrigin-280, topBackgroundYOrigin+128, 'MuteHigh');
+        let muteBtn = currentScene.add.image(topBackgroundXOrigin-280, topBackgroundYOrigin+128, 'MenuMuteBtn');
+        let muteHigh = currentScene.add.image(topBackgroundXOrigin-280, topBackgroundYOrigin+128, 'MenuMuteHigh');
         muteBtn.setInteractive();
         muteBtn.on('pointerover', ()=> this.onMenuBtnInteracted(muteHigh, true));
         muteBtn.on('pointerdown', ()=> this.onMenuBtnInteracted(muteHigh, true));

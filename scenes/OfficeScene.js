@@ -63,17 +63,6 @@ class OfficeScene extends Phaser.Scene
         this.clickFx = spriteManager.createClickFx();    
         this.input.on('pointerdown', () => spriteManager.clickEffect(this.clickFx, this.input.activePointer));
 
-        
-        if(hasStartedGame == false)
-        {
-            // If this is the first time we get to this scene we initialize the main game objects like the notebook
-            hasStartedGame = true;
-            
-            dialogueManager.createDialogues();
-            sfxManager.createSFX();
-           // this.dialog.init();
-            //console.log(this.dialog);
-        }
     }
 
 }
