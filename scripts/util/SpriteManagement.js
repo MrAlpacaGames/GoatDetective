@@ -50,6 +50,14 @@ class SpriteManagement
                 currentScene.load.image('office', 'assets/sprites/Scenarios/Office/Office.png');
                 currentScene.load.image('offToHall', 'assets/sprites/Scenarios/Office/officeDoor.png');
             break;
+            case 'StudioScene':
+                currentScene.load.image('studio', 'assets/sprites/Scenarios/Studio/Record.png');
+                currentScene.load.image('studioToHall', 'assets/sprites/Scenarios/Studio/record_door.png');
+            break;  
+            case 'DressroomScene':
+                currentScene.load.image('dressroom', 'assets/sprites/Scenarios/Dressroom/dressRoom.png');
+                currentScene.load.image('dressToHall', 'assets/sprites/Scenarios/Dressroom/dressroomIndoor.png');
+            break;  
         }
     }
 
@@ -133,7 +141,7 @@ class SpriteManagement
         environment.setScale(scale);
         environment.refreshBody();
 
-        if(element != 'hall' && element != 'office')
+        if(element != 'hall' && element != 'office' && element != "dressroom" && element != "studio")
         {
             environment.setInteractive();
             environment.on('pointerdown', () => this.onElementClicked(environment, true));

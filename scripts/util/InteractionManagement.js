@@ -20,7 +20,8 @@ class InteractionManagement
     {
         let theType;
         //console.log("You want to interact with: "+interactionObject);
-        if(interactionObject == "hallDoor" || interactionObject == "offToHall" || interactionObject == "officeDoor" || interactionObject == "studDoor" || interactionObject == "dressDoor")
+        if(interactionObject == "hallDoor" || interactionObject == "officeDoor" || interactionObject == "studioDoor" || interactionObject == "dressromDoor" 
+        || interactionObject == "offToHall" || interactionObject == "studioToHall" || interactionObject == "dressToHall")
         {
             theType = "Doors";
         }
@@ -56,7 +57,7 @@ class InteractionManagement
             
             if(interactionObject == "Park" && clue.discovered == true)
             {
-                currentScene.dialogue.openParkOptions(false);
+                currentDialogueHUD.openParkOptions(false);
                 GameManager.canMove = false;
             }
             else
@@ -66,7 +67,7 @@ class InteractionManagement
                     playerNotebook.discoverClue(clue.index, type);
                 }
                 dialogueManager.startDialogue(dialogueID);
-                currentScene.dialogue.currentPersonTalkingTo = clue;
+                currentDialogueHUD.currentPersonTalkingTo = clue;
             }
         }
     }
@@ -94,7 +95,7 @@ class InteractionManagement
     interactDoors(interactionObject)
     {
         let newSceneName;
-        if(interactionObject == "offToHall" || interactionObject == "hallDoor")
+        if(interactionObject == "offToHall" || interactionObject == "studioToHall" || interactionObject == "dressToHall")
         {
             newSceneName = "HallScene";
         }
@@ -104,6 +105,12 @@ class InteractionManagement
             {
                 case "officeDoor":
                     newSceneName = "OfficeScene";
+                break;
+                case "studioDoor":
+                    newSceneName = "StudioScene";
+                break;
+                case "dressromDoor":
+                    newSceneName = "DressroomScene";
                 break;
             }
         }
@@ -131,9 +138,9 @@ class InteractionManagement
     nextDialogue()
     {
         // We first check if we are already writing some text. If yes we skip. If not we pass to the next option
-        if(currentScene.dialogue.isWriting == true) 
+        if(currentDialogueHUD.isWriting == true) 
         {
-            currentScene.dialogue.skipText();
+            currentDialogueHUD.skipText();
         }
         else
         {

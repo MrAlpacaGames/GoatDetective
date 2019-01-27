@@ -120,7 +120,7 @@
                 "Ruru|||I was waiting to see my beautiful Park!",
                 "Goatman Peterson|||And how did you get in here?",
                 "Ruru|||I sneaked in looking for my Park when I was about to meet him,",
-                "Ruru|||I got nervous and hide here",
+                "Ruru|||I got nervous and hid here",
                 "Goatman Peterson|||I see"
             ],
             "Next": "Multiple"
@@ -374,8 +374,9 @@
             "GameState": 1,
             "Texts":
             [
-                "Ruru|||As annoying as he was, that dumb diva did not deserve to die.",
-                "Ruru|||It would be a lie to say I’m not glad he’s out of my life."
+                "Ruru|||What… No... It can’t be. My Park can’t be dead… I came here to give him a surprise!",
+                "Ruru|||I just saw him at that vixen’s office. Now you tell me he´s dead?",
+                "Ruru|||It was that witch! She killed him! She killed my Park!..."
             ],
             "Next": "Multiple"
         }

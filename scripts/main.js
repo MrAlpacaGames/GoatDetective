@@ -17,15 +17,9 @@ const gameConfig =
                 debug: true
             }
         }
-    },
-    plugins:
-    {
-        global: [{
-            key: 'DialoguePlugin', plugin: DialoguePlugin, start: false, mapping: 'dialogue'
-        }]
     }
     ,
-    scene: [/*BootScene, MainMenu,*/ HallScene, OfficeScene, UINotebook]
+    scene: [/*BootScene, MainMenu,*/ HallScene, OfficeScene,DressroomScene, StudioScene, UINotebook]
 };
 
 
@@ -84,6 +78,8 @@ var sfxManager = new SFXManager();
 
 // Script that manages the dialogues
 var dialogueManager = new DialogueManager();
+
+var currentDialogueHUD;
 
 //---------------------------------------------
 // Screen Settings
@@ -196,8 +192,15 @@ function loadScene(newScene)
         currentScene.scene.switch(destScene);
         canSceneSwitch = false;
         currentScene = destScene;
+        currentDialogueHUD = currentScene.dialogueHUD;
+
         thePlayer.reloadPlayer();
         thePlayer.assignOnEvents();
+
+        if(previousScene.scene.key == "StudioScene")
+            thePlayer.player.setFlip(false);
+        else if(previousScene.scene.key == "DressroomScene")
+            thePlayer.player.setFlip(true);
 
         let timedEvent = currentScene.time.delayedCall(150, function(){
             canSceneSwitch = true;
@@ -215,6 +218,7 @@ function openNotebook(newValue)
         currentScene.scene.switch(destScene);
         canSceneSwitch = false;
         currentScene = destScene;    
+
         let timedEvent = currentScene.time.delayedCall(150, function(){
             canSceneSwitch = true;
             if(destScene.scene.key == "UINotebook") notebookSpriteManager.updateOnOpen();

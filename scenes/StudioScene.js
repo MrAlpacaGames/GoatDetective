@@ -1,9 +1,9 @@
-class HallScene extends Phaser.Scene
+class StudioScene extends Phaser.Scene
 {
     constructor(x)
     {
         super({
-            key: 'HallScene'
+            key: 'StudioScene'
         });
         //-------------------------
         // Attributes
@@ -38,27 +38,21 @@ class HallScene extends Phaser.Scene
 
     create()
     {      
-        spriteManager.createEnvironment('hall', topBackgroundXOrigin+ 815, topBackgroundYOrigin - 2, 0.72);
+        spriteManager.createEnvironment('studio', topBackgroundXOrigin+ 763, topBackgroundYOrigin - 2, 0.72);
         
-        this.cameras.main.setBounds(0, 0, gameConfig.width * 2.7, gameConfig.height);
-        this.physics.world.setBounds(0, 0, gameConfig.width * 2.7, gameConfig.height -40 );        
+        this.cameras.main.setBounds(0, 0, gameConfig.width * 2.59, gameConfig.height);
+        this.physics.world.setBounds(topBackgroundXOrigin+225, 0, gameConfig.width * 1.42, gameConfig.height -16 );        
         
         // Environment
-        let studioDoor = spriteManager.createEnvironment('studioDoor', 244.1, topBackgroundYOrigin+33, 0.72);
-
-        let stairs = spriteManager.createEnvironment('officeDoor', topBackgroundXOrigin+813, topBackgroundYOrigin+78, 0.72);
-
-        let dressroom = spriteManager.createEnvironment('dressromDoor', topBackgroundXOrigin+1790.5, topBackgroundYOrigin+32.5, 0.72);
-
-        // Characters Creation
-        let park = spriteManager.createStaticCharacter('Park', topBackgroundXOrigin+800, topBackgroundYOrigin+200, 0.25);
+        let hallDoor = spriteManager.createEnvironment('studioToHall', topBackgroundXOrigin+ 1735, topBackgroundYOrigin+97.1, 0.72);
 
         if(GameManager.stateOfGame == 0)
         {
-            let jung = spriteManager.createStaticCharacter('Jung', topBackgroundXOrigin+1000, topBackgroundYOrigin+80, 0.42);
-            
+            let ruru = spriteManager.createStaticCharacter('Ruru', topBackgroundXOrigin+900, topBackgroundYOrigin+114, 0.26);
+            ruru.setFlip(true);
             // Main Player
-            this.playerSprite = spriteManager.createPlayer(topBackgroundXOrigin,  topBackgroundYOrigin+90);
+            this.playerSprite = spriteManager.createPlayer(topBackgroundXOrigin+1550,  topBackgroundYOrigin+90);
+            this.playerSprite.setFlip(true);
         }        
         thePlayer.reloadPlayer();
         thePlayer.assignOnEvents();

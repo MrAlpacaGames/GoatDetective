@@ -1,9 +1,9 @@
-class OfficeScene extends Phaser.Scene
+class DressroomScene extends Phaser.Scene
 {
     constructor(x)
     {
         super({
-            key: 'OfficeScene'
+            key: 'DressroomScene'
         });
         //-------------------------
         // Attributes
@@ -16,6 +16,10 @@ class OfficeScene extends Phaser.Scene
 
         this.dialogueHUD = new DialogueHUD();
     }
+
+    //-------------------------
+    // Functions
+    //-------------------------
 
     preload()
     {
@@ -33,37 +37,36 @@ class OfficeScene extends Phaser.Scene
     }
 
     create()
-    {
-        spriteManager.createEnvironment('office', topBackgroundXOrigin+ 843, topBackgroundYOrigin - 2, 0.72);
-
-        this.cameras.main.setBounds(0, 0, gameConfig.width * 2.55, gameConfig.height);
-        this.physics.world.setBounds(700, 0, gameConfig.width +500, gameConfig.height -25 );  
-
+    {      
+        spriteManager.createEnvironment('dressroom', topBackgroundXOrigin+ 763, topBackgroundYOrigin - 2, 0.72);
+        
+        this.cameras.main.setBounds(0, 0, gameConfig.width * 2.59, gameConfig.height);
+        this.physics.world.setBounds(280, 0, gameConfig.width * 1.8, gameConfig.height -16 );        
+        
         // Environment
-        let officeDoor = spriteManager.createEnvironment('offToHall', topBackgroundXOrigin+ 1791, topBackgroundYOrigin+97, 0.72);
+        let hallDoor = spriteManager.createEnvironment('dressToHall', 245.5, topBackgroundYOrigin+93, 0.72);
 
-        // Characters Creation
-        let assattari = spriteManager.createStaticCharacter('Assattari', topBackgroundXOrigin+200, topBackgroundYOrigin+100, 0.43);
-        assattari.setFlip(true);        
-
-        // Main Player
-        this.playerSprite = spriteManager.createPlayer(topBackgroundXOrigin+1520,  topBackgroundYOrigin+110);
+        if(GameManager.stateOfGame == 0)
+        {
+            let lee = spriteManager.createStaticCharacter('Lee', topBackgroundXOrigin+1600, topBackgroundYOrigin+100, 0.25);
+            
+            // Main Player
+            this.playerSprite = spriteManager.createPlayer(topBackgroundXOrigin-200,  topBackgroundYOrigin+90);
+        }        
         thePlayer.reloadPlayer();
         thePlayer.assignOnEvents();
-        this.playerSprite.setFlip(true);
-
+        
         // Dialogue Window
         this.dialogueHUD.createDialogueWindow();
         currentDialogueHUD = this.dialogueHUD;
 
         // HUD
         HUDSpriteManager.createHUD();
-
+         
         // Click FX
         this.clickFx = spriteManager.createClickFx();    
         this.input.on('pointerdown', () => spriteManager.clickEffect(this.clickFx, this.input.activePointer));
 
-        
         if(hasStartedGame == false)
         {
             // If this is the first time we get to this scene we initialize the main game objects like the notebook
@@ -71,9 +74,26 @@ class OfficeScene extends Phaser.Scene
             
             dialogueManager.createDialogues();
             sfxManager.createSFX();
-           // this.dialog.init();
-            //console.log(this.dialog);
+
         }
+
+        this.beginScene();
     }
 
+
+    beginScene()
+    {
+        let timedEvent = currentScene.time.delayedCall(120, function()
+        {
+            switch(GameManager.stateOfGame)
+            {
+                case 0:
+                    //dialogueManager.startDialogue("SPet0x0");
+                break;
+                case 1:
+
+                break;
+            }    
+        } , currentScene);
+    }
 }

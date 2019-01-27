@@ -88,14 +88,14 @@ class DialogueManager
     startDialogue(DialogueID)
     {
         this.currentDialogue = this.sDialogues.get(DialogueID);
-        if(currentScene.dialogue.isEnabled === false)
+        if(currentDialogueHUD.isEnabled === false)
         {
             GameManager.canMove = false;
-            currentScene.dialogue.enableDialogueUI(true);
+            currentDialogueHUD.enableDialogueUI(true);
         }
         else
         {
-            currentScene.dialogue.switchWindows(false, false);
+            currentDialogueHUD.switchWindows(false, false);
         }
         this.setDialogueText(0);
     }
@@ -108,8 +108,8 @@ class DialogueManager
     {
         if(index == 0) this.currentDialogue.currentIndex = 0;
         let text = this.currentDialogue.Texts[index].split("|||");
-        currentScene.dialogue.characterName.text = text[0];
-        currentScene.dialogue.setDialogueText(text[1]);
+        currentDialogueHUD.characterName.text = text[0];
+        currentDialogueHUD.setDialogueText(text[1]);
     }
 
     /**
@@ -117,9 +117,9 @@ class DialogueManager
      */
     checkNextAction()
     {
-        if(currentScene.dialogue.isWriting == true)
+        if(currentDialogueHUD.isWriting == true)
         {
-            currentScene.dialogue.skipText();
+            currentDialogueHUD.skipText();
         }
         else
         {
@@ -129,15 +129,15 @@ class DialogueManager
                 let nextAction = this.currentDialogue.NextAction;
                 if(nextAction == "End")  // We check if the next action is End. If it is we close the dialog.
                 {
-                    currentScene.dialogue.enableDialogueUI(false);
+                    currentDialogueHUD.enableDialogueUI(false);
                 }
                 else if(nextAction == "Multiple") // We open a multiple dialogue options
                 {
-                    currentScene.dialogue.enableMultiple();
+                    currentDialogueHUD.enableMultiple();
                 }
                 else if(nextAction == "LeeMenu")
                 {
-                    currentScene.dialogue.openParkOptions(false);
+                    currentDialogueHUD.openParkOptions(false);
                     GameManager.canMove = false;
                 }
                 else if(nextAction == "GameOver")

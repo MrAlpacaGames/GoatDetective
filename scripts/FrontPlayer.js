@@ -10,7 +10,7 @@ class FrontPlayer
         this.player;
 
         // Player Speed
-        this.playerSpeed = 800;      
+        this.playerSpeed = 400;      
     }
 
     //--------------------------------
@@ -110,7 +110,6 @@ class FrontPlayer
     {
         currentScene.tweens.killAll();
         this.player.anims.play('quiet');
-        //currentScene.dialogue.toogleWindow(true);
         
         // We face the item/ character because it means we're interacting with him
         if(currentClickedElement != null)

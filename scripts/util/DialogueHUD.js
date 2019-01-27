@@ -1,14 +1,10 @@
-class DialoguePlugin extends Phaser.Plugins.BasePlugin
+class DialogueHUD 
 {
-  constructor(pluginManager)
+  constructor()
   {
     //----------------------------
     // VARIABLES
     //----------------------------
-    super(pluginManager);
-    this.scene;
-    this.systems;
-
     //------------------------
     // SINGLE DIALOGUES
     //------------------------
@@ -620,28 +616,4 @@ class DialoguePlugin extends Phaser.Plugins.BasePlugin
       }
     }
   }
- 
-  //----------------------------
-  // PLUGIN METHODS
-  //----------------------------
- 
-  boot()
-  {
-    var eventEmitter = this.systems.events;
-    eventEmitter.on('destroy', () => this.destroy(), this);
-  }
-
-  shutdown()
-  {
-    //if(this.timedEvent) this.timedEvent.remove();
-    if(this.dialogueBackground) this.dialogueBackground.destroy();
-    if(this.dialogueText) this.dialogueText.destroy();
-    if(this.nextButton) this.nextButton.destroy();
-  }
-
-  destroy()
-  {
-    this.shutdown();
-  }
-
 }
