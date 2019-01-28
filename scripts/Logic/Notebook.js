@@ -102,24 +102,36 @@ class Notebook
         }
         return theClue;
     }
-    
-    discoverClue(index, type)
+
+    /**
+     * Method that discovers a note and adds it to the notebook
+     * @param {*Name of the clue to be discovered} name 
+     */
+    discoverClue(name)
     {
-        switch(type)
+        let theArray;
+        if(name == "Park" || name == "Jung" || name == "Lee" || name == "Ruru")
         {
-            case "Suspects":
-                this.characters[index].discovered = true;
-                if(this.discoveredCharacters == false) this.discoveredCharacters = true;
-            break;
-            case "Weapon1":
-                this.weapons[index].discovered = true;
-                if(this.discoveredWeapons1 == false) this.discoveredWeapons1 = true;
-            break;
-            case "Weapon2":
-                this.places[index].discovered = true;
-                if(this.discoveredWeapons2 == false) this.discoveredWeapons2 = true;
-            break;
+            theArray = this.characters;
+            if(this.discoveredCharacters == false) this.discoveredCharacters = true;
         }
+        else if(name == "DiamondoChicken")
+        {
+            theArray = this.weapons1;
+        }
+
+        for(let i = 0; i < theArray.length; i++)
+        {
+            if(theArray[i].name == name)
+            {
+                theArray[i].discovered = true;
+                break;
+            }
+        }        
+    }
+
+    playDiscoverSFX()
+    {
         sfxManager.playSFX(2);
         let timedEvent = currentScene.time.addEvent({
             delay: 250, callback: this.enableNote, callbackScope: currentScene, repeat: 4 

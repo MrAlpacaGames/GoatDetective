@@ -127,7 +127,15 @@ class DialogueManager
             if(nextLine == "LastLine")
             {
                 let nextAction = this.currentDialogue.NextAction;
-                if(nextAction == "End")  // We check if the next action is End. If it is we close the dialog.
+                if(nextAction == "DiscoverEnd" || nextAction == "DiscoverMultiple")
+                {
+                    let name = this.currentDialogue.Character;
+                    playerNotebook.discoverClue(name);
+                    playerNotebook.playDiscoverSFX();
+                    playerNotebook.dialoguesTaken.add(this.currentDialogue.ID);
+                    (nextAction == "DiscoverEnd") ? currentDialogueHUD.enableDialogueUI(false): currentDialogueHUD.enableMultiple();
+                }
+                else if(nextAction == "End")  // We check if the next action is End. If it is we close the dialog.
                 {
                     currentDialogueHUD.enableDialogueUI(false);
                 }

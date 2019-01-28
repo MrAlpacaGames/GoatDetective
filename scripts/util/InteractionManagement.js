@@ -62,10 +62,6 @@ class InteractionManagement
             }
             else
             {
-                if(clue.discovered == false && GameManager.stateOfGame == 1)
-                {
-                    playerNotebook.discoverClue(clue.index, type);
-                }
                 dialogueManager.startDialogue(dialogueID);
                 currentDialogueHUD.currentPersonTalkingTo = clue;
             }

@@ -45,6 +45,7 @@ class UIMenuManager
         {
             firstHigh.visible = true;
         });
+        firstBtn.on('pointerdown', ()=> this.toFullScreen());
         firstBtn.on('pointerup',function()
         {
             firstHigh.visible = false;
@@ -55,6 +56,21 @@ class UIMenuManager
             firstHigh.destroy();
         });
         firstBtn.on('pointerup', () => this.startMainMenu());
+    }
+
+    toFullScreen()
+    {
+        openFullScreen();
+        //theGame.scale.fullScreenScaleMode = Phaser.ScaleManager.NO_SCALE;
+        /** 
+        let canvas = currentScene.sys.game.canvas;
+        let fullscreen = currentScene.sys.game.device.fullscreen;
+        if(!fullscreen.available)
+        {
+            return;
+        }
+        canvas[fullscreen.request]();
+        */
     }
 
     startMainMenu()

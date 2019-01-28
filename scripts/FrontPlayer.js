@@ -34,7 +34,10 @@ class FrontPlayer
         currentScene.input.on('gameobjectdown', function(pointer, gameObject)
         {
             //console.log("Down Clicked: "+gameObject.name);
-            currentClickedElement = gameObject;
+            if(currentDialogueHUD.isEnabled == false)
+            {
+                currentClickedElement = gameObject;
+            }
         });
     }
 
@@ -82,6 +85,18 @@ class FrontPlayer
                     duration: theDuration,
                     onComplete: ()=> this.stopMoving()
                 });
+            }
+        }
+        else
+        {
+            if(currentDialogueHUD.isEnabled == true)
+            {
+                if((thePointer.y > 164 && thePointer.y < gameConfig.height) ||
+                (thePointer.x < 109 && thePointer.y > 0 && thePointer.y < gameConfig.height)||
+                (thePointer.x > 892 && thePointer.x < gameConfig.width && thePointer.y < gameConfig.height))
+                {
+                    currentDialogueHUD.enableDialogueUI(false);
+                }
             }
         }
     }

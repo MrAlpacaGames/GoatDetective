@@ -19,7 +19,7 @@ class HallScene extends Phaser.Scene
 
     //-------------------------
     // Functions
-    //-------------------------
+    //------------------------
 
     preload()
     {

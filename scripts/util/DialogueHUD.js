@@ -35,7 +35,7 @@ class DialogueHUD
     this.confrontBtn;
 
     // Close Button
-    this.closeBtn;
+    //this.closeBtn;
 
     //---------------------------------------
     // MULTIPLE OPTIONS DIALOGUES
@@ -98,7 +98,7 @@ class DialogueHUD
     this.weaponsImgs;
 
     //-------------------------------------
-    // Plugin Stuff
+    // Animated Dialogue Stuff
     //-------------------------------------
 
     this.eventCounter = 0;
@@ -115,12 +115,6 @@ class DialogueHUD
    */
   preloadDialogue()
   {
-    this.systems = currentScene.sys;
-    if(!currentScene.sys.settings.isBooted)
-    {
-      currentScene.events.once('boot', () => this.boot(), this);
-    }
-
     currentScene.load.image('SDialogBack', 'assets/sprites/HUD/Dialogo.png');
     currentScene.load.image('MDialogBack', 'assets/sprites/HUD/SeleccionMultiple.png');
     currentScene.load.image('LeeDialogBack', 'assets/sprites/HUD/SeleccionLee.png');
@@ -245,16 +239,18 @@ class DialogueHUD
     // BUTTONS
     //---------------------------------
 
-    this.nextButton = currentScene.physics.add.staticSprite(855, 130, 'nextBtn');  
+    this.nextButton = currentScene.physics.add.staticSprite(855, 130, 'nextBtn');
+    this.nextButton.setScale(1.1);  
     this.createButtonBehaviour(this.nextButton,'nextBtn');
 
     this.backButton = currentScene.physics.add.staticSprite(145, 130, 'nextBtn'); 
     this.backButton.setFlip(true);
+    this.backButton.setScale(1.1);  
     this.createButtonBehaviour(this.backButton,'backBtn');
     this.backButton.visible = false;
 
-    this.closeBtn = currentScene.physics.add.staticSprite(885, 30, 'closeBtn');  
-    this.createButtonBehaviour(this.closeBtn, 'closeBtn');
+    //this.closeBtn = currentScene.physics.add.staticSprite(885, 30, 'closeBtn');  
+    //this.createButtonBehaviour(this.closeBtn, 'closeBtn');
 
     this.confrontBtn = currentScene.physics.add.staticSprite(835,505, 'ConfrontBtn');  
     this.createButtonBehaviour(this.confrontBtn, 'ConfrontBtn');
@@ -339,7 +335,7 @@ class DialogueHUD
     this.accusedWeapon.visible = false;
 
     // We activate/deactivate
-    this.closeBtn.visible = newValue;
+    //this.closeBtn.visible = newValue;
     this.confrontBtn.visible = false;
 
     if(newValue == false)
@@ -432,6 +428,7 @@ class DialogueHUD
    */
   openParkOptions(isAccusation)
   {
+    this.isEnabled = true;
     this.switchWindows(true);
     // We now activate/deactivate the multiple choice dialog elements
     this.multipleDialogueBackground.visible = false;
@@ -488,15 +485,15 @@ class DialogueHUD
     
     theButton.on('pointerdown', function()
     {
-      this.setScale(1.1);
+      this.setScale(this.scaleX + 0.1, this.scaleY + 0.1);
     });
     theButton.on('pointerout', function()
     {
-      this.setScale(1);
+      this.setScale(this.scaleX - 0.1, this.scaleY - 0.1);
     });
     theButton.on('pointerup', function()
     {
-      this.setScale(1);
+      this.setScale(this.scaleX - 0.1, this.scaleY - 0.1);
     });
 
     switch(behaviour)

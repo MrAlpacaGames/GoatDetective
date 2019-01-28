@@ -1,5 +1,6 @@
 const gameConfig = 
 {
+    id: "TheGame",
     title: 'Goat Detective Supah Star',
     type: Phaser.AUTO,
     //width: window.innerWidth * window.devicePixelRatio,
@@ -17,11 +18,9 @@ const gameConfig =
                 debug: true
             }
         }
-    }
-    ,
-    scene: [/**/BootScene, MainMenu, HallScene, OfficeScene,DressroomScene, StudioScene, UINotebook]
+    },
+    scene: [/*BootScene,*/ MainMenu, HallScene, OfficeScene,DressroomScene, StudioScene, UINotebook]
 };
-
 
 //---------------------------------------------
 // Game Variables
@@ -193,6 +192,7 @@ function loadScene(newScene)
         canSceneSwitch = false;
         currentScene = destScene;
         currentDialogueHUD = currentScene.dialogueHUD;
+        currentClickedElement = null;
 
         thePlayer.reloadPlayer();
         thePlayer.assignOnEvents();

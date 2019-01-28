@@ -1,22 +1,78 @@
 {
-    "Park":
+    "Suspects":
     [
-        "Multiple injuries in his body"
+        {
+            "Character": "Park",
+            "Notes": 
+            [
+                "Multiple injuries in his body"
+            ]
+        },
+        {
+            "Character": "Jung",
+            "Notes": 
+            [
+                ""
+            ]
+        },
+        {
+            "Character": "Assattari",
+            "Notes": 
+            [
+                ""
+            ]
+        },
+        {
+            "Character": "Lee",
+            "Notes": 
+            [
+                ""
+            ]
+        },
+        {
+            "Character": "Ruru",
+            "Notes": 
+            [
+                ""
+            ]
+        }
     ],
-    "Jung":
+    "Weapons1":
     [
-        ""
-    ],
-    "Assattari":
-    [
-        ""
-    ],
-    "Lee":
-    [
-        ""
-    ],
-    "Ruru":
-    [
-        ""
+        {
+            "Character": "ChickenDiamondo",
+            "Notes": 
+            [
+                "That Chicken Diamondo"
+            ]
+        },
+        {
+            "Character": "Jung",
+            "Notes": 
+            [
+                ""
+            ]
+        },
+        {
+            "Character": "Assattari",
+            "Notes": 
+            [
+                ""
+            ]
+        },
+        {
+            "Character": "Lee",
+            "Notes": 
+            [
+                ""
+            ]
+        },
+        {
+            "Character": "Ruru",
+            "Notes": 
+            [
+                ""
+            ]
+        }
     ]
 }

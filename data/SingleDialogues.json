@@ -49,7 +49,7 @@
 
         {
             "ID":"SPark1xPR",
-            "Character": "Goatman",
+            "Character": "Park",
             "GameState": 0,
             "Texts":
             [
@@ -59,7 +59,7 @@
                 "Goatman Peterson|||Your seem to be stung by something on your chest.",
                 "Goatman Peterson|||And what is this? You are drenched. I guess it was a steamy fall. "
             ],
-            "Next": "End"
+            "Next": "DiscoverEnd"
         },
         {
             "ID":"SJung1xPR",
