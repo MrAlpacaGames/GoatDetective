@@ -19,7 +19,7 @@ const gameConfig =
             }
         }
     },
-    scene: [/*BootScene,*/ MainMenu, HallScene, OfficeScene,DressroomScene, StudioScene, UINotebook]
+    scene: [/*BootScene, MainMenu,*/ HallScene, OfficeScene,DressroomScene, StudioScene, UINotebook]
 };
 
 //---------------------------------------------
@@ -29,8 +29,10 @@ const gameConfig =
 // The Game
 var theGame = new Phaser.Game(gameConfig); 
 
+// The Game Manager 
 var GameManager = new GM();
 
+// The Player
 var thePlayer = new FrontPlayer();
 
 // Current clicked element by the user
@@ -39,6 +41,7 @@ var currentClickedElement;
 // Notebook
 var playerNotebook = new Notebook();
 
+// Bool that defines if the game has already started
 var hasStartedGame = false;
 
 // CurrentScene of the Game
@@ -63,9 +66,6 @@ var menuSpriteManager = new UIMenuManager();
 // Script that manages the Notebook sprites
 var notebookSpriteManager = new UINotebookManager();
 
-// Script that manages the HUD sprites
-var HUDSpriteManager = new HUDManager();
-
 // Script that manages the interactions in the scenes
 var interacionManager = new InteractionManagement();
 
@@ -78,7 +78,11 @@ var sfxManager = new SFXManager();
 // Script that manages the dialogues
 var dialogueManager = new DialogueManager();
 
+// Current Dialogue HUD. It changes between scenes
 var currentDialogueHUD;
+
+// Current HUD of the Player. It changes between scenes
+var currentPlayerHUD;
 
 //---------------------------------------------
 // Screen Settings
@@ -192,6 +196,7 @@ function loadScene(newScene)
         canSceneSwitch = false;
         currentScene = destScene;
         currentDialogueHUD = currentScene.dialogueHUD;
+        currentPlayerHUD = currentScene.playerHUD;
         currentClickedElement = null;
 
         thePlayer.reloadPlayer();

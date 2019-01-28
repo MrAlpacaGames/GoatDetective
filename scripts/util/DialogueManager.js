@@ -150,7 +150,7 @@ class DialogueManager
                 }
                 else if(nextAction == "GameOver")
                 {
-                    HUDSpriteManager.openSpecialScreen(false, true);
+                    currentPlayerHUD.openSpecialScreen(false, true);
                 }
             }
             else // If is not last line, we continue to the next line

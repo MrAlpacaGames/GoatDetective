@@ -69,7 +69,7 @@
             [
                 "Goatman Peterson|||I have examined the body Boy! Now... Thou shall tell me what happened here!",
                 "Jung|||Ugh...Fine... I was changing clothes in the dressroom when I heard a noice in the Hall... ",
-                "Jung|||When I came out, I found Assattari, our producer, moving the body... ",
+                "Jung|||When I came out, I found Assattari, our manager, moving the body... ",
                 "Jung|||She told me to take care of the body while she was going to call the Supah Unit."
             ],
             "Next": "Multiple"
@@ -186,8 +186,6 @@
 
 
 
-
-
         {
             "ID":"JungLee1x1",
             "Character": "Jung",
@@ -236,53 +234,6 @@
 
 
         {
-            "ID":"AssattariLee1x1",
-            "Character": "Assattari",
-            "GameState": 1,
-            "Texts":
-            [
-                "Assattari|||He seems to be in shock and doesn’t trust anyone. I’m worried about him."
-            ],
-            "Next": "Multiple"
-        },
-        {
-            "ID":"AssattariJung1x1",
-            "Character": "Assattari",
-            "GameState": 1,
-            "Texts":
-            [
-                "Assattari|||He may seem stoic at first sight but he’s short fused and emotional when he’s off guard."
-            ],
-            "Next": "Multiple"
-        },
-        {
-            "ID":"AssattariRuru1x1",
-            "Character": "Assattari",
-            "GameState": 1,
-            "Texts":
-            [
-                "Assattari|||That girl has been very annoying lately, sending weird letters to Park,",
-                "Assattari|||stalking him and leaving weird stuff outside the studio and even his home.",
-                "Assattari|||He used to tell me he was pretty creeped out on this matter."
-            ],
-            "Next": "Multiple"
-        }
-        ,
-        {
-            "ID":"AssattariPark1x1",
-            "Character": "Assattari",
-            "GameState": 1,
-            "Texts":
-            [
-                "Assattari|||He seemed tired when he came to say bye, and as he was about",
-                "Assattari|||to leave, he fell down the stairs. When I got to him, he was already dead,",            
-                "Assattari|||I tried moving him but he wouldn’t budge… That’s when Jung came by…"
-            ],
-            "Next": "Multiple"
-        },
-
-
-        {
             "ID":"LeeJung1x1",
             "Character": "Lee",
             "GameState": 1,
@@ -312,9 +263,9 @@
             "GameState": 1,
             "Texts":
             [
-                "Lee|||A complete creep, her letters were disgusting.",
-                "Lee|||Park used to talk about how annoyed he was with her.",
-                "Lee|||I had to keep her from getting near him a couple of times."
+                "Lee|||Sigh... I tend to be as nice as I can with fans",
+                "Lee|||but that Ruru girl has gotten on my nerves the last few months.",
+                "Lee|||The way she was stalking Park was getting out of hand... Borderline psychotic."
             ],
             "Next": "Multiple"
         }
@@ -333,17 +284,56 @@
         },
 
 
+
         {
-            "ID":"RuruLee1x1",
-            "Character": "Ruru",
+            "ID":"AssattariJung1x1",
+            "Character": "Assattari",
             "GameState": 1,
             "Texts":
             [
-                "Ruru|||He's Park best friend... ",
-                "Ruru|||He's kinda cute as long as he keeps his hands off my Park i guess..."
+                "Assattari|||He may seem stoic at first sight but he’s short fused and emotional when he’s off guard."
             ],
             "Next": "Multiple"
         },
+        {
+            "ID":"AssattariLee1x1",
+            "Character": "Assattari",
+            "GameState": 1,
+            "Texts":
+            [
+                "Assattari|||I’m worried about him or if he will be able to continue in the band... ",
+                "Assattari|||He seems to be in shock and doesn’t trust anyone."
+            ],
+            "Next": "Multiple"
+        },
+        {
+            "ID":"AssattariRuru1x1",
+            "Character": "Assattari",
+            "GameState": 1,
+            "Texts":
+            [
+                "Assattari|||That girl has been very annoying lately, sending weird letters to Park,",
+                "Assattari|||stalking him and leaving weird stuff outside the studio and even his home.",
+                "Assattari|||He used to tell me he was pretty creeped out on this matter."
+            ],
+            "Next": "Multiple"
+        }
+        ,
+        {
+            "ID":"AssattariPark1x1",
+            "Character": "Assattari",
+            "GameState": 1,
+            "Texts":
+            [
+                "Assattari|||He seemed tired when he came to say bye, and as he was about to leave, he fell down the stairs.",
+                "Assattari|||When I got to him, he was already dead,",            
+                "Assattari|||I tried moving him but he wouldn’t budge… That’s when Jung came by…"
+            ],
+            "Next": "Multiple"
+        },
+
+
+
         {
             "ID":"RuruJung1x1",
             "Character": "Ruru",
@@ -355,16 +345,27 @@
             "Next": "Multiple"
         },
         {
+            "ID":"RuruLee1x1",
+            "Character": "Ruru",
+            "GameState": 1,
+            "Texts":
+            [
+                "Ruru|||He's Park best friend... ",
+                "Ruru|||He's kinda cute as long as he keeps his hands off my Park"
+            ],
+            "Next": "Multiple"
+        },
+        {
             "ID":"RuruAssattari1x1",
             "Character": "Ruru",
             "GameState": 1,
             "Texts":
             [
                 "Ruru|||That witch! She seduced my Park!",
-                "Ruru|||When i sneaked in, i went to look for him and found them arguin like a couple... ",
+                "Ruru|||When Ruru sneaked in, Ruru went to look for him and found them arguin like a couple... ",
                 "Ruru|||She even threw something at him...like a shiny bottle.",
-                "Ruru|||I couldn't understand what they were talking about",
-                "Ruru|||I got nervous and ran away as he was about to leave the office. "
+                "Ruru|||Ruru couldn't understand what they were talking about",
+                "Ruru|||Ruru got nervous and ran away as he was about to leave the office. "
             ],
             "Next": "Multiple"
         }
@@ -375,11 +376,902 @@
             "GameState": 1,
             "Texts":
             [
-                "Ruru|||What… No... It can’t be. My Park can’t be dead… I came here to give him a surprise!",
-                "Ruru|||I just saw him at that vixen’s office. Now you tell me he´s dead?",
+                "Ruru|||What… No... It can’t be. My Park can’t be dead… Ruru came here to give him a surprise!",
+                "Ruru|||Ruru just saw him at that vixen’s office. Now you tell me he´s dead?",
                 "Ruru|||It was that witch! She killed him! She killed my Park!..."
             ],
             "Next": "Multiple"
+        },
+
+
+
+
+
+
+
+
+
+
+        {
+            "ID":"JungLee1x2",
+            "Character": "Jung",
+            "GameState": 2,
+            "Texts":
+            [
+                "Jung|||Okay I don't get it, what is happening with this guy?",
+                "Jung|||He used to be pretty chill with me...",
+                "Jung|||Now is always looking at me with suspicion, questioning my every move."
+            ],
+            "Next": "Multiple"
+        },
+        {
+            "ID":"JungAssattari1x2",
+            "Character": "Jung",
+            "GameState": 2,
+            "Texts":
+            [
+                "Jung|||So now she claims she's pregnant with Park's child huh?",
+                "Jung|||What a surprise... ",
+                "Jung|||So much for a 'Responsible Manager'..."
+            ],
+            "Next": "Multiple"
+        },
+        {
+            "ID":"JungRuru1x2",
+            "Character": "Jung",
+            "GameState": 2,
+            "Texts":
+            [
+                "Jung|||That girl is here? What the hell?",
+                "Jung|||Why haven't you arrested her?",
+                "Jung|||She's an obsessive fan that has sent some pretty sick stuff to Park!"
+            ],
+            "Next": "Multiple"
         }
+        ,
+        {
+            "ID":"JungPark1x2",
+            "Character": "Jung",
+            "GameState": 2,
+            "Texts":
+            [
+                "Jung|||We didn't get along well, not that it mattered much.",
+                "Jung|||At least that diva kept things professional or so I though...",
+                "Jung|||Seems he couldn't do that with the Manager haha."
+            ],
+            "Next": "Multiple"
+        },
+
+
+
+        {
+            "ID":"LeeJung1x2",
+            "Character": "Lee",
+            "GameState": 2,
+            "Texts":
+            [
+                "Lee|||He's been acting weird...",
+                "Lee|||I saw him looking around as if trying to look for something without anyone noticing."
+            ],
+            "Next": "Multiple"
+        },
+        {
+            "ID":"LeeAssattari1x2",
+            "Character": "Lee",
+            "GameState": 2,
+            "Texts":
+            [
+                "Lee|||Huh...",
+                "Lee|||So that's what they were up to, I sensed it but I couldn't believe it was happening.",
+                "Lee|||I always thought we were a family but never in that sense..."
+            ],
+            "Next": "Multiple"
+        },
+        {
+            "ID":"LeeRuru1x2",
+            "Character": "Lee",
+            "GameState": 2,
+            "Texts":
+            [
+                "Lee|||The stalker is here? Why isn't she detained? Don't get me wrong,",
+                "Lee|||I love my fans but... she's a completely different deal. ",
+                "Lee|||She trespassed the place, she should be the main suspect!"
+            ],
+            "Next": "Multiple"
+        }
+        ,
+        {
+            "ID":"LeePark1x2",
+            "Character": "Lee",
+            "GameState": 2,
+            "Texts":
+            [
+                "Lee|||Didn't think he would keep something that important from me...",
+                "Lee|||I guess everyone has their own secrets even from their best friends,",            
+                "Lee|||I always though I was the person who was closest to him...",
+                "Lee|||Now... i'm not really sure."
+            ],
+            "Next": "Multiple"
+        },
+
+
+
+        {
+            "ID":"AssattariJung1x2",
+            "Character": "Assattari",
+            "GameState": 2,
+            "Texts":
+            [
+                "Assattari|||He has gotten pretty agressive with me, I think he suspects me a lot.",
+                "Assattari|||He won't listen, even if I told him I loved Park..."
+            ],
+            "Next": "Multiple"
+        },
+        {
+            "ID":"AssattariLee1x2",
+            "Character": "Assattari",
+            "GameState": 2,
+            "Texts":
+            [
+                "Assattari|||Poor Lee, he's getting pretty neurotic about it.",
+                "Assattari|||I fear he may break under the idea that this was a murder.",
+                "Assattari|||He needs a way out and is desperately looking for it... or so it seems to me."
+            ],
+            "Next": "Multiple"
+        },
+        {
+            "ID":"AssattariRuru1x2",
+            "Character": "Assattari",
+            "GameState": 2,
+            "Texts":
+            [
+                "Assattari|||So it was that girl who told you about the fight right?",
+                "Assattari|||I didn't think she would dare to enter the studio,",
+                "Assattari|||taking her previous letters into account I could really believe she murdered Park."
+            ],
+            "Next": "Multiple"
+        }
+        ,
+        {
+            "ID":"AssattariPark1x2",
+            "Character": "Assattari",
+            "GameState": 2,
+            "Texts":
+            [
+                "Assattari|||It was just a few hours ago but... I wish I could change what I said and did...",
+                "Assattari|||If I knew it was going to be the last time I saw him...",            
+                "Assattari|||I wouldn't have shouted him..."
+            ],
+            "Next": "Multiple"
+        },
+
+
+
+        {
+            "ID":"RuruJung1x2",
+            "Character": "Ruru",
+            "GameState": 2,
+            "Texts":
+            [
+                "Ruru|||Ruru saw him enter here like a crazy beast, luckily Ruru hid.",
+                "Ruru|||He seemed to be looking for something... ",
+                "Ruru|||It was really scary. Was he the one who took my Park? "
+            ],
+            "Next": "Multiple"
+        },
+        {
+            "ID":"RuruLee1x2",
+            "Character": "Ruru",
+            "GameState": 2,
+            "Texts":
+            [
+                "Ruru|||Ruru has always liked the way Lee treats everyone",
+                "Ruru|||but she can´t help but feel a little uneasy when he's near Park.",
+                "Ruru|||It feels as if he's always hiding something behind that smile..."
+            ],
+            "Next": "Multiple"
+        },
+        {
+            "ID":"RuruAssattari1x2",
+            "Character": "Ruru",
+            "GameState": 2,
+            "Texts":
+            [
+                "Ruru|||What? That witch actually messed around with my Park?",
+                "Ruru|||Ruru is gonna kill her!",
+                "Ruru|||How dare she mess with the destiny of a couple like ours!?"
+            ],
+            "Next": "Multiple"
+        }
+        ,
+        {
+            "ID":"RuruPark1x2",
+            "Character": "Ruru",
+            "GameState": 2,
+            "Texts":
+            [
+                "Ruru|||Oh Park, why did you leave me?",
+                "Ruru|||Was it that vixen that stole your life so we couldn't be together?"
+            ],
+            "Next": "Multiple"
+        },
+
+
+
+
+
+
+
+
+
+
+        {
+            "ID":"JungLee1x3",
+            "Character": "Jung",
+            "GameState": 3,
+            "Texts":
+            [
+                "Jung|||The guy is starting to lose it, he's becoming paranoic and accusing everyone.",
+                "Jung|||Look, one thing is to be suspicious and other is to threaten someone else without any basis."
+            ],
+            "Next": "Multiple"
+        },
+        {
+            "ID":"JungAssattari1x3",
+            "Character": "Jung",
+            "GameState": 3,
+            "Texts":
+            [
+                "Jung|||What kind of manager... Wait no.",
+                "Jung|||What kind of person throws a blunt object at someone?",
+                "Jung|||Doesn't she know she call kill someone with that?",
+                "Jung|||Perhaps the hit didn't kill Park inmediately."
+            ],
+            "Next": "Multiple"
+        },
+        {
+            "ID":"JungRuru1x3",
+            "Character": "Jung",
+            "GameState": 3,
+            "Texts":
+            [
+                "Jung|||She's playing dumb but she knows perfectly well what she is doing,",
+                "Jung|||If I know one thing about stalkers is that they pay excessive attention to what they are obsesed with.",
+                "Jung|||She's no fool, don't trust her playing the victim..."
+            ],
+            "Next": "Multiple"
+        }
+        ,
+        {
+            "ID":"JungPark1x3",
+            "Character": "Jung",
+            "GameState": 3,
+            "Texts":
+            [
+                "Jung|||So he fell down now? He was the best dancer between the three of us,",
+                "Jung|||I can't picture him losing his balance, maybe it was because of the hit on the head by the manager..."
+            ],
+            "Next": "Multiple"
+        },
+
+
+
+        {
+            "ID":"LeeJung1x3",
+            "Character": "Lee",
+            "GameState": 3,
+            "Texts":
+            [
+                "Lee|||He's hiding something, he has gotten impatient with everyone as time has passed...",
+                "Lee||| I'm not convinced he's innocent, it feels as if he's in a hurry for all of this to end..."
+            ],
+            "Next": "Multiple"
+        },
+        {
+            "ID":"LeeAssattari1x3",
+            "Character": "Lee",
+            "GameState": 3,
+            "Texts":
+            [
+                "Lee|||So she did hit him... ",
+                "Lee|||How can you be so sure that it wasn't the strike to the head that weakened and made him fall afterwards?",
+                "Lee|||Either way she's dangerous for just that reason alone..."
+            ],
+            "Next": "Multiple"
+        },
+        {
+            "ID":"LeeRuru1x3",
+            "Character": "Lee",
+            "GameState": 3,
+            "Texts":
+            [
+                "Lee|||We still don't know her intentions",
+                "Lee|||Or at least what she was planning to do here if she found Park alone..."
+            ],
+            "Next": "Multiple"
+        }
+        ,
+        {
+            "ID":"LeePark1x3",
+            "Character": "Lee",
+            "GameState": 3,
+            "Texts":
+            [
+                "Lee|||Even if he had his secrets,",
+                "Lee|||He still was my best friend and the one I held closest to my heart.",            
+                "Lee|||I will find the one who did this to him..."
+            ],
+            "Next": "Multiple"
+        },
+
+
+
+        {
+            "ID":"AssattariJung1x3",
+            "Character": "Assattari",
+            "GameState": 3,
+            "Texts":
+            [
+                "Assattari|||He needs to stop!",
+                "Assattari|||He just came here demanding to check my office and accusing me of taking 'It'.",
+                "Assattari|||I don't even know what he meant by 'It'..."
+            ],
+            "Next": "Multiple"
+        },
+        {
+            "ID":"AssattariLee1x3",
+            "Character": "Assattari",
+            "GameState": 3,
+            "Texts":
+            [
+                "Assattari|||Lee keeps asking me why I was moving the body and why didn't I call for help until Jung arrived on his own... ",
+                "Assattari|||I was just shocked... I had to act on my own, I thought I could save his life."
+            ],
+            "Next": "Multiple"
+        },
+        {
+            "ID":"AssattariRuru1x3",
+            "Character": "Assattari",
+            "GameState": 3,
+            "Texts":
+            [
+                "Assattari|||So she was the one responsible for the puddle...",
+                "Assattari|||As I feared she ended up causing trouble just by existing without any self control, and costing us Park... ",
+                "Assattari|||Hope she's happy now..."
+            ],
+            "Next": "Multiple"
+        }
+        ,
+        {
+            "ID":"AssattariPark1x3",
+            "Character": "Assattari",
+            "GameState": 3,
+            "Texts":
+            [
+                "Assattari|||He seemed tired when he came to say bye, and as he was about to leave, he fell down the stairs.",
+                "Assattari|||When I got to him, he was already dead, I tried moving him but he wouldn’t budge… ",           
+                "Assattari|||That’s when Jung came by..."
+            ],
+            "Next": "Multiple"
+        },
+
+
+
+        {
+            "ID":"RuruJung1x3",
+            "Character": "Ruru",
+            "GameState": 3,
+            "Texts":
+            [
+                "Ruru|||He's been glaring Ruru a lot lately, Ruru already said she's sorry.",
+                "Ruru|||Ruru didn't mean to cause trouble..."
+            ],
+            "Next": "Multiple"
+        },
+        {
+            "ID":"RuruLee1x3",
+            "Character": "Ruru",
+            "GameState": 3,
+            "Texts":
+            [
+                "Ruru|||He just came here asking Ruru if she had touched Park's body, and what were my intentions here...",
+                "Ruru|||Ruru couldn't answer he was very scary and unrecognizable..."
+            ],
+            "Next": "Multiple"
+        },
+        {
+            "ID":"RuruAssattari1x3",
+            "Character": "Ruru",
+            "GameState": 3,
+            "Texts":
+            [
+                "Ruru|||What? That witch actually messed around with my Park?",
+                "Ruru|||If she hadn't hit my Park with that stupid chicken maybe he wouldn't have fallen down the stairs because of Ruru's sweat... ",
+                "Ruru|||Yes it's all that witches fault!"
+            ],
+            "Next": "Multiple"
+        }
+        ,
+        {
+            "ID":"RuruPark1x3",
+            "Character": "Ruru",
+            "GameState": 3,
+            "Texts":
+            [
+                "Ruru|||Were you waiting to tell Ruru something?",
+                "Ruru|||Why were you holding onto Ruru's letter?",
+                "Ruru|||What was going in your mind?",
+                "Ruru|||Ruru wishes she could hug you..."
+            ],
+            "Next": "Multiple"
+        },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        {
+            "ID":"JungLee1x4",
+            "Character": "Jung",
+            "GameState": 4,
+            "Texts":
+            [
+                "Jung|||I was convinced he didn't have to do with the crime, but now I'm not so sure...",
+                "Jung|||Why was he hiding the Pin?"
+            ],
+            "Next": "Multiple"
+        },
+        {
+            "ID":"JungAssattari1x4",
+            "Character": "Jung",
+            "GameState": 4,
+            "Texts":
+            [
+                "Jung|||If she didn't take the Pin then why was she moving the body?",
+                "Jung|||I was convinced she wanted that thing since it costs a lot!"
+            ],
+            "Next": "Multiple"
+        },
+        {
+            "ID":"JungRuru1x4",
+            "Character": "Jung",
+            "GameState": 4,
+            "Texts":
+            [
+                "Jung|||Don't believe anything she says!",
+                "Jung|||Even if she came here only for Parks phone why didn't she run away from the studio before all of this happened?"
+            ],
+            "Next": "Multiple"
+        }
+        ,
+        {
+            "ID":"JungPark1x4",
+            "Character": "Jung",
+            "GameState": 4,
+            "Texts":
+            [
+                "Jung|||The body is starting to smell weird, like gin, is it normal? It has only been a few hours..."
+            ],
+            "Next": "Multiple"
+        },
+
+
+
+        {
+            "ID":"LeeJung1x4",
+            "Character": "Lee",
+            "GameState": 4,
+            "Texts":
+            [
+                "Lee|||You see, Jung wanted the Pin, that's why I didn't want to show the thing to you until now.",
+                "Lee|||I feared that he was looking for it to steal it, it costed me a fortune afterall..."
+            ],
+            "Next": "Multiple"
+        },
+        {
+            "ID":"LeeAssattari1x4",
+            "Character": "Lee",
+            "GameState": 4,
+            "Texts":
+            [
+                "Lee|||Looks like she had no idea about the Pin, my worry was misplaced on her.",
+                "Lee|||Still that won't change the fact that she dared hurt Park..."
+            ],
+            "Next": "Multiple"
+        },
+        {
+            "ID":"LeeRuru1x4",
+            "Character": "Lee",
+            "GameState": 4,
+            "Texts":
+            [
+                "Lee|||Even if she didn't kill him on purpose, shouldn't she be hold accountable along with Assatari for crime?"
+            ],
+            "Next": "Multiple"
+        }
+        ,
+        {
+            "ID":"LeePark1x4",
+            "Character": "Lee",
+            "GameState": 4,
+            "Texts":
+            [
+                "Lee|||We just wanted to celebrate today and have our hairs done...",
+                "Lee|||Why did it turn out to be like this?"
+            ],
+            "Next": "Multiple"
+        },
+
+
+
+        {
+            "ID":"AssattariJung1x4",
+            "Character": "Assattari",
+            "GameState": 4,
+            "Texts":
+            [
+                "Assattari|||He seems oddly calm, as if he no longer has a need to be so neurotic or agressive.",
+                "Assattari|||Did it have something to do with the Pin?"
+            ],
+            "Next": "Multiple"
+        },
+        {
+            "ID":"AssattariLee1x4",
+            "Character": "Assattari",
+            "GameState": 4,
+            "Texts":
+            [
+                "Assattari|||What is he thinking hiding critical information from you?",
+                "Assattari|||It doesn't make sense, even if he wanted to save the Pin for its value...",
+                "Assattari|||If he truly cared about Park, wouldn't he help you completely from the start?"
+            ],
+            "Next": "Multiple"
+        },
+        {
+            "ID":"AssattariRuru1x4",
+            "Character": "Assattari",
+            "GameState": 4,
+            "Texts":
+            [
+                "Assattari|||Get that psycho away from me! I just saw her lurking outside the office",
+                "Assattari|||I don't know what her intentions are,",
+                "Assattari|||But I don't want to deal with her considering the mess she carries around her being... "
+            ],
+            "Next": "Multiple"
+        }
+        ,
+        {
+            "ID":"AssattariPark1x4",
+            "Character": "Assattari",
+            "GameState": 4,
+            "Texts":
+            [
+                "Assattari|||The body seem's to be turning purple, is that normal?",
+                "Assattari|||Even for an internal bleeding it shouldn´t be like that..."
+            ],
+            "Next": "Multiple"
+        },
+
+
+
+        {
+            "ID":"RuruJung1x4",
+            "Character": "Ruru",
+            "GameState": 4,
+            "Texts":
+            [
+                "Ruru|||Ruru saw Jung enter the room before you arrived, he seemed in a hurry moving all the furniture around",
+                "Ruru|||Ruru was scared he would discover Ruru was here..."
+            ],
+            "Next": "Multiple"
+        },
+        {
+            "ID":"RuruLee1x4",
+            "Character": "Ruru",
+            "GameState": 4,
+            "Texts":
+            [
+                "Ruru|||He's so different Ruru can't even recognize him, at first Ruru thought he was cute but now Ruru can only feel fear towards him."
+            ],
+            "Next": "Multiple"
+        },
+        {
+            "ID":"RuruAssattari1x4",
+            "Character": "Ruru",
+            "GameState": 4,
+            "Texts":
+            [
+                "Ruru|||It's all her fault! Ruru doesn't care if she's innocent!",
+                "Ruru|||She took Park away from Ruru even before he died...",
+                "Ruru|||Then...",
+                "Ruru|||Ruru will make sure to take her baby before I'm gone."
+            ],
+            "Next": "Multiple"
+        }
+        ,
+        {
+            "ID":"RuruPark1x4",
+            "Character": "Ruru",
+            "GameState": 4,
+            "Texts":
+            [
+                "Ruru|||What is happening to my Park, his body looks weird as if he was going to become a grape..."
+            ],
+            "Next": "Multiple"
+        },
+
+
+        {
+            "ID":"JungSweatyPuddle1xU",
+            "Character": "Jung",
+            "GameState": 0,
+            "Texts":
+            [
+                "Jung|||The hell... What is this slimy thing on the stairs, it doesn't seem to be water..."
+            ],
+            "Next": "Multiple"
+        },
+        {
+            "ID":"LeeSweatyPuddle1xU",
+            "Character": "Lee",
+            "GameState": 0,
+            "Texts":
+            [
+                "Lee|||When I got here, he was already covered in that slimy stuff.",
+                "Lee|||It has a familiar smell but I can't tell what it is exactly..."
+            ],
+            "Next": "Multiple"
+        },
+        {
+            "ID":"AssattariSweatyPuddle1xU",
+            "Character": "Assattari",
+            "GameState": 0,
+            "Texts":
+            [
+                "Assattari|||I saw him slip and fall down the stairs because of that liquid.",
+                "Assattari|||I don't know if someone was there while I was talking with Park but",
+                "Assattari|||that puddle wasn´t there before he came into my office."
+            ],
+            "Next": "Multiple"
+        },
+        {
+            "ID":"RuruSweatyPuddle1xU",
+            "Character": "Ruru",
+            "GameState": 0,
+            "Texts":
+            [
+                "Ruru|||Eww...",
+                "Ruru|||Ruru doesn't know much about that stuff, it looks gross don't get it close to me! ..."
+            ],
+            "Next": "Multiple"
+        },
+
+
+
+
+        {
+            "ID":"JungChicken1xU",
+            "Character": "Jung",
+            "GameState": 0,
+            "Texts":
+            [
+                "Jung|||That's something Park gifted Assatari as a thanks for her support, he always picked weird stuff as a gift...",
+                "Jung|||Huh? It's a bit dented, that's a bit weird... ",
+                "Jung|||I wonder if Assatari let it fell down, she's pretty careful with everything in her office."
+            ],
+            "Next": "Multiple"
+        },
+        {
+            "ID":"LeeChicken1xU",
+            "Character": "Lee",
+            "GameState": 0,
+            "Texts":
+            [
+                "Lee|||That chicken huh...",
+                "Lee|||It was a gift we gave Assatari as thanks for the wonderful work she had done for the band.",
+                "Lee|||It is made of a very strong glass, or at least that's what the shopkeeper said..."
+            ],
+            "Next": "Multiple"
+        },
+        {
+            "ID":"AssattariChicken1xU",
+            "Character": "Assattari",
+            "GameState": 0,
+            "Texts":
+            [
+                "Assattari|||This...",
+                "Assattari|||It was a gift from the boys, it fell the other day from my desk.",
+                "Assattari|||I wasn't paying attention and dropped it. Everyone can be clumsy from time to time i guess..."
+            ],
+            "Next": "Multiple"
+        },
+        {
+            "ID":"RuruChicken1xU",
+            "Character": "Ruru",
+            "GameState": 0,
+            "Texts":
+            [
+                "Ruru|||Haha that's a funny chicken!",
+                "Ruru|||Ruru remembers she saw the band checking that thing out some months ago...",
+                "Ruru|||not that she was following them... Ruru just happened to walk by...",
+                "Ruru|||What a coincidence, don't you think?",
+                "Ruru|||Haha... Ruru was pretty lucky that day..."
+            ],
+            "Next": "Multiple"
+        },
+
+
+
+
+
+        {
+            "ID":"GoatmanKey1xU",
+            "Character": "Goatman",
+            "GameState": 0,
+            "Texts":
+            [
+                "Goatman Peterson|||This is the Studios Key, now i can enter that place. I wonder why it was locked..."
+            ],
+            "Next": "End"
+        },
+        {
+            "ID":"GoatmanJungDrawer1xU",
+            "Character": "Goatman",
+            "GameState": 0,
+            "Texts":
+            [
+                "Goatman Peterson|||There is an exquicite collection of rare Pins in here...",
+                "Goatman Peterson|||Huh! Jung doesn't seem like a guy who would collect this kind of things",
+                "Goatman Peterson|||As always there is more to someone than meets the eye."
+            ],
+            "Next": "End"
+        },
+        {
+            "ID":"GoatmanLeeDrawer1xU",
+            "Character": "Goatman",
+            "GameState": 0,
+            "Texts":
+            [
+                "Goatman Peterson|||Some hair cut and style magazines, it seems he's pretty interested in fashion.",
+                "Goatman Peterson|||There is also a jewerly magazine although this one seems to be quite trashed, maybe he carried that one around a lot."
+            ],
+            "Next": "End"
+        },
+        {
+            "ID":"GoatmanParkDrawer1xU",
+            "Character": "Goatman",
+            "GameState": 0,
+            "Texts":
+            [
+                "Goatman Peterson|||Aside from that letter there are some photos of him and Lee, even one with Assatari....",
+                "Goatman Peterson|||None with Jung... that's curious.",
+                "Goatman Peterson|||There's also a magazine of... Bald Italian Men?",
+                "Goatman Peterson|||What a weird taste for a KStar, but who am I to judge I like to lick things, you could say I got an elaborate taste...",
+                "Goatman Peterson|||... I should stop making mental puns, it might be bad for my health"
+            ],
+            "Next": "End"
+        },
+
+
+
+
+
+        {
+            "ID":"JungRuruLoveLetter1xU",
+            "Character": "Jung",
+            "GameState": 0,
+            "Texts":
+            [
+                "Jung|||The hell is this?",
+                "Jung|||Another of his crazy fan letters, he should just throw that away, who knows what sickening stuff is written there.",
+                "Jung|||Why was Park holding onto this?"
+            ],
+            "Next": "Multiple"
+        },
+        {
+            "ID":"LeeRuruLoveLetter1xU",
+            "Character": "Lee",
+            "GameState": 0,
+            "Texts":
+            [
+                "Lee|||That's Ruru's handwritting...",
+                "Lee|||What was Park thinking holding onto this?",
+                "Lee|||Perhaps... knowing him he was preparing some evidence for a restraint order",
+                "Lee|||I can't think of another reason of why he would keep a letter from her",
+                "Lee|||He threw the other gifts she sent as soon as he got them."
+            ],
+            "Next": "Multiple"
+        },
+        {
+            "ID":"AssattariRuruLoveLetter1xU",
+            "Character": "Assattari",
+            "GameState": 0,
+            "Texts":
+            [
+                "Assattari|||... That girl again...",
+                "Assattari|||Kids these days messing around with nothing else to do and causing trouble with their naive and troublesome mindset.."
+            ],
+            "Next": "Multiple"
+        },
+        {
+            "ID":"RuruRuruLoveLetter1xU",
+            "Character": "Ruru",
+            "GameState": 0,
+            "Texts":
+            [
+                "Ruru|||He was keeping my letter???",
+                "Ruru|||OMG! He truly loved me, he was about to confess himself to me, Ruru is sure of that! But...",
+                "Ruru|||What does it matter now?... he's DEAD...",
+                "Ruru|||You need to find the culprit",
+                "Ruru|||Ruru will make that trash pay for taking my Park from me!"
+            ],
+            "Next": "Multiple"
+        },
+        
+
+        {
+            "ID":"JungStudioRecorder1xU",
+            "Character": "Jung",
+            "GameState": 0,
+            "Texts":
+            [
+                "Jung|||Tsk... Those two were always messing around with my hobby...",
+                "Jung|||So what if I like collecting Pins!",
+                "Jung|||It pisses me off when people messes around with stuff that's none of their business."
+            ],
+            "Next": "Multiple"
+        },
+        {
+            "ID":"LeeRuruLoveLetter1xU",
+            "Character": "Lee",
+            "GameState": 0,
+            "Texts":
+            [
+                "Lee|||That's Ruru's handwritting...",
+                "Lee|||What was Park thinking holding onto this?",
+                "Lee|||Perhaps... knowing him he was preparing some evidence for a restraint order",
+                "Lee|||I can't think of another reason of why he would keep a letter from her",
+                "Lee|||He threw the other gifts she sent as soon as he got them."
+            ],
+            "Next": "Multiple"
+        },
+        {
+            "ID":"AssattariRuruLoveLetter1xU",
+            "Character": "Assattari",
+            "GameState": 0,
+            "Texts":
+            [
+                "Assattari|||... That girl again...",
+                "Assattari|||Kids these days messing around with nothing else to do and causing trouble with their naive and troublesome mindset.."
+            ],
+            "Next": "Multiple"
+        },
+        {
+            "ID":"RuruRuruLoveLetter1xU",
+            "Character": "Ruru",
+            "GameState": 0,
+            "Texts":
+            [
+                "Ruru|||He was keeping my letter???",
+                "Ruru|||OMG! He truly loved me, he was about to confess himself to me, Ruru is sure of that! But...",
+                "Ruru|||What does it matter now?... he's DEAD...",
+                "Ruru|||You need to find the culprit",
+                "Ruru|||Ruru will make that trash pay for taking my Park from me!"
+            ],
+            "Next": "Multiple"
+        },
+
+
     ]
 }

@@ -140,8 +140,8 @@ class Notebook
 
     enableNote()
     {
-        let newS = !HUDSpriteManager.noteHigh.visible;
-        HUDSpriteManager.noteHigh.visible = newS;
+        let newS = !currentPlayerHUD.noteHigh.visible;
+        currentPlayerHUD.noteHigh.visible = newS;
     }
 
     getInformation(ClueType)

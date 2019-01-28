@@ -57,10 +57,19 @@
     <script src="scripts/main.js"></script>
 
 </head>
+<style>
+    #FullScreenButton
+    {
+        cursor:pointer;
+        position: relative;
+        z-index: 10;
+        left: 80%;
+        top: 12%;
+    }
+</style>
 <body>
-        <button onclick='openFullScreen();'>Open Video in Fullscreen Mode</button>
     <div style="font-family:'Asap-Regular';position: absolute;left: -1000px;visibility: hidden;">.</div>
-
+    
     <script>
 
     
@@ -99,4 +108,5 @@
     </script>
 
 </body>
+<img id="FullScreenButton" src="assets/sprites/HUD/x.png" alt="FullScreen" onclick= openFullScreen() />
 </html>

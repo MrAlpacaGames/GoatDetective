@@ -105,11 +105,11 @@ class HUDManager
                 });
                 theButton.on('pointerup', function(){
                     this.setScale(1);
-                    HUDSpriteManager.losingAction(false);
+                    currentPlayerHUD.losingAction(false);
                 });
                 theButton.on('pointerout', function(){
                     this.setScale(1);
-                    HUDSpriteManager.losingAction(false);
+                    currentPlayerHUD.losingAction(false);
                 });
             break;
             case "Title":
@@ -120,11 +120,11 @@ class HUDManager
                 });
                 theButton.on('pointerup', function(){
                     this.setScale(1);
-                    HUDSpriteManager.losingAction(true);
+                    currentPlayerHUD.losingAction(true);
                 });
                 theButton.on('pointerout', function(){
                     this.setScale(1);
-                    HUDSpriteManager.losingAction(true);
+                    currentPlayerHUD.losingAction(true);
                 });
             break;
         }

@@ -14,7 +14,11 @@ class DressroomScene extends Phaser.Scene
         // Click FX
         var clickFx;
 
+        // Dialouge HUD of this scene
         this.dialogueHUD = new DialogueHUD();
+
+        // Player HUD of this scene
+        this.playerHUD = new HUDManager();
     }
 
     //-------------------------
@@ -26,7 +30,7 @@ class DressroomScene extends Phaser.Scene
         currentScene = this;
         spriteManager.preloadCharacters();
         spriteManager.preloadEnvironment();
-        HUDSpriteManager.preload();
+        this.playerHUD.preload();
         this.dialogueHUD.preloadDialogue();
 
         if(hasStartedGame == false)
@@ -59,7 +63,8 @@ class DressroomScene extends Phaser.Scene
         currentDialogueHUD = this.dialogueHUD;
 
         // HUD
-        HUDSpriteManager.createHUD();
+        this.playerHUD.createHUD();
+        currentPlayerHUD = this.playerHUD;
          
         // Click FX
         this.clickFx = spriteManager.createClickFx();    
