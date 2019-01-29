@@ -17,7 +17,7 @@ class SpriteManagement
         currentScene.load.spritesheet('ClickFire', 'assets/sprites/Particles/Click.png',
         {frameWidth: 64, frameHeight: 64});
 
-        currentScene.load.spritesheet('Peterson', 'assets/sprites/Characters/Cabra.png',
+        currentScene.load.spritesheet('Goatman', 'assets/sprites/Characters/Cabra.png',
         {frameWidth: 370.57, frameHeight: 758});
 
         currentScene.load.spritesheet('Assattari', 'assets/sprites/Characters/Productora.png',
@@ -78,8 +78,8 @@ class SpriteManagement
      */
     createPlayer(posX, posY)
     {
-        let player = currentScene.physics.add.sprite(posX, posY, 'Peterson');
-        player.setName('Peterson');
+        let player = currentScene.physics.add.sprite(posX, posY, 'Goatman');
+        player.setName('Goatman');
         player.setScale(0.42);
         player.setCollideWorldBounds(true);
         
@@ -88,13 +88,13 @@ class SpriteManagement
         {
             currentScene.anims.create({
                 key: 'walking',
-                frames: currentScene.anims.generateFrameNumbers('Peterson', { start: 1, end: 6 }),
-                frameRate: 6,
+                frames: currentScene.anims.generateFrameNumbers('Goatman', { start: 1, end: 6 }),
+                frameRate: 8,
                 repeat: -1
             });
             currentScene.anims.create({
                 key: 'quiet',
-                frames: [ { key: 'Peterson', frame: 0 } ],
+                frames: [ { key: 'Goatman', frame: 0 } ],
                 frameRate: 1
             });
             player.anims.play('quiet');

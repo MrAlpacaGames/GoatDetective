@@ -60,7 +60,7 @@ class UIMenuManager
 
     toFullScreen()
     {
-        openFullScreen();
+        //openFullScreen();
         //theGame.scale.fullScreenScaleMode = Phaser.ScaleManager.NO_SCALE;
         /** 
         let canvas = currentScene.sys.game.canvas;
@@ -123,7 +123,7 @@ class UIMenuManager
             {
                 targets: goat,
                 x: topBackgroundXOrigin + 175,
-                duration: 1300
+                duration: 1000
             }
         );
 

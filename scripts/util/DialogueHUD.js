@@ -143,8 +143,8 @@ class DialogueHUD
     this.singleDialogueBackground = currentScene.physics.add.staticSprite(500, 100, 'SDialogBack');
     this.singleDialogueBackground.scrollFactorX = 0;
 
-    this.characterName = currentScene.add.text(140, 60, "", { fontFamily: 'Asap', fontSize: 25 , color: '#f9e26e', align: 'left',
-    wordWrap: {width: 200},
+    this.characterName = currentScene.add.text(140, 60, "", { fontFamily: 'Asap-Bold', fontSize: 20 , color: '#f9e26e', align: 'right',
+    wordWrap: {width: 110},
     wordWrapUseAdvanced: true
     });
     this.characterName.scrollFactorX = 0;
@@ -166,12 +166,12 @@ class DialogueHUD
     this.multipleDialogueBackground.visible = false;
 
     // We create the dynamic interactive options elements
-    let xPositions = [170, 360, 550, 740];
+    let xPositions = [175, 365, 555, 745];
     this.interactiveOptions = currentScene.add.container();
 
     for(let i = 0; i < 4; i++)
     {
-      this.createTextOption(this.interactiveOptions, xPositions[i], 70, "Option "+i);
+      this.createTextOption(this.interactiveOptions, xPositions[i], 75, "OPTION "+i);
     }
 
     //---------------------------------
@@ -190,13 +190,13 @@ class DialogueHUD
       let yP;
       if(i==0)
       {
-        text = "Check Body";
-        yP = 60;
+        text = "CHECK BODY";
+        yP = 70;
       }
       else
       {
-        text = "Accuse of Murder";
-        yP = 50;
+        text = "ACCUSE OF MURDER";
+        yP = 69;
       }
       this.createTextOption(this.parkOptions, xAc[i], yP, text);
     }    
@@ -271,8 +271,8 @@ class DialogueHUD
    */
   createTextOption(array, xPosition, yPosition, optionName)
   {
-    let xOption = currentScene.add.text(xPosition, yPosition, optionName, { fontFamily: 'Asap', fontSize: 25 , color: '#f9e26e', align: 'center',
-    wordWrap: {width: 90},
+    let xOption = currentScene.add.text(xPosition, yPosition, optionName, { fontFamily: 'Asap-Bold', fontSize: 20 , color: '#f9e26e', align: 'center',
+    wordWrap: {width: 110},
     wordWrapUseAdvanced: true
     });
     xOption.name = optionName;
@@ -310,7 +310,6 @@ class DialogueHUD
   {
     this.multipleOptionsState = 0;
     this.isEnabled = newValue;
-    dialogueManager.currentDialogueLvl = 0;
     // We first hide/show all the Single Dialog Elements
     this.singleDialogueBackground.visible = newValue;
     this.nextButton.visible = newValue;
@@ -362,16 +361,16 @@ class DialogueHUD
       if(this.multipleOptionsState == 0)
       {
         this.backButton.visible = false;
-        if(hasSuspects) names.push('Suspects');
-        if(hasWeapons) names.push('Weapons I');
-        if(hasWeapons2) names.push('Weapons II');
+        if(hasSuspects) names.push('HUMANS');
+        if(hasWeapons) names.push('WEAPONS');
+        if(hasWeapons2) names.push('ITEMS');
       }
       else
       {
         let array;
-        if(this.currentClueTypeSelected == "Suspects") array = playerNotebook.characters;
-        if(this.currentClueTypeSelected == "Weapons1") array = playerNotebook.weapons1;
-        if(this.currentClueTypeSelected == "Weapons2") array = playerNotebook.weapons2;
+        if(this.currentClueTypeSelected == "HUMANS") array = playerNotebook.characters;
+        if(this.currentClueTypeSelected == "WEAPONS") array = playerNotebook.weapons1;
+        if(this.currentClueTypeSelected == "ITEMS") array = playerNotebook.weapons2;
 
         array.forEach(element => 
         {
@@ -397,7 +396,6 @@ class DialogueHUD
    */
   switchWindows(toMultiple)
   {
-    dialogueManager.currentDialogueLvl = (toMultiple == true)? 1 : 0;
     // We first hide/show all the Single Dialog Elements
     this.singleDialogueBackground.visible = !toMultiple;
     this.nextButton.visible = !toMultiple;

@@ -2,14 +2,14 @@
     "SingleDialogues":
     [
         {
-            "ID":"SPet0x0",
+            "ID":"SGoatman0x0",
             "Character": "Goatman",
             "GameState": 0,
             "Texts":
             [
-                "Goatman Peterson|||This is it! I! Goatman Peterson will become the best detective Supah Star!",
-                "Goatman Peterson|||I need to find the Right KILLER and WEAPON OF MURDER.",
-                "Goatman Peterson|||I will write every bit of evidence on my SUPAH STAR NOTEBOOK! Let's do this babe!"
+                "GOATMAN PETERSON|||This is it! I! Goatman Peterson will become the best detective Supah Star!",
+                "GOATMAN PETERSON|||I need to find the Right KILLER and WEAPON OF MURDER.",
+                "GOATMAN PETERSON|||I will write every bit of evidence on my SUPAH STAR NOTEBOOK! Let's do this babe!"
             ],
             "Next": "End"
         },   
@@ -19,7 +19,7 @@
             "GameState": 0,
             "Texts":
             [
-                "Jung|||Hmmm... What do you want?"
+                "JUNG DAE SEO|||Hmmm... What do you want?"
             ],
             "Next": "End"
         },
@@ -29,9 +29,9 @@
             "GameState": 0,
             "Texts":
             [
-                "Assattari|||So, you are the detective...Have you already checked the body?",
-                "Goatman Peterson|||If you mean yours... OH YEAH BABY! YOU'RE SMOKING HOT!",
-                "Assattari|||......................GET OUT OF HERE!!!"
+                "ASSATTARI TARI|||So, you are the detective...Have you already checked the body?",
+                "GOATMAN PETERSON|||If you mean yours... OH YEAH BABY! YOU'RE SMOKING HOT!",
+                "ASSATTARI TARI|||......................GET OUT OF HERE!!!"
             ],
             "Next": "GameOver"
         },
@@ -41,7 +41,7 @@
             "GameState": 0,
             "Texts":
             [
-                "Lee|||He's dead! My best friend is dead! Leave me alone!"
+                "LEE CHEE GO|||He's dead! My best friend is dead! Leave me alone!"
             ],
             "Next": "End"
         },
@@ -49,15 +49,15 @@
 
         {
             "ID":"SPark1xPR",
-            "Character": "Park",
+            "Character": "PARK IN SOO",
             "GameState": 0,
             "Texts":
             [
-                "Goatman Peterson|||OHHH NO! Park! Ohhh Baby! You are DEAD!",
-                "Goatman Peterson|||Let's study your bodyyy baby!",
-                "Goatman Peterson|||Your body is so bruised! You look like a Panda!",
-                "Goatman Peterson|||Your seem to be stung by something on your chest.",
-                "Goatman Peterson|||And what is this? You are drenched. I guess it was a steamy fall. "
+                "GOATMAN PETERSON|||OHHH NO! Park! Ohhh Baby! You are DEAD!",
+                "GOATMAN PETERSON|||Let's study your bodyyy baby!",
+                "GOATMAN PETERSON|||Your body is so bruised! You look like a Panda!",
+                "GOATMAN PETERSON|||Your seem to be stung by something on your chest.",
+                "GOATMAN PETERSON|||And what is this? You are drenched. I guess it was a steamy fall. "
             ],
             "Next": "DiscoverEnd"
         },
@@ -67,10 +67,10 @@
             "GameState": 0,
             "Texts":
             [
-                "Goatman Peterson|||I have examined the body Boy! Now... Thou shall tell me what happened here!",
-                "Jung|||Ugh...Fine... I was changing clothes in the dressroom when I heard a noice in the Hall... ",
-                "Jung|||When I came out, I found Assattari, our manager, moving the body... ",
-                "Jung|||She told me to take care of the body while she was going to call the Supah Unit."
+                "GOATMAN PETERSON|||I have examined the body Boy! Now... Thou shall tell me what happened here!",
+                "JUNG DAE SEO|||Ugh...Fine... I was changing clothes in the dressroom when I heard a noice in the Hall... ",
+                "JUNG DAE SEO|||When I came out, I found Assattari, our manager, moving the body... ",
+                "JUNG DAE SEO|||She told me to take care of the body while she was going to call the Supah Unit."
             ],
             "Next": "Multiple"
         },
@@ -80,14 +80,14 @@
             "GameState": 0,
             "Texts":
             [
-                "Assattari|||What have you found detective? What happened to Park?!",
-                "Goatman Peterson|||Oh, my dear lady... I'm working on it!",
-                "Goatman Peterson|||I shall find whoever killed him and bring him to sweeeeet JUSTICE! Oh Yeah!",
-                "Goatman Peterson|||Now, I need you to tell me what happened here...",
-                "Assattari|||I was working on my office, Park came here to say goodbye and we he left the office",
-                "Assattari|||I heard a noise coming from the Hall. I went out and found him dead below the stairs.",
-                "Assattari|||I tried to move him to see if he was still alive but he wasn't... Damn!",
-                "Goatman Peterson|||I will find the killer, It's a SUPAAAH PROMISE!"
+                "ASSATTARI TARI|||What have you found detective? What happened to Park?!",
+                "GOATMAN PETERSON|||Oh, my dear lady... I'm working on it!",
+                "GOATMAN PETERSON|||I shall find whoever killed him and bring him to sweeeeet JUSTICE! Oh Yeah!",
+                "GOATMAN PETERSON|||Now, I need you to tell me what happened here...",
+                "ASSATTARI TARI|||I was working on my office, Park came here to say goodbye and we he left the office",
+                "ASSATTARI TARI|||I heard a noise coming from the Hall. I went out and found him dead below the stairs.",
+                "ASSATTARI TARI|||I tried to move him to see if he was still alive but he wasn't... Damn!",
+                "GOATMAN PETERSON|||I will find the killer, It's a SUPAAAH PROMISE!"
             ],
             "Next": "Multiple"
         },
@@ -97,12 +97,12 @@
             "GameState": 0,
             "Texts":
             [
-                "Goatman Peterson|||Oh... Lee... Your best friend is dead... I cannot believe neither!",
-                "Lee|||I...I just can't believe it...",
-                "Goatman Peterson|||Don't worry bro, I'll find the killer! Now, tell me what happened...",
-                "Lee|||I was working on the studio with Park and Jung.",
-                "Lee|||When we finished, I went to the hair saloon to wait for Park. We where going to get a haircut",
-                "Goatman Peterson|||I see... Thank you you beautiful bro!"
+                "GOATMAN PETERSON|||Oh... Lee... Your best friend is dead... I cannot believe neither!",
+                "LEE CHEE GO|||I...I just can't believe it...",
+                "GOATMAN PETERSON|||Don't worry bro, I'll find the killer! Now, tell me what happened...",
+                "LEE CHEE GO|||I was working on the studio with Park and Jung.",
+                "LEE CHEE GO|||When we finished, I went to the hair saloon to wait for Park. We where going to get a haircut",
+                "GOATMAN PETERSON|||I see... Thank you you beautiful bro!"
             ],
             "Next": "Multiple"
         },
@@ -112,16 +112,16 @@
             "GameState": 0,
             "Texts":
             [
-                "Goatman Peterson|||Oh my, my, my sweet baby Goat Savior... What do we have here?",
-                "Ruru|||Oh...oh.... hi?",
-                "Goatman Peterson|||And who might you be little one?",
-                "Ruru|||My...my name is Ruru",
-                "Goatman Peterson|||I see. So, Ruru, what are you doing here? Hidden away from everyone?",
-                "Ruru|||I was waiting to see my beautiful Park!",
-                "Goatman Peterson|||And how did you get in here?",
-                "Ruru|||I sneaked in looking for my Park when I was about to meet him,",
-                "Ruru|||I got nervous and hid here",
-                "Goatman Peterson|||I see"
+                "GOATMAN PETERSON|||Oh my, my, my sweet baby Goat Savior... What do we have here?",
+                "RURU SPARK|||Oh...oh.... hi?",
+                "GOATMAN PETERSON|||And who might you be little one?",
+                "RURU SPARK|||My...my name is Ruru",
+                "GOATMAN PETERSON|||I see. So, Ruru, what are you doing here? Hidden away from everyone?",
+                "RURU SPARK|||I was waiting to see my beautiful Park!",
+                "GOATMAN PETERSON|||And how did you get in here?",
+                "RURU SPARK|||I sneaked in looking for my Park when I was about to meet him,",
+                "RURU SPARK|||I got nervous and hid here",
+                "GOATMAN PETERSON|||I see"
             ],
             "Next": "Multiple"
         },
@@ -134,10 +134,10 @@
             "GameState": 0,
             "Texts":
             [
-                "Goatman Peterson|||Ok, let's see what is in your body again...",
-                "Goatman Peterson|||Your body is so bruised! You look like a Panda!",
-                "Goatman Peterson|||Your seem to be stung by something on your chest.",
-                "Goatman Peterson|||And what is this? You are drenched. I guess it was a steamy fall. "
+                "GOATMAN PETERSON|||Ok, let's see what is in your body again...",
+                "GOATMAN PETERSON|||Your body is so bruised! You look like a Panda!",
+                "GOATMAN PETERSON|||Your seem to be stung by something on your chest.",
+                "GOATMAN PETERSON|||And what is this? You are drenched. I guess it was a steamy fall. "
             ],
             "Next": "LeeMenu"
         },
@@ -147,7 +147,7 @@
             "GameState": 0,
             "Texts":
             [
-                "Jung|||So...What have you found?"
+                "JUNG DAE SEO|||So...What have you found?"
             ],
             "Next": "Multiple"
         },
@@ -157,7 +157,7 @@
             "GameState": 1,
             "Texts":
             [
-                "Assattari|||Tell me... Do you already know who murder Park?"
+                "ASSATTARI TARI|||Tell me... Do you already know who murder Park?"
             ],
             "Next": "Multiple"
         },
@@ -167,7 +167,7 @@
             "GameState": 1,
             "Texts":
             [
-                "Lee|||Please, tell me you found the killer!"
+                "LEE CHEE GO|||Please, tell me you found the killer!"
             ],
             "Next": "Multiple"
         }  
@@ -178,7 +178,7 @@
             "GameState": 1,
             "Texts":
             [
-                "Ruru|||Yes?"
+                "RURU SPARK|||Yes?"
             ],
             "Next": "Multiple"
         }, 
@@ -192,8 +192,8 @@
             "GameState": 1,
             "Texts":
             [
-                "Jung|||He’s been acting weird and he seems distressed… No wonder his best mate just died.",
-                "Jung|||Though his constant interrogation and lack of trust is starting to get annoying."
+                "JUNG DAE SEO|||He’s been acting weird and he seems distressed… No wonder his best mate just died.",
+                "JUNG DAE SEO|||Though his constant interrogation and lack of trust is starting to get annoying."
             ],
             "Next": "Multiple"
         },
@@ -203,9 +203,9 @@
             "GameState": 1,
             "Texts":
             [
-                "Jung|||I don’t trust her. She was moving Park’s body when I found them. ",
-                "Jung|||I don’t know exactly what happened but I’m pretty sure she has something to do with his death.",
-                "Jung|||Don’t buy into that cold pretty face…"
+                "JUNG DAE SEO|||I don’t trust her. She was moving Park’s body when I found them. ",
+                "JUNG DAE SEO|||I don’t know exactly what happened but I’m pretty sure she has something to do with his death.",
+                "JUNG DAE SEO|||Don’t buy into that cold pretty face…"
             ],
             "Next": "Multiple"
         },
@@ -215,8 +215,8 @@
             "GameState": 1,
             "Texts":
             [
-                "Jung|||Crazy fan girl, very annoying and obsessive.",
-                "Jung|||I wonder what her life is like if she has nothing better to do than being a stalker."            ],
+                "JUNG DAE SEO|||Crazy fan girl, very annoying and obsessive.",
+                "JUNG DAE SEO|||I wonder what her life is like if she has nothing better to do than being a stalker."            ],
             "Next": "Multiple"
         }
         ,
@@ -226,8 +226,8 @@
             "GameState": 1,
             "Texts":
             [
-                "Jung|||As annoying as he was, that dumb diva did not deserve to die.",
-                "Jung|||It would be a lie to say I’m not glad he’s out of my life."            ],
+                "JUNG DAE SEO|||As annoying as he was, that dumb diva did not deserve to die.",
+                "JUNG DAE SEO|||It would be a lie to say I’m not glad he’s out of my life."            ],
             "Next": "Multiple"
         },
 
@@ -239,9 +239,9 @@
             "GameState": 1,
             "Texts":
             [
-                "Lee|||We have had our problems as any group in the industry.",
-                "Lee|||But lately, Jung has been very aggressive with both of us, particularly with Park…",
-                "Lee|||I don’t get what is his problem."
+                "LEE CHEE GO|||We have had our problems as any group in the industry.",
+                "LEE CHEE GO|||But lately, Jung has been very aggressive with both of us, particularly with Park…",
+                "LEE CHEE GO|||I don’t get what is his problem."
             ],
             "Next": "Multiple"
         },
@@ -251,9 +251,9 @@
             "GameState": 1,
             "Texts":
             [
-                "Lee|||Park and her seemed pretty close...",
-                "Lee|||There was some kind of special treatment between those two although I couldn’t confirm it…",
-                "Lee|||He would talk about her with me."
+                "LEE CHEE GO|||Park and her seemed pretty close...",
+                "LEE CHEE GO|||There was some kind of special treatment between those two although I couldn’t confirm it…",
+                "LEE CHEE GO|||He would talk about her with me."
             ],
             "Next": "Multiple"
         },
@@ -263,9 +263,9 @@
             "GameState": 1,
             "Texts":
             [
-                "Lee|||Sigh... I tend to be as nice as I can with fans",
-                "Lee|||but that Ruru girl has gotten on my nerves the last few months.",
-                "Lee|||The way she was stalking Park was getting out of hand... Borderline psychotic."
+                "LEE CHEE GO|||Sigh... I tend to be as nice as I can with fans",
+                "LEE CHEE GO|||but that Ruru girl has gotten on my nerves the last few months.",
+                "LEE CHEE GO|||The way she was stalking Park was getting out of hand... Borderline psychotic."
             ],
             "Next": "Multiple"
         }
@@ -276,9 +276,9 @@
             "GameState": 1,
             "Texts":
             [
-                "Lee|||This… this wasn’t an accident! Someone here killed him, I know it!",
-                "Lee|||He helped me in my darkest moment. He wasn’t perfect but he had a big heart!",            
-                "Lee|||…he …he didn’t deserve death. I will find the culprit with or without you."
+                "LEE CHEE GO|||This… this wasn’t an accident! Someone here killed him, I know it!",
+                "LEE CHEE GO|||He helped me in my darkest moment. He wasn’t perfect but he had a big heart!",            
+                "LEE CHEE GO|||…he …he didn’t deserve death. I will find the culprit with or without you."
             ],
             "Next": "Multiple"
         },
@@ -291,7 +291,7 @@
             "GameState": 1,
             "Texts":
             [
-                "Assattari|||He may seem stoic at first sight but he’s short fused and emotional when he’s off guard."
+                "ASSATTARI TARI|||He may seem stoic at first sight but he’s short fused and emotional when he’s off guard."
             ],
             "Next": "Multiple"
         },
@@ -301,8 +301,8 @@
             "GameState": 1,
             "Texts":
             [
-                "Assattari|||I’m worried about him or if he will be able to continue in the band... ",
-                "Assattari|||He seems to be in shock and doesn’t trust anyone."
+                "ASSATTARI TARI|||I’m worried about him or if he will be able to continue in the band... ",
+                "ASSATTARI TARI|||He seems to be in shock and doesn’t trust anyone."
             ],
             "Next": "Multiple"
         },
@@ -312,9 +312,9 @@
             "GameState": 1,
             "Texts":
             [
-                "Assattari|||That girl has been very annoying lately, sending weird letters to Park,",
-                "Assattari|||stalking him and leaving weird stuff outside the studio and even his home.",
-                "Assattari|||He used to tell me he was pretty creeped out on this matter."
+                "ASSATTARI TARI|||That girl has been very annoying lately, sending weird letters to Park,",
+                "ASSATTARI TARI|||stalking him and leaving weird stuff outside the studio and even his home.",
+                "ASSATTARI TARI|||He used to tell me he was pretty creeped out on this matter."
             ],
             "Next": "Multiple"
         }
@@ -325,9 +325,9 @@
             "GameState": 1,
             "Texts":
             [
-                "Assattari|||He seemed tired when he came to say bye, and as he was about to leave, he fell down the stairs.",
-                "Assattari|||When I got to him, he was already dead,",            
-                "Assattari|||I tried moving him but he wouldn’t budge… That’s when Jung came by…"
+                "ASSATTARI TARI|||He seemed tired when he came to say bye, and as he was about to leave, he fell down the stairs.",
+                "ASSATTARI TARI|||When I got to him, he was already dead,",            
+                "ASSATTARI TARI|||I tried moving him but he wouldn’t budge… That’s when Jung came by…"
             ],
             "Next": "Multiple"
         },
@@ -340,7 +340,7 @@
             "GameState": 1,
             "Texts":
             [
-                "Ruru|||He's really cool, sometimes kinda scary... in a good way"
+                "RURU SPARK|||He's really cool, sometimes kinda scary... in a good way"
             ],
             "Next": "Multiple"
         },
@@ -350,8 +350,8 @@
             "GameState": 1,
             "Texts":
             [
-                "Ruru|||He's Park best friend... ",
-                "Ruru|||He's kinda cute as long as he keeps his hands off my Park"
+                "RURU SPARK|||He's Park best friend... ",
+                "RURU SPARK|||He's kinda cute as long as he keeps his hands off my Park"
             ],
             "Next": "Multiple"
         },
@@ -361,11 +361,11 @@
             "GameState": 1,
             "Texts":
             [
-                "Ruru|||That witch! She seduced my Park!",
-                "Ruru|||When Ruru sneaked in, Ruru went to look for him and found them arguin like a couple... ",
-                "Ruru|||She even threw something at him...like a shiny bottle.",
-                "Ruru|||Ruru couldn't understand what they were talking about",
-                "Ruru|||Ruru got nervous and ran away as he was about to leave the office. "
+                "RURU SPARK|||That witch! She seduced my Park!",
+                "RURU SPARK|||When Ruru sneaked in, Ruru went to look for him and found them arguin like a couple... ",
+                "RURU SPARK|||She even threw something at him...like a shiny bottle.",
+                "RURU SPARK|||Ruru couldn't understand what they were talking about",
+                "RURU SPARK|||Ruru got nervous and ran away as he was about to leave the office. "
             ],
             "Next": "Multiple"
         }
@@ -376,9 +376,9 @@
             "GameState": 1,
             "Texts":
             [
-                "Ruru|||What… No... It can’t be. My Park can’t be dead… Ruru came here to give him a surprise!",
-                "Ruru|||Ruru just saw him at that vixen’s office. Now you tell me he´s dead?",
-                "Ruru|||It was that witch! She killed him! She killed my Park!..."
+                "RURU SPARK|||What… No... It can’t be. My Park can’t be dead… Ruru came here to give him a surprise!",
+                "RURU SPARK|||Ruru just saw him at that vixen’s office. Now you tell me he´s dead?",
+                "RURU SPARK|||It was that witch! She killed him! She killed my Park!..."
             ],
             "Next": "Multiple"
         },
@@ -398,9 +398,9 @@
             "GameState": 2,
             "Texts":
             [
-                "Jung|||Okay I don't get it, what is happening with this guy?",
-                "Jung|||He used to be pretty chill with me...",
-                "Jung|||Now is always looking at me with suspicion, questioning my every move."
+                "JUNG DAE SEO|||Okay I don't get it, what is happening with this guy?",
+                "JUNG DAE SEO|||He used to be pretty chill with me...",
+                "JUNG DAE SEO|||Now is always looking at me with suspicion, questioning my every move."
             ],
             "Next": "Multiple"
         },
@@ -410,9 +410,9 @@
             "GameState": 2,
             "Texts":
             [
-                "Jung|||So now she claims she's pregnant with Park's child huh?",
-                "Jung|||What a surprise... ",
-                "Jung|||So much for a 'Responsible Manager'..."
+                "JUNG DAE SEO|||So now she claims she's pregnant with Park's child huh?",
+                "JUNG DAE SEO|||What a surprise... ",
+                "JUNG DAE SEO|||So much for a 'Responsible Manager'..."
             ],
             "Next": "Multiple"
         },
@@ -422,9 +422,9 @@
             "GameState": 2,
             "Texts":
             [
-                "Jung|||That girl is here? What the hell?",
-                "Jung|||Why haven't you arrested her?",
-                "Jung|||She's an obsessive fan that has sent some pretty sick stuff to Park!"
+                "JUNG DAE SEO|||That girl is here? What the hell?",
+                "JUNG DAE SEO|||Why haven't you arrested her?",
+                "JUNG DAE SEO|||She's an obsessive fan that has sent some pretty sick stuff to Park!"
             ],
             "Next": "Multiple"
         }
@@ -435,9 +435,9 @@
             "GameState": 2,
             "Texts":
             [
-                "Jung|||We didn't get along well, not that it mattered much.",
-                "Jung|||At least that diva kept things professional or so I though...",
-                "Jung|||Seems he couldn't do that with the Manager haha."
+                "JUNG DAE SEO|||We didn't get along well, not that it mattered much.",
+                "JUNG DAE SEO|||At least that diva kept things professional or so I though...",
+                "JUNG DAE SEO|||Seems he couldn't do that with the Manager haha."
             ],
             "Next": "Multiple"
         },
@@ -450,8 +450,8 @@
             "GameState": 2,
             "Texts":
             [
-                "Lee|||He's been acting weird...",
-                "Lee|||I saw him looking around as if trying to look for something without anyone noticing."
+                "LEE CHEE GO|||He's been acting weird...",
+                "LEE CHEE GO|||I saw him looking around as if trying to look for something without anyone noticing."
             ],
             "Next": "Multiple"
         },
@@ -461,9 +461,9 @@
             "GameState": 2,
             "Texts":
             [
-                "Lee|||Huh...",
-                "Lee|||So that's what they were up to, I sensed it but I couldn't believe it was happening.",
-                "Lee|||I always thought we were a family but never in that sense..."
+                "LEE CHEE GO|||Huh...",
+                "LEE CHEE GO|||So that's what they were up to, I sensed it but I couldn't believe it was happening.",
+                "LEE CHEE GO|||I always thought we were a family but never in that sense..."
             ],
             "Next": "Multiple"
         },
@@ -473,9 +473,9 @@
             "GameState": 2,
             "Texts":
             [
-                "Lee|||The stalker is here? Why isn't she detained? Don't get me wrong,",
-                "Lee|||I love my fans but... she's a completely different deal. ",
-                "Lee|||She trespassed the place, she should be the main suspect!"
+                "LEE CHEE GO|||The stalker is here? Why isn't she detained? Don't get me wrong,",
+                "LEE CHEE GO|||I love my fans but... she's a completely different deal. ",
+                "LEE CHEE GO|||She trespassed the place, she should be the main suspect!"
             ],
             "Next": "Multiple"
         }
@@ -486,10 +486,10 @@
             "GameState": 2,
             "Texts":
             [
-                "Lee|||Didn't think he would keep something that important from me...",
-                "Lee|||I guess everyone has their own secrets even from their best friends,",            
-                "Lee|||I always though I was the person who was closest to him...",
-                "Lee|||Now... i'm not really sure."
+                "LEE CHEE GO|||Didn't think he would keep something that important from me...",
+                "LEE CHEE GO|||I guess everyone has their own secrets even from their best friends,",            
+                "LEE CHEE GO|||I always though I was the person who was closest to him...",
+                "LEE CHEE GO|||Now... I'm not really sure."
             ],
             "Next": "Multiple"
         },
@@ -502,8 +502,8 @@
             "GameState": 2,
             "Texts":
             [
-                "Assattari|||He has gotten pretty agressive with me, I think he suspects me a lot.",
-                "Assattari|||He won't listen, even if I told him I loved Park..."
+                "ASSATTARI TARI|||He has gotten pretty agressive with me, I think he suspects me a lot.",
+                "ASSATTARI TARI|||He won't listen, even if I told him I loved Park..."
             ],
             "Next": "Multiple"
         },
@@ -513,9 +513,9 @@
             "GameState": 2,
             "Texts":
             [
-                "Assattari|||Poor Lee, he's getting pretty neurotic about it.",
-                "Assattari|||I fear he may break under the idea that this was a murder.",
-                "Assattari|||He needs a way out and is desperately looking for it... or so it seems to me."
+                "ASSATTARI TARI|||Poor Lee, he's getting pretty neurotic about it.",
+                "ASSATTARI TARI|||I fear he may break under the idea that this was a murder.",
+                "ASSATTARI TARI|||He needs a way out and is desperately looking for it... or so it seems to me."
             ],
             "Next": "Multiple"
         },
@@ -525,9 +525,9 @@
             "GameState": 2,
             "Texts":
             [
-                "Assattari|||So it was that girl who told you about the fight right?",
-                "Assattari|||I didn't think she would dare to enter the studio,",
-                "Assattari|||taking her previous letters into account I could really believe she murdered Park."
+                "ASSATTARI TARI|||So it was that girl who told you about the fight right?",
+                "ASSATTARI TARI|||I didn't think she would dare to enter the studio,",
+                "ASSATTARI TARI|||taking her previous letters into account I could really believe she murdered Park."
             ],
             "Next": "Multiple"
         }
@@ -538,9 +538,9 @@
             "GameState": 2,
             "Texts":
             [
-                "Assattari|||It was just a few hours ago but... I wish I could change what I said and did...",
-                "Assattari|||If I knew it was going to be the last time I saw him...",            
-                "Assattari|||I wouldn't have shouted him..."
+                "ASSATTARI TARI|||It was just a few hours ago but... I wish I could change what I said and did...",
+                "ASSATTARI TARI|||If I knew it was going to be the last time I saw him...",            
+                "ASSATTARI TARI|||I wouldn't have shouted him..."
             ],
             "Next": "Multiple"
         },
@@ -553,9 +553,9 @@
             "GameState": 2,
             "Texts":
             [
-                "Ruru|||Ruru saw him enter here like a crazy beast, luckily Ruru hid.",
-                "Ruru|||He seemed to be looking for something... ",
-                "Ruru|||It was really scary. Was he the one who took my Park? "
+                "RURU SPARK|||Ruru saw him enter here like a crazy beast, luckily Ruru hid.",
+                "RURU SPARK|||He seemed to be looking for something... ",
+                "RURU SPARK|||It was really scary. Was he the one who took my Park? "
             ],
             "Next": "Multiple"
         },
@@ -565,9 +565,9 @@
             "GameState": 2,
             "Texts":
             [
-                "Ruru|||Ruru has always liked the way Lee treats everyone",
-                "Ruru|||but she can´t help but feel a little uneasy when he's near Park.",
-                "Ruru|||It feels as if he's always hiding something behind that smile..."
+                "RURU SPARK|||Ruru has always liked the way Lee treats everyone",
+                "RURU SPARK|||but she can´t help but feel a little uneasy when he's near Park.",
+                "RURU SPARK|||It feels as if he's always hiding something behind that smile..."
             ],
             "Next": "Multiple"
         },
@@ -577,9 +577,9 @@
             "GameState": 2,
             "Texts":
             [
-                "Ruru|||What? That witch actually messed around with my Park?",
-                "Ruru|||Ruru is gonna kill her!",
-                "Ruru|||How dare she mess with the destiny of a couple like ours!?"
+                "RURU SPARK|||What? That witch actually messed around with my Park?",
+                "RURU SPARK|||Ruru is gonna kill her!",
+                "RURU SPARK|||How dare she mess with the destiny of a couple like ours!?"
             ],
             "Next": "Multiple"
         }
@@ -590,8 +590,8 @@
             "GameState": 2,
             "Texts":
             [
-                "Ruru|||Oh Park, why did you leave me?",
-                "Ruru|||Was it that vixen that stole your life so we couldn't be together?"
+                "RURU SPARK|||Oh Park, why did you leave me?",
+                "RURU SPARK|||Was it that vixen that stole your life so we couldn't be together?"
             ],
             "Next": "Multiple"
         },
@@ -611,8 +611,8 @@
             "GameState": 3,
             "Texts":
             [
-                "Jung|||The guy is starting to lose it, he's becoming paranoic and accusing everyone.",
-                "Jung|||Look, one thing is to be suspicious and other is to threaten someone else without any basis."
+                "JUNG DAE SEO|||The guy is starting to lose it, he's becoming paranoic and accusing everyone.",
+                "JUNG DAE SEO|||Look, one thing is to be suspicious and other is to threaten someone else without any basis."
             ],
             "Next": "Multiple"
         },
@@ -622,10 +622,10 @@
             "GameState": 3,
             "Texts":
             [
-                "Jung|||What kind of manager... Wait no.",
-                "Jung|||What kind of person throws a blunt object at someone?",
-                "Jung|||Doesn't she know she call kill someone with that?",
-                "Jung|||Perhaps the hit didn't kill Park inmediately."
+                "JUNG DAE SEO|||What kind of manager... Wait no.",
+                "JUNG DAE SEO|||What kind of person throws a blunt object at someone?",
+                "JUNG DAE SEO|||Doesn't she know she call kill someone with that?",
+                "JUNG DAE SEO|||Perhaps the hit didn't kill Park inmediately."
             ],
             "Next": "Multiple"
         },
@@ -635,9 +635,9 @@
             "GameState": 3,
             "Texts":
             [
-                "Jung|||She's playing dumb but she knows perfectly well what she is doing,",
-                "Jung|||If I know one thing about stalkers is that they pay excessive attention to what they are obsesed with.",
-                "Jung|||She's no fool, don't trust her playing the victim..."
+                "JUNG DAE SEO|||She's playing dumb but she knows perfectly well what she is doing,",
+                "JUNG DAE SEO|||If I know one thing about stalkers is that they pay excessive attention to what they are obsesed with.",
+                "JUNG DAE SEO|||She's no fool, don't trust her playing the victim..."
             ],
             "Next": "Multiple"
         }
@@ -648,8 +648,8 @@
             "GameState": 3,
             "Texts":
             [
-                "Jung|||So he fell down now? He was the best dancer between the three of us,",
-                "Jung|||I can't picture him losing his balance, maybe it was because of the hit on the head by the manager..."
+                "JUNG DAE SEO|||So he fell down now? He was the best dancer between the three of us,",
+                "JUNG DAE SEO|||I can't picture him losing his balance, maybe it was because of the hit on the head by the manager..."
             ],
             "Next": "Multiple"
         },
@@ -662,8 +662,8 @@
             "GameState": 3,
             "Texts":
             [
-                "Lee|||He's hiding something, he has gotten impatient with everyone as time has passed...",
-                "Lee||| I'm not convinced he's innocent, it feels as if he's in a hurry for all of this to end..."
+                "LEE CHEE GO|||He's hiding something, he has gotten impatient with everyone as time has passed...",
+                "LEE CHEE GO||| I'm not convinced he's innocent, it feels as if he's in a hurry for all of this to end..."
             ],
             "Next": "Multiple"
         },
@@ -673,9 +673,9 @@
             "GameState": 3,
             "Texts":
             [
-                "Lee|||So she did hit him... ",
-                "Lee|||How can you be so sure that it wasn't the strike to the head that weakened and made him fall afterwards?",
-                "Lee|||Either way she's dangerous for just that reason alone..."
+                "LEE CHEE GO|||So she did hit him... ",
+                "LEE CHEE GO|||How can you be so sure that it wasn't the strike to the head that weakened and made him fall afterwards?",
+                "LEE CHEE GO|||Either way she's dangerous for just that reason alone..."
             ],
             "Next": "Multiple"
         },
@@ -685,8 +685,8 @@
             "GameState": 3,
             "Texts":
             [
-                "Lee|||We still don't know her intentions",
-                "Lee|||Or at least what she was planning to do here if she found Park alone..."
+                "LEE CHEE GO|||We still don't know her intentions",
+                "LEE CHEE GO|||Or at least what she was planning to do here if she found Park alone..."
             ],
             "Next": "Multiple"
         }
@@ -697,9 +697,9 @@
             "GameState": 3,
             "Texts":
             [
-                "Lee|||Even if he had his secrets,",
-                "Lee|||He still was my best friend and the one I held closest to my heart.",            
-                "Lee|||I will find the one who did this to him..."
+                "LEE CHEE GO|||Even if he had his secrets,",
+                "LEE CHEE GO|||He still was my best friend and the one I held closest to my heart.",            
+                "LEE CHEE GO|||I will find the one who did this to him..."
             ],
             "Next": "Multiple"
         },
@@ -712,9 +712,9 @@
             "GameState": 3,
             "Texts":
             [
-                "Assattari|||He needs to stop!",
-                "Assattari|||He just came here demanding to check my office and accusing me of taking 'It'.",
-                "Assattari|||I don't even know what he meant by 'It'..."
+                "ASSATTARI TARI|||He needs to stop!",
+                "ASSATTARI TARI|||He just came here demanding to check my office and accusing me of taking 'It'.",
+                "ASSATTARI TARI|||I don't even know what he meant by 'It'..."
             ],
             "Next": "Multiple"
         },
@@ -724,8 +724,8 @@
             "GameState": 3,
             "Texts":
             [
-                "Assattari|||Lee keeps asking me why I was moving the body and why didn't I call for help until Jung arrived on his own... ",
-                "Assattari|||I was just shocked... I had to act on my own, I thought I could save his life."
+                "ASSATTARI TARI|||Lee keeps asking me why I was moving the body and why didn't I call for help until Jung arrived on his own... ",
+                "ASSATTARI TARI|||I was just shocked... I had to act on my own, I thought I could save his life."
             ],
             "Next": "Multiple"
         },
@@ -735,9 +735,9 @@
             "GameState": 3,
             "Texts":
             [
-                "Assattari|||So she was the one responsible for the puddle...",
-                "Assattari|||As I feared she ended up causing trouble just by existing without any self control, and costing us Park... ",
-                "Assattari|||Hope she's happy now..."
+                "ASSATTARI TARI|||So she was the one responsible for the puddle...",
+                "ASSATTARI TARI|||As I feared she ended up causing trouble just by existing without any self control, and costing us Park... ",
+                "ASSATTARI TARI|||Hope she's happy now..."
             ],
             "Next": "Multiple"
         }
@@ -748,9 +748,9 @@
             "GameState": 3,
             "Texts":
             [
-                "Assattari|||He seemed tired when he came to say bye, and as he was about to leave, he fell down the stairs.",
-                "Assattari|||When I got to him, he was already dead, I tried moving him but he wouldn’t budge… ",           
-                "Assattari|||That’s when Jung came by..."
+                "ASSATTARI TARI|||He seemed tired when he came to say bye, and as he was about to leave, he fell down the stairs.",
+                "ASSATTARI TARI|||When I got to him, he was already dead, I tried moving him but he wouldn’t budge… ",           
+                "ASSATTARI TARI|||That’s when Jung came by..."
             ],
             "Next": "Multiple"
         },
@@ -763,8 +763,8 @@
             "GameState": 3,
             "Texts":
             [
-                "Ruru|||He's been glaring Ruru a lot lately, Ruru already said she's sorry.",
-                "Ruru|||Ruru didn't mean to cause trouble..."
+                "RURU SPARK|||He's been glaring Ruru a lot lately, Ruru already said she's sorry.",
+                "RURU SPARK|||Ruru didn't mean to cause trouble..."
             ],
             "Next": "Multiple"
         },
@@ -774,8 +774,8 @@
             "GameState": 3,
             "Texts":
             [
-                "Ruru|||He just came here asking Ruru if she had touched Park's body, and what were my intentions here...",
-                "Ruru|||Ruru couldn't answer he was very scary and unrecognizable..."
+                "RURU SPARK|||He just came here asking Ruru if she had touched Park's body, and what were my intentions here...",
+                "RURU SPARK|||Ruru couldn't answer he was very scary and unrecognizable..."
             ],
             "Next": "Multiple"
         },
@@ -785,9 +785,9 @@
             "GameState": 3,
             "Texts":
             [
-                "Ruru|||What? That witch actually messed around with my Park?",
-                "Ruru|||If she hadn't hit my Park with that stupid chicken maybe he wouldn't have fallen down the stairs because of Ruru's sweat... ",
-                "Ruru|||Yes it's all that witches fault!"
+                "RURU SPARK|||What? That witch actually messed around with my Park?",
+                "RURU SPARK|||If she hadn't hit my Park with that stupid chicken maybe he wouldn't have fallen down the stairs because of Ruru's sweat... ",
+                "RURU SPARK|||Yes it's all that witches fault!"
             ],
             "Next": "Multiple"
         }
@@ -798,10 +798,10 @@
             "GameState": 3,
             "Texts":
             [
-                "Ruru|||Were you waiting to tell Ruru something?",
-                "Ruru|||Why were you holding onto Ruru's letter?",
-                "Ruru|||What was going in your mind?",
-                "Ruru|||Ruru wishes she could hug you..."
+                "RURU SPARK|||Were you waiting to tell Ruru something?",
+                "RURU SPARK|||Why were you holding onto Ruru's letter?",
+                "RURU SPARK|||What was going in your mind?",
+                "RURU SPARK|||Ruru wishes she could hug you..."
             ],
             "Next": "Multiple"
         },
@@ -827,8 +827,8 @@
             "GameState": 4,
             "Texts":
             [
-                "Jung|||I was convinced he didn't have to do with the crime, but now I'm not so sure...",
-                "Jung|||Why was he hiding the Pin?"
+                "JUNG DAE SEO|||I was convinced he didn't have to do with the crime, but now I'm not so sure...",
+                "JUNG DAE SEO|||Why was he hiding the Pin?"
             ],
             "Next": "Multiple"
         },
@@ -838,8 +838,8 @@
             "GameState": 4,
             "Texts":
             [
-                "Jung|||If she didn't take the Pin then why was she moving the body?",
-                "Jung|||I was convinced she wanted that thing since it costs a lot!"
+                "JUNG DAE SEO|||If she didn't take the Pin then why was she moving the body?",
+                "JUNG DAE SEO|||I was convinced she wanted that thing since it costs a lot!"
             ],
             "Next": "Multiple"
         },
@@ -849,8 +849,8 @@
             "GameState": 4,
             "Texts":
             [
-                "Jung|||Don't believe anything she says!",
-                "Jung|||Even if she came here only for Parks phone why didn't she run away from the studio before all of this happened?"
+                "JUNG DAE SEO|||Don't believe anything she says!",
+                "JUNG DAE SEO|||Even if she came here only for Parks phone why didn't she run away from the studio before all of this happened?"
             ],
             "Next": "Multiple"
         }
@@ -861,7 +861,7 @@
             "GameState": 4,
             "Texts":
             [
-                "Jung|||The body is starting to smell weird, like gin, is it normal? It has only been a few hours..."
+                "JUNG DAE SEO|||The body is starting to smell weird, like gin, is it normal? It has only been a few hours..."
             ],
             "Next": "Multiple"
         },
@@ -874,8 +874,8 @@
             "GameState": 4,
             "Texts":
             [
-                "Lee|||You see, Jung wanted the Pin, that's why I didn't want to show the thing to you until now.",
-                "Lee|||I feared that he was looking for it to steal it, it costed me a fortune afterall..."
+                "LEE CHEE GO|||You see, Jung wanted the Pin, that's why I didn't want to show the thing to you until now.",
+                "LEE CHEE GO|||I feared that he was looking for it to steal it, it costed me a fortune afterall..."
             ],
             "Next": "Multiple"
         },
@@ -885,8 +885,8 @@
             "GameState": 4,
             "Texts":
             [
-                "Lee|||Looks like she had no idea about the Pin, my worry was misplaced on her.",
-                "Lee|||Still that won't change the fact that she dared hurt Park..."
+                "LEE CHEE GO|||Looks like she had no idea about the Pin, my worry was misplaced on her.",
+                "LEE CHEE GO|||Still that won't change the fact that she dared hurt Park..."
             ],
             "Next": "Multiple"
         },
@@ -896,7 +896,7 @@
             "GameState": 4,
             "Texts":
             [
-                "Lee|||Even if she didn't kill him on purpose, shouldn't she be hold accountable along with Assatari for crime?"
+                "LEE CHEE GO|||Even if she didn't kill him on purpose, shouldn't she be hold accountable along with Assatari for crime?"
             ],
             "Next": "Multiple"
         }
@@ -907,8 +907,8 @@
             "GameState": 4,
             "Texts":
             [
-                "Lee|||We just wanted to celebrate today and have our hairs done...",
-                "Lee|||Why did it turn out to be like this?"
+                "LEE CHEE GO|||We just wanted to celebrate today and have our hairs done...",
+                "LEE CHEE GO|||Why did it turn out to be like this?"
             ],
             "Next": "Multiple"
         },
@@ -921,8 +921,8 @@
             "GameState": 4,
             "Texts":
             [
-                "Assattari|||He seems oddly calm, as if he no longer has a need to be so neurotic or agressive.",
-                "Assattari|||Did it have something to do with the Pin?"
+                "ASSATTARI TARI|||He seems oddly calm, as if he no longer has a need to be so neurotic or agressive.",
+                "ASSATTARI TARI|||Did it have something to do with the Pin?"
             ],
             "Next": "Multiple"
         },
@@ -932,9 +932,9 @@
             "GameState": 4,
             "Texts":
             [
-                "Assattari|||What is he thinking hiding critical information from you?",
-                "Assattari|||It doesn't make sense, even if he wanted to save the Pin for its value...",
-                "Assattari|||If he truly cared about Park, wouldn't he help you completely from the start?"
+                "ASSATTARI TARI|||What is he thinking hiding critical information from you?",
+                "ASSATTARI TARI|||It doesn't make sense, even if he wanted to save the Pin for its value...",
+                "ASSATTARI TARI|||If he truly cared about Park, wouldn't he help you completely from the start?"
             ],
             "Next": "Multiple"
         },
@@ -944,9 +944,9 @@
             "GameState": 4,
             "Texts":
             [
-                "Assattari|||Get that psycho away from me! I just saw her lurking outside the office",
-                "Assattari|||I don't know what her intentions are,",
-                "Assattari|||But I don't want to deal with her considering the mess she carries around her being... "
+                "ASSATTARI TARI|||Get that psycho away from me! I just saw her lurking outside the office",
+                "ASSATTARI TARI|||I don't know what her intentions are,",
+                "ASSATTARI TARI|||But I don't want to deal with her considering the mess she carries around her being... "
             ],
             "Next": "Multiple"
         }
@@ -957,8 +957,8 @@
             "GameState": 4,
             "Texts":
             [
-                "Assattari|||The body seem's to be turning purple, is that normal?",
-                "Assattari|||Even for an internal bleeding it shouldn´t be like that..."
+                "ASSATTARI TARI|||The body seem's to be turning purple, is that normal?",
+                "ASSATTARI TARI|||Even for an internal bleeding it shouldn´t be like that..."
             ],
             "Next": "Multiple"
         },
@@ -971,8 +971,8 @@
             "GameState": 4,
             "Texts":
             [
-                "Ruru|||Ruru saw Jung enter the room before you arrived, he seemed in a hurry moving all the furniture around",
-                "Ruru|||Ruru was scared he would discover Ruru was here..."
+                "RURU SPARK|||Ruru saw Jung enter the room before you arrived, he seemed in a hurry moving all the furniture around",
+                "RURU SPARK|||Ruru was scared he would discover Ruru was here..."
             ],
             "Next": "Multiple"
         },
@@ -982,7 +982,7 @@
             "GameState": 4,
             "Texts":
             [
-                "Ruru|||He's so different Ruru can't even recognize him, at first Ruru thought he was cute but now Ruru can only feel fear towards him."
+                "RURU SPARK|||He's so different Ruru can't even recognize him, at first Ruru thought he was cute but now Ruru can only feel fear towards him."
             ],
             "Next": "Multiple"
         },
@@ -992,10 +992,10 @@
             "GameState": 4,
             "Texts":
             [
-                "Ruru|||It's all her fault! Ruru doesn't care if she's innocent!",
-                "Ruru|||She took Park away from Ruru even before he died...",
-                "Ruru|||Then...",
-                "Ruru|||Ruru will make sure to take her baby before I'm gone."
+                "RURU SPARK|||It's all her fault! Ruru doesn't care if she's innocent!",
+                "RURU SPARK|||She took Park away from Ruru even before he died...",
+                "RURU SPARK|||Then...",
+                "RURU SPARK|||Ruru will make sure to take her baby before I'm gone."
             ],
             "Next": "Multiple"
         }
@@ -1006,7 +1006,7 @@
             "GameState": 4,
             "Texts":
             [
-                "Ruru|||What is happening to my Park, his body looks weird as if he was going to become a grape..."
+                "RURU SPARK|||What is happening to my Park, his body looks weird as if he was going to become a grape..."
             ],
             "Next": "Multiple"
         },
@@ -1018,7 +1018,7 @@
             "GameState": 0,
             "Texts":
             [
-                "Jung|||The hell... What is this slimy thing on the stairs, it doesn't seem to be water..."
+                "JUNG DAE SEO|||The hell... What is this slimy thing on the stairs, it doesn't seem to be water..."
             ],
             "Next": "Multiple"
         },
@@ -1028,8 +1028,8 @@
             "GameState": 0,
             "Texts":
             [
-                "Lee|||When I got here, he was already covered in that slimy stuff.",
-                "Lee|||It has a familiar smell but I can't tell what it is exactly..."
+                "LEE CHEE GO|||When I got here, he was already covered in that slimy stuff.",
+                "LEE CHEE GO|||It has a familiar smell but I can't tell what it is exactly..."
             ],
             "Next": "Multiple"
         },
@@ -1039,9 +1039,9 @@
             "GameState": 0,
             "Texts":
             [
-                "Assattari|||I saw him slip and fall down the stairs because of that liquid.",
-                "Assattari|||I don't know if someone was there while I was talking with Park but",
-                "Assattari|||that puddle wasn´t there before he came into my office."
+                "ASSATTARI TARI|||I saw him slip and fall down the stairs because of that liquid.",
+                "ASSATTARI TARI|||I don't know if someone was there while I was talking with Park but",
+                "ASSATTARI TARI|||that puddle wasn´t there before he came into my office."
             ],
             "Next": "Multiple"
         },
@@ -1051,8 +1051,8 @@
             "GameState": 0,
             "Texts":
             [
-                "Ruru|||Eww...",
-                "Ruru|||Ruru doesn't know much about that stuff, it looks gross don't get it close to me! ..."
+                "RURU SPARK|||Eww...",
+                "RURU SPARK|||Ruru doesn't know much about that stuff, it looks gross don't get it close to me! ..."
             ],
             "Next": "Multiple"
         },
@@ -1066,9 +1066,9 @@
             "GameState": 0,
             "Texts":
             [
-                "Jung|||That's something Park gifted Assatari as a thanks for her support, he always picked weird stuff as a gift...",
-                "Jung|||Huh? It's a bit dented, that's a bit weird... ",
-                "Jung|||I wonder if Assatari let it fell down, she's pretty careful with everything in her office."
+                "JUNG DAE SEO|||That's something Park gifted Assatari as a thanks for her support, he always picked weird stuff as a gift...",
+                "JUNG DAE SEO|||Huh? It's a bit dented, that's a bit weird... ",
+                "JUNG DAE SEO|||I wonder if Assatari let it fell down, she's pretty careful with everything in her office."
             ],
             "Next": "Multiple"
         },
@@ -1078,9 +1078,9 @@
             "GameState": 0,
             "Texts":
             [
-                "Lee|||That chicken huh...",
-                "Lee|||It was a gift we gave Assatari as thanks for the wonderful work she had done for the band.",
-                "Lee|||It is made of a very strong glass, or at least that's what the shopkeeper said..."
+                "LEE CHEE GO|||That chicken huh...",
+                "LEE CHEE GO|||It was a gift we gave Assatari as thanks for the wonderful work she had done for the band.",
+                "LEE CHEE GO|||It is made of a very strong glass, or at least that's what the shopkeeper said..."
             ],
             "Next": "Multiple"
         },
@@ -1090,9 +1090,9 @@
             "GameState": 0,
             "Texts":
             [
-                "Assattari|||This...",
-                "Assattari|||It was a gift from the boys, it fell the other day from my desk.",
-                "Assattari|||I wasn't paying attention and dropped it. Everyone can be clumsy from time to time i guess..."
+                "ASSATTARI TARI|||This...",
+                "ASSATTARI TARI|||It was a gift from the boys, it fell the other day from my desk.",
+                "ASSATTARI TARI|||I wasn't paying attention and dropped it. Everyone can be clumsy from time to time I guess..."
             ],
             "Next": "Multiple"
         },
@@ -1102,11 +1102,11 @@
             "GameState": 0,
             "Texts":
             [
-                "Ruru|||Haha that's a funny chicken!",
-                "Ruru|||Ruru remembers she saw the band checking that thing out some months ago...",
-                "Ruru|||not that she was following them... Ruru just happened to walk by...",
-                "Ruru|||What a coincidence, don't you think?",
-                "Ruru|||Haha... Ruru was pretty lucky that day..."
+                "RURU SPARK|||Haha that's a funny chicken!",
+                "RURU SPARK|||Ruru remembers she saw the band checking that thing out some months ago...",
+                "RURU SPARK|||not that she was following them... Ruru just happened to walk by...",
+                "RURU SPARK|||What a coincidence, don't you think?",
+                "RURU SPARK|||Haha... Ruru was pretty lucky that day..."
             ],
             "Next": "Multiple"
         },
@@ -1121,7 +1121,7 @@
             "GameState": 0,
             "Texts":
             [
-                "Goatman Peterson|||This is the Studios Key, now i can enter that place. I wonder why it was locked..."
+                "GOATMAN PETERSON|||This is the Studios Key, now I can enter that place. I wonder why it was locked..."
             ],
             "Next": "End"
         },
@@ -1131,9 +1131,9 @@
             "GameState": 0,
             "Texts":
             [
-                "Goatman Peterson|||There is an exquicite collection of rare Pins in here...",
-                "Goatman Peterson|||Huh! Jung doesn't seem like a guy who would collect this kind of things",
-                "Goatman Peterson|||As always there is more to someone than meets the eye."
+                "GOATMAN PETERSON|||There is an exquicite collection of rare Pins in here...",
+                "GOATMAN PETERSON|||Huh! Jung doesn't seem like a guy who would collect this kind of things",
+                "GOATMAN PETERSON|||As always there is more to someone than meets the eye."
             ],
             "Next": "End"
         },
@@ -1143,8 +1143,8 @@
             "GameState": 0,
             "Texts":
             [
-                "Goatman Peterson|||Some hair cut and style magazines, it seems he's pretty interested in fashion.",
-                "Goatman Peterson|||There is also a jewerly magazine although this one seems to be quite trashed, maybe he carried that one around a lot."
+                "GOATMAN PETERSON|||Some hair cut and style magazines, it seems he's pretty interested in fashion.",
+                "GOATMAN PETERSON|||There is also a jewerly magazine although this one seems to be quite trashed, maybe he carried that one around a lot."
             ],
             "Next": "End"
         },
@@ -1154,11 +1154,11 @@
             "GameState": 0,
             "Texts":
             [
-                "Goatman Peterson|||Aside from that letter there are some photos of him and Lee, even one with Assatari....",
-                "Goatman Peterson|||None with Jung... that's curious.",
-                "Goatman Peterson|||There's also a magazine of... Bald Italian Men?",
-                "Goatman Peterson|||What a weird taste for a KStar, but who am I to judge I like to lick things, you could say I got an elaborate taste...",
-                "Goatman Peterson|||... I should stop making mental puns, it might be bad for my health"
+                "GOATMAN PETERSON|||Aside from that letter there are some photos of him and Lee, even one with Assatari....",
+                "GOATMAN PETERSON|||None with Jung... that's curious.",
+                "GOATMAN PETERSON|||There's also a magazine of... Bald Italian Men?",
+                "GOATMAN PETERSON|||What a weird taste for a KStar, but who am I to judge I like to lick things, you could say I got an elaborate taste...",
+                "GOATMAN PETERSON|||... I should stop making mental puns, it might be bad for my health"
             ],
             "Next": "End"
         },
@@ -1173,9 +1173,9 @@
             "GameState": 0,
             "Texts":
             [
-                "Jung|||The hell is this?",
-                "Jung|||Another of his crazy fan letters, he should just throw that away, who knows what sickening stuff is written there.",
-                "Jung|||Why was Park holding onto this?"
+                "JUNG DAE SEO|||The hell is this?",
+                "JUNG DAE SEO|||Another of his crazy fan letters, he should just throw that away, who knows what sickening stuff is written there.",
+                "JUNG DAE SEO|||Why was Park holding onto this?"
             ],
             "Next": "Multiple"
         },
@@ -1185,11 +1185,11 @@
             "GameState": 0,
             "Texts":
             [
-                "Lee|||That's Ruru's handwritting...",
-                "Lee|||What was Park thinking holding onto this?",
-                "Lee|||Perhaps... knowing him he was preparing some evidence for a restraint order",
-                "Lee|||I can't think of another reason of why he would keep a letter from her",
-                "Lee|||He threw the other gifts she sent as soon as he got them."
+                "LEE CHEE GO|||That's Ruru's handwritting...",
+                "LEE CHEE GO|||What was Park thinking holding onto this?",
+                "LEE CHEE GO|||Perhaps... knowing him he was preparing some evidence for a restraint order",
+                "LEE CHEE GO|||I can't think of another reason of why he would keep a letter from her",
+                "LEE CHEE GO|||He threw the other gifts she sent as soon as he got them."
             ],
             "Next": "Multiple"
         },
@@ -1199,8 +1199,8 @@
             "GameState": 0,
             "Texts":
             [
-                "Assattari|||... That girl again...",
-                "Assattari|||Kids these days messing around with nothing else to do and causing trouble with their naive and troublesome mindset.."
+                "ASSATTARI TARI|||... That girl again...",
+                "ASSATTARI TARI|||Kids these days messing around with nothing else to do and causing trouble with their naive and troublesome mindset.."
             ],
             "Next": "Multiple"
         },
@@ -1210,15 +1210,17 @@
             "GameState": 0,
             "Texts":
             [
-                "Ruru|||He was keeping my letter???",
-                "Ruru|||OMG! He truly loved me, he was about to confess himself to me, Ruru is sure of that! But...",
-                "Ruru|||What does it matter now?... he's DEAD...",
-                "Ruru|||You need to find the culprit",
-                "Ruru|||Ruru will make that trash pay for taking my Park from me!"
+                "RURU SPARK|||He was keeping my letter???",
+                "RURU SPARK|||OMG! He truly loved me, he was about to confess himself to me, Ruru is sure of that! But...",
+                "RURU SPARK|||What does it matter now?... he's DEAD...",
+                "RURU SPARK|||You need to find the culprit",
+                "RURU SPARK|||Ruru will make that trash pay for taking my Park from me!"
             ],
             "Next": "Multiple"
         },
         
+
+
 
         {
             "ID":"JungStudioRecorder1xU",
@@ -1226,52 +1228,225 @@
             "GameState": 0,
             "Texts":
             [
-                "Jung|||Tsk... Those two were always messing around with my hobby...",
-                "Jung|||So what if I like collecting Pins!",
-                "Jung|||It pisses me off when people messes around with stuff that's none of their business."
+                "JUNG DAE SEO|||Tsk... Those two were always messing around with my hobby...",
+                "JUNG DAE SEO|||So what if I like collecting Pins!",
+                "JUNG DAE SEO|||It pisses me off when people messes around with stuff that's none of their business."
             ],
             "Next": "Multiple"
         },
         {
-            "ID":"LeeRuruLoveLetter1xU",
+            "ID":"LeeStudioRecorder1xU",
             "Character": "Lee",
             "GameState": 0,
             "Texts":
             [
-                "Lee|||That's Ruru's handwritting...",
-                "Lee|||What was Park thinking holding onto this?",
-                "Lee|||Perhaps... knowing him he was preparing some evidence for a restraint order",
-                "Lee|||I can't think of another reason of why he would keep a letter from her",
-                "Lee|||He threw the other gifts she sent as soon as he got them."
+                "LEE CHEE GO|||I just wanted to mess around with Jung a little bit, and since Park and him have always been quite aggressive to each other,",
+                "LEE CHEE GO|||I thought it would be a nice way to poke him a little.",
+                "LEE CHEE GO|||I guess I thought it could help their relationship, we are a group you know...",
+                "LEE CHEE GO|||Or at least we were... Sigh..."
             ],
             "Next": "Multiple"
         },
         {
-            "ID":"AssattariRuruLoveLetter1xU",
+            "ID":"AssattariStudioRecorder1xU",
             "Character": "Assattari",
             "GameState": 0,
             "Texts":
             [
-                "Assattari|||... That girl again...",
-                "Assattari|||Kids these days messing around with nothing else to do and causing trouble with their naive and troublesome mindset.."
+                "ASSATTARI TARI|||The guys used to play pranks on one another, specially Lee to the other two...",
+                "ASSATTARI TARI|||I guess it is his way to express how much he wanted the group to work and enjoy themselves.",
+                "ASSATTARI TARI|||Behind scenes Park and Jung used to fight a lot..."
             ],
             "Next": "Multiple"
         },
         {
-            "ID":"RuruRuruLoveLetter1xU",
+            "ID":"RuruStudioRecorder1xU",
             "Character": "Ruru",
             "GameState": 0,
             "Texts":
             [
-                "Ruru|||He was keeping my letter???",
-                "Ruru|||OMG! He truly loved me, he was about to confess himself to me, Ruru is sure of that! But...",
-                "Ruru|||What does it matter now?... he's DEAD...",
-                "Ruru|||You need to find the culprit",
-                "Ruru|||Ruru will make that trash pay for taking my Park from me!"
+                "RURU SPARK|||Haha they are so cute! ",
+                "RURU SPARK|||They are lovely! Ruru wishes she were there, it would have been so fun...",
+                "RURU SPARK|||At least Ruru got to hear my Park's voice again..."
             ],
             "Next": "Multiple"
         },
 
 
+
+        {
+            "ID":"JungParkCellphone1xU",
+            "Character": "Jung",
+            "GameState": 0,
+            "Texts":
+            [
+                "JUNG DAE SEO|||That diva used to like taking photos for no reason",
+                "JUNG DAE SEO|||Both Lee and I had to drag him around to stop him from taking photos with everyone...",
+                "JUNG DAE SEO|||I saw them taking that selfie this morning, I had to shout them to hurry up to enter the studio for practice..."
+            ],
+            "Next": "Multiple"
+        },
+        {
+            "ID":"LeeParkCellphone1xU",
+            "Character": "Lee",
+            "GameState": 0,
+            "Texts":
+            [
+                "LEE CHEE GO|||Ugh... Ruru had his cellphone, that's just...",
+                "LEE CHEE GO|||Anyway, he wanted to take a selfie to thank me for the Pin I had gifted him",
+                "LEE CHEE GO|||That was the thing we were gonna use to mess around with Jung, part of the joke was to take the pic and send it to him...",
+                "LEE CHEE GO|||Could it be that we took the joke too far?... It can't be..."
+            ],
+            "Next": "Multiple"
+        },
+        {
+            "ID":"AssattariParkCellphone1xU",
+            "Character": "Assattari",
+            "GameState": 0,
+            "Texts":
+            [
+                "ASSATTARI TARI|||That's the thing he was wearing during the whole day! I was wondering why he was wearing that thing.",
+                "ASSATTARI TARI|||Park never liked jewerly, and only wore the stuff Lee asked him to put on. I even gave him a necklace and not once did he use it..."
+            ],
+            "Next": "Multiple"
+        },
+        {
+            "ID":"RuruParkCellphone1xU",
+            "Character": "Ruru",
+            "GameState": 0,
+            "Texts":
+            [
+                "RURU SPARK|||Hmmmm, they look cute. Ruru doesn't like that boy was standing so close to my Park.",
+                "RURU SPARK|||Jeez why can't he keep his hands off my Park!"
+            ],
+            "Next": "Multiple"
+        },
+
+
+
+        {
+            "ID":"JungStandardPin1xU",
+            "Character": "Jung",
+            "GameState": 0,
+            "Texts":
+            [
+                "JUNG DAE SEO|||So Lee had it? Tsk...",
+                "JUNG DAE SEO|||Yeah that Pin is pretty rare, there are only three in the world and the other two already have an owner in other parts of the world.",
+                "JUNG DAE SEO|||I wanted to get a hold of it but Lee seemed to know and got it faster than me, just to poke fun at me...",
+                "JUNG DAE SEO|||I'm just wondering why didn't he tell you he had it from the beggining?"
+            ],
+            "Next": "Multiple"
+        },
+        {
+            "ID":"LeeStandardPin1xU",
+            "Character": "Lee",
+            "GameState": 0,
+            "Texts":
+            [
+                "LEE CHEE GO|||I took it from Park's body because this thingy is a pretty expensive one",
+                "LEE CHEE GO|||I didn't want to be stolen by anyone, either the Police or some here in the studio..."
+            ],
+            "Next": "Multiple"
+        },
+        {
+            "ID":"AssattariStandardPin1xU",
+            "Character": "Assattari",
+            "GameState": 0,
+            "Texts":
+            [
+                "ASSATTARI TARI|||Yes that was the thing he was wearing on his chest",
+                "ASSATTARI TARI|||Although I though I had dented it when I hit Park with the Diamond Chicken",
+                "ASSATTARI TARI|||I guess it was my imagination, to be fair I was pretty flustered at that moment."
+            ],
+            "Next": "Multiple"
+        },
+        {
+            "ID":"RuruStandardPin1xU",
+            "Character": "Ruru",
+            "GameState": 0,
+            "Texts":
+            [
+                "RURU SPARK|||What? Another Pin? But Ruru thought she had the only Pin...",
+                "RURU SPARK|||...",
+                "RURU SPARK|||...",
+                "RURU SPARK|||Ruru is sorry!! Ruru was just too scared... Ruru didn't want to jump on conclusions and Jung seems to scary to confront...",
+                "RURU SPARK|||Ruru didn't know what to do...",
+                "RURU SPARK|||Here you can have it..."
+            ],
+            "Next": "Multiple"
+        },
+
+
+
+        
+
+        {
+            "ID":"JungPoisonedPin1xU",
+            "Character": "Jung",
+            "GameState": 0,
+            "Texts":
+            [
+                "JUNG DAE SEO|||That's... another Pin?",
+                "JUNG DAE SEO|||What is going on?",
+                "JUNG DAE SEO|||I thought there were only 3 in the world and I'm sure the other two are with their respective owners...",
+                "JUNG DAE SEO|||I...I don't know where this Pin came from..."
+            ],
+            "Next": "Multiple"
+        },
+        {
+            "ID":"LeePoisonedPin1xU",
+            "Character": "Lee",
+            "GameState": 0,
+            "Texts":
+            [
+                "LEE CHEE GO|||What?",
+                "LEE CHEE GO|||There's another Pin? But...I bought the last one available and I gave it to you!",
+                "LEE CHEE GO|||Besides this one is dented..."
+            ],
+            "Next": "Multiple"
+        },
+        {
+            "ID":"AssattariPoisonedPin1xU",
+            "Character": "Assattari",
+            "GameState": 0,
+            "Texts":
+            [
+                "ASSATTARI TARI|||That's the one I saw this afternoon...",
+                "ASSATTARI TARI|||So I wasn´t wrong, I did dent it",
+                "ASSATTARI TARI|||Why are there two Pins?"
+            ],
+            "Next": "Multiple"
+        },
+        {
+            "ID":"RuruPoisonedPin1xU",
+            "Character": "Ruru",
+            "GameState": 0,
+            "Texts":
+            [
+                "RURU SPARK|||Ru... Ruru can explain...",
+                "RURU SPARK|||Ruru saw Jung hiding this Pin in the studio while she was concealed in the closet, Ruru got curious and took it.",
+                "RURU SPARK|||Later on when Ruru was found, he came here a couple of times and asked if Ruru had taken something, Ruru had to play dumb, Ruru was terrified...",
+                "RURU SPARK|||Ruru has nothing to do with that thing!"
+            ],
+            "Next": "Multiple"
+        },
+
+
+
+
+
+
+
+        {
+            "ID":"SGoatman0xErr",
+            "Character": "Goatman",
+            "GameState": 0,
+            "Texts":
+            [
+                "GOATMAN PETERSON|||Oh baby! This door requires a KEY! Maybe I should kick the door with my Goat Powers...",
+                "GOATMAN PETERSON|||Mmm... No, no ... Must... Resist... Stupidity Impulse..."
+            ],
+            "Next": "End"
+        }
     ]
 }

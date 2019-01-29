@@ -18,21 +18,37 @@ class InteractionManagement
      */
     interact(interactionObject)
     {
-        let theType;
-        //console.log("You want to interact with: "+interactionObject);
-        if(interactionObject == "hallDoor" || interactionObject == "officeDoor" || interactionObject == "studioDoor" || interactionObject == "dressromDoor" 
-        || interactionObject == "offToHall" || interactionObject == "studioToHall" || interactionObject == "dressToHall")
-        {
-            theType = "Doors";
-        }
-        else if(interactionObject == "Park" || interactionObject == "Jung" || interactionObject == "Assattari" || interactionObject == "Lee" || interactionObject == "Ruru")
-        {
-            theType = "Suspects";  
-        }
+        console.log("Interacting with: "+interactionObject);
         if(GameManager.canMove == true)
         {
-            // We interact with a character
-            this.interactWithClue(theType, interactionObject);
+            if(interactionObject == "hallDoor" || interactionObject == "officeDoor" || interactionObject == "studioDoor" || interactionObject == "dressromDoor" 
+            || interactionObject == "offToHall" || interactionObject == "studioToHall" || interactionObject == "dressToHall")
+            {
+                if(interactionObject == "studioDoor" && playerNotebook.hasTheKey == false) // If we try to enter the studio but we don't have the key
+                {
+                    //dialogueManager.startDialogue("SPet0xErr");
+                    currentPlayerHUD.showNewNoteMessage();
+                }
+                else
+                {
+                    this.interactDoors(interactionObject);
+                }
+            }
+            else
+            {
+
+            }
+            /**  
+            else if(interactionObject == "Park" || interactionObject == "Jung" || interactionObject == "Assattari" || interactionObject == "Lee" 
+            || interactionObject == "Ruru")
+            {
+
+            }
+            else if(interactionObject == "Chicken Diamondo")
+            {
+
+            }
+            */
         }
     }
 
@@ -43,28 +59,21 @@ class InteractionManagement
      */
     interactWithClue(type, interactionObject)
     {
-        if(type == "Doors")
+        let clue = playerNotebook.searchClue(type, interactionObject);
+        let dialogueID;
+        if(clue.name == "Park" && GameManager.stateOfGame == 0)
+            GameManager.stateOfGame = 1;     
+        dialogueID = clue.getCurrentInitialDialogue();
+        
+        if(interactionObject == "Park" && clue.discovered == true)
         {
-            this.interactDoors(interactionObject);
+            currentDialogueHUD.openParkOptions(false);
+            GameManager.canMove = false;
         }
         else
         {
-            let clue = playerNotebook.searchClue(type, interactionObject);
-            let dialogueID;
-            if(clue.name == "Park" && GameManager.stateOfGame == 0)
-                GameManager.stateOfGame = 1;     
-            dialogueID = clue.getCurrentInitialDialogue();
-            
-            if(interactionObject == "Park" && clue.discovered == true)
-            {
-                currentDialogueHUD.openParkOptions(false);
-                GameManager.canMove = false;
-            }
-            else
-            {
-                dialogueManager.startDialogue(dialogueID);
-                currentDialogueHUD.currentPersonTalkingTo = clue;
-            }
+            dialogueManager.startDialogue(dialogueID);
+            currentDialogueHUD.currentPersonTalkingTo = clue;
         }
     }
 
@@ -88,9 +97,14 @@ class InteractionManagement
         }
     }
 
+    /**
+     * Method that creates the Scene Name and then loads the scene
+     * @param {*Name of the new Scene to switch to} interactionObject 
+     */
     interactDoors(interactionObject)
     {
         let newSceneName;
+        let clueName;
         if(interactionObject == "offToHall" || interactionObject == "studioToHall" || interactionObject == "dressToHall")
         {
             newSceneName = "HallScene";
@@ -110,9 +124,16 @@ class InteractionManagement
                 break;
             }
         }
-        loadScene(newSceneName, true);
+        clueName = newSceneName.slice(0, newSceneName.length-5);
+        playerNotebook.discoverClue(clueName);
+
+        loadScene(newSceneName);
     }
 
+    /**
+     * Method that opens the notebook
+     * @param {*True if we want to open it. False if we want to close it} newValue 
+     */
     openNotebook(newValue)
     {
         if(newValue == true)
@@ -128,19 +149,6 @@ class InteractionManagement
             currentScene.scene.switch(previousScene);
             currentScene = previousScene;
             previousScene = "UINotebook";
-        }
-    }
-
-    nextDialogue()
-    {
-        // We first check if we are already writing some text. If yes we skip. If not we pass to the next option
-        if(currentDialogueHUD.isWriting == true) 
-        {
-            currentDialogueHUD.skipText();
-        }
-        else
-        {
-            dialogueManager.checkNextD();
         }
     }
 }

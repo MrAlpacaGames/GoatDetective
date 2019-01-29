@@ -10,6 +10,11 @@ class HUDManager
         // Highlight of the Notebook button
         this.noteHigh;        
 
+        // New Note Message
+        this.newNoteMessage;
+
+        this.canShowMessage = true;
+
         //-----------------------------
         // GAME OVER SCREEN
         //----------------------------
@@ -29,6 +34,7 @@ class HUDManager
         currentScene.load.image('BotonAgendaHigh', 'assets/sprites/HUD/BotonAgendaIluminado.png');
         currentScene.load.image('GameOver', 'assets/sprites/HUD/WinLoseScreens/GameOver.png');
         currentScene.load.image('Winner', 'assets/sprites/HUD/WinLoseScreens/Victory.png');
+        currentScene.load.image('NewNote', 'assets/sprites/HUD/BotonAcusar.png');
     }
 
     /**
@@ -69,6 +75,8 @@ class HUDManager
          this.assignBehaviour(this.titleScreen, "Title");
 
          this.openSpecialScreen(false, false);
+
+         this.newNoteMessage = currentScene.add.image(topBackgroundXOrigin, topBackgroundYOrigin+305, 'NewNote');
     }
 
     /**
@@ -148,6 +156,40 @@ class HUDManager
     losingAction(isTitle)
     {
         GameManager.HUDInteracted = false;
+    }
+
+    showNewNoteMessage()
+    {
+        // From 305 to 235 and back
+        if(this.canShowMessage == true)
+        {
+            currentScene.tweens.killAll();
+            var tween = currentScene.tweens.add({
+                targets: this.newNoteMessage,
+                y: topBackgroundYOrigin+235,
+                duration: 600,
+                onStart: function(){
+                    console.log("New Value is: "+false);
+                    currentPlayerHUD.canShowMessage = false;     
+                }
+            });
+            var tween = currentScene.tweens.add({
+                targets: this.newNoteMessage,
+                y: topBackgroundYOrigin+305,
+                delay: 1200,
+                duration: 600,
+                onComplete: function(){
+                    console.log("New Value is: "+true);
+                    currentPlayerHUD.canShowMessage = true;     
+                }
+            });
+        }
+    }
+
+    setShowMessage(newValue)
+    {
+        console.log("New Value is: "+newValue);
+        this.canShowMessage = newValue;
     }
 
     /**

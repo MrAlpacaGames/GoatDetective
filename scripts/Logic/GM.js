@@ -20,6 +20,24 @@ class GM
         this.caseSolution = ["Lee", "VenomousPin"];
     }
 
+    /**
+     * Method that tries to solve the mystery. If the human and weapon are correct we open the winner window. If not
+     * We open the Game Over Window
+     * @param {*Person who killed Park} Human 
+     * @param {*Weapon used to kill Park} Weapon 
+     */
+    solveGame(Human, Weapon)
+    {
+        if(Human == this.caseSolution[0] && Weapon == this.caseSolution[1])
+        {
+            // YOU WIN THE GAME
+        }
+        else
+        {
+            // YOU LOSE THE GAME
+        }
+    }
+
     
 
     

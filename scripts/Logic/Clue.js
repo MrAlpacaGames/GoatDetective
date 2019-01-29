@@ -7,6 +7,8 @@ class Clue
         //---------------------------
         // Name of the Clue
         this.name = theName;
+        // Full Name of the Clue
+        this.fullName;
         // Index of the Clue
         this.index = clueIndex;
         // Array of descriptions of the clue
@@ -21,16 +23,6 @@ class Clue
         this.initialDialogues = [];
         // Initial Dialogues Current Index
         this.inDialoguesIndex = 0;
-
-        //---------------------------------
-        // Array of index of the dialogues
-        //--------------------------------
-        this.suspect1Dialogues;
-        this.suspect2Dialogues;
-        this.suspect3Dialogues;
-        this.suspect4Dialogues;
-
-        this.weaponsDialogues;
     }
 
     //------------------------------

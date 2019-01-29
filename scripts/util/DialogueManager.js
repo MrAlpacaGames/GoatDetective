@@ -9,24 +9,14 @@ class DialogueManager
             var actual_JSON = JSON.parse(response);
         });
 
-        this.sDialogues;
+        // Dialogues Hash Table
+        this.dialoguesHashTable;
+
+        // Notes Hash Table
+        this.notesHashTable;
 
         // Current Active Dialogue
         this.currentDialogue;
-
-        // This is the lvl of the conversation.
-        // Level 0 = Single Dialog, showing text and next option
-        // Level 1 = Multiple Dialog - Level 1. We show Dialogue options:
-        //  a) Repeat last dialogue, b) Ask about a person, c) Ask about a place or d) Ask about a weapon
-        // Level 2 = Multiple Dialog - Level 2. We show the names of the characters, places or weapons. 
-        this.currentDialogueLvl = 0;
-
-        // Clues List of Requirements and Order of Dialogues
-        this.parkIDs;
-        this.jungIDs;
-        this.leeIDs;
-        this.ruruIDs;
-        this.assattariIDs;        
     }
 
     //-----------------------------------------
@@ -42,7 +32,7 @@ class DialogueManager
         var xobj = new XMLHttpRequest();
         xobj.overrideMimeType("application/json");
         xobj.open('GET', 'data/SingleDialogues.json', true); // Replace 'my_data' with the path to your file
-        xobj.open('GET', 'data/Requirements.json', true); // Replace 'my_data' with the path to your file
+        xobj.open('GET', 'data/Notes.json', true); // Replace 'my_data' with the path to your file
 
         xobj.onreadystatechange = function () {
             if (xobj.readyState == 4 && xobj.status == "200") {
@@ -58,8 +48,8 @@ class DialogueManager
      */
     preloadJson()
     {
-        currentScene.load.json('singleD', 'data/SingleDialogues.json');
-        currentScene.load.json('requirements', 'data/Requirements.json');
+        currentScene.load.json('dialogues', 'data/SingleDialogues.json');
+        currentScene.load.json('notes', 'data/Notes.json');
     }
 
     /**
@@ -67,17 +57,15 @@ class DialogueManager
      */
     createDialogues()
     {
-        let sData = currentScene.cache.json.get('singleD').SingleDialogues;
-        let requirData = currentScene.cache.json.get('requirements');
-        this.parkIDs = requirData.Park;
-        this.jungIDs = requirData.Jung;
+        let sData = currentScene.cache.json.get('dialogues').SingleDialogues;
+        let nData = currentScene.cache.json.get('notes');
 
-        this.sDialogues = new HashTable();
+        this.dialoguesHashTable = new HashTable();
         
         sData.forEach(temp => 
         {
-            let newD = new Dialogue(temp.ID, temp.Character, temp.GameState, temp.Texts, temp.Next);
-            this.sDialogues.add(newD.ID, newD);
+            let newD = new Dialogue(temp.ID, temp.Character, temp.Name, temp.GameState, temp.Texts, temp.Next);
+            this.dialoguesHashTable.add(newD.ID, newD);
         });
     }
 
@@ -87,7 +75,7 @@ class DialogueManager
      */
     startDialogue(DialogueID)
     {
-        this.currentDialogue = this.sDialogues.get(DialogueID);
+        this.currentDialogue = this.dialoguesHashTable.get(DialogueID);
         if(currentDialogueHUD.isEnabled === false)
         {
             GameManager.canMove = false;
@@ -131,7 +119,6 @@ class DialogueManager
                 {
                     let name = this.currentDialogue.Character;
                     playerNotebook.discoverClue(name);
-                    playerNotebook.playDiscoverSFX();
                     playerNotebook.dialoguesTaken.add(this.currentDialogue.ID);
                     (nextAction == "DiscoverEnd") ? currentDialogueHUD.enableDialogueUI(false): currentDialogueHUD.enableMultiple();
                 }
