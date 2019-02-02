@@ -12,7 +12,9 @@ class DialogueManager
         // Dialogues Hash Table
         this.dialoguesHashTable;
 
-        // Notes Hash Table
+        //------------------
+        // NOTES HASH TABLE
+        //------------------        
         this.notesHashTable;
 
         // Current Active Dialogue
@@ -58,14 +60,19 @@ class DialogueManager
     createDialogues()
     {
         let sData = currentScene.cache.json.get('dialogues').SingleDialogues;
-        let nData = currentScene.cache.json.get('notes');
+        let nData = currentScene.cache.json.get('notes').Notes;
 
         this.dialoguesHashTable = new HashTable();
+        this.notesHashTable = new HashTable();
         
         sData.forEach(temp => 
         {
-            let newD = new Dialogue(temp.ID, temp.Character, temp.Name, temp.GameState, temp.Texts, temp.Next);
+            let newD = new Dialogue(temp.ID, temp.Character, temp.GameState, temp.Texts, temp.Next);
             this.dialoguesHashTable.add(newD.ID, newD);
+        });
+
+        nData.forEach(temp => {
+            this.notesHashTable.add(temp.ClueName, temp);
         });
     }
 
@@ -118,8 +125,12 @@ class DialogueManager
                 if(nextAction == "DiscoverEnd" || nextAction == "DiscoverMultiple")
                 {
                     let name = this.currentDialogue.Character;
-                    playerNotebook.discoverClue(name);
-                    playerNotebook.dialoguesTaken.add(this.currentDialogue.ID);
+                    let theClue = currentDialogueHUD.currentPersonTalkingTo;
+                    if(theClue.discovered == false)
+                    {
+                        playerNotebook.discoverClue(theClue);
+                        playerNotebook.dialoguesTaken.add(this.currentDialogue.ID);
+                    }
                     (nextAction == "DiscoverEnd") ? currentDialogueHUD.enableDialogueUI(false): currentDialogueHUD.enableMultiple();
                 }
                 else if(nextAction == "End")  // We check if the next action is End. If it is we close the dialog.

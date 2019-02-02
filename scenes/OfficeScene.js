@@ -68,6 +68,8 @@ class OfficeScene extends Phaser.Scene
         this.clickFx = spriteManager.createClickFx();    
         this.input.on('pointerdown', () => spriteManager.clickEffect(this.clickFx, this.input.activePointer));
 
+        onSceneEnterNotebook(this.scene.key);
+
     }
 
 }

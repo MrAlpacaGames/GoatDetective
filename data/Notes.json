@@ -1,78 +1,178 @@
 {
-    "Humans":
+    "Notes":
     [
         {
-            "Character": "Park",
-            "Notes": 
+            "ClueName": "Sweaty Puddle",
+            "Notes":
             [
-                "Multiple injuries in his body"
+                "A mysteious slime found on the stairs of the main hall.",
+                "It starts as a puddle near the manager's Office",
+                "Peculiar smell, makes me think twice if I should lick it...",
+                "It seems Park slipped on it and fell down because of it...\n",
+                "Tentative Weapon"
             ]
         },
         {
-            "Character": "Jung",
-            "Notes": 
+            "ClueName": "Chicken Diamando",
+            "Notes":
             [
-                ""
+                "A weird chicken made of strong glass & diamonds... Seems expensive.",
+                "Licked the Chicken, it seems to have a vague taste of blood...",
+                "I has some dents on it, it looks like it fell or hit something hard.\n",
+                "Potential Weapon"
             ]
         },
         {
-            "Character": "Assattari",
-            "Notes": 
+            "ClueName": "Ruru Love Letter",
+            "Notes":
             [
-                ""
+                "It's a love letter from Ruru found in Park's Drawer:\n",
+                "Dear Park",
+                "My love for you is bigger than the universe, I would do anything for you... Anything!",
+                "Even kill, that's the strength of my love."
             ]
         },
         {
-            "Character": "Lee",
-            "Notes": 
+            "ClueName": "Studio Record",
+            "Notes":
             [
-                ""
+                "A recording of a conversation between Park & Lee\n",
+                "- Lee: It will be fun!",
+                "- Park: You know I don't like wearing jewerly",
+                "- Lee: It's to celebrate todays event.",
+                "- Park: Still, I don't see the point on wearing it the whole day.",
+                "- Lee: If Jung sees you he will probably be pissed...",
+                "- Park: ... Really? Haha if that's the case let's do it!",
+                "- Lee: Remember... Don't take it off"
             ]
         },
         {
-            "Character": "Ruru",
-            "Notes": 
+            "ClueName": "Park Cellphone",
+            "Notes":
             [
-                ""
-            ]
-        }
-    ],
-    "Weapons1":
-    [
-        {
-            "Character": "ChickenDiamondo",
-            "Notes": 
-            [
-                "That Chicken Diamondo"
+                "Park's cellphone with a selfie, he seems to be wearing a Pin on his jacket, the position of that Pin matches the place of the injury on his chest"
             ]
         },
         {
-            "Character": "Jung",
-            "Notes": 
+            "ClueName": "Rare Pin",
+            "Notes":
             [
-                ""
+                "An Exclusive Deluxe Super Hyper Extra Legacy Rare Pin Edition... ",
+                "Who comes up with the names for these things... It's really expensive.",
+                "There's no trace of Park's blood on this Pin... Weird\n",
+                "Possible Weapon"
             ]
         },
         {
-            "Character": "Assattari",
-            "Notes": 
+            "ClueName": "Mysterious Poisoned Pin",
+            "Notes":
             [
-                ""
+                "A copy of the first Pin",
+                "It's dented on one of it's corners and it has some trails of Park's blood.",
+                "There's poison on it's needle, why is there a fake Pin?\n",
+                "Feasible Weapon!"
+            ]
+        },
+
+
+
+
+
+
+        {
+            "ClueName": "Office",
+            "Notes":
+            [
+                "This is the Manager's Office\n",
+                "I can feel the oppressive air of order and power here.\n",
+                "Command and hierarchy can be tasted in everycorner of this place.\n",
+                "There's a strange air of conflict and agitation here..."
             ]
         },
         {
-            "Character": "Lee",
-            "Notes": 
+            "ClueName": "Hall",
+            "Notes":
             [
-                ""
+                "The main hall of the studio.\n",
+                "This is where Park's body was found and it seems to be the place were he died.\n",
+                "It is a pretty elegant place filled with lots of stuff of the band, Trophies & Posters."
             ]
         },
         {
-            "Character": "Ruru",
-            "Notes": 
+            "ClueName": "Dressroom",
+            "Notes":
             [
-                ""
+                "Dressroom huh? Look's more like a dark cave where darkness is bred.\n",
+                "There's some interesting stuff from the band members here.\n",
+                "There might be some clues around here."
             ]
-        }
-    ]
+        },
+        {
+            "ClueName": "Studio",
+            "Notes":
+            [
+                "The record studio.\n",
+                "I wonder why was this place locked?\n",
+                "It looks very cool though there's a strange scent...",
+                "Where have I sensed it... I wonder."
+            ]
+        },
+
+
+        
+        {
+            "ClueName": "Jung",
+            "Notes":
+            [
+                "Tough guy. Dislikes Park and doesn't think much of the others.",
+                "Pretty agressive sometimes...",
+                "He has been wandering around the studio a lot...",
+                "So he stole the fake Pin from Park's body, is he innocent?"
+            ]
+        },
+        {
+            "ClueName": "Assattari",
+            "Notes":
+            [
+                "Orderly and rational, clearly the adult of the group.",
+                "She actually hit Park... Violent when enraged.",
+                "An office affair with Park, quite unexpected.",
+                "She's very wary of Ruru",
+                "Wonder if she will be okay raising her baby."
+            ]
+        },
+        {
+            "ClueName": "Ruru",
+            "Notes":
+            [
+                "Curious little girl... a bit creepy when angered.",
+                "Strong animosity towards Assatari.. No wonder.",
+                "She's in shock for being part of Park's death",
+                "She's in delusion, her mind is breaking...",
+                "She's resentful and spiteful. She's dangerous"
+            ]
+        },
+        {
+            "ClueName": "Lee",
+            "Notes":
+            [
+                "The loss of his friend has affected him a lot...",
+                "Aimless and nihilistic, poor guy.",
+                "The paranoia is taking over his mind...",
+                "Must pay attention, this guy is planning something",
+                "He has something to do with those Pins"
+            ]
+        },
+        {
+            "ClueName": "Park",
+            "Notes":
+            [
+                "Dead, was it an accident, a suicide or a murder?",
+                "Some of the bruises were caused by the Diamondo Chicken",
+                "He slipped on Rurus sweat, maybe the fall killed him",
+                "He's turned purple, why? Is it poison?",
+                "He was poisoned through the sting on his chest!"
+            ]
+        }        
+    ] 
 }

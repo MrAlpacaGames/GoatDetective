@@ -19,7 +19,7 @@ const gameConfig =
             }
         }
     },
-    scene: [/*BootScene, MainMenu,*/ HallScene, OfficeScene,DressroomScene, StudioScene, UINotebook]
+    scene: [/*BootScene,*/ MainMenu, HallScene, OfficeScene,DressroomScene, StudioScene, UINotebook]
 };
 
 //---------------------------------------------
@@ -52,6 +52,9 @@ var previousScene;
 
 // Flag to delay scene switching after we change scene
 var canSceneSwitch = true;
+
+// Flag to notify if the notebook has been opened before or not
+var notebookOpened = false;
 
 //---------------------------------------------
 // Global Scripts
@@ -209,7 +212,7 @@ function loadScene(newScene)
 
         let timedEvent = currentScene.time.delayedCall(150, function(){
             canSceneSwitch = true;
-            } , currentScene);
+        } , currentScene);
     }
 }
 
@@ -226,9 +229,17 @@ function openNotebook(newValue)
 
         let timedEvent = currentScene.time.delayedCall(150, function(){
             canSceneSwitch = true;
-            if(destScene.scene.key == "UINotebook") notebookSpriteManager.updateOnOpen();
-            } , currentScene);
+            if(notebookOpened == true)
+                if(destScene.scene.key == "UINotebook") notebookSpriteManager.updateOnOpen();
+        } , currentScene);
     }
+}
+
+function onSceneEnterNotebook(newSceneName)
+{
+    let sceneName = newSceneName.slice(0, newSceneName.length-5);
+    let theClue = playerNotebook.getClue(sceneName);
+    playerNotebook.discoverClue(theClue);
 }
 
 function getScene(sceneName)

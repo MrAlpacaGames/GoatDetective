@@ -89,6 +89,7 @@ class HallScene extends Phaser.Scene
 
         }
 
+        onSceneEnterNotebook(this.scene.key);
         this.beginScene();
     }
 

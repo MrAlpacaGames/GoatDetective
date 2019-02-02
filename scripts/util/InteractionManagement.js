@@ -26,8 +26,7 @@ class InteractionManagement
             {
                 if(interactionObject == "studioDoor" && playerNotebook.hasTheKey == false) // If we try to enter the studio but we don't have the key
                 {
-                    //dialogueManager.startDialogue("SPet0xErr");
-                    currentPlayerHUD.showNewNoteMessage();
+                    dialogueManager.startDialogue("SGoatman0xErr");
                 }
                 else
                 {
@@ -36,35 +35,22 @@ class InteractionManagement
             }
             else
             {
-
+                this.interactWithClue(interactionObject);               
             }
-            /**  
-            else if(interactionObject == "Park" || interactionObject == "Jung" || interactionObject == "Assattari" || interactionObject == "Lee" 
-            || interactionObject == "Ruru")
-            {
-
-            }
-            else if(interactionObject == "Chicken Diamondo")
-            {
-
-            }
-            */
         }
     }
 
     /**
      * Searchs for the ID of the clue and starts a Dialogue
-     * @param {*Type of the Clue that we are interacting.} type 
      * @param {*Name of the object that we are interacting with} interactionObject 
      */
-    interactWithClue(type, interactionObject)
+    interactWithClue(interactionObject)
     {
-        let clue = playerNotebook.searchClue(type, interactionObject);
+        let clue = playerNotebook.getClue(interactionObject);
         let dialogueID;
+        
         if(clue.name == "Park" && GameManager.stateOfGame == 0)
             GameManager.stateOfGame = 1;     
-        dialogueID = clue.getCurrentInitialDialogue();
-        
         if(interactionObject == "Park" && clue.discovered == true)
         {
             currentDialogueHUD.openParkOptions(false);
@@ -72,6 +58,7 @@ class InteractionManagement
         }
         else
         {
+            dialogueID = clue.getCurrentInitialDialogue();
             dialogueManager.startDialogue(dialogueID);
             currentDialogueHUD.currentPersonTalkingTo = clue;
         }
@@ -105,6 +92,7 @@ class InteractionManagement
     {
         let newSceneName;
         let clueName;
+        let theClue;
         if(interactionObject == "offToHall" || interactionObject == "studioToHall" || interactionObject == "dressToHall")
         {
             newSceneName = "HallScene";
@@ -124,31 +112,6 @@ class InteractionManagement
                 break;
             }
         }
-        clueName = newSceneName.slice(0, newSceneName.length-5);
-        playerNotebook.discoverClue(clueName);
-
         loadScene(newSceneName);
-    }
-
-    /**
-     * Method that opens the notebook
-     * @param {*True if we want to open it. False if we want to close it} newValue 
-     */
-    openNotebook(newValue)
-    {
-        if(newValue == true)
-        {
-            // We open the Notebook
-            previousScene = currentScene;
-            currentScene.scene.switch('UINotebook');
-            currentScene = "UINotebook";
-        }
-        else
-        {
-            // We open the Notebook
-            currentScene.scene.switch(previousScene);
-            currentScene = previousScene;
-            previousScene = "UINotebook";
-        }
     }
 }

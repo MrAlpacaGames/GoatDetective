@@ -1,6 +1,6 @@
 class Clue
 {
-    constructor(theName, clueIndex)
+    constructor(theName, theClueType, clueIndex)
     {
         //---------------------------
         // Variables
@@ -11,6 +11,8 @@ class Clue
         this.fullName;
         // Index of the Clue
         this.index = clueIndex;
+        // Type 
+        this.clueType = theClueType;
         // Array of descriptions of the clue
         this.description;
         // Tells if this clue has been discovered or not
@@ -23,6 +25,15 @@ class Clue
         this.initialDialogues = [];
         // Initial Dialogues Current Index
         this.inDialoguesIndex = 0;
+
+        //--------------------------------------
+        // Notebook Notes
+        //------------------------------------
+        this.noteBookID;
+
+        this.noteBookNote = "";
+
+        this.noteBookIndex = 0;
     }
 
     //------------------------------

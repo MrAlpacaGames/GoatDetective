@@ -19,7 +19,7 @@
             "GameState": 0,
             "Texts":
             [
-                "JUNG DAE SEO|||Hmmm... What do you want?"
+                "JUNG DAE SEO|||Huh! What do you want? Don't bother me..."
             ],
             "Next": "End"
         },
@@ -41,7 +41,7 @@
             "GameState": 0,
             "Texts":
             [
-                "LEE CHEE GO|||He's dead! My best friend is dead! Leave me alone!"
+                "LEE CHEE GO|||My best friend is dead! Leave me alone!"
             ],
             "Next": "End"
         },
@@ -49,7 +49,7 @@
 
         {
             "ID":"SPark1xPR",
-            "Character": "PARK IN SOO",
+            "Character": "Park",
             "GameState": 0,
             "Texts":
             [
@@ -72,7 +72,7 @@
                 "JUNG DAE SEO|||When I came out, I found Assattari, our manager, moving the body... ",
                 "JUNG DAE SEO|||She told me to take care of the body while she was going to call the Supah Unit."
             ],
-            "Next": "Multiple"
+            "Next": "DiscoverMultiple"
         },
         {
             "ID":"SAssattari1xPR",
@@ -89,7 +89,7 @@
                 "ASSATTARI TARI|||I tried to move him to see if he was still alive but he wasn't... Damn!",
                 "GOATMAN PETERSON|||I will find the killer, It's a SUPAAAH PROMISE!"
             ],
-            "Next": "Multiple"
+            "Next": "DiscoverMultiple"
         },
         {
             "ID":"SLee1xPR",
@@ -104,7 +104,7 @@
                 "LEE CHEE GO|||When we finished, I went to the hair saloon to wait for Park. We where going to get a haircut",
                 "GOATMAN PETERSON|||I see... Thank you you beautiful bro!"
             ],
-            "Next": "Multiple"
+            "Next": "DiscoverMultiple"
         },
         {
             "ID":"SRuru1xPR",
@@ -123,7 +123,7 @@
                 "RURU SPARK|||I got nervous and hid here",
                 "GOATMAN PETERSON|||I see"
             ],
-            "Next": "Multiple"
+            "Next": "DiscoverMultiple"
         },
 
 

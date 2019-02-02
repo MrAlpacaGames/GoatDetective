@@ -71,23 +71,6 @@ class StudioScene extends Phaser.Scene
         this.clickFx = spriteManager.createClickFx();    
         this.input.on('pointerdown', () => spriteManager.clickEffect(this.clickFx, this.input.activePointer));
 
-        this.beginScene();
-    }
-
-
-    beginScene()
-    {
-        let timedEvent = currentScene.time.delayedCall(120, function()
-        {
-            switch(GameManager.stateOfGame)
-            {
-                case 0:
-                    //dialogueManager.startDialogue("SPet0x0");
-                break;
-                case 1:
-
-                break;
-            }    
-        } , currentScene);
+        onSceneEnterNotebook(this.scene.key);
     }
 }

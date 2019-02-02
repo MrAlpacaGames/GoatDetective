@@ -14,7 +14,7 @@ class SpriteManagement
 
     preloadCharacters()
     {
-        currentScene.load.spritesheet('ClickFire', 'assets/sprites/Particles/Click.png',
+        currentScene.load.spritesheet('ClickFire', 'assets/sprites/Particles/NeoClick.png',
         {frameWidth: 64, frameHeight: 64});
 
         currentScene.load.spritesheet('Goatman', 'assets/sprites/Characters/Cabra.png',
@@ -159,12 +159,12 @@ class SpriteManagement
         {
             currentScene.anims.create({
                 key: 'ShowClick',
-                frames: currentScene.anims.generateFrameNumbers('ClickFire',{start:0, end: 15}),
+                frames: currentScene.anims.generateFrameNumbers('ClickFire',{start:0, end: 12}),
                 frameRate: 30,
             })
         }
         clickFx = currentScene.add.sprite(0, 0);
-        clickFx.setScale(1.5);
+        clickFx.setScale(1);
 
         return clickFx;
     }

@@ -5,13 +5,12 @@ class HUDManager
         //-------------------------
         // Attributes
         //-------------------------
+        // Notebook
+        this.theNotebook;
         // Highlight of the mute button
         this.muteHigh;
         // Highlight of the Notebook button
-        this.noteHigh;        
-
-        // New Note Message
-        this.newNoteMessage;
+        this.notePressed;        
 
         this.canShowMessage = true;
 
@@ -21,6 +20,8 @@ class HUDManager
         this.gameOverScreen;
         this.retryButton;
         this.titleScreen;
+
+        this.showTween;
     }
 
     //-------------------------
@@ -30,11 +31,13 @@ class HUDManager
     {
         currentScene.load.image('MuteBtn', 'assets/sprites/HUD/MuteBtn.png');
         currentScene.load.image('MuteHigh', 'assets/sprites/HUD/MuteHigh.png');
-        currentScene.load.image('BotonAgenda', 'assets/sprites/HUD/BotonAgenda.png');
-        currentScene.load.image('BotonAgendaHigh', 'assets/sprites/HUD/BotonAgendaIluminado.png');
         currentScene.load.image('GameOver', 'assets/sprites/HUD/WinLoseScreens/GameOver.png');
         currentScene.load.image('Winner', 'assets/sprites/HUD/WinLoseScreens/Victory.png');
-        currentScene.load.image('NewNote', 'assets/sprites/HUD/BotonAcusar.png');
+
+        currentScene.load.spritesheet('Notebook', 'assets/sprites/HUD/Notebook.png',
+        {frameWidth: 252.8, frameHeight: 184.5});
+        currentScene.load.image('NotePressed', 'assets/sprites/HUD/NotePressed.png');
+
     }
 
     /**
@@ -48,14 +51,14 @@ class HUDManager
  
          this.muteHigh = currentScene.add.image(topBackgroundXOrigin-425, topBackgroundYOrigin-210.5, 'MuteHigh');
          this.assignBehaviour(this.muteHigh, 'MuteHigh');
-         this.muteHigh.visible = false;
+         (currentScene.sound.volume > 0) ? this.muteHigh.visible = false: this.muteHigh.visible = true;
 
-         let notebook = currentScene.add.image(topBackgroundXOrigin-400, topBackgroundYOrigin+190, 'BotonAgenda');
-         this.assignBehaviour(notebook, "Notebook");
-
-         this.noteHigh = currentScene.add.image(topBackgroundXOrigin-390, topBackgroundYOrigin+190, 'BotonAgendaHigh');
-         this.assignBehaviour(this.noteHigh, "NoteHigh");
-         this.noteHigh.visible = false;     
+         this.theNotebook = this.createNotebook(topBackgroundXOrigin-355, topBackgroundYOrigin+195);
+         this.assignBehaviour(this.theNotebook, 'Notebook');
+           
+         this.notePressed = currentScene.add.image(topBackgroundXOrigin-400, topBackgroundYOrigin+195, 'NotePressed');
+         this.assignBehaviour(this.notePressed, 'NotePressed');
+         this.notePressed.visible = false;
          
          this.gameOverScreen = currentScene.add.image(topBackgroundXOrigin, topBackgroundYOrigin, 'GameOver');
          this.assignBehaviour(this.gameOverScreen, "GameOver");
@@ -75,8 +78,6 @@ class HUDManager
          this.assignBehaviour(this.titleScreen, "Title");
 
          this.openSpecialScreen(false, false);
-
-         this.newNoteMessage = currentScene.add.image(topBackgroundXOrigin, topBackgroundYOrigin+305, 'NewNote');
     }
 
     /**
@@ -93,17 +94,18 @@ class HUDManager
         {
             case "MuteBtn":
                 theButton.setInteractive();
-                theButton.on('pointerdown', ()=> this.enableHighlight(this.muteHigh, true));
+                theButton.on('pointerdown', ()=> this.enablePressedButton(this.muteHigh));
                 theButton.on('pointerdown', ()=> musicManager.muteMusic());
-                theButton.on('pointerup', ()=> this.enableHighlight(this.muteHigh, false));
-                theButton.on('pointerout', ()=> this.enableHighlight(this.muteHigh, false));
+                theButton.on('pointerdown', ()=> this.notifyHUDInteracted(true));
+                theButton.on('pointerup', ()=> this.notifyHUDInteracted(false));
+                theButton.on('pointerout', ()=> this.notifyHUDInteracted(false));
             break;
             case "Notebook":
                 theButton.setInteractive();
-                theButton.on('pointerdown', ()=> this.enableHighlight(this.noteHigh, true));
-                theButton.on('pointerup', ()=> this.enableHighlight(this.noteHigh, false));
+                theButton.on('pointerdown', ()=> this.enableHighlight(this.notePressed, true));
+                theButton.on('pointerup', ()=> this.enableHighlight(this.notePressed, false));
                 theButton.on('pointerup', ()=> openNotebook(true));
-                theButton.on('pointerout', ()=> this.enableHighlight(this.noteHigh, false));
+                theButton.on('pointerout', ()=> this.enableHighlight(this.notePressed, false));
             break;
             case "Retry":
                 theButton.setInteractive();
@@ -138,6 +140,35 @@ class HUDManager
         }
     }
 
+    /**
+     * Method that creates the Notebook and the anims for the animation states
+     * @param {*} posX 
+     * @param {*} posY 
+     */
+    createNotebook(posX, posY)
+    {
+        let notebook = currentScene.add.sprite(posX, posY, 'Notebook');
+        //notebook.setScale(0.42);
+        
+        //  Our player animations, turning, walking left and walking right.
+        if(currentScene.anims.get('NoteIddle') == undefined && currentScene.anims.get('NoteHighlight') == undefined)
+        {
+            currentScene.anims.create({
+                key: 'NoteHighlight',
+                frames: currentScene.anims.generateFrameNumbers('Notebook', { frames: [0,1,2,3,4,5,6,7,8,9,9,9,9,9] }),
+                frameRate: 12,
+                yoyo: true,
+            });
+            currentScene.anims.create({
+                key: 'NoteIddle',
+                frames: [ { key: 'Notebook', frame: 0 } ],
+                frameRate: 1
+            });
+            notebook.anims.play('NoteIddle');
+        }
+        return notebook;
+    }
+
     openSpecialScreen(isVictory, newValue)
     {
        // GameManager.canMove = !newValue;
@@ -149,47 +180,28 @@ class HUDManager
         }
         else
         {
-
+            
         }
     }
 
     losingAction(isTitle)
     {
-        GameManager.HUDInteracted = false;
-    }
-
-    showNewNoteMessage()
-    {
-        // From 305 to 235 and back
-        if(this.canShowMessage == true)
+        GameManager.HUDInteracted = true;
+        if(isTitle)
         {
-            currentScene.tweens.killAll();
-            var tween = currentScene.tweens.add({
-                targets: this.newNoteMessage,
-                y: topBackgroundYOrigin+235,
-                duration: 600,
-                onStart: function(){
-                    console.log("New Value is: "+false);
-                    currentPlayerHUD.canShowMessage = false;     
-                }
-            });
-            var tween = currentScene.tweens.add({
-                targets: this.newNoteMessage,
-                y: topBackgroundYOrigin+305,
-                delay: 1200,
-                duration: 600,
-                onComplete: function(){
-                    console.log("New Value is: "+true);
-                    currentPlayerHUD.canShowMessage = true;     
-                }
-            });
+            theGame.scene.destroy();
+            currentScene.scene.start('MainMenu');
         }
     }
 
-    setShowMessage(newValue)
+    playNewNoteMessage()
     {
-        console.log("New Value is: "+newValue);
-        this.canShowMessage = newValue;
+        this.theNotebook.anims.play('NoteHighlight');
+    }
+
+    enablePressedButton(highlighButton)
+    {
+        (highlighButton.visible == false) ? highlighButton.visible = true : highlighButton.visible = false;
     }
 
     /**
@@ -200,6 +212,11 @@ class HUDManager
     enableHighlight(theHighlight, newValue)
     {
         theHighlight.visible = newValue;
+        this.notifyHUDInteracted(newValue);
+    }
+
+    notifyHUDInteracted(newValue)
+    {
         GameManager.HUDInteracted = newValue;
     }
 }

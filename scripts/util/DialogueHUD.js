@@ -352,9 +352,9 @@ class DialogueHUD
   enableMultiple()
   {
     let hasSuspects = playerNotebook.discoveredCharacters;
-    let hasWeapons = playerNotebook.discoveredWeapons1;
-    let hasWeapons2 = playerNotebook.discoveredWeapons2;
-    if(hasSuspects || hasWeapons || hasWeapons2) // If we have disovered any clue we show that group of clues
+    let hasWeapons = playerNotebook.discoveredWeapons;
+    let hasItems = playerNotebook.discoveredItems;
+    if(hasSuspects || hasWeapons || hasItems) // If we have disovered any clue we show that group of clues
     {
       let names = [];
       this.switchWindows(true);
@@ -363,26 +363,27 @@ class DialogueHUD
         this.backButton.visible = false;
         if(hasSuspects) names.push('HUMANS');
         if(hasWeapons) names.push('WEAPONS');
-        if(hasWeapons2) names.push('ITEMS');
+        if(hasItems) names.push('ITEMS');
+        this.setOptionsTexts(names, false);
       }
       else
       {
         let array;
-        if(this.currentClueTypeSelected == "HUMANS") array = playerNotebook.characters;
-        if(this.currentClueTypeSelected == "WEAPONS") array = playerNotebook.weapons1;
-        if(this.currentClueTypeSelected == "ITEMS") array = playerNotebook.weapons2;
+        if(this.currentClueTypeSelected == "HUMANS") array = playerNotebook.humans;
+        if(this.currentClueTypeSelected == "WEAPONS") array = playerNotebook.weapons;
+        if(this.currentClueTypeSelected == "ITEMS") array = playerNotebook.items;
 
         array.forEach(element => 
         {
           if((this.currentPersonTalkingTo.name != element.name) && element.discovered == true)
           {
-            names.push(element.name);
+            names.push(element);
           }
         });
         // We enable Back Button
         this.backButton.visible = true;
+        this.setOptionsTexts(names, true);
       }
-      this.setOptionsTexts(names);
     }
     else
     {
@@ -454,7 +455,7 @@ class DialogueHUD
   /**
    * Method that set the text for the different options
    */
-  setOptionsTexts(texts)
+  setOptionsTexts(texts, isClueOption)
   {
     for(let i = 0; i < 4; i++)
     {
@@ -465,8 +466,10 @@ class DialogueHUD
       }
       else
       {
-        this.interactiveOptions.getAt(i).visible = true;
-        this.interactiveOptions.getAt(i).text = texts[i];
+        (isClueOption == true) ? text = texts[i].name: text = texts[i];
+        this.interactiveOptions.getAt(i).visible = true;        
+        (isClueOption == true) ? this.interactiveOptions.getAt(i).text = texts[i].fullName : this.interactiveOptions.getAt(i).text = text;
+        if(isClueOption) this.interactiveOptions.getAt(i).name = texts[i].name;
       }
     }
   }
@@ -580,11 +583,11 @@ class DialogueHUD
   {
     if(this.multipleOptionsState == 0)
     {
-      if(theOption.text == "Check Body")
+      if(theOption.text == "CHECK BODY")
       {
         dialogueManager.startDialogue("SPark1xUN");
       }
-      else if(theOption.text == "Accuse of Murder")
+      else if(theOption.text == "ACCUSE OF MURDER")
       {
         this.openParkOptions(true);
       }
@@ -605,7 +608,7 @@ class DialogueHUD
       }
       else
       {
-        let dialogueID = playerNotebook.getCurrentDialogueID(this.currentPersonTalkingTo, theOption.text);
+        let dialogueID = playerNotebook.getCurrentDialogueID(this.currentPersonTalkingTo, theOption.name);
         dialogueManager.startDialogue(dialogueID);
         this.backButton.visible = false;
       }
