@@ -46,6 +46,9 @@ class OfficeScene extends Phaser.Scene
         // Environment
         let officeDoor = spriteManager.createEnvironment('offToHall', topBackgroundXOrigin+ 1791, topBackgroundYOrigin+97, 0.72);
 
+        // Items Creation
+        let chickenDiamando = spriteManager.createItem('Chicken', topBackgroundXOrigin+60, topBackgroundYOrigin+60, 0.25);
+
         // Characters Creation
         let assattari = spriteManager.createStaticCharacter('Assattari', topBackgroundXOrigin+200, topBackgroundYOrigin+100, 0.43);
         assattari.setFlip(true);        

@@ -5,7 +5,6 @@ class GM
         //----------------------------
         // Attributes
         //---------------------------
-
         this.canMove = true;
         this.HUDInteracted = false;
 
@@ -35,8 +34,56 @@ class GM
         else
         {
             // YOU LOSE THE GAME
+            this.showLoseScreen();
         }
     }
+
+    winGame()
+    {
+
+    }
+
+    showLoseScreen()
+    {
+        currentPlayerHUD.openSpecialScreen(false, true);
+    }
+
+    loseGame()
+    {
+        this.restartGame();
+    }
+
+    restartGame()
+    {
+        // GM Values
+        this.canMove = true;
+        this.HUDInteracted = false;
+        this.stateOfGame = 0;
+        // Notebook Restart
+        playerNotebook = undefined;
+        playerNotebook = new Notebook();
+
+        // Player Restart
+        thePlayer = undefined;
+        thePlayer =  new FrontPlayer();
+
+        // Music and SFX
+        theGame.sound.stopAll();
+        theGame.sound.setVolume(1);
+
+        theGame.scene.scenes.forEach(temp => {
+            theGame.scene.stop(temp.scene.key);
+        });
+        theGame.scene.start('MainMenu');
+        //theGame.scene.destroy();
+    }
+
+
+    loadLastCheckpoint()
+    {
+
+    }
+
 
     
 

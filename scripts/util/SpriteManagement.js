@@ -20,6 +20,9 @@ class SpriteManagement
         currentScene.load.spritesheet('Goatman', 'assets/sprites/Characters/Cabra.png',
         {frameWidth: 370.57, frameHeight: 758});
 
+        currentScene.load.spritesheet('ConfrontGoat', 'assets/sprites/Characters/ConfrontGoat.png',
+        {frameWidth: 416, frameHeight: 758});
+
         currentScene.load.spritesheet('Assattari', 'assets/sprites/Characters/Productora.png',
         {frameWidth: 266.75, frameHeight: 636});
 
@@ -45,10 +48,12 @@ class SpriteManagement
                 currentScene.load.image('studioDoor', 'assets/sprites/Scenarios/Hall/studio_doors.png');
                 currentScene.load.image('dressromDoor', 'assets/sprites/Scenarios/Hall/dressroom_doors.png');
                 currentScene.load.image('officeDoor', 'assets/sprites/Scenarios/Hall/stairs.png');
+                currentScene.load.image('Puddle', 'assets/sprites/Items/Puddle.png');
             break;
             case 'OfficeScene':
                 currentScene.load.image('office', 'assets/sprites/Scenarios/Office/Office.png');
                 currentScene.load.image('offToHall', 'assets/sprites/Scenarios/Office/officeDoor.png');
+                currentScene.load.image('Chicken', 'assets/sprites/Items/ChickenDiamondo.png');
             break;
             case 'StudioScene':
                 currentScene.load.image('studio', 'assets/sprites/Scenarios/Studio/Record.png');
@@ -58,16 +63,6 @@ class SpriteManagement
                 currentScene.load.image('dressroom', 'assets/sprites/Scenarios/Dressroom/dressRoom.png');
                 currentScene.load.image('dressToHall', 'assets/sprites/Scenarios/Dressroom/dressroomIndoor.png');
             break;  
-        }
-    }
-
-    preloadItems()
-    {
-        switch(currentScene)
-        {
-            case currentScene.name = 'UINotebook':
-                currentScene.load.image('hall', 'assets/sprites/Items/Notebook.png');
-            break;
         }
     }
 
@@ -84,7 +79,7 @@ class SpriteManagement
         player.setCollideWorldBounds(true);
         
         //  Our player animations, turning, walking left and walking right.
-        if(currentScene.anims.get('walking') == undefined && currentScene.anims.get('quiet') == undefined)
+        if(currentScene.anims.get('walking') == undefined && currentScene.anims.get('quiet') == undefined && currentScene.anims.get('confront') == undefined)
         {
             currentScene.anims.create({
                 key: 'walking',
@@ -95,6 +90,11 @@ class SpriteManagement
             currentScene.anims.create({
                 key: 'quiet',
                 frames: [ { key: 'Goatman', frame: 0 } ],
+                frameRate: 1
+            });
+            currentScene.anims.create({
+                key: 'confront',
+                frames: [ { key: 'ConfrontGoat', frame: 0 } ],
                 frameRate: 1
             });
             player.anims.play('quiet');
@@ -132,6 +132,19 @@ class SpriteManagement
         newCharacter.setInteractive();
         newCharacter.on('pointerdown', () => this.onElementClicked(newCharacter, true));
         return newCharacter;
+    }
+
+    createItem(item, posX, posY, scale)
+    {
+        let newItem;
+        newItem = currentScene.physics.add.staticSprite(posX, posY, item).setScale(scale);
+        newItem.body.setOffset(200,0);
+
+        newItem.setName(item);
+        newItem.refreshBody();
+        newItem.setInteractive();
+        newItem.on('pointerdown', () => this.onElementClicked(newItem, true));
+        return newItem;
     }
 
     createEnvironment(element, posX, posY, scale)

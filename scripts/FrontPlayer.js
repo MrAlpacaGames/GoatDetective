@@ -127,7 +127,7 @@ class FrontPlayer
         this.player.anims.play('quiet');
         
         // We face the item/ character because it means we're interacting with him
-        if(currentClickedElement != null)
+        if(currentClickedElement != undefined)
         {
             if(currentClickedElement.name != "" && currentClickedElement.name != "HUD")
             {
@@ -137,8 +137,18 @@ class FrontPlayer
     
                 // Before we erase the currentClickedElement we open the chat window with him
                 interacionManager.interact(currentClickedElement.name);
+                if(currentClickedElement.name == "Puddle" )
+                {
+                    currentClickedElement.disableInteractive();
+                }
+                else if(currentClickedElement.name == "Chicken" || currentClickedElement.name == "Standard" || currentClickedElement.name == "Poisoned"
+                || currentClickedElement.name == "Key" || currentClickedElement.name == "Letter" || currentClickedElement.name == "Recorder" || currentClickedElement.name == "Cellphone")
+                {
+                    currentClickedElement.disableInteractive();
+                    currentClickedElement.destroy();
+                }
             }
         }
-        currentClickedElement = null;
+        currentClickedElement = undefined;
     }
 }

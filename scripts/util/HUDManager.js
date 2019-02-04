@@ -115,11 +115,7 @@ class HUDManager
                 });
                 theButton.on('pointerup', function(){
                     this.setScale(1);
-                    currentPlayerHUD.losingAction(false);
-                });
-                theButton.on('pointerout', function(){
-                    this.setScale(1);
-                    currentPlayerHUD.losingAction(false);
+                    GameManager.loadLastCheckpoint();
                 });
             break;
             case "Title":
@@ -130,11 +126,7 @@ class HUDManager
                 });
                 theButton.on('pointerup', function(){
                     this.setScale(1);
-                    currentPlayerHUD.losingAction(true);
-                });
-                theButton.on('pointerout', function(){
-                    this.setScale(1);
-                    currentPlayerHUD.losingAction(true);
+                    GameManager.loseGame();
                 });
             break;
         }
@@ -148,7 +140,7 @@ class HUDManager
     createNotebook(posX, posY)
     {
         let notebook = currentScene.add.sprite(posX, posY, 'Notebook');
-        //notebook.setScale(0.42);
+        //notebook.body.setSize(notebook.width - 20, notebook.height, notebook);
         
         //  Our player animations, turning, walking left and walking right.
         if(currentScene.anims.get('NoteIddle') == undefined && currentScene.anims.get('NoteHighlight') == undefined)
@@ -181,16 +173,6 @@ class HUDManager
         else
         {
             
-        }
-    }
-
-    losingAction(isTitle)
-    {
-        GameManager.HUDInteracted = true;
-        if(isTitle)
-        {
-            theGame.scene.destroy();
-            currentScene.scene.start('MainMenu');
         }
     }
 

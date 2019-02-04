@@ -6,22 +6,27 @@ class Notebook
         let park = new Clue('Park', "Humans", 0);
         park.fullName = "PARK IN SOO";
         park.addInitialDialogues(["","SPark1xPR", "SPark1xUN"]);
+        park.confrontationRequirements = [""];
 
         let jung = new Clue('Jung', "Humans", 1);
         jung.fullName = "JUNG DAE SEO";
         jung.addInitialDialogues(["SJung0xPrro", "SJung1xPR", "SJung1xUN"]);
+        jung.confrontationRequirements = ["LeeConfrontation2x1", "ParkGoatman1x4", "LeeJungx1x4", "AssatariJungx1x4", "RuruJung1x4", "JungStandard1xUN", "JungPoisoned1xUN" ];
 
         let lee = new Clue('Lee', "Humans", 2);
         lee.fullName = "LEE CHEE GO";
         lee.addInitialDialogues(["SLee0xPrro", "SLee1xPR", "SLee1xUN"]);
+        lee.confrontationRequirements = ["RuruConfrontation2x1", "JungLee1x3", "AssattariLee1x3", "RuruLee1x3", "LeeRecorder1xUN", "JungRecorder1xUN", "LeeCellphone1xUN"];
 
         let assattari = new Clue('Assattari', "Humans", 3);
         assattari.fullName = "ASSATTARI TARI";
         assattari.addInitialDialogues(["SAssattari0xPrro", "SAssattari1xPR", "SAssattari1xUN"]);
+        assattari.confrontationRequirements = ["RuruAssattari1x1", "AssattariChicken1xUN"];
 
         let ruru = new Clue('Ruru', "Humans", 4);
         ruru.fullName = "RURU SPARK";
         ruru.addInitialDialogues(["","SRuru1xPR", "SRuru1xUN"]);
+        ruru.confrontationRequirements = ["AssatariConfrontation2x1", "AssattariRuru1x2", "LeePuddle1xUN", "AssattariPuddle1xUN", "LeeLetter1xUN", "RuruLetter1xUN"];
 
         this.humans.push(park, jung, lee, assattari, ruru);
         
@@ -29,10 +34,12 @@ class Notebook
         let puddle = new Clue('Puddle', "Weapons", 0);
         puddle.fullName = "SWEATY PUDDLE";
         puddle.noteBookID = "Sweaty Puddle";
+        puddle.addInitialDialogues(["SGoatmanPuddle0xUN"]);
 
         let diamondChicken = new Clue('Chicken', "Weapons", 1);
         diamondChicken.fullName = "CHICKEN DIAMONDO";
         diamondChicken.noteBookID = "Chicken Diamando";
+        diamondChicken.addInitialDialogues(["SGoatmanChicken0xUN"]);
 
         let standardPin = new Clue('Standard', "Weapons", 2);
         standardPin.fullName = "STANDARD PIN";
@@ -288,7 +295,39 @@ class Notebook
      */
     getCurrentDialogueID(suspectTalkingTo, clueName)
     {
-        let dialogueID = suspectTalkingTo.name + clueName +"1x"+ GameManager.stateOfGame;
+        let stateOfGame;
+        if(clueName == "Puddle" || clueName == "Chicken" || clueName == "Standard" || clueName == "Poisoned"
+        || clueName == "Key" || clueName == "Letter" || clueName == "Recorder" || clueName == "Cellphone")
+        {
+            stateOfGame = "UN";
+        }
+        else
+        {
+            stateOfGame = GameManager.stateOfGame;
+        }
+        let dialogueID = suspectTalkingTo.name + clueName +"1x"+ stateOfGame;
         return dialogueID;
+    }
+
+
+    checkIfMeetRequirements(theClue)
+    {
+        let answer = false;
+        if(!theClue.hasBeenConfronted)
+        {
+            let meets = true;
+            for(let i = 0; i < theClue.confrontationRequirements.length; i++)
+            {
+                let temp = theClue.confrontationRequirements[i];
+                let exists =  this.dialoguesTaken.get(temp);
+                if(exists == undefined)
+                {
+                    meets = false;
+                    break;
+                }
+            }
+            answer = meets;
+        }
+        return answer;
     }
 }

@@ -58,9 +58,9 @@ class InteractionManagement
         }
         else
         {
+            currentDialogueHUD.currentClueTalkingTo = clue;
             dialogueID = clue.getCurrentInitialDialogue();
             dialogueManager.startDialogue(dialogueID);
-            currentDialogueHUD.currentPersonTalkingTo = clue;
         }
     }
 

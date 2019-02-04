@@ -83,15 +83,12 @@ class DialogueManager
     startDialogue(DialogueID)
     {
         this.currentDialogue = this.dialoguesHashTable.get(DialogueID);
+        GameManager.canMove = false;
         if(currentDialogueHUD.isEnabled === false)
         {
-            GameManager.canMove = false;
-            currentDialogueHUD.enableDialogueUI(true);
+            currentDialogueHUD.multipleOptionsState = 0;
         }
-        else
-        {
-            currentDialogueHUD.switchWindows(false, false);
-        }
+        currentDialogueHUD.enableDialogueUI(true);
         this.setDialogueText(0);
     }
 
@@ -125,8 +122,8 @@ class DialogueManager
                 if(nextAction == "DiscoverEnd" || nextAction == "DiscoverMultiple")
                 {
                     let name = this.currentDialogue.Character;
-                    let theClue = currentDialogueHUD.currentPersonTalkingTo;
-                    if(theClue.discovered == false)
+                    let theClue = currentDialogueHUD.currentClueTalkingTo;
+                    if((theClue.discovered == false) || (theClue.discoverClue == true && theClue.clueType == "Humans"))
                     {
                         playerNotebook.discoverClue(theClue);
                         playerNotebook.dialoguesTaken.add(this.currentDialogue.ID);
@@ -148,7 +145,7 @@ class DialogueManager
                 }
                 else if(nextAction == "GameOver")
                 {
-                    currentPlayerHUD.openSpecialScreen(false, true);
+                    GameManager.showLoseScreen();                    
                 }
             }
             else // If is not last line, we continue to the next line

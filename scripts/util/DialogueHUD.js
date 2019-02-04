@@ -2,12 +2,9 @@ class DialogueHUD
 {
   constructor()
   {
-    //----------------------------
-    // VARIABLES
-    //----------------------------
-    //------------------------
-    // SINGLE DIALOGUES
-    //------------------------
+    //------------------------------------------------------------------------------------------------
+    //                                      SINGLE DIALOGUES
+    //------------------------------------------------------------------------------------------------
 
     // Single Dialog Background
     this.singleDialogueBackground;
@@ -31,18 +28,49 @@ class DialogueHUD
     this.nextButton;
     this.backButton;
 
-    // Accuse Button
-    this.confrontBtn;
+    //-------------------------------------
+    // Animated Dialogue Stuff
+    //-------------------------------------
 
-    // Close Button
-    //this.closeBtn;
+    this.eventCounter = 0;
+    this.timedEvent;
+    this.dialogueSpeed = 3;
+
+    //------------------------------------------------------------------------------------------------
+    //                                      MULTIPLE OPTIONS DIALOGUES
+    //------------------------------------------------------------------------------------------------
 
     //---------------------------------------
-    // MULTIPLE OPTIONS DIALOGUES
-    //--------------------------------------
+    // 2 OPTIONS DIALOGUE
+    //---------------------------------------
+    // Dialogue Background used for Lee's Menu or when the player has only discovered 1 or 2 categories/items
+    this.twoOptionsBack;
+    
+    // Text Options used for Lee's Menu or when the player has only discovered 1 or 2 categories/items
+    this.twoTextOptions = [];
 
-    // Multiple Choice Dialog Background
-    this.multipleDialogueBackground;
+    //---------------------------------------
+    // 3 OPTIONS DIALOGUE
+    //---------------------------------------
+    // Dialogue Background used for when the player has only discovered 3 categories/items
+    this.threeOptionsBack;
+        
+    // Text Options used for when the player has only discovered 3 categories/items
+    this.threeTextOptions
+
+    //---------------------------------------
+    // 4 OPTIONS DIALOGUE
+    //---------------------------------------
+
+    // Dialogue Background used for when the player has only discovered 4 items
+    this.fourOptionsBack;
+        
+    // Text Options used for when the player has only discovered 4 items
+    this.fourTextOptions
+
+    //---------------------------------------
+    // GLOBAL VARIABLES
+    //--------------------------------------
 
     // State of the multiple options dialogue. It can only be 0 or 1
     this.multipleOptionsState = 0;
@@ -51,24 +79,20 @@ class DialogueHUD
     this.currentClueTypeSelected;
 
     // Current Clue Selected
-    this.currentPersonTalkingTo;
+    this.currentClueTalkingTo;
 
-    //-------------------------------------
-    // PARK OPTIONS DIALOGUE
-    //-------------------------------------
-    
-    // Park Dialog Background
-    this.parkDialogueBackground;
+    // Confront Button
+    this.confrontBtn;
 
-    // Park Selected Options
-    this.parkOptions;
+    // Defines if the Park's Menu has been opened
+    this.parkOpened = false;
 
     //-------------------------------------
     // ACCUSATION OPTIONS DIALOGUE
     //-------------------------------------
 
     // Acusation Dialog Background
-    this.acusationDialogueBackground;
+    this.acusationDialogueBack;
 
     // Accuse Button
     this.accusationButton;
@@ -96,14 +120,6 @@ class DialogueHUD
 
     // Array of Weapons Images
     this.weaponsImgs;
-
-    //-------------------------------------
-    // Animated Dialogue Stuff
-    //-------------------------------------
-
-    this.eventCounter = 0;
-    this.timedEvent;
-    this.dialogueSpeed = 3;
   }
 
   //----------------------------
@@ -115,19 +131,23 @@ class DialogueHUD
    */
   preloadDialogue()
   {
-    currentScene.load.image('SDialogBack', 'assets/sprites/HUD/Dialogo.png');
-    currentScene.load.image('MDialogBack', 'assets/sprites/HUD/SeleccionMultiple.png');
-    currentScene.load.image('LeeDialogBack', 'assets/sprites/HUD/SeleccionLee.png');
-    currentScene.load.image('ADialogBack', 'assets/sprites/HUD/AccuseDialogo.png');
-
-    currentScene.load.image('nextBtn', 'assets/sprites/HUD/Siguiente.png');
-    currentScene.load.image('closeBtn', 'assets/sprites/HUD/x.png');
-    currentScene.load.image('ConfrontBtn', 'assets/sprites/HUD/BotonAcusar.png');
-
+    //                                      SINGLE DIALOGUES
+    currentScene.load.image('SDialogBack', 'assets/sprites/HUD/Dialogue.png');
+    //                                      2 OPTIONS DIALOGUES
+    currentScene.load.image('2OptionsDialogue', 'assets/sprites/HUD/2Options.png');
+    //                                      3 OPTIONS DIALOGUES
+    currentScene.load.image('3OptionsDialogue', 'assets/sprites/HUD/3Options.png');
+    //                                      4 OPTIONS DIALOGUES
+    currentScene.load.image('4OptionsDialogue', 'assets/sprites/HUD/4Options.png');
+    //                                      ACCUSE OPTION DIALOGUE
+    currentScene.load.image('AccuseDialog', 'assets/sprites/HUD/Accuse/AccuseDialogue.png');
     currentScene.load.image('AssaAccuse', 'assets/sprites/HUD/Accuse/AssattariAccuse.png');
     currentScene.load.image('JungAccuse', 'assets/sprites/HUD/Accuse/JungAccuse.png');
     currentScene.load.image('LeeAccuse', 'assets/sprites/HUD/Accuse/LeeAccuse.png');
     currentScene.load.image('RuruAccuse', 'assets/sprites/HUD/Accuse/RuruAccuse.png');
+    
+    currentScene.load.image('nextBtn', 'assets/sprites/HUD/Siguiente.png');
+    currentScene.load.image('ConfrontBtn', 'assets/sprites/HUD/ConfrontButton.png');
   }
   
   /**
@@ -135,9 +155,9 @@ class DialogueHUD
    */
   createDialogueWindow()
   {
-    //-------------------------------
-    // SINGLE DIALOG WINDOW
-    //-------------------------------
+    //------------------------------------------------------------------------------------------------
+    //                                      SINGLE DIALOGUES
+    //------------------------------------------------------------------------------------------------
 
     // We create the static dialogue window
     this.singleDialogueBackground = currentScene.physics.add.staticSprite(500, 100, 'SDialogBack');
@@ -154,112 +174,125 @@ class DialogueHUD
     wordWrap: {width: 530},
     wordWrapUseAdvanced: true
     });
-    this.dialogueText.scrollFactorX = 0;
+    this.dialogueText.scrollFactorX = 0; 
 
-    //---------------------------------
-    // MULTIPLE CHOICE DIALOG WINDOW
-    //---------------------------------
+    //------------------------------------------------------------------------------------------------
+    //                                      MULTIPLE OPTIONS DIALOGUES
+    //------------------------------------------------------------------------------------------------
 
-    // We create the static dialogue window
-    this.multipleDialogueBackground = currentScene.physics.add.staticSprite(500, 100, 'MDialogBack');
-    this.multipleDialogueBackground.scrollFactorX = 0;
-    this.multipleDialogueBackground.visible = false;
+    //---------------------------------------
+    // 2 OPTIONS DIALOGUE
+    //---------------------------------------
+    this.twoOptionsBack = currentScene.physics.add.staticSprite(500, 100, '2OptionsDialogue');    
+    this.twoOptionsBack.scrollFactorX = 0;
+    
+    // Array of positions
+    let twoPositions = [280, 650];
+    this.twoTextOptions = currentScene.add.container();
+    this.createMultipleOptionsButtons(2, twoPositions, this.twoTextOptions);
 
-    // We create the dynamic interactive options elements
-    let xPositions = [175, 365, 555, 745];
-    this.interactiveOptions = currentScene.add.container();
+    //---------------------------------------
+    // 3 OPTIONS DIALOGUE
+    //---------------------------------------
+    this.threeOptionsBack = currentScene.physics.add.staticSprite(502, 102, '3OptionsDialogue');    
+    this.threeOptionsBack.scrollFactorX = 0;
+    
+    // Array of positions
+    let threePositions = [220, 475, 720];
+    this.threeTextOptions = currentScene.add.container();
+    this.createMultipleOptionsButtons(3, threePositions, this.threeTextOptions);
 
-    for(let i = 0; i < 4; i++)
-    {
-      this.createTextOption(this.interactiveOptions, xPositions[i], 75, "OPTION "+i);
-    }
+    //---------------------------------------
+    // 4 OPTIONS DIALOGUE
+    //---------------------------------------
+    this.fourOptionsBack = currentScene.physics.add.staticSprite(503, 100, '4OptionsDialogue');    
+    this.fourOptionsBack.scrollFactorX = 0;
+    
+    // Array of positions
+    let fourPositions = [175, 365, 555, 745];
+    this.fourTextOptions = currentScene.add.container();
+    this.createMultipleOptionsButtons(4, fourPositions, this.fourTextOptions);
 
-    //---------------------------------
-    // PARK DIALOG WINDOW
-    //---------------------------------
-    this.parkDialogueBackground = currentScene.physics.add.staticSprite(500, 100, 'LeeDialogBack');
-    this.parkDialogueBackground.scrollFactorX = 0;
-    this.parkDialogueBackground.visible = false;
-
-    let xAc = [280, 650];
-    this.parkOptions = currentScene.add.container();
-
-    for(let i = 0; i < 2; i++)
-    {
-      let text;
-      let yP;
-      if(i==0)
-      {
-        text = "CHECK BODY";
-        yP = 70;
-      }
-      else
-      {
-        text = "ACCUSE OF MURDER";
-        yP = 69;
-      }
-      this.createTextOption(this.parkOptions, xAc[i], yP, text);
-    }    
-
-    //---------------------------------
-    // ACCUSE DIALOG WINDOW
-    //---------------------------------
-    this.acusationDialogueBackground = currentScene.physics.add.staticSprite(500, 100, 'ADialogBack');
-    this.acusationDialogueBackground.scrollFactorX = 0;
-    this.acusationDialogueBackground.visible = false;
+    //------------------------------------------------------------------------------------------------
+    //                                      ACCUSE DIALOG WINDOW
+    //------------------------------------------------------------------------------------------------
+    this.acusationDialogueBack = currentScene.physics.add.staticSprite(500, 100, 'AccuseDialog');
+    this.acusationDialogueBack.scrollFactorX = 0;
+    //this.acusationDialogueBack.visible = false;
 
     this.createTextOption(this.accusationButton, 720, 75, "ACCUSE!");
     
     this.charLeftArrow = currentScene.physics.add.staticSprite(180, 90, 'nextBtn'); 
     this.charLeftArrow.setFlip(true);
     this.createButtonBehaviour(this.charLeftArrow,'charLeftArrow');
-    this.charLeftArrow.visible = false;
+    //this.charLeftArrow.visible = false;
 
     this.charRightArrow = currentScene.physics.add.staticSprite(330, 90, 'nextBtn');  
     this.createButtonBehaviour(this.charRightArrow,'charRightArrow');
-    this.charRightArrow.visible = false;
+    //this.charRightArrow.visible = false;
 
     this.weapLeftArrow = currentScene.physics.add.staticSprite(420, 90, 'nextBtn'); 
     this.weapLeftArrow.setFlip(true);
     this.createButtonBehaviour(this.weapLeftArrow,'weapLeftArrow');
-    this.weapLeftArrow.visible = false;
+    //this.weapLeftArrow.visible = false;
 
     this.weapRightArrow = currentScene.physics.add.staticSprite(570, 90, 'nextBtn');  
     this.createButtonBehaviour(this.weapRightArrow,'weapRightArrow');
-    this.weapRightArrow.visible = false;
+    //this.weapRightArrow.visible = false;
 
     this.accusedCharacter = currentScene.physics.add.staticSprite(255, 90, 'AssaAccuse');
     this.accusedCharacter.scrollFactorX = 0;
-    this.accusedCharacter.visible = false;
+    //this.accusedCharacter.visible = false;
     this.accusedWeapon = currentScene.physics.add.staticSprite(495, 90, 'RuruAccuse');
     this.accusedWeapon.scrollFactorX = 0;
-    this.accusedWeapon.visible = false;
+    //this.accusedWeapon.visible = false;    
     
     //---------------------------------
     // BUTTONS
     //---------------------------------
-
+    
     this.nextButton = currentScene.physics.add.staticSprite(855, 130, 'nextBtn');
     this.nextButton.setScale(1.1);  
     this.createButtonBehaviour(this.nextButton,'nextBtn');
-
+    
     this.backButton = currentScene.physics.add.staticSprite(145, 130, 'nextBtn'); 
     this.backButton.setFlip(true);
     this.backButton.setScale(1.1);  
     this.createButtonBehaviour(this.backButton,'backBtn');
     this.backButton.visible = false;
 
-    //this.closeBtn = currentScene.physics.add.staticSprite(885, 30, 'closeBtn');  
-    //this.createButtonBehaviour(this.closeBtn, 'closeBtn');
-
     this.confrontBtn = currentScene.physics.add.staticSprite(835,505, 'ConfrontBtn');  
     this.createButtonBehaviour(this.confrontBtn, 'ConfrontBtn');
     this.confrontBtn.visible = false;
 
-    this.switchWindows(false);
-    this.enableDialogueUI(false);
-    
-    //this.openParkOptions(false);
+    //---------------------------------
+    // INITIAL VALUES
+    //---------------------------------
+    this.enableSingleDialogue(false);
+    this.enableMultipleOptions(2, false);
+    this.enableMultipleOptions(3, false);
+    this.enableMultipleOptions(4, false);
+
+    this.enableAccuseDialogue(false);
+  }
+
+  //------------------------------------------------------------------------------------------------
+  //                                      CREATION FUNCTIONS
+  //------------------------------------------------------------------------------------------------
+  /**
+   * Method that creates Multiple Options Buttons
+   * @param {*Number of buttons to be created} numberOfButtons 
+   * @param {*Array of positions of the buttons in X} positionsArray 
+   * @param {*Container of the text options} optionsArray 
+   */
+  createMultipleOptionsButtons(numberOfButtons, positionsArray, optionsArray)
+  {
+    let yPos;
+    (numberOfButtons == 2) ? yPos = 70 : yPos = 75;
+    for(let i = 0; i < numberOfButtons; i++)
+    { 
+      this.createTextOption(optionsArray, positionsArray[i], yPos, "OPTION "+i);
+    }
   }
 
   /**
@@ -290,190 +323,16 @@ class DialogueHUD
       this.setScale(1);
     });
 
-    if(array == undefined) 
+    if(optionName == "ACCUSE!")
     {
       this.accusationButton = xOption;
-      this.accusationButton.visible = false;
     }
     else
     {
       array.add(xOption);
-      array.visible = false;
     }
   }
 
-  /**
-   * Method that Enables or Disables the Window in the UI
-   * @param {* Defines if the window is to be set on or off} newValue 
-   */
-  enableDialogueUI(newValue)
-  {
-    this.multipleOptionsState = 0;
-    this.isEnabled = newValue;
-    // We first hide/show all the Single Dialog Elements
-    this.singleDialogueBackground.visible = newValue;
-    this.nextButton.visible = newValue;
-    this.dialogueText.visible = newValue;
-    this.characterName.visible = newValue;
-
-    // We now activate/deactivate the multiple choice dialog elements
-    this.multipleDialogueBackground.visible = false;
-    this.interactiveOptions.visible = false;
-
-    // We deactivate all the park and accusations options
-    this.parkDialogueBackground.visible = false;
-    this.parkOptions.visible = false;
-
-    this.acusationDialogueBackground.visible = false;
-    this.accusationButton.visible = false;
-    this.charLeftArrow.visible = false;
-    this.charRightArrow.visible = false;
-    this.weapLeftArrow.visible = false;
-    this.weapRightArrow.visible = false;
-    this.accusedCharacter.visible = false;
-    this.accusedWeapon.visible = false;
-
-    // We activate/deactivate
-    //this.closeBtn.visible = newValue;
-    this.confrontBtn.visible = false;
-
-    if(newValue == false)
-    {
-      this.backButton.visible = false;
-      let timedEvent = currentScene.time.delayedCall(100, function(){
-          GameManager.canMove = true;
-      } , currentScene);
-    }
-  }
-
-  /**
-   * Method that enables the multiple options dialogue
-   */
-  enableMultiple()
-  {
-    let hasSuspects = playerNotebook.discoveredCharacters;
-    let hasWeapons = playerNotebook.discoveredWeapons;
-    let hasItems = playerNotebook.discoveredItems;
-    if(hasSuspects || hasWeapons || hasItems) // If we have disovered any clue we show that group of clues
-    {
-      let names = [];
-      this.switchWindows(true);
-      if(this.multipleOptionsState == 0)
-      {
-        this.backButton.visible = false;
-        if(hasSuspects) names.push('HUMANS');
-        if(hasWeapons) names.push('WEAPONS');
-        if(hasItems) names.push('ITEMS');
-        this.setOptionsTexts(names, false);
-      }
-      else
-      {
-        let array;
-        if(this.currentClueTypeSelected == "HUMANS") array = playerNotebook.humans;
-        if(this.currentClueTypeSelected == "WEAPONS") array = playerNotebook.weapons;
-        if(this.currentClueTypeSelected == "ITEMS") array = playerNotebook.items;
-
-        array.forEach(element => 
-        {
-          if((this.currentPersonTalkingTo.name != element.name) && element.discovered == true)
-          {
-            names.push(element);
-          }
-        });
-        // We enable Back Button
-        this.backButton.visible = true;
-        this.setOptionsTexts(names, true);
-      }
-    }
-    else
-    {
-      this.enableDialogueUI(false);
-    }
-  }
-
-  /**
-   * Allow us to switch between the single and multiple option dialogues UI elements
-   * @param {*New Value to define the show/hide behaviours} toMultiple 
-   */
-  switchWindows(toMultiple)
-  {
-    // We first hide/show all the Single Dialog Elements
-    this.singleDialogueBackground.visible = !toMultiple;
-    this.nextButton.visible = !toMultiple;
-    this.dialogueText.visible = !toMultiple;
-    this.characterName.visible = !toMultiple;
-
-    // We now activate/deactivate the multiple choice dialog elements
-    this.multipleDialogueBackground.visible = toMultiple;
-    this.interactiveOptions.visible = toMultiple;
-
-    // We deactivate all the park and accusations options
-    this.parkDialogueBackground.visible = false;
-    this.parkOptions.visible = false;
-
-    this.acusationDialogueBackground.visible = false;
-    this.accusationButton.visible = false;
-    this.charLeftArrow.visible = false;
-    this.charRightArrow.visible = false;
-    this.weapLeftArrow.visible = false;
-    this.weapRightArrow.visible = false;
-    this.accusedCharacter.visible = false;
-    this.accusedWeapon.visible = false;
-  }
-
-  /**
-   * Method that opens the park accusation options
-   * @param {*Defines if it is an accusation} isAccusation 
-   */
-  openParkOptions(isAccusation)
-  {
-    this.isEnabled = true;
-    this.switchWindows(true);
-    // We now activate/deactivate the multiple choice dialog elements
-    this.multipleDialogueBackground.visible = false;
-    this.interactiveOptions.visible = false;
-
-    // We activate/deactivate the park and accusations options
-    this.parkDialogueBackground.visible = !isAccusation;
-    this.parkOptions.visible = !isAccusation;
-
-    this.acusationDialogueBackground.visible = isAccusation;
-    this.accusationButton.visible = isAccusation;
-    this.charLeftArrow.visible = isAccusation;
-    this.charRightArrow.visible = isAccusation;
-    this.weapLeftArrow.visible = isAccusation;
-    this.weapRightArrow.visible = isAccusation;
-    this.accusedCharacter.visible = isAccusation;
-    this.accusedWeapon.visible = isAccusation;
-
-    if(isAccusation == true)
-    {
-      
-    }
-  }
-
-  /**
-   * Method that set the text for the different options
-   */
-  setOptionsTexts(texts, isClueOption)
-  {
-    for(let i = 0; i < 4; i++)
-    {
-      let text = texts[i];
-      if(text == undefined)
-      {
-        this.interactiveOptions.getAt(i).visible = false;
-      }
-      else
-      {
-        (isClueOption == true) ? text = texts[i].name: text = texts[i];
-        this.interactiveOptions.getAt(i).visible = true;        
-        (isClueOption == true) ? this.interactiveOptions.getAt(i).text = texts[i].fullName : this.interactiveOptions.getAt(i).text = text;
-        if(isClueOption) this.interactiveOptions.getAt(i).name = texts[i].name;
-      }
-    }
-  }
-  
   /**
    * Method that creates behaviours for the Dialogues Buttons
    * @param {*The button to have a new behaviour} theButton 
@@ -486,15 +345,15 @@ class DialogueHUD
     
     theButton.on('pointerdown', function()
     {
-      this.setScale(this.scaleX + 0.1, this.scaleY + 0.1);
+      this.setScale(1.1);
     });
     theButton.on('pointerout', function()
     {
-      this.setScale(this.scaleX - 0.1, this.scaleY - 0.1);
+      this.setScale(1);
     });
     theButton.on('pointerup', function()
     {
-      this.setScale(this.scaleX - 0.1, this.scaleY - 0.1);
+      this.setScale(1);
     });
 
     switch(behaviour)
@@ -527,6 +386,35 @@ class DialogueHUD
       break;
     }
   }
+
+  //------------------------------------------------------------------------------------------------
+  //                                      SET FUNCTIONS
+  //------------------------------------------------------------------------------------------------
+
+  /**
+   * Method that set the text for the different options
+   */
+  setOptionsTexts(optionsArray, texts, isClueOption)
+  {
+    //let optionsArray;
+    //(this.multipleOptionsState == 0) ? optionsArray = this.categoriesOptions : optionsArray = this.interactiveOptions;
+    for(let i = 0; i < optionsArray.length; i++)
+    {
+      let text = texts[i];
+      let optionsTemp = optionsArray.getAt(i);
+      if(text == undefined)
+      {
+        optionsTemp.visible = false;
+      }
+      else
+      {
+        (isClueOption == true) ? text = texts[i].name: text = texts[i];
+        optionsTemp.visible = true;        
+        (isClueOption == true) ? optionsTemp.text = texts[i].fullName : optionsTemp.text = text;
+        if(isClueOption) optionsTemp.name = texts[i].name;
+      }
+    }
+  }  
 
   /**
    * Method that sets the text for the new dialogue and animates it
@@ -576,6 +464,206 @@ class DialogueHUD
     this.dialogueText.text = this.possibleText;
   }
 
+  //------------------------------------------------------------------------------------------------
+  //                                      ENABLE/DISABLE FUNCTIONS
+  //------------------------------------------------------------------------------------------------
+
+  /**
+   * Function that Enables/Disables the single dialogue UI elements
+   * @param {*Defines if we enable or disable this dialogue} newValue 
+   */
+  enableSingleDialogue(newValue)
+  {
+    this.singleDialogueBackground.visible = newValue;
+    this.characterName.visible = newValue;
+    this.dialogueText.visible = newValue;
+
+    this.nextButton.visible = newValue;
+  }
+
+  /**
+   * Enables/Disables one of the Multiple Options Dialogues
+   * @param {*Number of the multiple options we will play with.} numberOfOptions 
+   * @param {*Defines if we enable or disable this dialogue} newValue 
+   */
+  enableMultipleOptions(numberOfOptions, newValue)
+  {
+    switch(numberOfOptions)
+    {
+      case 2:
+        this.twoOptionsBack.visible = newValue;
+        this.twoTextOptions.visible = newValue;
+      break;
+      case 3:
+        this.threeOptionsBack.visible = newValue;
+        this.threeTextOptions.visible = newValue;
+      break;
+      case 4:
+        this.fourOptionsBack.visible = newValue;
+        this.fourTextOptions.visible = newValue;
+      break;
+    }
+  }
+
+  /**
+   * We enable/disable the Accuse Dialogue
+   * @param {*New Value for the accuse dialogue} newValue 
+   */
+  enableAccuseDialogue(newValue)
+  {
+    this.acusationDialogueBack.visible = newValue;
+    this.accusationButton.visible = newValue;
+    this.charLeftArrow.visible = newValue;
+    this.charRightArrow.visible = newValue;
+    this.weapLeftArrow.visible = newValue;
+    this.weapRightArrow.visible = newValue;
+    this.accusedCharacter.visible = newValue;
+    this.accusedWeapon.visible = newValue;
+    //this.suspectsImgs.visible = newValue;
+    //this.weaponsImgs.visible = newValue;
+  } 
+
+  /**
+   * Method that Enables or Disables the Window in the UI
+   * @param {* Defines if the window is to be set on or off} newValue 
+   */
+  enableDialogueUI(newValue)
+  {
+    this.isEnabled = newValue;
+    this.enableSingleDialogue(newValue);
+    this.enableMultipleOptions(2, false);
+    this.enableMultipleOptions(3, false);
+    this.enableMultipleOptions(4, false);
+
+    this.enableAccuseDialogue(false);   
+
+    // We activate/deactivate the confront button
+    this.confrontBtn.visible = false;
+
+    if(newValue == false)
+    {
+      this.backButton.visible = false;
+      this.parkOpened = false;
+      let timedEvent = currentScene.time.delayedCall(100, function(){
+          GameManager.canMove = true;
+      } , currentScene);
+    }
+  }
+
+  /**
+   * Method that opens the park accusation options
+   * @param {*Defines if it is an accusation} isAccusation 
+   */
+  openParkOptions(isAccusation)
+  {
+    this.isEnabled = true;
+    this.parkOpened = true;
+    if(isAccusation == false)
+    {
+      this.multipleOptionsState = 0;
+      this.enableSingleDialogue(false);
+      this.enableMultipleOptions(2, true);
+      this.enableMultipleOptions(3, false);
+      this.enableMultipleOptions(4, false);
+      this.enableAccuseDialogue(false);
+      let texts = ["CHECK BODY", "ACCUSE OF MURDER"];
+      this.setOptionsTexts(this.twoTextOptions, texts, false);
+
+      this.backButton.visible = false;
+    }
+    else
+    {
+      this.multipleOptionsState = 1;
+      this.enableMultipleOptions(2, false);
+      this.enableAccuseDialogue(true);
+      this.backButton.visible = true;
+      // We set the first available items in the accusation buttons
+
+    }
+  }
+
+  /**
+   * Method that enables the multiple options dialogue
+   */
+  enableMultiple()
+  {
+    this.enableSingleDialogue(false);
+    this.enableMultipleOptions(2, false);
+    this.enableMultipleOptions(3, false);
+    this.enableMultipleOptions(4, false);
+
+    this.enableAccuseDialogue(false);   
+    let hasSuspects = playerNotebook.discoveredCharacters;
+    let hasWeapons = playerNotebook.discoveredWeapons;
+    let hasItems = playerNotebook.discoveredItems;
+    if(hasSuspects || hasWeapons || hasItems) // If we have disovered any clue we show that group of clues
+    {
+      if(hasSuspects && this.currentClueTalkingTo.clueType == "Humans" && this.currentClueTalkingTo.hasBeenConfronted == false)
+      {
+        let meetsRequirements = playerNotebook.checkIfMeetRequirements(this.currentClueTalkingTo);
+        if(meetsRequirements == true)
+        {
+          this.confrontBtn.visible = true;
+        }
+      }
+      let optionsTexts = [];
+      if(this.multipleOptionsState == 0) // This means we are in the categories menu
+      {
+        this.backButton.visible = false;
+        if(hasSuspects) optionsTexts.push('HUMANS');
+        if(hasWeapons) optionsTexts.push('WEAPONS');
+        if(hasItems) optionsTexts.push('ITEMS');
+
+      }
+      else
+      {
+        let array;
+        if(this.currentClueTypeSelected == "HUMANS") array = playerNotebook.humans;
+        if(this.currentClueTypeSelected == "WEAPONS") array = playerNotebook.weapons;
+        if(this.currentClueTypeSelected == "ITEMS") array = playerNotebook.items;
+
+        array.forEach(element => 
+        {
+          if((this.currentClueTalkingTo.name != element.name) && element.discovered == true)
+          {
+            optionsTexts.push(element);
+          }
+        });
+        // We enable Back Button
+        this.backButton.visible = true;
+      }
+      let optionsNumber;  
+      let textOptionsArray;     
+      let isClueOption;
+      (this.multipleOptionsState == 0) ? isClueOption = false : isClueOption = true;
+      if(optionsTexts.length <= 2)
+      {
+        optionsNumber = 2;
+        textOptionsArray = this.twoTextOptions;
+      }
+      else if(optionsTexts.length == 3)
+      {
+        optionsNumber = 3;
+        textOptionsArray = this.threeTextOptions;
+      }
+      else
+      {
+        optionsNumber = 4;
+        textOptionsArray = this.fourTextOptions;
+      }
+      this.enableMultipleOptions(optionsNumber, true);
+      this.setOptionsTexts(textOptionsArray, optionsTexts, isClueOption);
+    }
+    else
+    {
+      this.enableDialogueUI(false);
+    }
+  }
+
+  //------------------------------------------------------------------------------------------------
+  //                                      INTERACTION FUNCTIONS
+  //------------------------------------------------------------------------------------------------
+
   /**
    * Method that selects an option from the multiple options dialogue
    */
@@ -585,6 +673,7 @@ class DialogueHUD
     {
       if(theOption.text == "CHECK BODY")
       {
+        this.enableMultipleOptions(2, false);
         dialogueManager.startDialogue("SPark1xUN");
       }
       else if(theOption.text == "ACCUSE OF MURDER")
@@ -595,7 +684,7 @@ class DialogueHUD
       {
         this.multipleOptionsState = 1;
         this.currentClueTypeSelected = theOption.text;
-        this.enableMultiple(false);
+        this.enableMultiple();
       }
     }
     else
@@ -604,11 +693,18 @@ class DialogueHUD
       {
         this.multipleOptionsState = 0;
         this.currentClueTypeSelected = "";
-        this.enableMultiple(false);
+        if(this.parkOpened == true)
+        {
+          this.openParkOptions(false);
+        }
+        else
+        {
+          this.enableMultiple();
+        }
       }
       else
       {
-        let dialogueID = playerNotebook.getCurrentDialogueID(this.currentPersonTalkingTo, theOption.name);
+        let dialogueID = playerNotebook.getCurrentDialogueID(this.currentClueTalkingTo, theOption.name);
         dialogueManager.startDialogue(dialogueID);
         this.backButton.visible = false;
       }

@@ -19,7 +19,7 @@ const gameConfig =
             }
         }
     },
-    scene: [/*BootScene,*/ MainMenu, HallScene, OfficeScene,DressroomScene, StudioScene, UINotebook]
+    scene: [/*BootScene, MainMenu,*/ HallScene, OfficeScene,DressroomScene, StudioScene, UINotebook]
 };
 
 //---------------------------------------------
@@ -192,18 +192,25 @@ function loadScene(newScene)
 {
     if(canSceneSwitch == true)
     {
-        //currentScene.input.stopPropagation();
+        currentScene.input.stopPropagation();
         let destScene = this.getScene(newScene);
         previousScene = currentScene;
-        currentScene.scene.switch(destScene);
+        //currentScene.scene.switch(destScene);
         canSceneSwitch = false;
         currentScene = destScene;
+
+        theGame.scene.sleep(previousScene.scene.key);
+        theGame.scene.run(currentScene.scene.key);
+
         currentDialogueHUD = currentScene.dialogueHUD;
         currentPlayerHUD = currentScene.playerHUD;
-        currentClickedElement = null;
+        //currentClickedElement = null;
 
-        thePlayer.reloadPlayer();
-        thePlayer.assignOnEvents();
+        if(previousScene.scene.key != "MainMenu")
+        {
+            thePlayer.reloadPlayer();
+            thePlayer.assignOnEvents();
+        }
 
         if(previousScene.scene.key == "StudioScene")
             thePlayer.player.setFlip(false);

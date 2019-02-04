@@ -54,8 +54,11 @@ class HallScene extends Phaser.Scene
 
         let dressroom = spriteManager.createEnvironment('dressromDoor', topBackgroundXOrigin+1790.5, topBackgroundYOrigin+32.5, 0.72);
 
+        // Items Creation
+        let sweatyPuddle = spriteManager.createItem('Puddle', topBackgroundXOrigin+400, topBackgroundYOrigin+210, 0.35);
+
         // Characters Creation
-        let park = spriteManager.createStaticCharacter('Park', topBackgroundXOrigin+800, topBackgroundYOrigin+200, 0.25);
+        let park = spriteManager.createStaticCharacter('Park', topBackgroundXOrigin+200, topBackgroundYOrigin+200, 0.25);
 
         if(GameManager.stateOfGame == 0)
         {

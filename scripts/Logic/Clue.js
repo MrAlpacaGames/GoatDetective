@@ -28,12 +28,21 @@ class Clue
 
         //--------------------------------------
         // Notebook Notes
-        //------------------------------------
+        //--------------------------------------
         this.noteBookID;
 
         this.noteBookNote = "";
 
         this.noteBookIndex = 0;
+
+        //--------------------------------------
+        // Confrontation
+        //--------------------------------------
+        // Confront Requirements
+        this.confrontationRequirements;
+
+        // Bool that defines if the human has been confronted
+        this.hasBeenConfronted = false;
     }
 
     //------------------------------
@@ -59,19 +68,26 @@ class Clue
     getCurrentInitialDialogue()
     {
         let answer;
-        if(GameManager.stateOfGame == 1 && this.inDialoguesIndex < 1) // We have already discovered the body but not talked the first time
+        if(this.clueType == "Weapons" || this.clueType == "Items")
         {
-            this.inDialoguesIndex = 1;
+            answer = this.initialDialogues[0];
         }
-        else if(GameManager.stateOfGame == 0)
+        else
         {
-            this.inDialoguesIndex = 0;
+            if(GameManager.stateOfGame == 1 && this.inDialoguesIndex < 1) // We have already discovered the body but not talked the first time
+            {
+                this.inDialoguesIndex = 1;
+            }
+            else if(GameManager.stateOfGame == 0)
+            {
+                this.inDialoguesIndex = 0;
+            }
+            else if(GameManager.stateOfGame == 1 && this.inDialoguesIndex == 1)
+            {
+                this.inDialoguesIndex = 2;
+            }
+            answer = this.initialDialogues[this.inDialoguesIndex];
         }
-        else if(GameManager.stateOfGame == 1 && this.inDialoguesIndex == 1)
-        {
-            this.inDialoguesIndex = 2;
-        }
-        answer = this.initialDialogues[this.inDialoguesIndex];
         return answer;
     }
 
