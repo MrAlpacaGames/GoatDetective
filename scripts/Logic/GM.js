@@ -16,7 +16,7 @@ class GM
          */
         this.stateOfGame = 0;
 
-        this.caseSolution = ["Lee", "VenomousPin"];
+        this.caseSolution = ["Lee", "Poisoned"];
     }
 
     /**
@@ -30,22 +30,15 @@ class GM
         if(Human == this.caseSolution[0] && Weapon == this.caseSolution[1])
         {
             // YOU WIN THE GAME
+            currentPlayerHUD.openSpecialScreen(false, false);
+            currentPlayerHUD.openSpecialScreen(true, true);
         }
         else
         {
             // YOU LOSE THE GAME
-            this.showLoseScreen();
+            currentPlayerHUD.openSpecialScreen(true, false);
+            currentPlayerHUD.openSpecialScreen(false, true);
         }
-    }
-
-    winGame()
-    {
-
-    }
-
-    showLoseScreen()
-    {
-        currentPlayerHUD.openSpecialScreen(false, true);
     }
 
     loseGame()

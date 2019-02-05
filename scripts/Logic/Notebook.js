@@ -11,7 +11,8 @@ class Notebook
         let jung = new Clue('Jung', "Humans", 1);
         jung.fullName = "JUNG DAE SEO";
         jung.addInitialDialogues(["SJung0xPrro", "SJung1xPR", "SJung1xUN"]);
-        jung.confrontationRequirements = ["LeeConfrontation2x1", "ParkGoatman1x4", "LeeJungx1x4", "AssatariJungx1x4", "RuruJung1x4", "JungStandard1xUN", "JungPoisoned1xUN" ];
+        //jung.confrontationRequirements = ["LeeConfrontation2x1", "ParkGoatman1x4", "LeeJungx1x4", "AssatariJungx1x4", "RuruJung1x4", "JungStandard1xUN", "JungPoisoned1xUN" ];
+        jung.confrontationRequirements = ["SPark1xPR"];
 
         let lee = new Clue('Lee', "Humans", 2);
         lee.fullName = "LEE CHEE GO";
@@ -90,6 +91,7 @@ class Notebook
 
         this.dialoguesTaken = new HashTable();
 
+        this.parkDiscovered = false;
         this.discoveredCharacters = false;
         this.discoveredWeapons = false;
         this.discoveredItems = false;
@@ -159,6 +161,7 @@ class Notebook
      */
     discoverClue(clue)
     {
+        if(clue.name == "Park") this.parkDiscovered = true;
         clue.discovered = true;
         if(clue.name != "Hall")
             this.playDiscoverSFX();
@@ -327,6 +330,45 @@ class Notebook
                 }
             }
             answer = meets;
+        }
+        return answer;
+    }
+
+    getDiscoveredClues(clueType)
+    {
+        let answer = [];
+        let array;
+        let substractor;
+        (clueType == "Humans") ? array = this.humans: array = this.weapons;
+        (clueType == "Humans") ? substractor = -1: substractor = 0;
+        for(let i = 0; i < array.length; i++)
+        {
+            if(array[i].discovered && array[i].name != "Park")
+            {
+                answer.push(array[i].index + substractor);
+            }
+        }
+        return answer;
+    }
+
+    getFirstDoubleAvailable()
+    {
+        let answer = [];
+        for(let i = 0; i < this.humans.length; i++)
+        {
+            if(this.humans[i].discovered == true)
+            {
+                answer.push(this.humans[i]);
+                break;
+            }
+        }
+        for(let i = 0; i < this.weapons.length; i++)
+        {
+            if(this.weapons[i].discovered == true)
+            {
+                answer.push(this.weapons[i]);
+                break;
+            }
         }
         return answer;
     }

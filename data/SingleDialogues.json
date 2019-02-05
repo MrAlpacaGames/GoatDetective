@@ -1506,5 +1506,51 @@
         }
 
 
+
+
+        ,
+        {
+            "ID":"GoatmanVictory",
+            "Character": "Goatman",
+            "GameState": 0,
+            "Texts":
+            [
+                "GOATMAN PETERSON|||The Gods of the Supah Star have blessed me!",
+                "GOATMAN PETERSON|||I can see now, I was right!",
+                "GOATMAN PETERSON|||Now I can peer into the abyss of infinity and see the Truth!",
+                "GOATMAN PETERSON|||Lee bought the rare Pin to give it to Park, and had a copy made with a poisoned needle.",
+                "GOATMAN PETERSON|||Then he gave it to Park in the morning, making him use it to mess around with Jung and promise to use it all day without taking it off.",
+                "GOATMAN PETERSON|||Right before Lee left he pushed the Pin into Park's chest, poisoning him.",
+                "GOATMAN PETERSON|||He knew the poison would take it's time, long enough so Park could arrive at the Barbers shop where they would get their hair done!",
+                "GOATMAN PETERSON|||He would die during the haircut, and using the confusion we was going to switch the  fake Pin with the original one!",
+                "GOATMAN PETERSON|||Making it impossible for the Police to know how he died.",
+                "GOATMAN PETERSON|||There were three problems though, he didn't expect Lee would take it's time arguin with Assatari since he didn't know about their",
+                "GOATMAN PETERSON|||relationship, and second, he didn't know that if someone were to have multiple injuries and internal bleedings, the body would turn purple",
+                "GOATMAN PETERSON|||because of the poison, making it evident.",
+                "GOATMAN PETERSON|||And finally, since the Fake Pin was missing from the body, he had no option but to stay in the crime scene, looking for it to switch it.",
+                "GOATMAN PETERSON|||The poison took effect right after Park was leaving the Office making him weak,",
+                "GOATMAN PETERSON|||added to the hit on his head, he couldn't see the ouddle of sweat left by Ruru and slipped down stairs,",
+                "GOATMAN PETERSON|||knocking himself out and dying because of the posion.",
+                "GOATMAN PETERSON|||Now you might wonder... Why did Lee kill his best friend?",
+                "GOATMAN PETERSON|||Well that's because Park was going to CUT HIS HAIR BALD as his new look!",
+                "GOATMAN PETERSON|||Lee couldn't bear it, to him Park was perfect, and being the only person Park had informed about his plan, he had to stop him.",
+                "GOATMAN PETERSON|||He would rather have a Perfect Park dead than an Imperfect Ugly version alive and disgraceful.",
+                "GOATMAN PETERSON|||He never cared about his friend as a person, only the symbol Park represented to him...",
+                "GOATMAN PETERSON|||RATHER DEAD & PRETTY THAN BALD & ALIVE..."
+            ],
+            "Next": "VictoryScreen"
+        },
+        {
+            "ID":"GoatmanDefeat",
+            "Character": "Goatman",
+            "GameState": 0,
+            "Texts":
+            [
+                "GOATMAN PETERSON|||What's this? The god's of the Supah Star won't bless me!",
+                "GOATMAN PETERSON|||I must have made a mistake!",
+                "GOATMAN PETERSON|||I have disgraced my detective ancestors!!"
+            ],
+            "Next": "LoseScreen"
+        }
     ]
 }

@@ -115,11 +115,26 @@ class DialogueHUD
     // Arcade Sprite of the Weapon
     this.accusedWeapon;
 
-    // Array of Suspects Images
-    this.suspectsImgs;
+    // Array of Humans Images
+    this.humansImgs = [];
 
     // Array of Weapons Images
-    this.weaponsImgs;
+    this.weaponsImgs = [];
+
+    // Index for the human accused array
+    this.accusedHumanIndex;
+
+    // Index for the weapon accused array
+    this.accusedWeaponIndex;
+
+    // Array of indexes of the discovered humans
+    this.discHIndexes;
+
+    // Array of indexes of the discovered weapons
+    this.discWIndexes;
+
+    // Delay Flag used when the player changed of clue in the accusation dialogue
+    this.canSwitchAccusedClue = true;
   }
 
   //----------------------------
@@ -145,6 +160,11 @@ class DialogueHUD
     currentScene.load.image('JungAccuse', 'assets/sprites/HUD/Accuse/JungAccuse.png');
     currentScene.load.image('LeeAccuse', 'assets/sprites/HUD/Accuse/LeeAccuse.png');
     currentScene.load.image('RuruAccuse', 'assets/sprites/HUD/Accuse/RuruAccuse.png');
+    currentScene.load.image('ChickenAccuse', 'assets/sprites/Items/ChickenDiamondo.png');
+    currentScene.load.image('PuddleAccuse', 'assets/sprites/Items/Puddle.png');
+    currentScene.load.image('StandardAccuse', 'assets/sprites/Agenda/Items/StandardPin.png');
+    currentScene.load.image('PoisonedAccuse', 'assets/sprites/Agenda/Items/PoisonedPin.png');
+
     
     currentScene.load.image('nextBtn', 'assets/sprites/HUD/Siguiente.png');
     currentScene.load.image('ConfrontBtn', 'assets/sprites/HUD/ConfrontButton.png');
@@ -240,12 +260,51 @@ class DialogueHUD
     this.createButtonBehaviour(this.weapRightArrow,'weapRightArrow');
     //this.weapRightArrow.visible = false;
 
-    this.accusedCharacter = currentScene.physics.add.staticSprite(255, 90, 'AssaAccuse');
-    this.accusedCharacter.scrollFactorX = 0;
-    //this.accusedCharacter.visible = false;
-    this.accusedWeapon = currentScene.physics.add.staticSprite(495, 90, 'RuruAccuse');
-    this.accusedWeapon.scrollFactorX = 0;
-    //this.accusedWeapon.visible = false;    
+    // Humans
+    let AccuChar = currentScene.physics.add.staticSprite(255, 90, 'JungAccuse');
+    AccuChar.scrollFactorX = 0;
+    AccuChar.visible = false;
+    this.humansImgs.push(AccuChar);
+    AccuChar = currentScene.physics.add.staticSprite(255, 90, 'LeeAccuse');
+    AccuChar.scrollFactorX = 0;
+    AccuChar.visible = false;
+    this.humansImgs.push(AccuChar);
+    AccuChar = currentScene.physics.add.staticSprite(255, 90, 'AssaAccuse');
+    AccuChar.scrollFactorX = 0;
+    AccuChar.visible = false;
+    this.humansImgs.push(AccuChar);
+    AccuChar = currentScene.physics.add.staticSprite(255, 90, 'RuruAccuse');
+    AccuChar.scrollFactorX = 0;
+    AccuChar.visible = false;
+    this.humansImgs.push(AccuChar);
+
+    this.accusedCharacter = this.humansImgs[2];
+    this.accusedCharacter.visible = false;
+
+    // Weapons
+    let AccuWeapons = currentScene.physics.add.staticSprite(495, 90, 'PuddleAccuse');
+    AccuWeapons.scrollFactorX = 0;
+    AccuWeapons.setScale(0.1);
+    AccuWeapons.visible = false;
+    this.weaponsImgs.push(AccuWeapons);  
+    AccuWeapons = currentScene.physics.add.staticSprite(495, 90, 'ChickenAccuse');
+    AccuWeapons.scrollFactorX = 0;
+    AccuWeapons.setScale(0.15);
+    AccuWeapons.visible = false;
+    this.weaponsImgs.push(AccuWeapons);
+    AccuWeapons = currentScene.physics.add.staticSprite(495, 90, 'StandardAccuse');
+    AccuWeapons.scrollFactorX = 0;
+    AccuWeapons.setScale(0.1);
+    AccuWeapons.visible = false;
+    this.weaponsImgs.push(AccuWeapons);
+    AccuWeapons = currentScene.physics.add.staticSprite(495, 90, 'PoisonedAccuse');
+    AccuWeapons.scrollFactorX = 0;
+    AccuWeapons.setScale(0.2);
+    AccuWeapons.visible = false;
+    this.weaponsImgs.push(AccuWeapons);
+
+    this.accusedWeapon = this.weaponsImgs[2];
+    this.accusedWeapon.visible = false;
     
     //---------------------------------
     // BUTTONS
@@ -373,16 +432,16 @@ class DialogueHUD
         
       break;
       case "charLeftArrow":
-
+        theButton.on('pointerdown', ()=> this.changeAccusedClue("Humans", -1));
       break;
       case "charRightArrow":
-          
+        theButton.on('pointerdown', ()=> this.changeAccusedClue("Humans", 1));
       break;
       case "weapLeftArrow":
-
+        theButton.on('pointerdown', ()=> this.changeAccusedClue("Weapons", -1));
       break;
       case "weapRightArrow":
-
+        theButton.on('pointerdown', ()=> this.changeAccusedClue("Weapons", 1));
       break;
     }
   }
@@ -519,8 +578,10 @@ class DialogueHUD
     this.weapRightArrow.visible = newValue;
     this.accusedCharacter.visible = newValue;
     this.accusedWeapon.visible = newValue;
-    //this.suspectsImgs.visible = newValue;
-    //this.weaponsImgs.visible = newValue;
+
+
+    this.accusedCharacter.visible = newValue;
+    this.accusedWeapon.visible = newValue;
   } 
 
   /**
@@ -566,7 +627,11 @@ class DialogueHUD
       this.enableMultipleOptions(3, false);
       this.enableMultipleOptions(4, false);
       this.enableAccuseDialogue(false);
-      let texts = ["CHECK BODY", "ACCUSE OF MURDER"];
+      let texts = ["CHECK BODY"];
+      if(playerNotebook.discoveredCharacters && playerNotebook.discoveredWeapons && playerNotebook.parkDiscovered)
+      {
+        texts.push("ACCUSE OF MURDER");
+      }
       this.setOptionsTexts(this.twoTextOptions, texts, false);
 
       this.backButton.visible = false;
@@ -577,8 +642,19 @@ class DialogueHUD
       this.enableMultipleOptions(2, false);
       this.enableAccuseDialogue(true);
       this.backButton.visible = true;
+      this.accusedCharacter.visible = false;
+      this.accusedWeapon.visible = false;
       // We set the first available items in the accusation buttons
+      this.discHIndexes = playerNotebook.getDiscoveredClues("Humans");
+      this.discWIndexes = playerNotebook.getDiscoveredClues("Weapons");
 
+      this.accusedHumanIndex = this.discHIndexes[0];
+      this.accusedWeaponIndex = this.discWIndexes[0];
+
+      this.accusedCharacter = this.humansImgs[this.accusedHumanIndex];
+      this.accusedCharacter.visible = true;
+      this.accusedWeapon = this.weaponsImgs[this.accusedWeaponIndex];
+      this.accusedWeapon.visible = true;
     }
   }
 
@@ -702,6 +778,12 @@ class DialogueHUD
           this.enableMultiple();
         }
       }
+      else if(theOption.text == "ACCUSE!")
+      {
+        let accusedHuman = playerNotebook.humans[this.accusedHumanIndex+1];
+        let accusedWeapon = playerNotebook.weapons[this.accusedWeaponIndex];
+        GameManager.solveGame(accusedHuman.name, accusedWeapon.name);
+      }
       else
       {
         let dialogueID = playerNotebook.getCurrentDialogueID(this.currentClueTalkingTo, theOption.name);
@@ -710,4 +792,68 @@ class DialogueHUD
       }
     }
   }
+
+  /**
+   * Function that changes the image of the accused human and weapons
+   * @param {*If tells if the accused item to change is an human or a weapon} clueType 
+   * @param {*Can be 1 to the right or -1 to the left} direction 
+   */
+  changeAccusedClue(clueType, direction)
+  {
+    if(this.canSwitchAccusedClue)
+    {
+      let array;
+      let tempIndex;
+      let accusedImg;
+      if(clueType == "Humans")
+      {
+        if(direction == 1)
+        {
+          this.accusedHumanIndex++;
+          if(this.accusedHumanIndex == this.humansImgs.length)
+          {
+            this.accusedHumanIndex = 0;
+          }
+        }
+        else
+        {
+          this.accusedHumanIndex--;
+          if(this.accusedHumanIndex < 0)
+          {
+            this.accusedHumanIndex = this.humansImgs.length-1;
+          }
+        }
+        this.accusedCharacter.visible = false;
+        this.accusedCharacter = this.humansImgs[this.accusedHumanIndex];
+        this.accusedCharacter.visible = true; 
+      }
+      else
+      {
+        if(direction == 1)
+        {
+          this.accusedWeaponIndex++;
+          if(this.accusedWeaponIndex == this.weaponsImgs.length)
+          {
+            this.accusedWeaponIndex = 0;
+          }
+        }
+        else
+        {
+          this.accusedWeaponIndex--;
+          if(this.accusedWeaponIndex < 0)
+          {
+            this.accusedWeaponIndex = this.weaponsImgs.length-1;
+          }
+        }
+        this.accusedWeapon.visible = false;
+        this.accusedWeapon = this.weaponsImgs[this.accusedWeaponIndex];
+        this.accusedWeapon.visible = true; 
+      }
+      this.canSwitchAccusedClue = false;
+      let timedEvent = currentScene.time.delayedCall(150, function(){
+        currentDialogueHUD.canSwitchAccusedClue = true;
+      }, currentScene);
+    }
+  }
+
 }

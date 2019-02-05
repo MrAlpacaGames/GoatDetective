@@ -19,7 +19,7 @@ const gameConfig =
             }
         }
     },
-    scene: [/*BootScene, MainMenu,*/ HallScene, OfficeScene,DressroomScene, StudioScene, UINotebook]
+    scene: [/*BootScene,*/ MainMenu, HallScene, OfficeScene,DressroomScene, StudioScene, UINotebook]
 };
 
 //---------------------------------------------

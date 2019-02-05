@@ -21,6 +21,12 @@ class HUDManager
         this.retryButton;
         this.titleScreen;
 
+        //-----------------------------
+        // WINNER SCREEN
+        //----------------------------
+        this.winnerScreen;
+        this.winnerTitleScreen;
+
         this.showTween;
     }
 
@@ -60,6 +66,9 @@ class HUDManager
          this.assignBehaviour(this.notePressed, 'NotePressed');
          this.notePressed.visible = false;
          
+         //--------------------------------------------
+         // GAME OVER SCREEN
+         //--------------------------------------------
          this.gameOverScreen = currentScene.add.image(topBackgroundXOrigin, topBackgroundYOrigin, 'GameOver');
          this.assignBehaviour(this.gameOverScreen, "GameOver");
 
@@ -77,7 +86,15 @@ class HUDManager
          });
          this.assignBehaviour(this.titleScreen, "Title");
 
+         //--------------------------------------------
+         // WINNER SCREEN
+         //--------------------------------------------
+         this.winnerScreen = currentScene.add.image(topBackgroundXOrigin, topBackgroundYOrigin, 'Winner');
+         this.assignBehaviour(this.winnerScreen, "Winner");
+
+
          this.openSpecialScreen(false, false);
+         this.openSpecialScreen(true, false);
     }
 
     /**
@@ -172,7 +189,7 @@ class HUDManager
         }
         else
         {
-            
+            this.winnerScreen.visible = newValue;
         }
     }
 

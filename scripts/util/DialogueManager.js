@@ -145,7 +145,7 @@ class DialogueManager
                 }
                 else if(nextAction == "GameOver")
                 {
-                    GameManager.showLoseScreen();                    
+                    currentPlayerHUD.openSpecialScreen(false, true);                   
                 }
             }
             else // If is not last line, we continue to the next line
