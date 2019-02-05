@@ -28,6 +28,8 @@ class HUDManager
         this.winnerTitleScreen;
 
         this.showTween;
+
+        this.FullScreen;
     }
 
     //-------------------------
@@ -43,7 +45,7 @@ class HUDManager
         currentScene.load.spritesheet('Notebook', 'assets/sprites/HUD/Notebook.png',
         {frameWidth: 252.8, frameHeight: 184.5});
         currentScene.load.image('NotePressed', 'assets/sprites/HUD/NotePressed.png');
-
+        fullScreenPower.preload();
     }
 
     /**
@@ -92,7 +94,7 @@ class HUDManager
          this.winnerScreen = currentScene.add.image(topBackgroundXOrigin, topBackgroundYOrigin, 'Winner');
          this.assignBehaviour(this.winnerScreen, "Winner");
 
-
+         fullScreenPower.create();
          this.openSpecialScreen(false, false);
          this.openSpecialScreen(true, false);
     }

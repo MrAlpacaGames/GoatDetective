@@ -56,6 +56,7 @@ class Notebook
         let studioKey = new Clue('Key', "Items", 0);
         studioKey.fullName = "STUDIO KEY";
         studioKey.noteBookID = "Studio Key";
+        studioKey.addInitialDialogues(["GoatmanKey1xUN"]);
 
         let loveLetter = new Clue('Letter', "Items", 1);
         loveLetter.fullName = "RURU'S LOVE LETTER";
@@ -118,19 +119,18 @@ class Notebook
         {
             this.hasTheKey = true;
         }
-        else
+
+        theArray = this.getClueArray(name);
+
+        for(let i = 0; i < theArray.length; i++)
         {
-            theArray = this.getClueArray(name);
-    
-            for(let i = 0; i < theArray.length; i++)
+            if(theArray[i].name == name)
             {
-                if(theArray[i].name == name)
-                {
-                    theClue = theArray[i];
-                    break;
-                }
-            }  
-        }
+                theClue = theArray[i];
+                break;
+            }
+        }  
+        
         return theClue;
     }
 
@@ -181,10 +181,10 @@ class Notebook
             theArray = this.weapons;
             if(this.discoveredWeapons == false) this.discoveredWeapons = true;
         }
-        else if(name == "Letter" || name == "Recorder" || name == "Cellphone")
+        else if(name == "Letter" || name == "Recorder" || name == "Cellphone" || name == "Key")
         {
             theArray = this.items;
-            if(this.discoveredItems == false) this.discoveredItems = true;
+            if(this.discoveredItems == false && name != "Key") this.discoveredItems = true;
         }
         else if(name == "Hall" || name == "Office" || name == "Dressroom" || name == "Studio")
         {

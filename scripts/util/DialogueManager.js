@@ -127,6 +127,15 @@ class DialogueManager
                     {
                         playerNotebook.discoverClue(theClue);
                         playerNotebook.dialoguesTaken.add(this.currentDialogue.ID);
+                        if(theClue.name == "Puddle" || theClue.name == "Chicken" || theClue.name == "Standard" || theClue.name == "Poisoned"
+                        || theClue.name == "Key" || theClue.name == "Letter" || theClue.name == "Recorder" || theClue.name == "Cellphone")
+                        {
+                            lastClickedElement.disableInteractive();
+                            if(theClue.name != "Puddle") 
+                            {
+                                lastClickedElement.destroy();
+                            }
+                        }
                     }
                     (nextAction == "DiscoverEnd") ? currentDialogueHUD.enableDialogueUI(false): currentDialogueHUD.enableMultiple();
                 }

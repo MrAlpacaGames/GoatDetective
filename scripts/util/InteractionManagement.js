@@ -18,7 +18,7 @@ class InteractionManagement
      */
     interact(interactionObject)
     {
-        console.log("Interacting with: "+interactionObject);
+        //console.log("Interacting with: "+interactionObject);
         if(GameManager.canMove == true)
         {
             if(interactionObject == "hallDoor" || interactionObject == "officeDoor" || interactionObject == "studioDoor" || interactionObject == "dressromDoor" 
@@ -48,6 +48,14 @@ class InteractionManagement
     {
         let clue = playerNotebook.getClue(interactionObject);
         let dialogueID;
+
+        if(clue.clueType == "Humans" && clue.name != "Park")
+        {
+            let direction = thePlayer.player.x - currentClickedElement.x;
+            let shouldFlip;
+            (direction > 0) ? shouldFlip = true : shouldFlip = false; // If is > 0 it means we are at the right of the human
+            currentClickedElement.setFlip(shouldFlip);
+        }
         
         if(clue.name == "Park" && GameManager.stateOfGame == 0)
             GameManager.stateOfGame = 1;     
@@ -112,6 +120,7 @@ class InteractionManagement
                 break;
             }
         }
+        sfxManager.playSFX(2);
         loadScene(newSceneName);
     }
 }

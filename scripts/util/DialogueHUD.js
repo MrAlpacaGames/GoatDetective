@@ -700,7 +700,7 @@ class DialogueHUD
 
         array.forEach(element => 
         {
-          if((this.currentClueTalkingTo.name != element.name) && element.discovered == true)
+          if((this.currentClueTalkingTo.name != element.name) && element.discovered == true && element.name != "Key")
           {
             optionsTexts.push(element);
           }

@@ -24,6 +24,7 @@ class MainMenu extends Phaser.Scene
        
         musicManager.preloadMusic('Main');
         sfxManager.preloadSFX();
+        fullScreenPower.preload();
     }
 
     create()
@@ -32,6 +33,7 @@ class MainMenu extends Phaser.Scene
         sfxManager.createSFX();
 
         menuSpriteManager.createMenu();
+        fullScreenPower.create();
     }
 
     update()

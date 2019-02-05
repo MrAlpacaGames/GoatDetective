@@ -19,6 +19,9 @@ class StudioScene extends Phaser.Scene
 
         // Player HUD of this scene
         this.playerHUD = new HUDManager();
+
+        // Arcade Sprite of Ruru
+        this.ruru;
     }
 
     //-------------------------
@@ -50,8 +53,13 @@ class StudioScene extends Phaser.Scene
         // Environment
         let hallDoor = spriteManager.createEnvironment('studioToHall', topBackgroundXOrigin+ 1735, topBackgroundYOrigin+97.1, 0.72);
 
-        let ruru = spriteManager.createStaticCharacter('Ruru', topBackgroundXOrigin+900, topBackgroundYOrigin+114, 0.26);
-        ruru.setFlip(true);
+        this.ruru = spriteManager.createStaticCharacter('Ruru', topBackgroundXOrigin+900, topBackgroundYOrigin+114, 0.26);
+        this.ruru.setFlip(true);
+        if(playerNotebook.parkDiscovered == false)
+        {
+            this.ruru.visible = false;
+        }
+
         // Main Player
         this.playerSprite = spriteManager.createPlayer(topBackgroundXOrigin+1550,  topBackgroundYOrigin+90);
         this.playerSprite.setFlip(true);
@@ -72,5 +80,13 @@ class StudioScene extends Phaser.Scene
         this.input.on('pointerdown', () => spriteManager.clickEffect(this.clickFx, this.input.activePointer));
 
         onSceneEnterNotebook(this.scene.key);
+    }
+
+    notifyRuruToExit()
+    {
+        if(playerNotebook.parkDiscovered == true && this.ruru.visible == false)
+        {
+            this.ruru.visible = true;
+        }
     }
 }

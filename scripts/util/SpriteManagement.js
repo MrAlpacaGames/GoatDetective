@@ -58,10 +58,11 @@ class SpriteManagement
             case 'StudioScene':
                 currentScene.load.image('studio', 'assets/sprites/Scenarios/Studio/Record.png');
                 currentScene.load.image('studioToHall', 'assets/sprites/Scenarios/Studio/record_door.png');
-            break;  
-            case 'DressroomScene':
+                break;  
+                case 'DressroomScene':
                 currentScene.load.image('dressroom', 'assets/sprites/Scenarios/Dressroom/dressRoom.png');
                 currentScene.load.image('dressToHall', 'assets/sprites/Scenarios/Dressroom/dressroomIndoor.png');
+                currentScene.load.image('Key', 'assets/sprites/Items/MagicKey.png');
             break;  
         }
     }
@@ -137,11 +138,12 @@ class SpriteManagement
     createItem(item, posX, posY, scale)
     {
         let newItem;
-        newItem = currentScene.physics.add.staticSprite(posX, posY, item).setScale(scale);
-        newItem.body.setOffset(200,0);
+        newItem = currentScene.physics.add.sprite(posX, posY, item).setScale(scale);
+        newItem.body.allowGravity = false;
+        //newItem.body.setOffset(200,0);
 
         newItem.setName(item);
-        newItem.refreshBody();
+        //newItem.refreshBody();
         newItem.setInteractive();
         newItem.on('pointerdown', () => this.onElementClicked(newItem, true));
         return newItem;

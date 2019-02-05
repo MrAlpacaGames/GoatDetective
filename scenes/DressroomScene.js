@@ -50,7 +50,13 @@ class DressroomScene extends Phaser.Scene
         // Environment
         let hallDoor = spriteManager.createEnvironment('dressToHall', 245.5, topBackgroundYOrigin+93, 0.72);
 
-        let lee = spriteManager.createStaticCharacter('Lee', topBackgroundXOrigin+1600, topBackgroundYOrigin+100, 0.25);
+        // Items Creation
+        let studioKey = spriteManager.createItem('Key', topBackgroundXOrigin+600, topBackgroundYOrigin+70, 0.35);
+        studioKey.angle = 90;
+
+        // Characters
+
+        let lee = spriteManager.createStaticCharacter('Lee', topBackgroundXOrigin+1600, topBackgroundYOrigin+100, 0.25);        
         
         // Main Player
         this.playerSprite = spriteManager.createPlayer(topBackgroundXOrigin-200,  topBackgroundYOrigin+90);

@@ -19,7 +19,7 @@ const gameConfig =
             }
         }
     },
-    scene: [/*BootScene,*/ MainMenu, HallScene, OfficeScene,DressroomScene, StudioScene, UINotebook]
+    scene: [/*BootScene, MainMenu,*/ HallScene, OfficeScene,DressroomScene, StudioScene, UINotebook]
 };
 
 //---------------------------------------------
@@ -37,6 +37,9 @@ var thePlayer = new FrontPlayer();
 
 // Current clicked element by the user
 var currentClickedElement;
+
+// We save a reference to the last clicked element so we can deactivate some elements from the dialogue Manager
+var lastClickedElement;
 
 // Notebook
 var playerNotebook = new Notebook();
@@ -103,6 +106,8 @@ var topBackgroundXOrigin = windowWidth / 2;
 var topBackgroundYOrigin = windowHeight /2;
 
 var soundContextResumed = false;
+
+var fullScreenPower = new FullScreen();
 
 
 //-----------------------------------
@@ -210,6 +215,11 @@ function loadScene(newScene)
         {
             thePlayer.reloadPlayer();
             thePlayer.assignOnEvents();
+        }
+
+        if(currentScene.scene.key == "StudioScene")
+        {
+            currentScene.notifyRuruToExit();
         }
 
         if(previousScene.scene.key == "StudioScene")

@@ -10,6 +10,8 @@ class SFXManager
         currentScene.load.audio('ZafSupah','assets/audio/sfx/ZafSupahIntro.mp3');
         currentScene.load.audio('OpenDoor','assets/audio/sfx/OpenDoor.wav');
         currentScene.load.audio('WriteNote','assets/audio/sfx/WritingOpc3.wav');
+        currentScene.load.audio('Explosion','assets/audio/sfx/Explosion.wav');
+        currentScene.load.audio('HammerHit','assets/audio/sfx/HammerHit.wav');
     }
     
     
@@ -29,6 +31,13 @@ class SFXManager
         supahSFX.play();
     }
 
+    /**
+     * Play an SFX
+     * [0] = Zaf Supah Star
+     * [1] = Open Door
+     * [2] = Write Note
+     * @param {*} index 
+     */
     playSFX(index)
     {
         this.menusSFX[index].play();
