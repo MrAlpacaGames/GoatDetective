@@ -54,6 +54,18 @@ class DressroomScene extends Phaser.Scene
         let studioKey = spriteManager.createItem('Key', topBackgroundXOrigin+600, topBackgroundYOrigin+70, 0.35);
         studioKey.angle = 90;
 
+        // Jung Drawer
+        let drawer = spriteManager.createDrawer('JungDrawer', 'Drawer', topBackgroundXOrigin+373, topBackgroundYOrigin+111.5, 0.63);
+        drawer.setScale(0.72, 0.64);
+
+        // Park Drawer
+        drawer = spriteManager.createDrawer('ParkDrawer', 'Drawer', topBackgroundXOrigin+784, topBackgroundYOrigin+111.5, 0.63);
+        drawer.setScale(0.72, 0.64);
+
+        // Lee Drawer
+        drawer = spriteManager.createDrawer('LeeDrawer', 'Drawer', topBackgroundXOrigin+1190, topBackgroundYOrigin+111.5, 0.63);
+        drawer.setScale(0.72, 0.64);
+
         // Characters
 
         let lee = spriteManager.createStaticCharacter('Lee', topBackgroundXOrigin+1600, topBackgroundYOrigin+100, 0.25);        

@@ -58,7 +58,7 @@ class InteractionManagement
         }
         
         if(clue.name == "Park" && GameManager.stateOfGame == 0)
-            GameManager.stateOfGame = 1;     
+            GameManager.stateOfGame = 1;
         if(interactionObject == "Park" && clue.discovered == true)
         {
             currentDialogueHUD.openParkOptions(false);
@@ -120,7 +120,7 @@ class InteractionManagement
                 break;
             }
         }
-        sfxManager.playSFX(2);
+        sfxManager.playSFX(1);
         loadScene(newSceneName);
     }
 }

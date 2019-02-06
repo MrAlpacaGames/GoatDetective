@@ -19,7 +19,7 @@ const gameConfig =
             }
         }
     },
-    scene: [/*BootScene, MainMenu,*/ HallScene, OfficeScene,DressroomScene, StudioScene, UINotebook]
+    scene: [/*BootScene,*/ MainMenu, HallScene, OfficeScene,DressroomScene, StudioScene, UINotebook]
 };
 
 //---------------------------------------------
@@ -59,6 +59,10 @@ var canSceneSwitch = true;
 // Flag to notify if the notebook has been opened before or not
 var notebookOpened = false;
 
+var AudioContext = window.AudioContext || window.webkitAudioContext;
+
+var context = new AudioContext();
+
 //---------------------------------------------
 // Global Scripts
 //---------------------------------------------
@@ -89,6 +93,9 @@ var currentDialogueHUD;
 
 // Current HUD of the Player. It changes between scenes
 var currentPlayerHUD;
+
+// Tells if there is a cinematic happening. And if it is, it doesn't allow click commands interrupt it
+var globalLockdown = false;;
 
 //---------------------------------------------
 // Screen Settings
@@ -195,7 +202,7 @@ function muteTheWorld(scene)
  */
 function loadScene(newScene)
 {
-    if(canSceneSwitch == true)
+    if(canSceneSwitch == true && globalLockdown == false)
     {
         currentScene.input.stopPropagation();
         let destScene = this.getScene(newScene);
@@ -235,7 +242,7 @@ function loadScene(newScene)
 
 function openNotebook(newValue)
 {
-    if(canSceneSwitch == true)
+    if(canSceneSwitch == true && globalLockdown == false)
     {
         let destScene = (newValue == true) ?  this.getScene("UINotebook") : this.getScene(previousScene.scene.key);
     

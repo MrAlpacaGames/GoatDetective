@@ -74,7 +74,7 @@ class Clue
         }
         else
         {
-            if(GameManager.stateOfGame == 1 && this.inDialoguesIndex < 1) // We have already discovered the body but not talked the first time
+            if(GameManager.stateOfGame > 0 && this.inDialoguesIndex < 1) // We have already discovered the body but not talked the first time
             {
                 this.inDialoguesIndex = 1;
             }
@@ -82,7 +82,7 @@ class Clue
             {
                 this.inDialoguesIndex = 0;
             }
-            else if(GameManager.stateOfGame == 1 && this.inDialoguesIndex == 1)
+            else if(GameManager.stateOfGame > 0 && this.inDialoguesIndex == 1)
             {
                 this.inDialoguesIndex = 2;
             }

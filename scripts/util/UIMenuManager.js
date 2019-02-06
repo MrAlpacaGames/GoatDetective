@@ -57,6 +57,7 @@ class UIMenuManager
 
     toFullScreen()
     {
+        webAudioTouchUnlock(context);
         //openFullScreen();
         //theGame.scale.fullScreenScaleMode = Phaser.ScaleManager.NO_SCALE;
         /** 

@@ -27,26 +27,19 @@ class GM
      */
     solveGame(Human, Weapon)
     {
-        if(Human == this.caseSolution[0] && Weapon == this.caseSolution[1])
-        {
-            // YOU WIN THE GAME
-            currentPlayerHUD.openSpecialScreen(false, false);
-            currentPlayerHUD.openSpecialScreen(true, true);
-        }
-        else
-        {
-            // YOU LOSE THE GAME
-            currentPlayerHUD.openSpecialScreen(true, false);
-            currentPlayerHUD.openSpecialScreen(false, true);
-        }
+        let won;
+        (Human == this.caseSolution[0] && Weapon == this.caseSolution[1]) ? won = true : won = false;
+        this.showFinalDialogue(won);
     }
 
-    loseGame()
+    showFinalDialogue(PlayerWon)
     {
-        this.restartGame();
+        let dialogueID;
+        (PlayerWon) ? dialogueID = "GoatmanVictory" : dialogueID = "GoatmanDefeat"; 
+        dialogueManager.startDialogue(dialogueID);
     }
 
-    restartGame()
+    backToTitle()
     {
         // GM Values
         this.canMove = true;
@@ -69,6 +62,11 @@ class GM
         });
         theGame.scene.start('MainMenu');
         //theGame.scene.destroy();
+    }
+
+    restartGame()
+    {
+        
     }
 
 

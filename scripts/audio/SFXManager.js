@@ -8,20 +8,24 @@ class SFXManager
     preloadSFX()
     {
         currentScene.load.audio('ZafSupah','assets/audio/sfx/ZafSupahIntro.mp3');
-        currentScene.load.audio('OpenDoor','assets/audio/sfx/OpenDoor.wav');
+        currentScene.load.audio('OpenDoor','assets/audio/sfx/OpenDoor.m4a');
         currentScene.load.audio('WriteNote','assets/audio/sfx/WritingOpc3.wav');
-        currentScene.load.audio('Explosion','assets/audio/sfx/Explosion.wav');
+        currentScene.load.audio('Explosion','assets/audio/sfx/Explosion.m4a');
         currentScene.load.audio('HammerHit','assets/audio/sfx/HammerHit.wav');
     }
     
     
     createSFX()
     {
-        let supah = currentScene.sound.add('ZafSupah');
+        let supah = currentScene.sound.add('ZafSupah'); 
         this.menusSFX.push(supah);
         supah = currentScene.sound.add('OpenDoor');
         this.menusSFX.push(supah);
         supah = currentScene.sound.add('WriteNote');
+        this.menusSFX.push(supah);
+        supah = currentScene.sound.add('Explosion');
+        this.menusSFX.push(supah);
+        supah = currentScene.sound.add('HammerHit');
         this.menusSFX.push(supah);
     }
 

@@ -27,9 +27,13 @@ class HUDManager
         this.winnerScreen;
         this.winnerTitleScreen;
 
-        this.showTween;
-
-        this.FullScreen;
+        //----------------------------
+        // CONFRONTATION IMAGE
+        //---------------------------
+        // Image of the confrontation.
+        // It initial Position in Y is: topBackgroundYOrigin - 540
+        // It's final position in Y is: topBackgroundYOrigin
+        this.confrontationImg;
     }
 
     //-------------------------
@@ -41,6 +45,7 @@ class HUDManager
         currentScene.load.image('MuteHigh', 'assets/sprites/HUD/MuteHigh.png');
         currentScene.load.image('GameOver', 'assets/sprites/HUD/WinLoseScreens/GameOver.png');
         currentScene.load.image('Winner', 'assets/sprites/HUD/WinLoseScreens/Victory.png');
+        currentScene.load.image('Confrontation', 'assets/sprites/HUD/Confront.png');
 
         currentScene.load.spritesheet('Notebook', 'assets/sprites/HUD/Notebook.png',
         {frameWidth: 252.8, frameHeight: 184.5});
@@ -97,6 +102,9 @@ class HUDManager
          fullScreenPower.create();
          this.openSpecialScreen(false, false);
          this.openSpecialScreen(true, false);
+
+         this.confrontationImg = currentScene.add.image(topBackgroundXOrigin, topBackgroundYOrigin - 540, 'Confrontation');
+         this.assignBehaviour(this.confrontationImg, "Confrontation");
     }
 
     /**
@@ -145,7 +153,7 @@ class HUDManager
                 });
                 theButton.on('pointerup', function(){
                     this.setScale(1);
-                    GameManager.loseGame();
+                    GameManager.backToTitle();
                 });
             break;
         }
@@ -216,8 +224,59 @@ class HUDManager
         this.notifyHUDInteracted(newValue);
     }
 
+    /**
+     * Method that notifies that the HUD has been interacted and that it wasn't a player movement action
+     * @param {*New Value for the notification.} newValue 
+     */
     notifyHUDInteracted(newValue)
     {
         GameManager.HUDInteracted = newValue;
+    }
+
+    /**
+     * Function that starts the confrontation against a character
+     * It begins, by starting a global lockdown. Reproduces the animation and then removes the lockdown and starts the 
+     * Confrontation
+     */
+    startConfrontation(humanConfronting)
+    {
+        if(globalLockdown == false)
+        {
+            currentDialogueHUD.enableDialogueUI(false);
+            let confrontImg = this.confrontationImg;
+            globalLockdown = true;
+            let confrontTimeline = currentScene.tweens.createTimeline();
+
+            confrontTimeline.add(
+            {
+                targets: confrontImg,
+                y: topBackgroundYOrigin,
+                duration: 600,
+                hold: 500,
+                onStart: function()
+                {
+                    sfxManager.playSFX(3);
+                    thePlayer.player.anims.play('confront');
+                },
+                onComplete: function()
+                {
+                    sfxManager.playSFX(4);
+                }
+            });
+            confrontTimeline.add(
+            {
+                targets: confrontImg,
+                y: topBackgroundYOrigin+580,
+                duration: 400,
+                onComplete: function()
+                {
+                    confrontImg.y = topBackgroundYOrigin - 540;
+                    let dialogueID = playerNotebook.getConfrontationID(humanConfronting); 
+                    dialogueManager.startDialogue(dialogueID);
+                }
+            });
+
+            confrontTimeline.play();
+        }
     }
 }

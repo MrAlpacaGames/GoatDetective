@@ -10,7 +10,7 @@ class MusicManager
 
     preloadMusic(sceneName)
     {
-        currentScene.load.audio('MainIntro','assets/audio/music/MainIntroX.m4a');
+        currentScene.load.audio('MainIntro',['assets/audio/music/MainIntro.mp3','assets/audio/music/MainIntroXXX.ogg']);
         currentScene.load.audio('MainLoop','assets/audio/music/MainLoopX.m4a');
     }
 
@@ -38,13 +38,16 @@ class MusicManager
 
     muteMusic()
     {
-        if(currentScene.sound.volume == 0)
+        if(globalLockdown == false)
         {
-            currentScene.sound.volume = 1;
-        }
-        else if(currentScene.sound.volume == 1)
-        {
-            currentScene.sound.volume = 0;
+            if(currentScene.sound.volume == 0)
+            {
+                currentScene.sound.volume = 1;
+            }
+            else if(currentScene.sound.volume == 1)
+            {
+                currentScene.sound.volume = 0;
+            }
         }
     }
 

@@ -123,10 +123,10 @@ class DialogueManager
                 {
                     let name = this.currentDialogue.Character;
                     let theClue = currentDialogueHUD.currentClueTalkingTo;
-                    if((theClue.discovered == false) || (theClue.discoverClue == true && theClue.clueType == "Humans"))
+                    if((theClue.discovered == false) || (theClue.discovered == true && theClue.clueType == "Humans"))
                     {
                         playerNotebook.discoverClue(theClue);
-                        playerNotebook.dialoguesTaken.add(this.currentDialogue.ID);
+                        playerNotebook.addDialogueTaken(this.currentDialogue);
                         if(theClue.name == "Puddle" || theClue.name == "Chicken" || theClue.name == "Standard" || theClue.name == "Poisoned"
                         || theClue.name == "Key" || theClue.name == "Letter" || theClue.name == "Recorder" || theClue.name == "Cellphone")
                         {
@@ -135,6 +135,11 @@ class DialogueManager
                             {
                                 lastClickedElement.destroy();
                             }
+                        }
+                        else
+                        {
+                            thePlayer.player.anims.play('quiet');
+                            globalLockdown = false;
                         }
                     }
                     (nextAction == "DiscoverEnd") ? currentDialogueHUD.enableDialogueUI(false): currentDialogueHUD.enableMultiple();
@@ -154,7 +159,15 @@ class DialogueManager
                 }
                 else if(nextAction == "GameOver")
                 {
-                    currentPlayerHUD.openSpecialScreen(false, true);                   
+                    GameManager.showFinalDialogue(false);              
+                }
+                else if(nextAction == "VictoryScreen")
+                {
+                    currentPlayerHUD.openSpecialScreen(true, true);
+                }
+                else if(nextAction == "LoseScreen")
+                {
+                    currentPlayerHUD.openSpecialScreen(false, true);
                 }
             }
             else // If is not last line, we continue to the next line

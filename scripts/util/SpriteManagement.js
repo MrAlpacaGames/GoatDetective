@@ -60,9 +60,10 @@ class SpriteManagement
                 currentScene.load.image('studioToHall', 'assets/sprites/Scenarios/Studio/record_door.png');
                 break;  
                 case 'DressroomScene':
-                currentScene.load.image('dressroom', 'assets/sprites/Scenarios/Dressroom/dressRoom.png');
+                currentScene.load.image('dressroom', 'assets/sprites/Scenarios/Dressroom/Dressroom.png');
                 currentScene.load.image('dressToHall', 'assets/sprites/Scenarios/Dressroom/dressroomIndoor.png');
                 currentScene.load.image('Key', 'assets/sprites/Items/MagicKey.png');
+                currentScene.load.image('Drawer', 'assets/sprites/Scenarios/Dressroom/drawer.png');
             break;  
         }
     }
@@ -135,6 +136,13 @@ class SpriteManagement
         return newCharacter;
     }
 
+    /**
+     * Method that creates an item in the environment
+     * @param {*} item 
+     * @param {*} posX 
+     * @param {*} posY 
+     * @param {*} scale 
+     */
     createItem(item, posX, posY, scale)
     {
         let newItem;
@@ -147,6 +155,21 @@ class SpriteManagement
         newItem.setInteractive();
         newItem.on('pointerdown', () => this.onElementClicked(newItem, true));
         return newItem;
+    }
+
+    /**
+     * Creates a Drawer in the dressroom
+     * @param {*} DrawerName 
+     * @param {*} item 
+     * @param {*} posX 
+     * @param {*} posY 
+     * @param {*} scale 
+     */
+    createDrawer(DrawerName, item, posX, posY, scale)
+    {
+        let drawer = this.createItem(item, posX, posY, scale);
+        drawer.setName(DrawerName);
+        return drawer;
     }
 
     createEnvironment(element, posX, posY, scale)

@@ -1510,6 +1510,49 @@
 
         ,
         {
+            "ID":"JungConfrontation2x1",
+            "Character": "Jung",
+            "GameState": 0,
+            "Texts":
+            [
+                "GOATMAN PETERSON|||Why act this whole time?",
+                "JUNG DAE SEO|||What do you mean?",
+                "GOATMAN PETERSON|||Quit playing around, I know you killed Park!",
+                "JUNG DAE SEO|||That's absurd! How could I kill him, I was changing myself when he fell down stairs...",
+                "GOATMAN PETERSON|||Because you used the other Pin to poison Park",
+                "JUNG DAE SEO|||What? One of the Pin's is poisoned? Look I'm innocent, I might not have liked Park but I wouldn't try to kill him!",
+                "GOATMAN PETERSON|||Then... Why hide a poisoned Pin in the studio? The same poison that turned Park into a Gin smelling Berry!",
+                "JUNG DAE SEO|||I...",
+                "GOATMAN PETERSON|||Answer tough guy!",
+                "JUNG DAE SEO|||Yes... I hid the Pin.",
+                "GOATMAN PETERSON|||So you admit you killed him?",
+                "JUNG DAE SEO|||No I didn't kill him!, I did take the Pin from Park's body... I know it was a shameful movement but...",
+                "GOATMAN PETERSON|||But?",
+                "JUNG DAE SEO|||I just couldn't control myself! I had been anticipating that Pin for so long now, and I lost it to Lee who got it first!",
+                "GOATMAN PETERSON|||...",
+                "JUNG DAE SEO||| Like what the hell man! I just want to collect Pins as a hobby, why did he have to mess around with something so valuable for me...",
+                "GOATMAN PETERSON|||Then what happened?",
+                "JUNG DAE SEO|||Well I had been pissed of at Park and Lee for the joke, I was really envious of Park walking around with a Pin he didn't even like!",
+                "GOATMAN PETERSON|||And?",
+                "JUNG DAE SEO|||... When Park fell and Assatari went to the office to call the Police, I... I saw it and...",
+                "GOATMAN PETERSON|||You took it and then hid it in the Record Studio to keep it safe until the investigation ended.",
+                "GOATMAN PETERSON|||You know that's a crime right? You stole evidence from a crime scene...",
+                "JUNG DAE SEO|||... Still, even if I'm guilty of that. I did not kill Park, much less knew that Pin was false... I should have though better when I saw the dent on the Pin...",
+                "GOATMAN PETERSON|||If you didn't kill him... Someone here is lying, someone poisoned Park with that false Pin!"                
+            ],
+            "Next": "DiscoverEnd"
+        }
+
+
+
+
+
+
+
+
+
+        ,
+        {
             "ID":"GoatmanVictory",
             "Character": "Goatman",
             "GameState": 0,

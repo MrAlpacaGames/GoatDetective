@@ -12,7 +12,7 @@ class Notebook
         jung.fullName = "JUNG DAE SEO";
         jung.addInitialDialogues(["SJung0xPrro", "SJung1xPR", "SJung1xUN"]);
         //jung.confrontationRequirements = ["LeeConfrontation2x1", "ParkGoatman1x4", "LeeJungx1x4", "AssatariJungx1x4", "RuruJung1x4", "JungStandard1xUN", "JungPoisoned1xUN" ];
-        jung.confrontationRequirements = ["SPark1xPR"];
+        jung.confrontationRequirements = ['SPark1xPR'];
 
         let lee = new Clue('Lee', "Humans", 2);
         lee.fullName = "LEE CHEE GO";
@@ -312,7 +312,19 @@ class Notebook
         return dialogueID;
     }
 
+    /**
+     * Method that gets the Dialogue ID for a confrontation
+     * @param {*The human we are about to confront} humanTalkingTo 
+     */
+    getConfrontationID(humanTalkingTo)
+    {
+        return humanTalkingTo.name + "Confrontation2x1";
+    }
 
+    /**
+     * Function that checks if the human meeets the requirements for a confrontation
+     * @param {*} theClue 
+     */
     checkIfMeetRequirements(theClue)
     {
         let answer = false;
@@ -334,6 +346,10 @@ class Notebook
         return answer;
     }
 
+    /**
+     * Function that obtains the discovered clues depending of a clue type passed as parameter
+     * @param {*} clueType 
+     */
     getDiscoveredClues(clueType)
     {
         let answer = [];
@@ -351,6 +367,10 @@ class Notebook
         return answer;
     }
 
+    /**
+     * Function used to establish the first available human and weapon couple
+     * This function is used in the Park Accuse Menu
+     */
     getFirstDoubleAvailable()
     {
         let answer = [];

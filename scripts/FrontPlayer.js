@@ -64,7 +64,7 @@ class FrontPlayer
      */
     clickAction(thePointer)
     {
-        if(GameManager.canMove == true && GameManager.HUDInteracted == false)
+        if(GameManager.canMove == true && GameManager.HUDInteracted == false && globalLockdown == false)
         {
             currentScene.tweens.killAll();
             let xAdditive = this.calculateDistanceToMove(); // This is 0 until the player selects an interactive element. Then it will change to a new distance
@@ -96,7 +96,10 @@ class FrontPlayer
                 (thePointer.x < 109 && thePointer.y > 0 && thePointer.y < gameConfig.height)||
                 (thePointer.x > 892 && thePointer.x < gameConfig.width && thePointer.y < gameConfig.height))
                 {
-                    currentDialogueHUD.enableDialogueUI(false);
+                    if(globalLockdown == false)
+                    {
+                        currentDialogueHUD.enableDialogueUI(false);
+                    }
                 }
             }
         }

@@ -429,7 +429,7 @@ class DialogueHUD
       break;
       case "ConfrontBtn":
         // We accuse the character who we are talking to
-        
+        theButton.on('pointerdown', ()=> currentPlayerHUD.startConfrontation(this.currentClueTalkingTo));
       break;
       case "charLeftArrow":
         theButton.on('pointerdown', ()=> this.changeAccusedClue("Humans", -1));
