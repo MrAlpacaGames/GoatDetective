@@ -53,12 +53,16 @@ class StudioScene extends Phaser.Scene
         // Environment
         let hallDoor = spriteManager.createEnvironment('studioToHall', topBackgroundXOrigin+ 1735, topBackgroundYOrigin+97.1, 0.72);
 
+        // Ruru
         this.ruru = spriteManager.createStaticCharacter('Ruru', topBackgroundXOrigin+900, topBackgroundYOrigin+114, 0.26);
         this.ruru.setFlip(true);
         if(playerNotebook.parkDiscovered == false)
         {
             this.ruru.visible = false;
         }
+
+         // Items Creation
+        let recorder = spriteManager.createItem('Recorder', topBackgroundXOrigin+42, topBackgroundYOrigin+172, 0.75);
 
         // Main Player
         this.playerSprite = spriteManager.createPlayer(topBackgroundXOrigin+1550,  topBackgroundYOrigin+90);

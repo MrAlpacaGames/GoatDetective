@@ -48,22 +48,22 @@ class DressroomScene extends Phaser.Scene
         this.physics.world.setBounds(280, 0, gameConfig.width * 1.8, gameConfig.height -16 );        
         
         // Environment
-        let hallDoor = spriteManager.createEnvironment('dressToHall', 245.5, topBackgroundYOrigin+93, 0.72);
+        let hallDoor = spriteManager.createEnvironment('dressToHall', 246, topBackgroundYOrigin+75, 0.72);
 
         // Items Creation
-        let studioKey = spriteManager.createItem('Key', topBackgroundXOrigin+600, topBackgroundYOrigin+70, 0.35);
+        let studioKey = spriteManager.createItem('Key', topBackgroundXOrigin+600, topBackgroundYOrigin+50, 0.35);
         studioKey.angle = 90;
 
         // Jung Drawer
-        let drawer = spriteManager.createDrawer('JungDrawer', 'Drawer', topBackgroundXOrigin+373, topBackgroundYOrigin+111.5, 0.63);
+        let drawer = spriteManager.createDrawer('JungDrawer', 'Drawer', topBackgroundXOrigin+373.5, topBackgroundYOrigin+98, 0.63);
         drawer.setScale(0.72, 0.64);
 
         // Park Drawer
-        drawer = spriteManager.createDrawer('ParkDrawer', 'Drawer', topBackgroundXOrigin+784, topBackgroundYOrigin+111.5, 0.63);
+        drawer = spriteManager.createDrawer('ParkDrawer', 'Drawer', topBackgroundXOrigin+784.5, topBackgroundYOrigin+98, 0.63);
         drawer.setScale(0.72, 0.64);
 
         // Lee Drawer
-        drawer = spriteManager.createDrawer('LeeDrawer', 'Drawer', topBackgroundXOrigin+1190, topBackgroundYOrigin+111.5, 0.63);
+        drawer = spriteManager.createDrawer('LeeDrawer', 'Drawer', topBackgroundXOrigin+1189, topBackgroundYOrigin+98, 0.63);
         drawer.setScale(0.72, 0.64);
 
         // Characters

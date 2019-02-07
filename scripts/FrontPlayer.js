@@ -124,7 +124,9 @@ class FrontPlayer
         return answer;
     }
     
-    
+    /**
+     * Function that 
+     */
     stopMoving()
     {
         currentScene.tweens.killAll();

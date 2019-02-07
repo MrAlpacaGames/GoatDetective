@@ -46,6 +46,7 @@ class HUDManager
         currentScene.load.image('GameOver', 'assets/sprites/HUD/WinLoseScreens/GameOver.png');
         currentScene.load.image('Winner', 'assets/sprites/HUD/WinLoseScreens/Victory.png');
         currentScene.load.image('Confrontation', 'assets/sprites/HUD/Confront.png');
+        currentScene.load.image('ConfrontBack', 'assets/sprites/HUD/ConfrontBack.png');
 
         currentScene.load.spritesheet('Notebook', 'assets/sprites/HUD/Notebook.png',
         {frameWidth: 252.8, frameHeight: 184.5});
@@ -103,6 +104,8 @@ class HUDManager
          this.openSpecialScreen(false, false);
          this.openSpecialScreen(true, false);
 
+         this.confrontBack = currentScene.add.image(topBackgroundXOrigin, topBackgroundYOrigin, 'ConfrontBack');
+         this.confrontBack.visible = false;
          this.confrontationImg = currentScene.add.image(topBackgroundXOrigin, topBackgroundYOrigin - 540, 'Confrontation');
          this.assignBehaviour(this.confrontationImg, "Confrontation");
     }
@@ -243,6 +246,7 @@ class HUDManager
         if(globalLockdown == false)
         {
             currentDialogueHUD.enableDialogueUI(false);
+            let confrontBack = this.confrontBack;
             let confrontImg = this.confrontationImg;
             globalLockdown = true;
             let confrontTimeline = currentScene.tweens.createTimeline();
@@ -255,6 +259,7 @@ class HUDManager
                 hold: 500,
                 onStart: function()
                 {
+                    confrontBack.visible = true;
                     sfxManager.playSFX(3);
                     thePlayer.player.anims.play('confront');
                 },
@@ -270,6 +275,7 @@ class HUDManager
                 duration: 400,
                 onComplete: function()
                 {
+                    confrontBack.visible = false;
                     confrontImg.y = topBackgroundYOrigin - 540;
                     let dialogueID = playerNotebook.getConfrontationID(humanConfronting); 
                     dialogueManager.startDialogue(dialogueID);

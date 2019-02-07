@@ -19,7 +19,7 @@ const gameConfig =
             }
         }
     },
-    scene: [/*BootScene,*/ MainMenu, HallScene, OfficeScene,DressroomScene, StudioScene, UINotebook]
+    scene: [/*BootScene, MainMenu,*/ HallScene, OfficeScene,DressroomScene, StudioScene, UINotebook]
 };
 
 //---------------------------------------------
@@ -226,7 +226,9 @@ function loadScene(newScene)
 
         if(currentScene.scene.key == "StudioScene")
         {
-            currentScene.notifyRuruToExit();
+            let activateRuru = currentScene.time.delayedCall(100, function(){
+                currentScene.notifyRuruToExit();
+            } , currentScene);
         }
 
         if(previousScene.scene.key == "StudioScene")

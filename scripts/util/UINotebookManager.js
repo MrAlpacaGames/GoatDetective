@@ -297,15 +297,15 @@ class UINotebookManager
         //-------------------------
         // Text Title of the Note
         // Text Dialogue
-        this.noteTitle = currentScene.add.text(topBackgroundXOrigin+260, topBackgroundYOrigin-140, "", 
-        { fontFamily: 'Asap-Bold', fontSize: 25 , color: '#474747', align: 'center',
+        this.noteTitle = currentScene.add.text(topBackgroundXOrigin+130, topBackgroundYOrigin-140, "", 
+        { fontFamily: 'Asap-Bold', fontSize: 25 , color: '#474747', align: 'left',
         wordWrap: {width: 280},
         wordWrapUseAdvanced: true
         });
         // Text of the Notes
         this.noteBookText = currentScene.add.text(topBackgroundXOrigin+130, topBackgroundYOrigin-100, "", 
-        { fontFamily: 'Asap', fontSize: 23 , color: '#474747', align: 'left',
-        wordWrap: {width: 348},
+        { fontFamily: 'Asap', fontSize: 21 , color: '#474747', align: 'left',
+        wordWrap: {width: 346},
         wordWrapUseAdvanced: true
         });
 
@@ -379,6 +379,7 @@ class UINotebookManager
                 this.humansWindow.visible = NewValue;
                 colorArray = this.ColorHumans;
                 BWArray = this.BWHumans;
+                if(NewValue == true) this.setTitle("HUMANS");
                 if(NewValue == true) this.setText("Here are the details of everyone involved in Park's death.");
             break; 
             case "P":
@@ -386,6 +387,7 @@ class UINotebookManager
                 this.placesWindow.visible = NewValue;
                 colorArray = this.ColorPlaces;
                 BWArray = this.BWPlaces;
+                if(NewValue == true) this.setTitle("PLACES");
                 if(NewValue == true) this.setText("Here are the details of all the possible places where Park could have been killed.");
             break;  
             case "W":
@@ -393,6 +395,7 @@ class UINotebookManager
                 this.weaponsWindow.visible = NewValue;
                 colorArray = this.ColorWeapons;
                 BWArray = this.BWWeapons;
+                if(NewValue == true) this.setTitle("WEAPONS");
                 if(NewValue == true) this.setText("Here are the details of all the possible weapons that could have been used to killed Park.");
             break;
             case "I":
@@ -400,6 +403,7 @@ class UINotebookManager
                 this.itemsWindow.visible = NewValue;
                 colorArray = this.ColorItems;
                 BWArray = this.BWItems;
+                if(NewValue == true) this.setTitle("ITEMS");
                 if(NewValue == true) this.setText("Here are the details of all the possible items");
             break;
         }
@@ -431,13 +435,13 @@ class UINotebookManager
     getClueInformation(ClueType, ClueIndex)
     {
         let clue = playerNotebook.getClueByType(ClueType, ClueIndex);
-        this.setTitle(clue.name.toUpperCase());
+        this.setTitle(clue.fullName.toUpperCase());
         this.setText(clue.noteBookNote);
     }
 
     setTitle(newTitle)
     {
-        this.noteTitle.text = newTitle;
+        this.noteTitle.text = newTitle+":";
     }
 
     setText(newText)

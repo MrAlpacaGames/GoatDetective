@@ -122,10 +122,10 @@ class DialogueHUD
     this.weaponsImgs = [];
 
     // Index for the human accused array
-    this.accusedHumanIndex;
+    this.accusedHumanIndex = 0;
 
     // Index for the weapon accused array
-    this.accusedWeaponIndex;
+    this.accusedWeaponIndex = 0;
 
     // Array of indexes of the discovered humans
     this.discHIndexes;
@@ -648,12 +648,9 @@ class DialogueHUD
       this.discHIndexes = playerNotebook.getDiscoveredClues("Humans");
       this.discWIndexes = playerNotebook.getDiscoveredClues("Weapons");
 
-      this.accusedHumanIndex = this.discHIndexes[0];
-      this.accusedWeaponIndex = this.discWIndexes[0];
-
-      this.accusedCharacter = this.humansImgs[this.accusedHumanIndex];
+      this.accusedCharacter = this.humansImgs[this.discHIndexes[0]];
       this.accusedCharacter.visible = true;
-      this.accusedWeapon = this.weaponsImgs[this.accusedWeaponIndex];
+      this.accusedWeapon = this.weaponsImgs[this.discWIndexes[0]];
       this.accusedWeapon.visible = true;
     }
   }
@@ -810,7 +807,7 @@ class DialogueHUD
         if(direction == 1)
         {
           this.accusedHumanIndex++;
-          if(this.accusedHumanIndex == this.humansImgs.length)
+          if(this.accusedHumanIndex == this.discHIndexes.length)
           {
             this.accusedHumanIndex = 0;
           }
@@ -820,11 +817,11 @@ class DialogueHUD
           this.accusedHumanIndex--;
           if(this.accusedHumanIndex < 0)
           {
-            this.accusedHumanIndex = this.humansImgs.length-1;
+            this.accusedHumanIndex = this.discHIndexes.length-1;
           }
         }
         this.accusedCharacter.visible = false;
-        this.accusedCharacter = this.humansImgs[this.accusedHumanIndex];
+        this.accusedCharacter = this.humansImgs[this.discHIndexes[this.accusedHumanIndex]];
         this.accusedCharacter.visible = true; 
       }
       else
@@ -832,7 +829,7 @@ class DialogueHUD
         if(direction == 1)
         {
           this.accusedWeaponIndex++;
-          if(this.accusedWeaponIndex == this.weaponsImgs.length)
+          if(this.accusedWeaponIndex == this.discWIndexes.length)
           {
             this.accusedWeaponIndex = 0;
           }
@@ -842,11 +839,11 @@ class DialogueHUD
           this.accusedWeaponIndex--;
           if(this.accusedWeaponIndex < 0)
           {
-            this.accusedWeaponIndex = this.weaponsImgs.length-1;
+            this.accusedWeaponIndex = this.discWIndexes.length-1;
           }
         }
         this.accusedWeapon.visible = false;
-        this.accusedWeapon = this.weaponsImgs[this.accusedWeaponIndex];
+        this.accusedWeapon = this.weaponsImgs[this.discWIndexes[this.accusedWeaponIndex]];
         this.accusedWeapon.visible = true; 
       }
       this.canSwitchAccusedClue = false;

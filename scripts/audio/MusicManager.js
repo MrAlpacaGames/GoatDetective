@@ -10,8 +10,8 @@ class MusicManager
 
     preloadMusic(sceneName)
     {
-        currentScene.load.audio('MainIntro',['assets/audio/music/MainIntro.mp3','assets/audio/music/MainIntroXXX.ogg']);
-        currentScene.load.audio('MainLoop','assets/audio/music/MainLoopX.m4a');
+        currentScene.load.audio('MainIntro','assets/audio/music/MainIntro.mp3');
+        currentScene.load.audio('MainLoop','assets/audio/music/MainLoop.mp3');
     }
 
     createTheme(themeSong)

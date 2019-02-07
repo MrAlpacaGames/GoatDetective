@@ -31,6 +31,7 @@ class SFXManager
 
     playSupahStar()
     {
+        webAudioTouchUnlock(context);
         let supahSFX = this.menusSFX[0];
         supahSFX.play();
     }

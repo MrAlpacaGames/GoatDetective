@@ -208,7 +208,7 @@
                 "JUNG DAE SEO|||...!",
                 "JUNG DAE SEO|||If you ask me, she’s the murderer.",
                 "JUNG DAE SEO|||Why else would she be moving his body around, huh?!",
-                "JUNG DAE SEO|||Don’t buy into that cold, pretty face…"
+                "JUNG DAE SEO|||Don’t buy into that cold, pretty face..."
             ],
             "Next": "Multiple"
         },
@@ -246,9 +246,9 @@
             [
                 "LEE CHEE GO|||...!",
                 "LEE CHEE GO|||Umm, w-we just barely get a-along.",
-                "LEE CHEE GO|||I-I probably am the worst, maybe that’s why he’s so cold to me…",
-                "LEE CHEE GO|||…But his r-relationship with Park was even worse!",
-                "LEE CHEE GO|||Maybe he k-k-k-killed him in one of his raging fits…",
+                "LEE CHEE GO|||I-I probably am the worst, maybe that’s why he’s so cold to me...",
+                "LEE CHEE GO|||...But his r-relationship with Park was even worse!",
+                "LEE CHEE GO|||Maybe he k-k-k-killed him in one of his raging fits...",
                 "LEE CHEE GO|||D-don’t tell him I said that!"
             ],
             "Next": "Multiple"
@@ -260,8 +260,8 @@
             "Texts":
             [
                 "LEE CHEE GO|||S-she seemed close to Park.",
-                "LEE CHEE GO|||M-maybe too close…",
-                "LEE CHEE GO|||I-I wonder, why wouldn’t he r-rely on me when it came to her…?"
+                "LEE CHEE GO|||M-maybe too close...",
+                "LEE CHEE GO|||I-I wonder, why wouldn’t he r-rely on me when it came to her...?"
             ],
             "Next": "Multiple"
         },
@@ -271,10 +271,10 @@
             "GameState": 1,
             "Texts":
             [
-                "LEE CHEE GO|||U-umm, fans are what keep us alive, I-I know that…!",
-                "LEE CHEE GO|||But she…",
-                "LEE CHEE GO|||I think… she was stalking Park a little too much.",
-                "LEE CHEE GO|||…I-I hope she didn’t h-hear me."
+                "LEE CHEE GO|||U-umm, fans are what keep us alive, I-I know that...!",
+                "LEE CHEE GO|||But she...",
+                "LEE CHEE GO|||I think... she was stalking Park a little too much.",
+                "LEE CHEE GO|||...I-I hope she didn’t h-hear me."
             ],
             "Next": "Multiple"
         }
@@ -285,9 +285,9 @@
             "GameState": 1,
             "Texts":
             [
-                "LEE CHEE GO|||I-I know this is no accident…!",
-                "LEE CHEE GO|||I will b-bring him justice…!",            
-                "LEE CHEE GO|||…I hope.",            
+                "LEE CHEE GO|||I-I know this is no accident...!",
+                "LEE CHEE GO|||I will b-bring him justice...!",            
+                "LEE CHEE GO|||...I hope.",            
                 "LEE CHEE GO|||...Why did he have to die?"
             ],
             "Next": "Multiple"
@@ -344,7 +344,7 @@
                 "ASSATTARI TARI|||IswearIsawhimfalldownthestairswhenhe-",            
                 "ASSATTARI TARI|||Ahem!",
                 "ASSATTARI TARI|||It happened just when he was on his way out.",
-                "ASSATTARI TARI|||I saw him fall down the stairs, so…",
+                "ASSATTARI TARI|||I saw him fall down the stairs, so...",
                 "ASSATTARI TARI|||I was simply checking for vitals when-",
                 "ASSATTARI TARI|||When Jung saw me."
             ],
@@ -359,7 +359,7 @@
             "GameState": 1,
             "Texts":
             [
-                "RURU SPARK|||Tall, mysterious and scary…",
+                "RURU SPARK|||Tall, mysterious and scary...",
                 "RURU SPARK|||In a good way∼!"
             ],
             "Next": "Multiple"
@@ -371,7 +371,7 @@
             "Texts":
             [
                 "RURU SPARK|||Ruru knows he’s Park’s best friend!",
-                "RURU SPARK|||…But he should back off.",
+                "RURU SPARK|||...But he should back off.",
                 "RURU SPARK|||Park is Ruru’s property."
             ],
             "Next": "Multiple"
@@ -385,7 +385,7 @@
                 "RURU SPARK|||...!",
                 "RURU SPARK|||That witch!",
                 "RURU SPARK|||Ruru saw her yelling at Park through the office door!",
-                "RURU SPARK|||And she even threw something at him…!",
+                "RURU SPARK|||And she even threw something at him...!",
                 "RURU SPARK|||It was like a shiny bottle, Ruru thinks?",
                 "RURU SPARK|||But Ruru doesn’t know, Ruru was scared to be caught. Ruru just wanted to surprise Park, that’s all.",
                 "RURU SPARK|||But that witch hurt Ruru’s Park!"
@@ -777,7 +777,7 @@
             "Texts":
             [
                 "ASSATTARI TARI|||He seemed tired when he came to say bye, and as he was about to leave, he fell down the stairs.",
-                "ASSATTARI TARI|||When I got to him, he was already dead, I tried moving him but he wouldn’t budge… ",           
+                "ASSATTARI TARI|||When I got to him, he was already dead, I tried moving him but he wouldn’t budge... ",           
                 "ASSATTARI TARI|||That’s when Jung came by..."
             ],
             "Next": "Multiple"
@@ -1250,6 +1250,9 @@
 
 
 
+
+
+
         {
             "ID":"JungCellphone1xUN",
             "Character": "Jung",
@@ -1436,7 +1439,7 @@
             [
                 "GOATMAN PETERSON|||Curious complexion and density... ",
                 "GOATMAN PETERSON|||...",
-                "GOATMAN PETERSON|||Fascinating taste…!",
+                "GOATMAN PETERSON|||Fascinating taste...!",
                 "GOATMAN PETERSON|||I cannot put a finger on its  marvelous composition, but it does seem to be human related..."
             ],
             "Next": "DiscoverEnd"
@@ -1473,11 +1476,10 @@
             "GameState": 0,
             "Texts":
             [
-                "GOATMAN PETERSON|||There is an exquicite collection of rare Pins in here...",
-                "GOATMAN PETERSON|||Huh! Jung doesn't seem like a guy who would collect this kind of things",
-                "GOATMAN PETERSON|||As always there is more to someone than meets the eye."
+                "GOATMAN PETERSON|||There is an exquisite collection of rare, expensive jewelry inside... ",
+                "GOATMAN PETERSON|||Who would have thought...?"
             ],
-            "Next": "DiscoverEnd"
+            "Next": "DrawerEnd"
         },
         {
             "ID":"GoatmanLeeDrawer1xUN",
@@ -1485,10 +1487,11 @@
             "GameState": 0,
             "Texts":
             [
-                "GOATMAN PETERSON|||Some hair cut and style magazines, it seems he's pretty interested in fashion.",
-                "GOATMAN PETERSON|||There is also a jewerly magazine although this one seems to be quite trashed, maybe he carried that one around a lot."
+                "GOATMAN PETERSON|||Haircut and style magazines.",
+                "GOATMAN PETERSON|||There is also a jewerly magazine, though it’s quite trampled with.",
+                "GOATMAN PETERSON|||A fashionista, huh∼?"
             ],
-            "Next": "DiscoverEnd"
+            "Next": "DrawerEnd"
         },
         {
             "ID":"GoatmanParkDrawer1xUN",
@@ -1496,19 +1499,80 @@
             "GameState": 0,
             "Texts":
             [
-                "GOATMAN PETERSON|||Aside from that letter there are some photos of him and Lee, even one with Assatari....",
-                "GOATMAN PETERSON|||None with Jung... that's curious.",
-                "GOATMAN PETERSON|||There's also a magazine of... Bald Italian Men?",
-                "GOATMAN PETERSON|||What a weird taste for a KStar, but who am I to judge I like to lick things, you could say I got an elaborate taste...",
-                "GOATMAN PETERSON|||... I should stop making mental puns, it might be bad for my health"
+                "GOATMAN PETERSON|||A letter and some photographic records.",
+                "GOATMAN PETERSON|||Lee, Assattari, Ruru... ",
+                "GOATMAN PETERSON|||Jung does not seem to be in any of them.",
+                "GOATMAN PETERSON|||Hmm... ",
+                "GOATMAN PETERSON|||...",
+                "GOATMAN PETERSON|||Ah! A magazine?",
+                "GOATMAN PETERSON|||It reads ‘Bald Italian Men’.",
+                "GOATMAN PETERSON|||Quite an elaborate taste...",
+                "GOATMAN PETERSON|||Literally∼"
+            ],
+            "Next": "DrawerEnd"
+        },
+
+        
+        {
+            "ID":"GoatmanRecorder1xUN",
+            "Character": "Goatman",
+            "GameState": 0,
+            "Texts":
+            [
+                "GOATMAN PETERSON|||Hmm... ",
+                "GOATMAN PETERSON|||A gift from Lee.",
+                "GOATMAN PETERSON|||And what an interesting way of getting him to wear the Pin.",
+                "GOATMAN PETERSON|||Perhaps a little too insistent?",
+                "GOATMAN PETERSON|||Humans are fantastic creatures∼"
             ],
             "Next": "DiscoverEnd"
-        }
+        },
+        {
+            "ID":"GoatmanLetter1xUN",
+            "Character": "Goatman",
+            "GameState": 0,
+            "Texts":
+            [
+                "GOATMAN PETERSON|||Humans have interesting ways of showing ‘love‘∼",
+                "GOATMAN PETERSON|||Hmm... Why does it smell familiar?",
+                "GOATMAN PETERSON|||...",
+                "GOATMAN PETERSON|||And taste delicious too...!"
+            ],
+            "Next": "DiscoverEnd"
+        },
+        {
+            "ID":"GoatmanCellphone1xUN",
+            "Character": "Goatman",
+            "GameState": 0,
+            "Texts":
+            [
+                "GOATMAN PETERSON|||Oh! A digital self-portrait∼!",
+                "GOATMAN PETERSON|||...",
+                "GOATMAN PETERSON|||This is thought-provoking. ",
+                "GOATMAN PETERSON|||I did not see that pin on Park’s body...",
+                "GOATMAN PETERSON|||...When was this taken?"
+            ],
+            "Next": "DiscoverEnd"
+        },
+        {
+            "ID":"GoatmanPoisoned1xUN",
+            "Character": "Goatman",
+            "GameState": 0,
+            "Texts":
+            [
+                "GOATMAN PETERSON|||An identical Pin to Lee’s...!",
+                "GOATMAN PETERSON|||It is dented just like the Chicken Diamondo.",
+                "GOATMAN PETERSON|||...And it had bloodstains.",
+                "GOATMAN PETERSON|||Somehow thy fabulous detective does not want to lick it.",
+                "GOATMAN PETERSON|||...Seems to have a shady liquid."
+            ],
+            "Next": "DiscoverEnd"
+        },
 
 
 
 
-        ,
+        
         {
             "ID":"JungConfrontation2x1",
             "Character": "Jung",

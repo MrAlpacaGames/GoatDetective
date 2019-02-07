@@ -45,6 +45,7 @@ class Notebook
         let standardPin = new Clue('Standard', "Weapons", 2);
         standardPin.fullName = "STANDARD PIN";
         standardPin.noteBookID = "Rare Pin";
+        standardPin.addInitialDialogues(["SGoatmanChicken0xUN"]);
 
         let poisonedPin = new Clue('Poisoned', "Weapons", 3);
         poisonedPin.fullName = "POISONED PIN";
@@ -65,6 +66,7 @@ class Notebook
         let recorder = new Clue('Recorder', "Items", 2);
         recorder.fullName = "STUDIO RECORDER";
         recorder.noteBookID = "Studio Recorder";
+        recorder.addInitialDialogues(["GoatmanRecorder1xUN"]);
 
         let cellphone = new Clue('Cellphone', "Items", 3);
         cellphone.fullName = "PARK'S CELLPHONE";
@@ -174,7 +176,7 @@ class Notebook
         if(name == "Park" || name == "Jung" || name == "Lee" || name == "Ruru"|| name == "Assattari")
         {
             theArray = this.humans;
-            if(this.discoveredCharacters == false) this.discoveredCharacters = true;
+            if(this.discoveredCharacters == false && name != "Park") this.discoveredCharacters = true;
         }
         else if(name == "Puddle" || name == "Chicken" || name == "Standard" || name == "Poisoned")
         {
@@ -362,32 +364,6 @@ class Notebook
             if(array[i].discovered && array[i].name != "Park")
             {
                 answer.push(array[i].index + substractor);
-            }
-        }
-        return answer;
-    }
-
-    /**
-     * Function used to establish the first available human and weapon couple
-     * This function is used in the Park Accuse Menu
-     */
-    getFirstDoubleAvailable()
-    {
-        let answer = [];
-        for(let i = 0; i < this.humans.length; i++)
-        {
-            if(this.humans[i].discovered == true)
-            {
-                answer.push(this.humans[i]);
-                break;
-            }
-        }
-        for(let i = 0; i < this.weapons.length; i++)
-        {
-            if(this.weapons[i].discovered == true)
-            {
-                answer.push(this.weapons[i]);
-                break;
             }
         }
         return answer;
