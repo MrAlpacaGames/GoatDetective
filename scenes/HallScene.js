@@ -27,11 +27,15 @@ class HallScene extends Phaser.Scene
 
     preload()
     {
+        loadingScreen.createLoadingScreen();
         currentScene = this;
         spriteManager.preloadCharacters();
         spriteManager.preloadEnvironment();
         this.dialogueHUD.preloadDialogue();
         this.playerHUD.preload();
+
+        musicManager.preloadMusic();
+
 
         if(hasStartedGame == false)
         {
@@ -42,6 +46,8 @@ class HallScene extends Phaser.Scene
 
     create()
     {      
+        musicManager.createThemes();
+
         spriteManager.createEnvironment('hall', topBackgroundXOrigin+ 815, topBackgroundYOrigin - 2, 0.72);
         
         this.cameras.main.setBounds(0, 0, gameConfig.width * 2.7, gameConfig.height);

@@ -13,6 +13,7 @@ class UIMenuManager
     preloadMenu()
     {
         currentScene.load.image('Fondo', 'assets/sprites/Menus/Fondo.png');
+        currentScene.load.image('Loading', 'assets/sprites/Menus/Loading.png');
         currentScene.load.image('GoatMenu', 'assets/sprites/Menus/GoatMenu.png');
         currentScene.load.image('Fondo2', 'assets/sprites/Menus/Fondo2.png');
         currentScene.load.image('Logo', 'assets/sprites/Menus/Logo.png');
@@ -96,8 +97,7 @@ class UIMenuManager
         creditsBtn.on('pointerdown', ()=> this.onMenuBtnInteracted(creditsHigh, true));
         creditsBtn.on('pointerup', ()=> this.onMenuBtnInteracted(creditsHigh, false));
         creditsBtn.on('pointerup', ()=> interacionManager.interactMenu("Credits"));
-        creditsBtn.on('pointerup', ()=> musicManager.setCurrentTheme('KStar'));
-        creditsBtn.on('pointerup', ()=> musicManager.playTheme(true));
+        creditsBtn.on('pointerup', ()=> musicManager.playThemeSong('Lose', false));
 
 
         creditsBtn.visible = false;
@@ -132,7 +132,7 @@ class UIMenuManager
                     fondo2.visible = true;
                     let timedEvent = currentScene.time.delayedCall(1300, function()
                     {
-                        musicManager.changeTheme('Main', true);
+                        musicManager.playThemeSong('Main', true);
                         startBtn.visible = true;
                         creditsBtn.visible = true;
                         muteBtn.visible = true;

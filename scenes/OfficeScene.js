@@ -28,7 +28,7 @@ class OfficeScene extends Phaser.Scene
         spriteManager.preloadEnvironment();
         this.playerHUD.preload();
         this.dialogueHUD.preloadDialogue();
-
+        musicManager.preloadMusic();
         if(hasStartedGame == false)
         {
             dialogueManager.preloadJson();
@@ -38,6 +38,7 @@ class OfficeScene extends Phaser.Scene
 
     create()
     {
+        musicManager.createThemes();
         spriteManager.createEnvironment('office', topBackgroundXOrigin+ 843, topBackgroundYOrigin - 2, 0.72);
 
         this.cameras.main.setBounds(0, 0, gameConfig.width * 2.55, gameConfig.height);

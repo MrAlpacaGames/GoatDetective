@@ -29,7 +29,7 @@ class MainMenu extends Phaser.Scene
 
     create()
     {
-        musicManager.createTheme('Main');
+        musicManager.createThemes();
         sfxManager.createSFX();
 
         menuSpriteManager.createMenu();
@@ -40,6 +40,6 @@ class MainMenu extends Phaser.Scene
 
     update()
     {
-        //this.musicManager.checkIfIntroFinished();
+        
     }
 }

@@ -95,7 +95,9 @@ var currentDialogueHUD;
 var currentPlayerHUD;
 
 // Tells if there is a cinematic happening. And if it is, it doesn't allow click commands interrupt it
-var globalLockdown = false;;
+var globalLockdown = false;
+
+var loadingScreen = new LoadingScreen();
 
 //---------------------------------------------
 // Screen Settings

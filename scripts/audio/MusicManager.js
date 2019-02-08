@@ -7,10 +7,15 @@ class MusicManager
         //----------------------------------
         this.sceneTheme;
 
-        this.currentThemeIntro;
-        this.currentThemeLoop;
+        this.mainAudio
 
         this.muteButtons = [];
+
+        this.singleHits = new HashTable();
+        this.introThemes = new HashTable();
+        this.loopThemes = new HashTable();
+
+        this.isPlayingAnIntro = false;
     }    
 
     //-----------------------------------------
@@ -29,15 +34,16 @@ class MusicManager
             currentScene.load.audio('MainIntro','assets/audio/music/MainIntro.mp3');
             currentScene.load.audio('MainLoop','assets/audio/music/MainLoop.mp3');
 
-            // KStar Theme
-            currentScene.load.audio('KStarIntro','assets/audio/music/KStarIntro.mp3');
-            currentScene.load.audio('KStarLoop','assets/audio/music/KStarLoop.mp3');
+            // Lose Theme
+            currentScene.load.audio('LoseLoop','assets/audio/music/LoseTheme.mp3');
+            // Win Theme
+            //currentScene.load.audio('KStarLoop','assets/audio/music/KStarLoop.mp3');
         }
-        else
+        else if(currentScene.scene.key == 'HallScene')
         {
             // Exploring Theme
             currentScene.load.audio('ExploringLoop','assets/audio/music/Exploring.mp3');
-
+            
             // KStar Theme
             currentScene.load.audio('KStarIntro','assets/audio/music/KStarIntro.mp3');
             currentScene.load.audio('KStarLoop','assets/audio/music/KStarLoop.mp3');
@@ -45,51 +51,167 @@ class MusicManager
             // Confront Theme
             currentScene.load.audio('ConfrontIntro','assets/audio/music/ConfrontIntro.mp3');
             currentScene.load.audio('ConfrontLoop','assets/audio/music/ConfrontLoop.mp3');
-        }
 
+            // Accusation Theme
+            currentScene.load.audio('AccusationIntro','assets/audio/music/AccusationIntro.mp3');
+            currentScene.load.audio('AccusationLoop','assets/audio/music/AccusationLoop.mp3');
+        }
+        else if(currentScene.scene.key == 'OfficeScene')
+        {
+            // Assattari Theme
+            currentScene.load.audio('LionessIntro','assets/audio/music/LionessEyesIntro.mp3');
+            currentScene.load.audio('LionessLoop','assets/audio/music/LionessEyesLoop.mp3');
+        }
+        else if(currentScene.scene.key == 'StudioScene')
+        {
+            // Assattari Theme
+            currentScene.load.audio('BiggestFanIntro','assets/audio/music/BiggestFanIntro.mp3');
+            currentScene.load.audio('BiggestFanLoop','assets/audio/music/BiggestFanLoop.mp3');
+        }
     }
 
-    createTheme(themeSong)
+    createThemes()
     {
         let sceneName = currentScene.scene.key;
         let newSong;
-        if(sceneName == "MainMenu")
+        switch(sceneName)
         {
-            newSong = theGame.sound.add(themeSong+'Intro');
-            newSong = theGame.sound.add(themeSong+'Loop');
-            newSong.loop = true;
-        }
-        else if(sceneName == "UINotebook")
-        {
-            newSong = theGame.sound.add(themeSong+'NotebookLoop');
-            newSong.loop = true;
-        }
-        else
-        {
-            newSong = theGame.sound.add(themeSong+'ExploringLoop');
-            newSong.loop = true;
-            newSong = theGame.sound.add(themeSong+'KStarIntro');
-            newSong = theGame.sound.add(themeSong+'KStarLoop');
-            newSong.loop = true;
-            newSong = theGame.sound.add(themeSong+'ConfrontIntro');
-            newSong = theGame.sound.add(themeSong+'ConfrontLoop');
-            newSong.loop = true;
+            case 'UINotebook':
+                newSong = this.createTheme('NotebookLoop');
+                newSong.volume = 0.8;
+                newSong.loop = true;
+                this.singleHits.add(newSong.key, newSong);
+            break;
+            case "MainMenu":
+                newSong = this.createTheme('MainIntro');
+                newSong.volume = 0;
+                this.introThemes.add(newSong.key, newSong);
+                newSong = this.createTheme('MainLoop');
+                newSong.volume = 0.8;
+                newSong.loop = true;
+                this.loopThemes.add(newSong.key, newSong);
+                newSong = this.createTheme('LoseLoop');
+                newSong.volume = 0.8;
+                newSong.loop = true;
+                this.singleHits.add(newSong.key, newSong);
+            break;
+            case "HallScene":
+                newSong = this.createTheme('ExploringLoop');
+                newSong.volume = 0.8;
+                newSong.loop = true;
+                this.singleHits.add(newSong.key, newSong);
+                newSong = this.createTheme('KStarIntro');
+                newSong.volume = 0;
+                this.introThemes.add(newSong.key, newSong);
+                newSong = this.createTheme('KStarLoop');
+                newSong.volume = 0.8;
+                newSong.loop = true;
+                this.loopThemes.add(newSong.key, newSong);
+                newSong = this.createTheme('ConfrontIntro');
+                newSong.volume = 0;
+                this.introThemes.add(newSong.key, newSong);
+                newSong = this.createTheme('ConfrontLoop');
+                newSong.volume = 0.8;
+                newSong.loop = true;
+                this.loopThemes.add(newSong.key, newSong);
+                newSong = this.createTheme('AccusationIntro');
+                newSong.volume = 0;
+                this.introThemes.add(newSong.key, newSong);
+                newSong = this.createTheme('AccusationLoop');
+                newSong.volume = 0.8;
+                newSong.loop = true;
+                this.loopThemes.add(newSong.key, newSong);
+            break;
+            case "OfficeScene":
+                newSong = this.createTheme('LionessIntro');
+                newSong.volume = 0;
+                this.introThemes.add(newSong.key, newSong);
+                newSong = this.createTheme('LionessLoop');
+                newSong.volume = 0.8;
+                newSong.loop = true;
+                this.loopThemes.add(newSong.key, newSong);
+            break;
+            case "StudioScene":
+                newSong = this.createTheme('BiggestFanIntro');
+                newSong.volume = 0;
+                this.introThemes.add(newSong.key, newSong);
+                newSong = this.createTheme('BiggestFanLoop');
+                newSong.volume = 0.8;
+                newSong.loop = true;
+                this.loopThemes.add(newSong.key, newSong);
+            break;
         }
     }
 
-    playTheme(isIntro)
-    {   
-        if(isIntro)
+    createTheme(themeName)
+    {
+        return theGame.sound.add(themeName);
+    }
+
+    playThemeSong(themeName, isIntro)
+    {
+        /** 
+        if(this.currentThemeIntro == undefined && this.currentThemeLoop == undefined)
         {
-            this.currentThemeLoop.volume = 0.8;
-            this.currentThemeIntro.play();
-            this.currentThemeIntro.once('ended', ()=> this.playTheme(false));
-            this.doFade(this.currentThemeIntro, true, undefined);
+            // If nothing is playing. We play the song that the user wants
+            this.currentThemeIntro = this.getTheme(true, themeName);
+            this.currentThemeLoop = this.getTheme(false, themeName);
+            this.playWithFade(this.currentThemeIntro, true);
+            this.currentThemeIntro.once('ended', ()=> this.playNoFade(this.currentThemeLoop));
         }
         else
         {
             this.currentThemeLoop.play();
+            // If we have already something playing. We check what is playing.
+            // We fade it out, switch to the new song and play it with a fade in
+
+            console.log("Should play the loop");
         }
+        */
+    }
+
+    playNoFade(songToPlay)
+    {
+        songToPlay.volume = 0.8;
+        songToPlay.play();
+    }
+
+    playWithFade(songToPlay, isFadeIn)
+    {
+        songToPlay.play();
+        let newVolume;
+        (isFadeIn) ? newVolume = 0.8 : newVolume = 0;
+        currentScene.tweens.killAll();
+        currentScene.tweens.add({
+            targets: songToPlay,
+            volume: newVolume,
+
+            ease: 'Linear',
+            duration: 500,
+            onComplete: function()
+            {
+                
+            }
+        });
+    }
+
+    getTheme(isIntro, themeName)
+    {
+        let theme;
+        let nameEnding;
+        let songName;
+        (isIntro) ? nameEnding = 'Intro' : nameEnding = 'Loop';
+        songName = themeName + nameEnding;
+        if(themeName == 'WinTheme' || themeName == 'LoseTheme' || themeName == 'ExploringTheme'
+        || themeName == 'Notebook')
+        {
+            theme = this.singleHits.get(songName);
+        }
+        else
+        {
+            (isIntro) ? theme = this.introThemes.get(songName) : theme = this.loopThemes.get(songName);
+        }
+        return theme;
     }
 
     doFade(song ,isFadeIn, newSong)
@@ -200,6 +322,5 @@ class MusicManager
             this.currentThemeLoop.play();
         }
     } 
-
 
 }
