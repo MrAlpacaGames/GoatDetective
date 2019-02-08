@@ -33,6 +33,10 @@ class InteractionManagement
                     this.interactDoors(interactionObject);
                 }
             }
+            else if(interactionObject == "JungDrawer" || interactionObject == "ParkDrawer" || interactionObject == "LeeDrawer")
+            {
+                this.interactDrawer(interactionObject);
+            }
             else
             {
                 this.interactWithClue(interactionObject);               
@@ -70,6 +74,12 @@ class InteractionManagement
             dialogueID = clue.getCurrentInitialDialogue();
             dialogueManager.startDialogue(dialogueID);
         }
+    }
+
+    interactDrawer(interactionObject)
+    {
+        let ID = "Goatman" + interactionObject + "1xUN";;
+        dialogueManager.startDialogue(ID);
     }
 
     /**

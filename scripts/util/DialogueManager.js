@@ -128,7 +128,7 @@ class DialogueManager
                         playerNotebook.discoverClue(theClue);
                         playerNotebook.addDialogueTaken(this.currentDialogue);
                         if(theClue.name == "Puddle" || theClue.name == "Chicken" || theClue.name == "Standard" || theClue.name == "Poisoned"
-                        || theClue.name == "Key" || theClue.name == "Letter" || theClue.name == "Recorder" || theClue.name == "Cellphone")
+                        || theClue.name == "Key" || theClue.name == "Recorder" || theClue.name == "Cellphone")
                         {
                             lastClickedElement.disableInteractive();
                             if(theClue.name != "Puddle") 
@@ -143,6 +143,20 @@ class DialogueManager
                         }
                     }
                     (nextAction == "DiscoverEnd") ? currentDialogueHUD.enableDialogueUI(false): currentDialogueHUD.enableMultiple();
+                }
+                else if(nextAction == "DiscoverLetter")
+                {
+                    let clueName = nextAction.substring(8, nextAction.length);
+                    let letterClue = playerNotebook.getClue(clueName);
+                    if(!letterClue.discovered)
+                    {
+                        this.startDialogue("Goatman"+clueName+"1xUN");
+                        currentDialogueHUD.currentClueTalkingTo = letterClue;
+                    }
+                    else
+                    {
+                        currentDialogueHUD.enableDialogueUI(false);
+                    }
                 }
                 else if(nextAction == "End")  // We check if the next action is End. If it is we close the dialog.
                 {

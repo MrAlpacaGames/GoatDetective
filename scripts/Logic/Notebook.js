@@ -2,6 +2,9 @@ class Notebook
 {
     constructor()
     {
+        //-----------------------------------------
+        //              HUMANS
+        //-----------------------------------------
         this.humans = [];
         let park = new Clue('Park', "Humans", 0);
         park.fullName = "PARK IN SOO";
@@ -31,6 +34,9 @@ class Notebook
 
         this.humans.push(park, jung, lee, assattari, ruru);
         
+        //-----------------------------------------
+        //              WEAPONS
+        //-----------------------------------------
         this.weapons = [];
         let puddle = new Clue('Puddle', "Weapons", 0);
         puddle.fullName = "SWEATY PUDDLE";
@@ -53,6 +59,9 @@ class Notebook
 
         this.weapons.push(puddle, diamondChicken, standardPin, poisonedPin);
 
+        //-----------------------------------------
+        //              ITEMS
+        //-----------------------------------------
         this.items = [];
         let studioKey = new Clue('Key', "Items", 0);
         studioKey.fullName = "STUDIO KEY";
@@ -61,7 +70,7 @@ class Notebook
 
         let loveLetter = new Clue('Letter', "Items", 1);
         loveLetter.fullName = "RURU'S LOVE LETTER";
-        loveLetter.noteBookID = "Rurus Love Letter";
+        loveLetter.noteBookID = "Ruru Love Letter";
 
         let recorder = new Clue('Recorder', "Items", 2);
         recorder.fullName = "STUDIO RECORDER";
@@ -70,9 +79,12 @@ class Notebook
 
         let cellphone = new Clue('Cellphone', "Items", 3);
         cellphone.fullName = "PARK'S CELLPHONE";
-        cellphone.noteBookID = "Parks Cellphone";
+        cellphone.noteBookID = "Park Cellphone";
         this.items.push(studioKey, loveLetter, recorder, cellphone);
 
+        //-----------------------------------------
+        //              PLACES
+        //-----------------------------------------
         this.places = [];
         let mainHall = new Clue('Hall', "Places", 0);
         mainHall.fullName = "HALL";
@@ -91,6 +103,8 @@ class Notebook
         recordingStudio.noteBookID = "Studio";
 
         this.places.push(mainHall, office, dressroom, recordingStudio);
+        
+        this.drawers = [false, false, false];
 
         this.dialoguesTaken = new HashTable();
 
@@ -366,6 +380,27 @@ class Notebook
                 answer.push(array[i].index + substractor);
             }
         }
+        return answer;
+    }
+
+    checkIFDrawerOpen(kStarName, openAction)
+    {
+        let answer;
+        let pos;
+        switch(kStarName)
+        {
+            case "JungDrawer":
+                pos = 0;
+            break;
+            case "LeeDrawer":
+                pos = 1;
+            break;
+            case "ParkDrawer":
+                pos = 2;
+            break;
+        }
+        answer = this.drawers[pos];
+        if(openAction) this.drawers[pos] = true;
         return answer;
     }
 }

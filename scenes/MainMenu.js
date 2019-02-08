@@ -22,7 +22,7 @@ class MainMenu extends Phaser.Scene
         this.add.text(0, 0, '', 
         { fontFamily: 'Ailerons', fontSize: 80 , color: '#f3e307', align: 'left'});
        
-        musicManager.preloadMusic('Main');
+        musicManager.preloadMusic();
         sfxManager.preloadSFX();
         fullScreenPower.preload();
     }
@@ -34,6 +34,8 @@ class MainMenu extends Phaser.Scene
 
         menuSpriteManager.createMenu();
         fullScreenPower.create();
+
+        // We set the volumes for all the game
     }
 
     update()

@@ -19,7 +19,7 @@ const gameConfig =
             }
         }
     },
-    scene: [/*BootScene, MainMenu,*/ HallScene, OfficeScene,DressroomScene, StudioScene, UINotebook]
+    scene: [/*BootScene,*/ MainMenu, HallScene, OfficeScene,DressroomScene, StudioScene, UINotebook]
 };
 
 //---------------------------------------------
@@ -221,8 +221,10 @@ function loadScene(newScene)
         if(previousScene.scene.key != "MainMenu")
         {
             thePlayer.reloadPlayer();
-            thePlayer.assignOnEvents();
+            thePlayer.assignOnEvents();            
         }
+        
+        currentPlayerHUD.checkMuteStatus();
 
         if(currentScene.scene.key == "StudioScene")
         {
@@ -241,6 +243,9 @@ function loadScene(newScene)
         } , currentScene);
     }
 }
+
+
+
 
 function openNotebook(newValue)
 {

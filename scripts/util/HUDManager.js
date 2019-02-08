@@ -12,6 +12,8 @@ class HUDManager
         // Highlight of the Notebook button
         this.notePressed;        
 
+        this.noteIdle;
+
         this.canShowMessage = true;
 
         //-----------------------------
@@ -48,6 +50,7 @@ class HUDManager
         currentScene.load.image('Confrontation', 'assets/sprites/HUD/Confront.png');
         currentScene.load.image('ConfrontBack', 'assets/sprites/HUD/ConfrontBack.png');
 
+        currentScene.load.image('NoteIdle', 'assets/sprites/HUD/Agenda.png');
         currentScene.load.spritesheet('Notebook', 'assets/sprites/HUD/Notebook.png',
         {frameWidth: 252.8, frameHeight: 184.5});
         currentScene.load.image('NotePressed', 'assets/sprites/HUD/NotePressed.png');
@@ -66,9 +69,11 @@ class HUDManager
          this.muteHigh = currentScene.add.image(topBackgroundXOrigin-425, topBackgroundYOrigin-210.5, 'MuteHigh');
          this.assignBehaviour(this.muteHigh, 'MuteHigh');
          (currentScene.sound.volume > 0) ? this.muteHigh.visible = false: this.muteHigh.visible = true;
+         musicManager.muteButtons.push(this.muteHigh);
 
          this.theNotebook = this.createNotebook(topBackgroundXOrigin-355, topBackgroundYOrigin+195);
-         this.assignBehaviour(this.theNotebook, 'Notebook');
+         this.assignBehaviour(this.theNotebook, 'NoteAnimated');
+         this.assignBehaviour(this.noteIdle, 'Notebook');
            
          this.notePressed = currentScene.add.image(topBackgroundXOrigin-400, topBackgroundYOrigin+195, 'NotePressed');
          this.assignBehaviour(this.notePressed, 'NotePressed');
@@ -169,8 +174,8 @@ class HUDManager
      */
     createNotebook(posX, posY)
     {
+        this.noteIdle = currentScene.add.sprite(posX-55, posY, 'NoteIdle');
         let notebook = currentScene.add.sprite(posX, posY, 'Notebook');
-        //notebook.body.setSize(notebook.width - 20, notebook.height, notebook);
         
         //  Our player animations, turning, walking left and walking right.
         if(currentScene.anims.get('NoteIddle') == undefined && currentScene.anims.get('NoteHighlight') == undefined)
@@ -284,5 +289,12 @@ class HUDManager
 
             confrontTimeline.play();
         }
+    }
+
+    checkMuteStatus()
+    {
+        musicManager.muteButtons.forEach(element => {
+            (currentScene.sound.volume > 0) ? element.visible = false: element.visible = true;
+        });
     }
 }

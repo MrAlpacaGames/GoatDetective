@@ -1479,7 +1479,7 @@
                 "GOATMAN PETERSON|||There is an exquisite collection of rare, expensive jewelry inside... ",
                 "GOATMAN PETERSON|||Who would have thought...?"
             ],
-            "Next": "DrawerEnd"
+            "Next": "End"
         },
         {
             "ID":"GoatmanLeeDrawer1xUN",
@@ -1491,7 +1491,7 @@
                 "GOATMAN PETERSON|||There is also a jewerly magazine, though it’s quite trampled with.",
                 "GOATMAN PETERSON|||A fashionista, huh∼?"
             ],
-            "Next": "DrawerEnd"
+            "Next": "End"
         },
         {
             "ID":"GoatmanParkDrawer1xUN",
@@ -1509,7 +1509,7 @@
                 "GOATMAN PETERSON|||Quite an elaborate taste...",
                 "GOATMAN PETERSON|||Literally∼"
             ],
-            "Next": "DrawerEnd"
+            "Next": "DiscoverLetter"
         },
 
         

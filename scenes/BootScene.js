@@ -17,7 +17,7 @@ class BootScene extends Phaser.Scene
         let alpacaLogo = this.add.image(topBackgroundXOrigin, topBackgroundYOrigin, 'gameLogo');
         alpacaLogo.setScale(gameScaleRatio);
 
-        this.time.delayedCall(1000, this.changeScene, [], this);
+        this.time.delayedCall(500, this.changeScene, [], this);
     }
 
     changeScene()
@@ -25,5 +25,3 @@ class BootScene extends Phaser.Scene
         this.scene.start('MainMenu');
     }
 }
-
-//export default BootScene;

@@ -96,6 +96,9 @@ class UIMenuManager
         creditsBtn.on('pointerdown', ()=> this.onMenuBtnInteracted(creditsHigh, true));
         creditsBtn.on('pointerup', ()=> this.onMenuBtnInteracted(creditsHigh, false));
         creditsBtn.on('pointerup', ()=> interacionManager.interactMenu("Credits"));
+        creditsBtn.on('pointerup', ()=> musicManager.setCurrentTheme('KStar'));
+        creditsBtn.on('pointerup', ()=> musicManager.playTheme(true));
+
 
         creditsBtn.visible = false;
         creditsHigh.visible = false;
@@ -117,7 +120,7 @@ class UIMenuManager
             {
                 targets: goat,
                 x: topBackgroundXOrigin + 175,
-                duration: 1000
+                duration: 900
             }
         );
 
@@ -129,7 +132,7 @@ class UIMenuManager
                     fondo2.visible = true;
                     let timedEvent = currentScene.time.delayedCall(1300, function()
                     {
-                        musicManager.playTheme();
+                        musicManager.changeTheme('Main', true);
                         startBtn.visible = true;
                         creditsBtn.visible = true;
                         muteBtn.visible = true;
