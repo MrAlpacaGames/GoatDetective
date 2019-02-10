@@ -119,14 +119,14 @@ class DialogueManager
             if(nextLine == "LastLine")
             {
                 let nextAction = this.currentDialogue.NextAction;
-                if(nextAction == "DiscoverEnd" || nextAction == "DiscoverMultiple")
+                playerNotebook.addDialogueTaken(this.currentDialogue);
+                if(nextAction == "DiscoverEnd" || nextAction == "DiscoverMultiple" || nextAction == "ConfrontationEnd")
                 {
                     let name = this.currentDialogue.Character;
                     let theClue = currentDialogueHUD.currentClueTalkingTo;
                     if((theClue.discovered == false) || (theClue.discovered == true && theClue.clueType == "Humans"))
                     {
                         playerNotebook.discoverClue(theClue);
-                        playerNotebook.addDialogueTaken(this.currentDialogue);
                         if(theClue.name == "Puddle" || theClue.name == "Chicken" || theClue.name == "Key" )
                         {
                             lastClickedElement.disableInteractive();
@@ -139,9 +139,9 @@ class DialogueManager
                         {
                             thePlayer.player.anims.play('quiet');
                             globalLockdown = false;
-                        }
+                        }                        
                     }
-                    (nextAction == "DiscoverEnd") ? currentDialogueHUD.enableDialogueUI(false): currentDialogueHUD.enableMultiple();
+                    (nextAction == "DiscoverEnd" || nextAction == "ConfrontationEnd") ? currentDialogueHUD.enableDialogueUI(false): currentDialogueHUD.enableMultiple();
                 }
                 else if(nextAction == "DiscoverLetter" || nextAction == "DiscoverCellphone" || nextAction == "DiscoverPoisoned" || nextAction == "DiscoverStandard")
                 {

@@ -14,7 +14,7 @@ class Notebook
         let jung = new Clue('Jung', "Humans", 1);
         jung.fullName = "JUNG DAE SEO";
         jung.addInitialDialogues(["SJung0xPrro", "SJung1xPR", "SJung1xUN"]);
-        jung.confrontationRequirements = ["LeeConfrontation2x1", "ParkGoatman1x4", "LeeJungx1x4", "AssatariJungx1x4", "RuruJung1x4", "JungStandard1xUN", "JungPoisoned1xUN" ];
+        jung.confrontationRequirements = ["LeeConfrontation2x1", "ParkGoatman1x4", "LeeJungx1x4", "AssattariJungx1x4", "RuruJung1x4", "JungStandard1xUN", "JungPoisoned1xUN" ];
         //jung.confrontationRequirements = ['SPark1xPR'];
 
         let lee = new Clue('Lee', "Humans", 2);
@@ -25,12 +25,12 @@ class Notebook
         let assattari = new Clue('Assattari', "Humans", 3);
         assattari.fullName = "ASSATTARI TARI";
         assattari.addInitialDialogues(["SAssattari0xPrro", "SAssattari1xPR", "SAssattari1xUN"]);
-        assattari.confrontationRequirements = ["RuruAssattari1x1", "AssattariChicken1xUN"];
+        assattari.confrontationRequirements = ["RuruAssattari1x1", "AssattariChicken1xUN", "AssattariPark1x1"];
 
         let ruru = new Clue('Ruru', "Humans", 4);
         ruru.fullName = "RURU SPARK";
         ruru.addInitialDialogues(["","SRuru1xPR", "SRuru1xUN"]);
-        ruru.confrontationRequirements = ["AssatariConfrontation2x1", "AssattariRuru1x2", "LeePuddle1xUN", "AssattariPuddle1xUN", "LeeLetter1xUN", "RuruLetter1xUN"];
+        ruru.confrontationRequirements = ["AssattariConfrontation2x1", "AssattariRuru1x2", "LeePuddle1xUN", "AssattariPuddle1xUN", "LeeLetter1xUN", "RuruLetter1xUN"];
 
         this.humans.push(park, jung, lee, assattari, ruru);
         
@@ -240,11 +240,20 @@ class Notebook
         if(clue.clueType == "Humans")
         {
             let gameStateIndex = GameManager.stateOfGame-1;
+            notes = this.getNotes(clue, true);
             if(clue.noteBookIndex == gameStateIndex)
             {
-                notes = this.getNotes(clue, true);
                 clue.noteBookNote += notes[gameStateIndex]+"\n";  
                 clue.noteBookIndex++;              
+            }
+            else
+            {
+                for(let i = clue.noteBookIndex; i <= gameStateIndex; i++)
+                {
+                    let temp = notes[i];
+                    clue.noteBookNote += notes[i]+"\n";  
+                    clue.noteBookIndex++; 
+                }
             }
         }
         else
@@ -427,5 +436,16 @@ class Notebook
         answer = this.drawers[pos];
         if(openAction) this.drawers[pos] = true;
         return answer;
+    }
+
+    updateGameState(newGameState)
+    {
+        // We first set the new Game State to the current Game state
+        if(newGameState <=5) GameManager.stateOfGame = newGameState;
+        console.log("Current Game State is: "+GameManager.stateOfGame);
+        // We then update all the notebook notes for all character clues
+        this.humans.forEach(temp => {
+            this.writeNote(temp);
+        });
     }
 }

@@ -91,7 +91,15 @@ class InteractionManagement
 
     interactDrawer(interactionObject)
     {
-        let ID = "Goatman" + interactionObject + "1xUN";;
+        let ID;
+        if(interactionObject == "ParkDrawer" && playerNotebook.dialoguesTaken.get("SRuru1xPR") == undefined) // If it's Park Drawer we check if we have already talked with Ruru
+        {
+            ID = "SGoatman0xErr2";
+        }
+        else
+        {
+            ID = "Goatman" + interactionObject + "1xUN";
+        }
         dialogueManager.startDialogue(ID);
     }
 

@@ -252,10 +252,15 @@ class HUDManager
     {
         if(globalLockdown == false)
         {
+            console.log("Previous Game State prior to confrontation is: "+GameManager.stateOfGame);
             currentDialogueHUD.enableDialogueUI(false);
             let confrontBack = this.confrontBack;
             let confrontImg = this.confrontationImg;
             globalLockdown = true;
+            // Once we start the confrontation we advance to the next game state and we set the has been confronted state to true
+            playerNotebook.updateGameState(GameManager.stateOfGame+1);
+            humanConfronting.hasBeenConfronted = true;
+
             let confrontTimeline = currentScene.tweens.createTimeline();
 
             confrontTimeline.add(
