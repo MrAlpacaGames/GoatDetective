@@ -7,9 +7,15 @@
             "GameState": 0,
             "Texts":
             [
-                "GOATMAN PETERSON|||This is it! I! Goatman Peterson will become the best detective Supah Star!",
-                "GOATMAN PETERSON|||I need to find the Right KILLER and WEAPON OF MURDER.",
-                "GOATMAN PETERSON|||I will write every bit of evidence on my SUPAH STAR NOTEBOOK! Let's do this babe!"
+                "GOATMAN PETERSON|||This is I, Detective Goatman Peterson, at your service∼!",
+                "GOATMAN PETERSON|||I am but a descendant of an incredible lineage of unprecedented detectives in history.",
+                "GOATMAN PETERSON|||…Just in case you wonder where this beauty in the flesh might have sourced from∼",
+                "GOATMAN PETERSON|||However, I must now carry the burden of justice on my shoulders and solve this case to find the true meaning of my existence.",
+                "GOATMAN PETERSON|||…To finally become, ‘The Legendary Supah Star’∼!",
+                "GOATMAN PETERSON|||For this, I must find the ‘Culprit’ and the ‘Murder Weapon’.",
+                "GOATMAN PETERSON|||The evidence will be kept in my ‘Starry Notebook’, in case I need to double check the facts.",
+                "GOATMAN PETERSON|||… May the humans involved take responsibility for their miserable way of being—",
+                "GOATMAN PETERSON|||And may the Gods of the Supah Star bless my path…! "
             ],
             "Next": "End"
         },   
@@ -147,7 +153,7 @@
             "GameState": 0,
             "Texts":
             [
-                "JUNG DAE SEO|||So...What have you found?"
+                "JUNG DAE SEO|||Tsk! …What is it?"
             ],
             "Next": "Multiple"
         },
@@ -157,7 +163,7 @@
             "GameState": 1,
             "Texts":
             [
-                "ASSATTARI TARI|||Tell me... Do you already know who murder Park?"
+                "ASSATTARI TARI|||Have you found something?"
             ],
             "Next": "Multiple"
         },
@@ -167,7 +173,7 @@
             "GameState": 1,
             "Texts":
             [
-                "LEE CHEE GO|||Please, tell me you found the killer!"
+                "LEE CHEE GO|||I-I will t-try my best! H-How can I help?"
             ],
             "Next": "Multiple"
         }  
@@ -178,7 +184,7 @@
             "GameState": 1,
             "Texts":
             [
-                "RURU SPARK|||Yes?"
+                "RURU SPARK|||Ruru likes talking∼! …What is it?"
             ],
             "Next": "Multiple"
         }, 
@@ -1432,11 +1438,12 @@
 
 
         {
-            "ID":"SGoatmanPuddle0xUN",
+            "ID":"SGoatmanPuddle1xUN",
             "Character": "Goatman",
             "GameState": 0,
             "Texts":
             [
+                "GOATMAN PETERSON|||It seems to be the longest puddle in existance…",
                 "GOATMAN PETERSON|||Curious complexion and density... ",
                 "GOATMAN PETERSON|||...",
                 "GOATMAN PETERSON|||Fascinating taste...!",
@@ -1445,11 +1452,12 @@
             "Next": "DiscoverEnd"
         },
         {
-            "ID":"SGoatmanChicken0xUN",
+            "ID":"SGoatmanChicken1xUN",
             "Character": "Goatman",
             "GameState": 0,
             "Texts":
             [
+                "GOATMAN PETERSON|||A chicken made of diamond∼?",
                 "GOATMAN PETERSON|||It is wonderfully heavy and hard∼!",
                 "GOATMAN PETERSON|||Wonder how it found itself dented. ",
                 "GOATMAN PETERSON|||It seems too tough for a mere fall.",
@@ -1476,7 +1484,8 @@
             "GameState": 0,
             "Texts":
             [
-                "GOATMAN PETERSON|||There is an exquisite collection of rare, expensive jewelry inside... ",
+                "GOATMAN PETERSON|||This is Jung’s drawer.",
+                "GOATMAN PETERSON|||There is an exquisite collection of rare, expensive jewelry inside...",
                 "GOATMAN PETERSON|||Who would have thought...?"
             ],
             "Next": "End"
@@ -1487,7 +1496,9 @@
             "GameState": 0,
             "Texts":
             [
-                "GOATMAN PETERSON|||Haircut and style magazines.",
+                "GOATMAN PETERSON|||This is Lee’s drawer.",
+                "GOATMAN PETERSON|||Hmm…",
+                "GOATMAN PETERSON|||There are hairstyle and fashion magazines.",
                 "GOATMAN PETERSON|||There is also a jewerly magazine, though it’s quite trampled with.",
                 "GOATMAN PETERSON|||A fashionista, huh∼?"
             ],
@@ -1499,7 +1510,8 @@
             "GameState": 0,
             "Texts":
             [
-                "GOATMAN PETERSON|||A letter and some photographic records.",
+                "GOATMAN PETERSON|||This seems to be Park’s drawer.",
+                "GOATMAN PETERSON|||It has a letter and some photographic records inside. ",
                 "GOATMAN PETERSON|||Lee, Assattari, Ruru... ",
                 "GOATMAN PETERSON|||Jung does not seem to be in any of them.",
                 "GOATMAN PETERSON|||Hmm... ",
@@ -1520,7 +1532,9 @@
             "Texts":
             [
                 "GOATMAN PETERSON|||Hmm... ",
-                "GOATMAN PETERSON|||A gift from Lee.",
+                "GOATMAN PETERSON|||A record of Lee and Park’s voice in some sort of device, it seems.",
+                "GOATMAN PETERSON|||…",
+                "GOATMAN PETERSON|||So... a gift from Lee.",
                 "GOATMAN PETERSON|||And what an interesting way of getting him to wear the Pin.",
                 "GOATMAN PETERSON|||Perhaps a little too insistent?",
                 "GOATMAN PETERSON|||Humans are fantastic creatures∼"
@@ -1533,6 +1547,10 @@
             "GameState": 0,
             "Texts":
             [
+                "GOATMAN PETERSON|||…",
+                "GOATMAN PETERSON|||Now, not to intrude or anything but…",
+                "GOATMAN PETERSON|||Let us read this fan letter.",
+                "GOATMAN PETERSON|||…",
                 "GOATMAN PETERSON|||Humans have interesting ways of showing ‘love‘∼",
                 "GOATMAN PETERSON|||Hmm... Why does it smell familiar?",
                 "GOATMAN PETERSON|||...",
@@ -1546,6 +1564,7 @@
             "GameState": 0,
             "Texts":
             [
+                "GOATMAN PETERSON|||Let us check the cellular phone, shall we?",
                 "GOATMAN PETERSON|||Oh! A digital self-portrait∼!",
                 "GOATMAN PETERSON|||...",
                 "GOATMAN PETERSON|||This is thought-provoking. ",
@@ -1560,11 +1579,12 @@
             "GameState": 0,
             "Texts":
             [
-                "GOATMAN PETERSON|||An identical Pin to Lee’s...!",
-                "GOATMAN PETERSON|||It is dented just like the Chicken Diamondo.",
-                "GOATMAN PETERSON|||...And it had bloodstains.",
+                "GOATMAN PETERSON|||She has given us a Pin.",
+                "GOATMAN PETERSON|||…",
+                "GOATMAN PETERSON|||An identical Pin to Lee’s…! ",
+                "GOATMAN PETERSON|||…And it has bloodstains.",
                 "GOATMAN PETERSON|||Somehow thy fabulous detective does not want to lick it.",
-                "GOATMAN PETERSON|||...Seems to have a shady liquid."
+                "GOATMAN PETERSON|||…Seems to have a shady fluid on the needle's surface."
             ],
             "Next": "DiscoverEnd"
         },
@@ -1574,38 +1594,198 @@
 
         
         {
+            "ID":"AssattariConfrontation2x1",
+            "Character": "Assattari",
+            "GameState": 0,
+            "Texts":
+            [
+                "GOATMAN PETERSON|||Did you, or did you not, throw the Diamondo Chicken at Park, Miss Assattari?",
+                "ASSATTARI TARI|||What are you talking about?",
+                "ASSATTARI TARI|||Like I had previously said, I dropped it.",
+                "GOATMAN PETERSON|||I, the great Goatman Detective! The one and only, the best int the world, I ∼!",
+                "GOATMAN PETERSON|||—Ahem.",
+                "GOATMAN PETERSON|||Tasted blood on the very statue you possess, you see.",
+                "GOATMAN PETERSON|||…But it doesn’t end there, no!",
+                "GOATMAN PETERSON|||It had bleach in it as well, my dear.",
+                "GOATMAN PETERSON|||Were thou attempting to hide something from thy Upcoming Supah Star∼?",
+                "ASSATTARI TARI|||What—",
+                "GOATMAN PETERSON|||Oh yes, in case you doubt me—",
+                "GOATMAN PETERSON|||Your next words are: ",
+                "GOATMAN PETERSON|||‘Whatever is this nonsense of ‘taste’…?",
+                "GOATMAN PETERSON|||Did I hire you? What a waste of money…’",
+                "ASSATTARI TARI|||—ever is this nonsense of ‘taste’…?",
+                "ASSATTARI TARI|||Did I hire you? What a waste of money…",
+                "ASSATTARI TARI|||…!",
+                "GOATMAN PETERSON|||Ha∼! ",
+                "GOATMAN PETERSON|||You think I would come here unprepared, love?",
+                "GOATMAN PETERSON|||There was a witness to your quarrel in the office! ",
+                "ASSATTARI TARI|||...!",
+                "GOATMAN PETERSON|||You are a mere tyrant, hiding under the mask of 'manager'!",
+                "ASSATTARI TARI|||It'snotlikethat!Hewouldn'tlisten!Iwasn’tryingto—",
+                "ASSATTARI TARI|||—Ahem!",
+                "ASSATTARI TARI|||It’s not like that!",
+                "ASSATTARI TARI|||…It was self-defense.",
+                "GOATMAN PETERSON|||Thou do not seem hurt to thy splendid eyesight!",
+                "GOATMAN PETERSON|||Why would you lie?!",
+                "ASSATTARI TARI|||…!",
+                "ASSATTARI TARI|||…I’m pregnant.",
+                "ASSATTARI TARI|||…",
+                "ASSATTARI TARI|||Do you know what that means?!",
+                "ASSATTARI TARI|||Abandoning my career, my youth, my life…!",
+                "ASSATTARI TARI|||The baby should have better parents…",
+                "ASSATTARI TARI|||...I couldn’t bear the idea of raising it and he wouldn’t listen! so, I…",
+                "ASSATTARI TARI|||I hit him in the head.",
+                "GOATMAN PETERSON|||Thou ist crazy!",
+                "ASSATTARI TARI|||Ha…",
+                "ASSATTARI TARI|||Those were Park’s last words to me... Somewhat.",
+                "ASSATTARI TARI|||I-I never got to apologize, he just…",
+                "ASSATTARI TARI|||Fell down the stairs.",
+                "ASSATTARI TARI|||And then he was just—",
+                "ASSATTARI TARI|||Dead…",
+                "GOATMAN PETERSON|||…!"           
+            ],
+            "Next": "DiscoverEnd"
+        },
+        {
+            "ID":"RuruConfrontation2x1",
+            "Character": "Ruru",
+            "GameState": 0,
+            "Texts":
+            [
+                "GOATMAN PETERSON|||Miss Ruru, I have come across some interesting evidence, would you care to explain ∼?",
+                "RURU SPARK|||Ruru never does bad things!",
+                "RURU SPARK|||Ruru has nothing to talk about with ugly goats now.",
+                "GOATMAN PETERSON|||…?!",
+                "GOATMAN PETERSON|||Then I will correctly assume you killed Park.",
+                "GOATMAN PETERSON|||…As clearly exposed in this love letter of yours, girl.",
+                "RURU SPARK|||You are wrong!",
+                "RURU SPARK|||A world without Ruru’s Park is unhappiness!",
+                "RURU SPARK|||Ruru has lost her meaning.",
+                "RURU SPARK|||Ruru will find justice…!",
+                "GOATMAN PETERSON|||…So it was not deliberate.",
+                "RURU SPARK|||Ruru can’t understand!",
+                "RURU SPARK|||Ugly goats are mean to Ruru…!",
+                "GOATMAN PETERSON|||…?!",
+                "GOATMAN PETERSON|||I meant, you don’t know how you are involved.",
+                "GOATMAN PETERSON|||…But you are involved!",
+                "RURU SPARK|||What does goat person mean…?",
+                "GOATMAN PETERSON|||Is your scent not in the letter, lowly human?",
+                "RURU SPARK|||Of course∼",
+                "RURU SPARK|||How else would Park remember Ruru, ugly goat?!",
+                "GOATMAN PETERSON|||…Then, human, why is your scent in this Slippery Puddle?! ",
+                "RURU SPARK|||...!",
+                "RURU SPARK|||T-That…!",
+                "RURU SPARK|||That isn’t Ruru’s…!",
+                "GOATMAN PETERSON|||Care to explain your non-human-overflowing sweat, then?",
+                "RURU SPARK|||…!",
+                "RURU SPARK|||Don’t come any closer…! ",
+                "RURU SPARK|||…!",
+                "GOATMAN PETERSON|||…It seems Park slipped on your sweat, mongrel.",
+                "GOATMAN PETERSON|||Goatman is never wrong∼",
+                "RURU SPARK|||No…! ",
+                "RURU SPARK|||Ruru can’t control it…!",
+                "RURU SPARK|||Ruru just wanted his cellphone…! ",
+                "RURU SPARK|||Ruru just knew Park wanted her picture.",
+                "RURU SPARK|||R-Ruru didn’t mean to e-eavesdrop on her way out…",
+                "RURU SPARK|||R-Ruru was just s-scared of being found out…",
+                "RURU SPARK|||…R-Ruru…",
+                "RURU SPARK|||…",
+                "GOATMAN PETERSON|||Goat, one; human, cero—",
+                "GOATMAN PETERSON|||—Ahem!",
+                "GOATMAN PETERSON|||…I will be taking the cellphone, for evidence purposes, of course.",
+                "RURU SPARK|||…"
+            ],
+            "Next": "DiscoverEnd"
+        },
+        {
+            "ID":"LeeConfrontation2x1",
+            "Character": "Lee",
+            "GameState": 0,
+            "Texts":
+            [
+                "GOATMAN PETERSON|||Lee, it seems you have been accusing everyone around... ",
+                "GOATMAN PETERSON|||Have you not considered the fact that this would make you look suspicious…? ",
+                "LEE CHEE GO|||I-I’m sorry…! ",
+                "LEE CHEE GO|||I-I swear I was just try-trying to help, sir!",
+                "GOATMAN PETERSON|||I might be tempted to consider your paranoia an obstruction to justice, so quiet down lad.",
+                "GOATMAN PETERSON|||If you want justice, then...",
+                "GOATMAN PETERSON|||You should start talking about Park’s Pin instead. ",
+                "GOATMAN PETERSON|||— And it’s…",
+                "GOATMAN PETERSON|||Mysterious disappearance.",
+                "LEE CHEE GO|||I-I don’t know…!",
+                "LEE CHEE GO|||The last time I s-saw the P-pin was this morning! ",
+                "LEE CHEE GO|||…B-before rehearsal.",
+                "LEE CHEE GO|||J-Jung is m-my witness!",
+                "GOATMAN PETERSON|||Hmm… So the Pin might be a potential— ",
+                "GOATMAN PETERSON|||No, the actual murder weapon, am I wrong?",
+                "LEE CHEE GO|||W-what m-makes you think tha-that?",
+                "GOATMAN PETERSON|||Heh, because someone deliberately hid it from thy mastermind∼",
+                "LEE CHEE GO|||…! ",
+                "GOATMAN PETERSON|||…Could it be... that you are in possession of it?",
+                "LEE CHEE GO|||…! ",
+                "LEE CHEE GO|||W-why m-me?",
+                "GOATMAN PETERSON|||Miss Assattari saw you searching Park’s body just when she returned from making the call to the police. ",
+                "GOATMAN PETERSON|||…What is it that thou ist hiding from thy detective? ",
+                "LEE CHEE GO|||…! ",
+                "LEE CHEE GO|||I-I— I-it’s a me-memento…! ",
+                "LEE CHEE GO|||I-I thought I’d keep it to re-remember him…",
+                "LEE CHEE GO|||…It is m-maybe the o-only thing I gave him th-that made him happy… ",
+                "GOATMAN PETERSON|||Give it now, human…!",
+                "GOATMAN PETERSON|||This will clear everything once and for all…!",
+                "LEE CHEE GO|||…!",
+                "GOATMAN PETERSON|||…",
+                "GOATMAN PETERSON|||Sturdy and quite heavy for its size…",
+                "GOATMAN PETERSON|||…Does not have a taste of anything in particular.",
+                "GOATMAN PETERSON|||…What role does this Pin have…?",
+                "GOATMAN PETERSON|||Hmm…"
+            ],
+            "Next": "DiscoverEnd"
+        },
+        {
             "ID":"JungConfrontation2x1",
             "Character": "Jung",
             "GameState": 0,
             "Texts":
             [
-                "GOATMAN PETERSON|||Why act this whole time?",
-                "JUNG DAE SEO|||What do you mean?",
-                "GOATMAN PETERSON|||Quit playing around, I know you killed Park!",
-                "JUNG DAE SEO|||That's absurd! How could I kill him, I was changing myself when he fell down stairs...",
-                "GOATMAN PETERSON|||Because you used the other Pin to poison Park",
-                "JUNG DAE SEO|||What? One of the Pin's is poisoned? Look I'm innocent, I might not have liked Park but I wouldn't try to kill him!",
-                "GOATMAN PETERSON|||Then... Why hide a poisoned Pin in the studio? The same poison that turned Park into a Gin smelling Berry!",
-                "JUNG DAE SEO|||I...",
-                "GOATMAN PETERSON|||Answer tough guy!",
-                "JUNG DAE SEO|||Yes... I hid the Pin.",
-                "GOATMAN PETERSON|||So you admit you killed him?",
-                "JUNG DAE SEO|||No I didn't kill him!, I did take the Pin from Park's body... I know it was a shameful movement but...",
-                "GOATMAN PETERSON|||But?",
-                "JUNG DAE SEO|||I just couldn't control myself! I had been anticipating that Pin for so long now, and I lost it to Lee who got it first!",
-                "GOATMAN PETERSON|||...",
-                "JUNG DAE SEO||| Like what the hell man! I just want to collect Pins as a hobby, why did he have to mess around with something so valuable for me...",
-                "GOATMAN PETERSON|||Then what happened?",
-                "JUNG DAE SEO|||Well I had been pissed of at Park and Lee for the joke, I was really envious of Park walking around with a Pin he didn't even like!",
-                "GOATMAN PETERSON|||And?",
-                "JUNG DAE SEO|||... When Park fell and Assatari went to the office to call the Police, I... I saw it and...",
-                "GOATMAN PETERSON|||You took it and then hid it in the Record Studio to keep it safe until the investigation ended.",
-                "GOATMAN PETERSON|||You know that's a crime right? You stole evidence from a crime scene...",
-                "JUNG DAE SEO|||... Still, even if I'm guilty of that. I did not kill Park, much less knew that Pin was false... I should have though better when I saw the dent on the Pin...",
-                "GOATMAN PETERSON|||If you didn't kill him... Someone here is lying, someone poisoned Park with that false Pin!"                
+                "GOATMAN PETERSON|||So the murderer was that who possessed the most obvious grudge, is that not it, Jung?",
+                "JUNG DAE SEO|||What?!",
+                "JUNG DAE SEO|||Are you saying I did it?!",   
+                "GOATMAN PETERSON|||There is only one Rare Pin Collector here…",
+                "JUNG DAE SEO|||…!",
+                "JUNG DAE SEO|||That doesn’t mean it was me—!",
+                "JUNG DAE SEO|||Get your tact…s straight!",
+                "GOATMAN PETERSON|||…?",
+                "GOATMAN PETERSON|||…You mean facts?",
+                "JUNG DAE SEO|||…?!",
+                "GOATMAN PETERSON|||The fact of the matter is…",
+                "GOATMAN PETERSON|||A Pin killed Park with poison…!",
+                "JUNG DAE SEO|||So what? ",
+                "JUNG DAE SEO|||Not every Pin in the world belongs to me.",
+                "JUNG DAE SEO|||…Yet.",
+                "GOATMAN PETERSON|||That is a fact∼",
+                "GOATMAN PETERSON|||…But the Pin in question was found in your possession!",
+                "GOATMAN PETERSON|||Right in the Studio, my dear.",
+                "JUNG DAE SEO|||…!",
+                "GOATMAN PETERSON|||It was a beautiful move on your part∼",
+                "GOATMAN PETERSON|||Quite strategically planed, indeed…",
+                "GOATMAN PETERSON|||Replacing the poisoned Pin with the Standard one.",
+                "GOATMAN PETERSON|||At. Just. The. Precise. Time∼",
+                "JUNG DAE SEO|||…What?!",
+                "JUNG DAE SEO|||No! You got it wrong!",
+                "JUNG DAE SEO|||I just took it!",
+                "JUNG DAE SEO|||It was a collectable…!",
+                "GOATMAN PETERSON|||Which you identified as a fake, hmm?",
+                "JUNG DAE SEO|||…!",
+                "JUNG DAE SEO|||Oh.",
+                "JUNG DAE SEO|||I made a mistake…",
+                "JUNG DAE SEO|||I didn’t know there were two…",
+                "GOATMAN PETERSON|||…",
+                "GOATMAN PETERSON|||Could it be—?",
+                "GOATMAN PETERSON|||…Was someone else involved? ",
+                "GOATMAN PETERSON|||Or was this all a product of carefully woven lies…? "
             ],
             "Next": "DiscoverEnd"
-        }
+        },
 
 
 
@@ -1615,35 +1795,87 @@
 
 
 
-        ,
+        
         {
             "ID":"GoatmanVictory",
             "Character": "Goatman",
             "GameState": 0,
             "Texts":
             [
-                "GOATMAN PETERSON|||The Gods of the Supah Star have blessed me!",
-                "GOATMAN PETERSON|||I can see now, I was right!",
-                "GOATMAN PETERSON|||Now I can peer into the abyss of infinity and see the Truth!",
-                "GOATMAN PETERSON|||Lee bought the rare Pin to give it to Park, and had a copy made with a poisoned needle.",
-                "GOATMAN PETERSON|||Then he gave it to Park in the morning, making him use it to mess around with Jung and promise to use it all day without taking it off.",
-                "GOATMAN PETERSON|||Right before Lee left he pushed the Pin into Park's chest, poisoning him.",
-                "GOATMAN PETERSON|||He knew the poison would take it's time, long enough so Park could arrive at the Barbers shop where they would get their hair done!",
-                "GOATMAN PETERSON|||He would die during the haircut, and using the confusion we was going to switch the  fake Pin with the original one!",
-                "GOATMAN PETERSON|||Making it impossible for the Police to know how he died.",
-                "GOATMAN PETERSON|||There were three problems though, he didn't expect Lee would take it's time arguin with Assatari since he didn't know about their",
-                "GOATMAN PETERSON|||relationship, and second, he didn't know that if someone were to have multiple injuries and internal bleedings, the body would turn purple",
-                "GOATMAN PETERSON|||because of the poison, making it evident.",
-                "GOATMAN PETERSON|||And finally, since the Fake Pin was missing from the body, he had no option but to stay in the crime scene, looking for it to switch it.",
-                "GOATMAN PETERSON|||The poison took effect right after Park was leaving the Office making him weak,",
-                "GOATMAN PETERSON|||added to the hit on his head, he couldn't see the ouddle of sweat left by Ruru and slipped down stairs,",
-                "GOATMAN PETERSON|||knocking himself out and dying because of the posion.",
-                "GOATMAN PETERSON|||Now you might wonder... Why did Lee kill his best friend?",
-                "GOATMAN PETERSON|||Well that's because Park was going to CUT HIS HAIR BALD as his new look!",
-                "GOATMAN PETERSON|||Lee couldn't bear it, to him Park was perfect, and being the only person Park had informed about his plan, he had to stop him.",
-                "GOATMAN PETERSON|||He would rather have a Perfect Park dead than an Imperfect Ugly version alive and disgraceful.",
-                "GOATMAN PETERSON|||He never cared about his friend as a person, only the symbol Park represented to him...",
-                "GOATMAN PETERSON|||RATHER DEAD & PRETTY THAN BALD & ALIVE..."
+                "GOATMAN PETERSON|||…Yes!",
+                "GOATMAN PETERSON|||Behold the power of the Supah Star!",
+                "GOATMAN PETERSON|||I, Goat Detective Peterson…",
+                "GOATMAN PETERSON|||Command you, Lee Chee Go…!",
+                "GOATMAN PETERSON|||—To confess your sins!",
+                "LEE CHEE GO|||…!",      
+                "LEE CHEE GO|||N-No!",              
+                "LEE CHEE GO|||Argh…!",              
+                "LEE CHEE GO|||What’s…!",              
+                "LEE CHEE GO|||Happening… to me?!",              
+                "LEE CHEE GO|||…",              
+                "LEE CHEE GO|||…!",              
+                "LEE CHEE GO|||I—",              
+                "LEE CHEE GO|||I did it.",              
+                "LEE CHEE GO|||…!",              
+                "LEE CHEE GO|||…I had thought this trough for a while now.",              
+                "LEE CHEE GO|||It was all going even better than I had foreseen…",              
+                "LEE CHEE GO|||But how was it…?",              
+                "LEE CHEE GO|||How was it that a mere goat could beat me…?",              
+                "LEE CHEE GO|||...",              
+                "LEE CHEE GO|||…I had bought the Pin Jung seemed to covet, just so Park would wear it.",              
+                "LEE CHEE GO|||And I made a fake, which cost a fortune, mind you…",              
+                "LEE CHEE GO|||…I was to replace the poisoned Pin with the Standard one when Park dropped dead in the Salon. ",              
+                "LEE CHEE GO|||Out of this goddammed place—",              
+                "LEE CHEE GO|||During the most spectacular death show that humanity had ever witnessed…!",              
+                "LEE CHEE GO|||But I couldn’t see that Park was smitten with our manager.",              
+                "LEE CHEE GO|||Nor that she… she would enter a violent fit, heh.",              
+                "LEE CHEE GO|||It wasn’t perfect, but the manager being the murderer was nice enough.",              
+                "LEE CHEE GO|||Or even the innocent girl here.",              
+                "LEE CHEE GO|||…But it was best when the blame was put on the Pin Collector.",              
+                "LEE CHEE GO|||What a perfect ending, wouldn’t you agree…?",              
+                "LEE CHEE GO|||When I saw the body lying on the stairs, my first thought was to replace the Pin.",              
+                "LEE CHEE GO|||But I saw none…",              
+                "LEE CHEE GO|||I panicked, so I thought to blame the others, ask around, try to figure out where the Pin was but…",              
+                "LEE CHEE GO|||The goat helped my claim, saying I had first taken the Pin, ignoring Jung had.",    
+                "LEE CHEE GO|||So I took the chance and lied.",              
+                "LEE CHEE GO|||…",              
+                "LEE CHEE GO|||But alas.",              
+                "LEE CHEE GO|||I am here now.",              
+                "LEE CHEE GO|||Cursing the fact that humanity doesn’t deserve to live.",              
+                "LEE CHEE GO|||That life is meaningless in whatever form it takes.",              
+                "LEE CHEE GO|||Because suffering is all that abounds, all that ever exists…",              
+                "LEE CHEE GO|||Because we all struggle to survive each day, without aim, without purpose.",              
+                "LEE CHEE GO|||…",              
+                "LEE CHEE GO|||…Park was who made it all better—",              
+                "LEE CHEE GO|||To me, at least.",              
+                "LEE CHEE GO|||He was the epitome of perfection, of everything that’s good in this world, until—",              
+                "LEE CHEE GO|||… He decided to shave.",              
+                "LEE CHEE GO|||…",              
+                "LEE CHEE GO|||Every. Single. Hair. Off. His. Head.",              
+                "LEE CHEE GO|||Damn that ‘Bald Italian Men’ Magazine—!",              
+                "LEE CHEE GO|||Only fools read that!",              
+                "LEE CHEE GO|||…The worst disgrace in existence…!",              
+                "LEE CHEE GO|||…You hear me?!",              
+                "LEE CHEE GO|||Disgrace…!",              
+                "GOATMAN PETERSON|||…",
+                "GOATMAN PETERSON|||And so, Lee proceeded to be imprisoned.",
+                "GOATMAN PETERSON||| Forever questioning his existence and never daring to lay a finger on humans or other beings alike∼",
+                "GOATMAN PETERSON|||…",
+                "GOATMAN PETERSON|||As for Jung…",
+                "GOATMAN PETERSON|||He decided to quit the music industry…",
+                "GOATMAN PETERSON|||And set a Pin Design Shop just in the outskirts of town.",
+                "GOATMAN PETERSON|||Finally finding what made his life whole.",
+                "GOATMAN PETERSON|||…While Assattari, she vouched to make the world a better place.",
+                "GOATMAN PETERSON|||She swore to raise her child to be the world’s Best Idol…",
+                "GOATMAN PETERSON|||And start a new devoted religion.",
+                "GOATMAN PETERSON|||…All in memory of his father, Park.",
+                "GOATMAN PETERSON|||As for Ruru…",
+                "GOATMAN PETERSON|||She began a long road towards enlightenment.",
+                "GOATMAN PETERSON|||She decided to repent for her psychotic attitudes…",
+                "GOATMAN PETERSON|||All whilst she walked from her home to Jung’s Shop every day.",
+                "GOATMAN PETERSON|||…The road was very, very long.",
+                "GOATMAN PETERSON|||…And me?",
+                "GOATMAN PETERSON|||Heh∼"
             ],
             "Next": "VictoryScreen"
         },
@@ -1654,7 +1886,7 @@
             "Texts":
             [
                 "GOATMAN PETERSON|||What's this? The god's of the Supah Star won't bless me!",
-                "GOATMAN PETERSON|||I must have made a mistake!",
+                "GOATMAN PETERSON|||I must have committed sin!",
                 "GOATMAN PETERSON|||I have disgraced my detective ancestors!!"
             ],
             "Next": "LoseScreen"

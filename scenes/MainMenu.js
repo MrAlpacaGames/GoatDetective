@@ -39,7 +39,10 @@ class MainMenu extends Phaser.Scene
     }
 
     update()
-    {
-        
+    {   
+        if(musicManager.mainWebSound != undefined)
+        {
+            musicManager.checkOnMusic();
+        }
     }
 }

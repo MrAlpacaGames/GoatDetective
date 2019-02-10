@@ -228,12 +228,14 @@ function loadScene(newScene)
         
         currentPlayerHUD.checkMuteStatus();
 
-        if(currentScene.scene.key == "StudioScene")
+        if(currentScene.scene.key == 'DressroomScene')
         {
-            let activateRuru = currentScene.time.delayedCall(100, function(){
-                currentScene.notifyRuruToExit();
-            } , currentScene);
+            let activateKey = currentScene.time.delayedCall(100, function(){
+                currentScene.makeKeyVisible();
+            });
         }
+
+        globalLockdown = false;
 
         if(previousScene.scene.key == "StudioScene")
             thePlayer.player.setFlip(false);
@@ -259,6 +261,9 @@ function openNotebook(newValue)
         currentScene.scene.switch(destScene);
         canSceneSwitch = false;
         currentScene = destScene;    
+
+        if(!newValue) musicManager.changeTheme(musicManager.themeBeforeNotebook, false);
+
 
         let timedEvent = currentScene.time.delayedCall(150, function(){
             canSceneSwitch = true;

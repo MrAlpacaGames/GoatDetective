@@ -173,14 +173,17 @@ class DialogueManager
                 }
                 else if(nextAction == "GameOver")
                 {
+
                     GameManager.showFinalDialogue(false);              
                 }
                 else if(nextAction == "VictoryScreen")
                 {
+                    //musicManager.changeTheme('Victory', false);
                     currentPlayerHUD.openSpecialScreen(true, true);
                 }
                 else if(nextAction == "LoseScreen")
                 {
+                    musicManager.changeTheme('Lose', false);
                     currentPlayerHUD.openSpecialScreen(false, true);
                 }
             }

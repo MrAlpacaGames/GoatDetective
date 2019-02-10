@@ -97,8 +97,6 @@ class UIMenuManager
         creditsBtn.on('pointerdown', ()=> this.onMenuBtnInteracted(creditsHigh, true));
         creditsBtn.on('pointerup', ()=> this.onMenuBtnInteracted(creditsHigh, false));
         creditsBtn.on('pointerup', ()=> interacionManager.interactMenu("Credits"));
-        creditsBtn.on('pointerup', ()=> musicManager.playThemeSong('Lose', false));
-
 
         creditsBtn.visible = false;
         creditsHigh.visible = false;

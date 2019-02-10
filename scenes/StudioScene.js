@@ -31,10 +31,13 @@ class StudioScene extends Phaser.Scene
     preload()
     {
         currentScene = this;
+        loadingScreen.createLoadingScreen();
         spriteManager.preloadCharacters();
         spriteManager.preloadEnvironment();
         this.playerHUD.preload();
         this.dialogueHUD.preloadDialogue();
+        musicManager.preloadMusic();
+
 
         if(hasStartedGame == false)
         {
@@ -45,6 +48,7 @@ class StudioScene extends Phaser.Scene
 
     create()
     {      
+        musicManager.createThemes();
         spriteManager.createEnvironment('studio', topBackgroundXOrigin+ 763, topBackgroundYOrigin - 2, 0.72);
         
         this.cameras.main.setBounds(0, 0, gameConfig.width * 2.59, gameConfig.height);
@@ -56,10 +60,6 @@ class StudioScene extends Phaser.Scene
         // Ruru
         this.ruru = spriteManager.createStaticCharacter('Ruru', topBackgroundXOrigin+900, topBackgroundYOrigin+114, 0.26);
         this.ruru.setFlip(true);
-        if(playerNotebook.parkDiscovered == false)
-        {
-            this.ruru.visible = false;
-        }
 
          // Items Creation
         let recorder = spriteManager.createItem('Recorder', topBackgroundXOrigin+42, topBackgroundYOrigin+172, 0.75);
@@ -86,11 +86,11 @@ class StudioScene extends Phaser.Scene
         onSceneEnterNotebook(this.scene.key);
     }
 
-    notifyRuruToExit()
+    update()
     {
-        if(playerNotebook.parkDiscovered == true && this.ruru.visible == false)
+        if(musicManager.mainWebSound != undefined)
         {
-            this.ruru.visible = true;
+            musicManager.checkOnMusic();
         }
     }
 }

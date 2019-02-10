@@ -27,13 +27,13 @@ class HallScene extends Phaser.Scene
 
     preload()
     {
-        loadingScreen.createLoadingScreen();
         currentScene = this;
+        loadingScreen.createLoadingScreen();
         spriteManager.preloadCharacters();
         spriteManager.preloadEnvironment();
         this.dialogueHUD.preloadDialogue();
         this.playerHUD.preload();
-
+        
         musicManager.preloadMusic();
 
 
@@ -99,6 +99,8 @@ class HallScene extends Phaser.Scene
         }
 
         onSceneEnterNotebook(this.scene.key);
+
+        musicManager.changeTheme('Exploring', false);
         this.beginScene();
     }
 
@@ -117,5 +119,13 @@ class HallScene extends Phaser.Scene
                 break;
             }    
         } , currentScene);
+    }
+
+    update()
+    {
+        if(musicManager.mainWebSound != undefined)
+        {
+            musicManager.checkOnMusic();
+        }
     }
 }

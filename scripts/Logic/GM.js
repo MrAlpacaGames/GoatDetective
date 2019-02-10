@@ -45,6 +45,8 @@ class GM
         this.canMove = true;
         this.HUDInteracted = false;
         this.stateOfGame = 0;
+
+        globalLockdown = false;
         // Notebook Restart
         playerNotebook = undefined;
         playerNotebook = new Notebook();
@@ -60,6 +62,8 @@ class GM
         theGame.scene.scenes.forEach(temp => {
             theGame.scene.stop(temp.scene.key);
         });
+        musicManager.mainWebSound.stop();
+        musicManager.mainWebSound = undefined;
         theGame.scene.start('MainMenu');
         //theGame.scene.destroy();
     }

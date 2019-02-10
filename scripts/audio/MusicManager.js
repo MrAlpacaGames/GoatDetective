@@ -5,22 +5,27 @@ class MusicManager
         //----------------------------------
         // VARIABLES
         //----------------------------------
-        this.sceneTheme;
+        // Main Song Playing
+        this.mainWebSound;
+        // Possible Main Song Loop
+        this.mainPossibleLoop;
 
-        this.mainAudio
-
-        this.muteButtons = [];
-
+        this.themeBeforeNotebook;
+        
         this.singleHits = new HashTable();
         this.introThemes = new HashTable();
-        this.loopThemes = new HashTable();
-
-        this.isPlayingAnIntro = false;
+        this.loopThemes = new HashTable();    
+        
+        this.muteButtons = [];
     }    
 
     //-----------------------------------------
     // FUNCTIONS
     //-----------------------------------------
+
+    //--------------------------------------------------------------------------------
+    //                                  CREATION FUNCTIONS
+    //--------------------------------------------------------------------------------
     preloadMusic()
     {
         if(currentScene.scene.key == "UINotebook")
@@ -70,6 +75,9 @@ class MusicManager
         }
     }
 
+    /**
+     * Function that creates the themes and adds them to the Web Audio Sound Manager and to the hash tables
+     */
     createThemes()
     {
         let sceneName = currentScene.scene.key;
@@ -143,58 +151,24 @@ class MusicManager
         }
     }
 
+    /**
+     * Function that adds the song to the WebAudioSoundManager
+     * @param {*} themeName 
+     */
     createTheme(themeName)
     {
         return theGame.sound.add(themeName);
     }
 
-    playThemeSong(themeName, isIntro)
-    {
-        /** 
-        if(this.currentThemeIntro == undefined && this.currentThemeLoop == undefined)
-        {
-            // If nothing is playing. We play the song that the user wants
-            this.currentThemeIntro = this.getTheme(true, themeName);
-            this.currentThemeLoop = this.getTheme(false, themeName);
-            this.playWithFade(this.currentThemeIntro, true);
-            this.currentThemeIntro.once('ended', ()=> this.playNoFade(this.currentThemeLoop));
-        }
-        else
-        {
-            this.currentThemeLoop.play();
-            // If we have already something playing. We check what is playing.
-            // We fade it out, switch to the new song and play it with a fade in
+    //--------------------------------------------------------------------------------
+    //                                  GETTER FUNCTIONS
+    //--------------------------------------------------------------------------------
 
-            console.log("Should play the loop");
-        }
-        */
-    }
-
-    playNoFade(songToPlay)
-    {
-        songToPlay.volume = 0.8;
-        songToPlay.play();
-    }
-
-    playWithFade(songToPlay, isFadeIn)
-    {
-        songToPlay.play();
-        let newVolume;
-        (isFadeIn) ? newVolume = 0.8 : newVolume = 0;
-        currentScene.tweens.killAll();
-        currentScene.tweens.add({
-            targets: songToPlay,
-            volume: newVolume,
-
-            ease: 'Linear',
-            duration: 500,
-            onComplete: function()
-            {
-                
-            }
-        });
-    }
-
+    /**
+     * Function that gets the theme song from the hash tables
+     * @param {*Is an intro song} isIntro 
+     * @param {*Name of the theme} themeName 
+     */
     getTheme(isIntro, themeName)
     {
         let theme;
@@ -202,7 +176,7 @@ class MusicManager
         let songName;
         (isIntro) ? nameEnding = 'Intro' : nameEnding = 'Loop';
         songName = themeName + nameEnding;
-        if(themeName == 'WinTheme' || themeName == 'LoseTheme' || themeName == 'ExploringTheme'
+        if(themeName == 'Win' || themeName == 'Lose' || themeName == 'Exploring'
         || themeName == 'Notebook')
         {
             theme = this.singleHits.get(songName);
@@ -214,91 +188,102 @@ class MusicManager
         return theme;
     }
 
-    doFade(song ,isFadeIn, newSong)
+    //--------------------------------------------------------------------------------
+    //                                  PLAYING FUNCTIONS
+    //--------------------------------------------------------------------------------
+    /**
+     * Function that plays a theme song
+     * @param {*name of the theme song to be played } themeName 
+     * @param {*Tells if it is an intro or not} isIntro 
+     */
+    playThemeSong(themeName, isIntro)
+    {
+        if(this.mainWebSound == undefined)
+        {
+            if(isIntro)
+            {
+                this.mainPossibleLoop = this.getTheme(false, themeName);
+            }
+            this.mainWebSound = this.getTheme(true, themeName);
+            this.mainWebSound.play();
+            this.executeFading(true, this.mainWebSound);
+        }
+    }
+
+    /**
+     * Function that plays a song without fading
+     * @param {*Song to be played} songToPlay 
+     */
+    playNoFade(songToPlay)
+    {
+        songToPlay.volume = 0.8;
+        songToPlay.play();
+    }
+
+    /**
+     * Function that executes the fading in or out of a song
+     * @param {*Tells if we are fading in the song or fading it out} isFadingIn 
+     * @param {*The song to be faded} songToFade 
+     * @param {*Possible new song. Just used when we are fading out a song} possibleNewSong 
+     */
+    executeFading(isFadingIn, songToFade, possibleNewSong)
     {
         let newVolume;
-        (isFadeIn) ? newVolume = 0.8 : newVolume = 0;
-        currentScene.tweens.killAll();
+        (isFadingIn) ? newVolume = 0.8 : newVolume = 0;
+        //currentScene.tweens.killAll();
         currentScene.tweens.add({
-            targets: song,
+            targets: songToFade,
             volume: newVolume,
 
             ease: 'Linear',
-            duration: 300,
+            duration: 100,
             onComplete: function()
             {
-                if(!isFadeIn)
+                if(!isFadingIn) // If we are fading out. Once we fade out the current song, we fade in the next one
                 {
-                    musicManager.currentThemeIntro.stop();
-                    musicManager.currentThemeLoop.stop();
-                    musicManager.changeTheme(newSong, true);
+                    musicManager.mainWebSound.stop();
+                    musicManager.mainWebSound = possibleNewSong;
+                    musicManager.mainWebSound.volume = 0;
+                    musicManager.mainWebSound.play();
+                    musicManager.executeFading(true, musicManager.mainWebSound);
                 }
             }
         });
     }
 
-    changeTheme(themeName, fadeOver)
+    //--------------------------------------------------------------------------------
+    //                                  SETTERS FUNCTIONS
+    //--------------------------------------------------------------------------------
+
+    /**
+     * Function that changes the theme to a new One
+     * @param {*Name of the new Theme Name} newTheme
+     * @param {*Is the new song directly an intro} isIntro
+     */
+    changeTheme(newTheme, isIntro)
     {
-        if(!fadeOver)
+        if(this.mainWebSound != undefined )
         {
-            // We are changing song, so we fade out the current song
-            let songToFadeOut;
-            if(this.currentThemeIntro == undefined)
+            let newSong = this.getTheme(isIntro, newTheme);
+            if(isIntro)
             {
-                songToFadeOut = this.currentThemeLoop;
+                this.mainPossibleLoop = this.getTheme(false, newTheme);
             }
-            else
+            if(newTheme == 'Notebook')
             {
-                if(this.currentThemeIntro.isPlaying)
-                {
-                    songToFadeOut = this.currentThemeIntro;
-                    songToFadeOut.removeAllListeners('ended'); 
-                } 
-                else
-                {
-                    songToFadeOut = this.currentThemeLoop;
-                }
+                let reduction;
+                (this.mainWebSound.loop) ? reduction = 4 : reduction = 5;
+                let lastTheme = this.mainWebSound.key.substring(0, this.mainWebSound.key.length - reduction);
+                this.themeBeforeNotebook = lastTheme;
             }
-            this.doFade(songToFadeOut, false);
-        }
-        else
-        {
-            let total;
-            let introName = "NA";
-            let loopName;
-            if(themeName == 'Exploring' || themeName == 'Notebook')
-            {
-                total = 1;
-                loopName = themeName+"Loop";
-            }
-            else
-            {
-                total = 2;
-                introName = themeName + 'Intro';
-                loopName = themeName + 'Loop';
-            }
-            
-            for(let i = 0; i < theGame.sound.sounds.length && total > 0; i++)
-            {
-                let temp = theGame.sound.sounds[i];
-                if(temp.key == introName)
-                {
-                    this.currentThemeIntro = temp;
-                    this.currentThemeIntro.volume = 0;
-                    total--;
-                }
-                else if(temp.key == loopName)
-                {
-                    this.currentThemeLoop = temp;
-                    this.currentThemeLoop.volume = 0;
-                    total--;
-                }
-            }
-            if(this.currentThemeIntro.key != introName) this.currentThemeIntro = undefined;
-            this.playTheme(true);
+            // We fade out the current song
+            this.executeFading(false, this.mainWebSound, newSong);
         }
     }
 
+    /**
+     * Function that mutes/desmutes the music and sfx in the whole game
+     */
     muteMusic()
     {
         if(globalLockdown == false)
@@ -313,14 +298,18 @@ class MusicManager
             }
         }
     }
-
-    checkIfIntroFinished(themeSong)
-    {
-        if(!this.currentThemeIntro.isPlaying)
+    
+    /**
+     * Function called in every frame of the game to check if the music has stopped playing and if it is an intro song
+     * change to its loop
+     */
+    checkOnMusic()
+    {        
+        if(!this.mainWebSound.isPlaying && !this.mainWebSound.loop)
         {
-            this.currentThemeIntro.stop();
-            this.currentThemeLoop.play();
+            this.mainWebSound = this.mainPossibleLoop;
+            this.playNoFade(this.mainWebSound);
         }
-    } 
+    }
 
 }

@@ -80,7 +80,7 @@ class Clue
             }
             else if(GameManager.stateOfGame == 0)
             {
-                this.inDialoguesIndex = 0;
+                (this.name == 'Park') ? this.inDialoguesIndex = 1 : this.inDialoguesIndex = 0;
             }
             else if(GameManager.stateOfGame > 0 && this.inDialoguesIndex == 1)
             {

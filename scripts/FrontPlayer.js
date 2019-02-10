@@ -96,7 +96,7 @@ class FrontPlayer
                 (thePointer.x < 109 && thePointer.y > 0 && thePointer.y < gameConfig.height)||
                 (thePointer.x > 892 && thePointer.x < gameConfig.width && thePointer.y < gameConfig.height))
                 {
-                    if(globalLockdown == false)
+                    if(globalLockdown == false && !GameManager.HUDInteracted)
                     {
                         currentDialogueHUD.enableDialogueUI(false);
                     }

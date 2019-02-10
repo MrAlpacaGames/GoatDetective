@@ -51,6 +51,21 @@ class InteractionManagement
     interactWithClue(interactionObject)
     {
         let clue = playerNotebook.getClue(interactionObject);
+        // We set the music for the conversation
+        if(clue.name == "Park" || clue.name == "Jung" || clue.name == "Lee")
+        {
+            musicManager.changeTheme('KStar', true);
+        }
+        else if(clue.name == "Assattari")
+        {
+            musicManager.changeTheme('Lioness', true);
+        }
+        else if(clue.name == "Ruru")
+        {
+            musicManager.changeTheme('BiggestFan', true);
+        }
+
+        // We open the clue
         let dialogueID;
 
         if(clue.clueType == "Humans" && clue.name != "Park")
@@ -61,8 +76,6 @@ class InteractionManagement
             currentClickedElement.setFlip(shouldFlip);
         }
         
-        if(clue.name == "Park" && GameManager.stateOfGame == 0)
-            GameManager.stateOfGame = 1;
         if(interactionObject == "Park" && clue.discovered == true)
         {
             currentDialogueHUD.openParkOptions(false);

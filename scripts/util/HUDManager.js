@@ -110,6 +110,8 @@ class HUDManager
          this.openSpecialScreen(true, false);
 
          this.confrontBack = currentScene.add.image(topBackgroundXOrigin, topBackgroundYOrigin, 'ConfrontBack');
+         this.confrontBack.scrollFactorX = 0;
+         this.confrontBack.name = "HUD";
          this.confrontBack.visible = false;
          this.confrontationImg = currentScene.add.image(topBackgroundXOrigin, topBackgroundYOrigin - 540, 'Confrontation');
          this.assignBehaviour(this.confrontationImg, "Confrontation");
@@ -270,6 +272,7 @@ class HUDManager
                 },
                 onComplete: function()
                 {
+                    musicManager.changeTheme('Confront', true);
                     sfxManager.playSFX(4);
                 }
             });

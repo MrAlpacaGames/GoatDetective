@@ -24,11 +24,14 @@ class OfficeScene extends Phaser.Scene
     preload()
     {
         currentScene = this;
+        loadingScreen.createLoadingScreen();
         spriteManager.preloadCharacters();
         spriteManager.preloadEnvironment();
         this.playerHUD.preload();
         this.dialogueHUD.preloadDialogue();
         musicManager.preloadMusic();
+
+
         if(hasStartedGame == false)
         {
             dialogueManager.preloadJson();
@@ -74,6 +77,14 @@ class OfficeScene extends Phaser.Scene
 
         onSceneEnterNotebook(this.scene.key);
 
+    }
+
+    update()
+    {
+        if(musicManager.mainWebSound != undefined)
+        {
+            musicManager.checkOnMusic();
+        }
     }
 
 }

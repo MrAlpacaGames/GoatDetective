@@ -19,6 +19,8 @@ class DressroomScene extends Phaser.Scene
 
         // Player HUD of this scene
         this.playerHUD = new HUDManager();
+
+        this.studioKey;
     }
 
     //-------------------------
@@ -28,10 +30,12 @@ class DressroomScene extends Phaser.Scene
     preload()
     {
         currentScene = this;
+        loadingScreen.createLoadingScreen();
         spriteManager.preloadCharacters();
         spriteManager.preloadEnvironment();
         this.playerHUD.preload();
         this.dialogueHUD.preloadDialogue();
+
 
         if(hasStartedGame == false)
         {
@@ -51,8 +55,13 @@ class DressroomScene extends Phaser.Scene
         let hallDoor = spriteManager.createEnvironment('dressToHall', 246, topBackgroundYOrigin+75, 0.72);
 
         // Items Creation
-        let studioKey = spriteManager.createItem('Key', topBackgroundXOrigin+600, topBackgroundYOrigin+50, 0.35);
-        studioKey.angle = 90;
+        this.studioKey = spriteManager.createItem('Key', topBackgroundXOrigin+600, topBackgroundYOrigin+50, 0.35);
+        this.studioKey.visible = false;
+        this.studioKey.angle = 90;
+        if(playerNotebook.parkDiscovered && GameManager.stateOfGame > 0)
+        {
+            this.studioKey.visible = true;
+        }
 
         // Jung Drawer
         let drawer = spriteManager.createDrawer('JungDrawer', 'Drawer', topBackgroundXOrigin+373.5, topBackgroundYOrigin+98, 0.63);
@@ -89,5 +98,18 @@ class DressroomScene extends Phaser.Scene
         this.input.on('pointerdown', () => spriteManager.clickEffect(this.clickFx, this.input.activePointer));
 
         onSceneEnterNotebook(this.scene.key);
+    }
+
+    makeKeyVisible()
+    {
+        if(this.studioKey != undefined && playerNotebook.parkDiscovered && GameManager.stateOfGame > 0) this.studioKey.visible = true;
+    }
+
+    update()
+    {
+        if(musicManager.mainWebSound != undefined)
+        {
+            musicManager.checkOnMusic();
+        }
     }
 }

@@ -35,6 +35,7 @@ class UINotebookManager
 
     preload()
     {
+        loadingScreen.createLoadingScreen();
         // Humans UI Elements
         currentScene.load.image('Humans', 'assets/sprites/Agenda/Humans.png');
         currentScene.load.image('RuruNB', 'assets/sprites/Agenda/Humans/Ruru.png');
@@ -83,10 +84,14 @@ class UINotebookManager
 
         // Buttons
         currentScene.load.image('Back', 'assets/sprites/Agenda/Back.png');
+        // Music
+        musicManager.preloadMusic();
     }
 
     create()
     {
+        musicManager.createThemes();
+
         notebookOpened = true;
         //-------------------------
         // HUMANS
@@ -360,6 +365,7 @@ class UINotebookManager
 
     updateOnOpen()
     {
+        musicManager.changeTheme('Notebook', false);
         // Set initial state
         this.setVisible("I", false);
         this.setVisible("W", false);

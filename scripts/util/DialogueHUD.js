@@ -590,6 +590,11 @@ class DialogueHUD
    */
   enableDialogueUI(newValue)
   {
+    if(!newValue)
+    {
+      currentScene.tweens.killAll();
+      //musicManager.changeTheme('Exploring', false);
+    }
     this.isEnabled = newValue;
     this.enableSingleDialogue(newValue);
     this.enableMultipleOptions(2, false);
@@ -638,6 +643,8 @@ class DialogueHUD
     }
     else
     {
+      musicManager.changeTheme('Accusation', true);
+
       this.multipleOptionsState = 1;
       this.enableMultipleOptions(2, false);
       this.enableAccuseDialogue(true);
@@ -769,6 +776,7 @@ class DialogueHUD
         if(this.parkOpened == true)
         {
           this.openParkOptions(false);
+          musicManager.changeTheme('KStar', true);
         }
         else
         {

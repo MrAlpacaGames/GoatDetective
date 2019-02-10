@@ -13,6 +13,7 @@ class UINotebook extends Phaser.Scene
     preload()
     {
         currentScene = this;
+        loadingScreen.createLoadingScreen();
         notebookSpriteManager.preload();
     }
 
@@ -21,4 +22,12 @@ class UINotebook extends Phaser.Scene
         currentScene = this;
         notebookSpriteManager.create();
     }    
+
+    update()
+    {
+        if(musicManager.mainWebSound != undefined)
+        {
+            musicManager.checkOnMusic();
+        }
+    }
 }

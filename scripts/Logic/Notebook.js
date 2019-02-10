@@ -14,8 +14,8 @@ class Notebook
         let jung = new Clue('Jung', "Humans", 1);
         jung.fullName = "JUNG DAE SEO";
         jung.addInitialDialogues(["SJung0xPrro", "SJung1xPR", "SJung1xUN"]);
-        //jung.confrontationRequirements = ["LeeConfrontation2x1", "ParkGoatman1x4", "LeeJungx1x4", "AssatariJungx1x4", "RuruJung1x4", "JungStandard1xUN", "JungPoisoned1xUN" ];
-        jung.confrontationRequirements = ['SPark1xPR'];
+        jung.confrontationRequirements = ["LeeConfrontation2x1", "ParkGoatman1x4", "LeeJungx1x4", "AssatariJungx1x4", "RuruJung1x4", "JungStandard1xUN", "JungPoisoned1xUN" ];
+        //jung.confrontationRequirements = ['SPark1xPR'];
 
         let lee = new Clue('Lee', "Humans", 2);
         lee.fullName = "LEE CHEE GO";
@@ -41,21 +41,21 @@ class Notebook
         let puddle = new Clue('Puddle', "Weapons", 0);
         puddle.fullName = "SWEATY PUDDLE";
         puddle.noteBookID = "Sweaty Puddle";
-        puddle.addInitialDialogues(["SGoatmanPuddle0xUN"]);
+        puddle.addInitialDialogues(["SGoatmanPuddle1xUN"]);
 
         let diamondChicken = new Clue('Chicken', "Weapons", 1);
         diamondChicken.fullName = "CHICKEN DIAMONDO";
         diamondChicken.noteBookID = "Chicken Diamando";
-        diamondChicken.addInitialDialogues(["SGoatmanChicken0xUN"]);
+        diamondChicken.addInitialDialogues(["SGoatmanChicken1xUN"]);
 
         let standardPin = new Clue('Standard', "Weapons", 2);
         standardPin.fullName = "STANDARD PIN";
         standardPin.noteBookID = "Rare Pin";
-        standardPin.addInitialDialogues(["SGoatmanChicken0xUN"]);
 
         let poisonedPin = new Clue('Poisoned', "Weapons", 3);
         poisonedPin.fullName = "POISONED PIN";
         poisonedPin.noteBookID = "Mysterious Poisoned Pin";
+        poisonedPin.addInitialDialogues(["GoatmanPoisoned1xUN"]);
 
         this.weapons.push(puddle, diamondChicken, standardPin, poisonedPin);
 
@@ -71,6 +71,8 @@ class Notebook
         let loveLetter = new Clue('Letter', "Items", 1);
         loveLetter.fullName = "RURU'S LOVE LETTER";
         loveLetter.noteBookID = "Ruru Love Letter";
+        loveLetter.addInitialDialogues(["GoatmanLetter1xUN"]);
+
 
         let recorder = new Clue('Recorder', "Items", 2);
         recorder.fullName = "STUDIO RECORDER";
@@ -80,6 +82,8 @@ class Notebook
         let cellphone = new Clue('Cellphone', "Items", 3);
         cellphone.fullName = "PARK'S CELLPHONE";
         cellphone.noteBookID = "Park Cellphone";
+        cellphone.addInitialDialogues(["GoatmanCellphone1xUN"]);
+
         this.items.push(studioKey, loveLetter, recorder, cellphone);
 
         //-----------------------------------------
@@ -177,7 +181,11 @@ class Notebook
      */
     discoverClue(clue)
     {
-        if(clue.name == "Park") this.parkDiscovered = true;
+        if(clue.name == "Park")
+        {
+            this.parkDiscovered = true;
+            if(GameManager.stateOfGame == 0) GameManager.stateOfGame = 1;  
+        } 
         clue.discovered = true;
         if(clue.name != "Hall")
             this.playDiscoverSFX();
