@@ -5,20 +5,20 @@
             "ClueName": "Sweaty Puddle",
             "Notes":
             [
-                "A mysteious slime found on the stairs of the main hall.",
-                "It starts as a puddle near the manager's Office",
-                "Peculiar smell, makes me think twice if I should lick it...",
-                "It seems Park slipped on it and fell down because of it...\n",
-                "Tentative Weapon"
+                "A mysterious slime found on the stairs of the main hall.",
+                "The source seems to come from Assattari's office door.",
+                "Peculiar smell, delicious taste.",
+                "Park slipped on it apparently.\n",
+                "Can this be a murder weapon...?"
             ]
         },
         {
             "ClueName": "Chicken Diamando",
             "Notes":
             [
-                "A weird chicken made of strong glass & diamonds... Seems expensive.",
-                "Licked the Chicken, it seems to have a vague taste of blood...",
-                "I has some dents on it, it looks like it fell or hit something hard.\n",
+                "A fabulous chicken made of strong glass & diamonds. Seems expensive.",
+                "Licked the Chicken, it appears to have a vague taste of blood.",
+                "I has dents on it, it looks like it fell... or hit something hard.\n",
                 "Potential Weapon"
             ]
         },
@@ -26,50 +26,53 @@
             "ClueName": "Ruru Love Letter",
             "Notes":
             [
-                "It's a love letter from Ruru found in Park's Drawer:\n",
+                "It is Ruru's love letter to Park:\n",
                 "Dear Park",
                 "My love for you is bigger than the universe, I would do anything for you... Anything!",
-                "Even kill, that's the strength of my love."
+                "...Even kill"
             ]
         },
         {
             "ClueName": "Studio Recorder",
             "Notes":
             [
-                "A recording of a conversation between Park & Lee\n",
-                "- Lee: It will be fun!",
-                "- Park: You know I don't like wearing jewerly",
-                "- Lee: It's to celebrate todays event.",
-                "- Park: Still, I don't see the point on wearing it the whole day.",
-                "- Lee: If Jung sees you he will probably be pissed...",
-                "- Park: ... Really? Haha if that's the case let's do it!",
-                "- Lee: Remember... Don't take it off"
+                "A recording of a conversation between Park & Lee:",
+                "- Lee: 'I-It will be fun...!'",
+                "- Park: 'You know I don't like wearing jewerly..'",
+                "- Lee: 'It's to c-celebrate today's event.'",
+                "- Park: 'Still, I don't see the point on wearing it the whole day.'",
+                "- Lee: '...If Jung sees you wear it, he will  be pissed.'",
+                "- Park: '... Really? Haha! If that's the case let's do it!'",
+                "- Lee: 'Remember... Don't take it off.'"
             ]
         },
         {
             "ClueName": "Park Cellphone",
             "Notes":
             [
-                "Park's cellphone with a selfie, he seems to be wearing a Pin on his jacket, the position of that Pin matches the place of the injury on his chest"
+                "Park's cellphone with a selfie. he seems to be wearing a Pin on his jacket, the position of that Pin matches the place of the injury on his chest",
+                "The Pin’s position matches the puncture in his chest..."
             ]
         },
         {
             "ClueName": "Rare Pin",
             "Notes":
             [
-                "An Exclusive Deluxe Super Hyper Extra Legacy Rare Pin Edition... ",
-                "Who comes up with the names for these things... It's really expensive.",
-                "There's no trace of Park's blood on this Pin... Weird\n",
-                "Possible Weapon"
+                "An Exclusive Deluxe Super Hyper Extra Legacy Rare Pin Edition.",
+                "Fantastic name∼! ",
+                "Looks really expensive.",
+                "My tongue can't find a trace of Park's blood.",
+                "Strange…\n",                
+                "Possible murder weapon"
             ]
         },
         {
             "ClueName": "Mysterious Poisoned Pin",
             "Notes":
             [
-                "A copy of the first Pin",
-                "It's dented on one of it's corners and it has some trails of Park's blood.",
-                "There's poison on it's needle, why is there a fake Pin?\n",
+                "An identical copy of the previous Pin.",
+                "It is dented on one of its corners and it has some trails of blood.",
+                "There seems to be poison on its needle...\n",
                 "Feasible Weapon!"
             ]
         },
@@ -84,16 +87,13 @@
 
 
 
-
-
         {
             "ClueName": "Office",
             "Notes":
             [
-                "This is the Manager's Office\n",
-                "I can feel the oppressive air of order and power here.\n",
-                "Command and hierarchy can be tasted in everycorner of this place.\n",
-                "There's a strange air of conflict and agitation here..."
+                "This is the Manager's Office.\n",
+                "Command and hyerarchy can be tasted in every corner of this place.",
+                "There's a strange air of conflict and agitation..."
             ]
         },
         {
@@ -101,17 +101,18 @@
             "Notes":
             [
                 "The main hall of the studio.\n",
-                "This is where Park's body was found and it seems to be the place were he died.\n",
-                "It is a pretty elegant place filled with lots of stuff of the band, Trophies & Posters."
+                "Park's body was found here.",
+                "It is a pretty elegant place filled with lots of stuff of the band, Trophies & Posters.",
+                "Park  appears to have died here."
             ]
         },
         {
             "ClueName": "Dressroom",
             "Notes":
             [
-                "Dressroom huh? Look's more like a dark cave where darkness is bred.\n",
-                "There's some interesting stuff from the band members here.\n",
-                "There might be some clues around here."
+                "Dressroom, is it? \n",
+                "Looks more like a cave where darkness breeds…",
+                "There might be some clues about the band members here."
             ]
         },
         {
@@ -119,11 +120,14 @@
             "Notes":
             [
                 "The record studio.\n",
-                "I wonder why was this place locked?\n",
-                "It looks very cool though there's a strange scent...",
-                "Where have I sensed it... I wonder."
+                "...Why was this place locked?",
+                "Looks nice though, a strange scent lingers.",
+                "Where have I smalled it before, I wonder...?"
             ]
         },
+
+
+
 
 
         
@@ -131,11 +135,11 @@
             "ClueName": "Jung",
             "Notes":
             [
-                "Tough and mysterious∼",
-                "Dislikes Park and doesn't think about the others much.",
-                "Pretty agressive sometimes, hmm∼ ",
-                "He has been wandering around the studio a lot.",
-                "So he stole the fake Pin from Park's body... \nCan he be innocent?"
+                "- Tough and mysterious∼",
+                "- Dislikes Park and doesn't think much about the others.",
+                "- He has been wandering around the studio a lot...",
+                "- His erratic behavior has stopped. How odd. Is he sad?",
+                "- So he stole the fake Pin from Park's body... \n…And replaced it with the Standard one, it seems."
             ]
         },
         {
@@ -143,43 +147,43 @@
             "Notes":
             [
                 "Orderly and rational, clearly the adult of the group.",
-                "She actually hit Park... Violent when enraged.",
-                "An office affair with Park, quite unexpected.",
-                "She's very wary of Ruru",
-                "Wonder if she will be okay raising her baby."
+                "An office affair with Park, quite unexpected∼ Violent when enraged.",
+                "Became nostalgic... and regretful?",
+                "Still thinks about Park. \nShe’s awfully calm...",
+                "Wonder if she will be okay raising her baby.\nQuite an admirable lass."
             ]
         },
         {
             "ClueName": "Ruru",
             "Notes":
             [
-                "Curious little girl... a bit creepy when angered.",
-                "Strong animosity towards Assatari.. No wonder.",
-                "She's in shock for being part of Park's death",
-                "She's in delusion, her mind is breaking...",
-                "She's resentful and spiteful. She's dangerous"
+                "Curious little girl... A tad eerie when angered.",
+                "Strong animosity towards Assatari. No wonder...",
+                "She’s petrified with shock. Serves her right...!",
+                "Is she regaining composture?",
+                "Hmm... Why hand me the poisoned Pin?\nCould her role be more significant than it seems…?"
             ]
         },
         {
             "ClueName": "Lee",
             "Notes":
             [
-                "The loss of his friend has affected him a lot...",
-                "Aimless and nihilistic, poor guy.",
+                "The loss of his friend has affected him a quite badly...",
+                "Aimless and paranoid, poor lad.",
                 "The paranoia is taking over his mind...",
-                "Must pay attention, this guy is planning something",
-                "He has something to do with those Pins"
+                "His paranoia subsided, but... His negative personality leaves much to be desired.",
+                "Could he be the murderer…? Sometimes the most innocent hide nasty surprises."
             ]
         },
         {
             "ClueName": "Park",
             "Notes":
             [
-                "Dead, was it an accident, a suicide or a murder?",
-                "Some of the bruises were caused by the Diamondo Chicken",
-                "He slipped on Rurus sweat, maybe the fall killed him",
-                "He's turned purple, why? Is it poison?",
-                "He was poisoned through the sting on his chest!"
+                "Dead, was it an accident, suicide or murder?",
+                "Some of the bruises were caused by the Chicken Diamondo.",
+                "He slipped on Ruru's sweat… Maybe the fall killed him.",
+                "He's turned purple… Why? Is it poison?",
+                "He was poisoned through the sting on his chest by a Pin!"
             ]
         }        
     ] 

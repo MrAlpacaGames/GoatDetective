@@ -127,8 +127,7 @@ class DialogueManager
                     {
                         playerNotebook.discoverClue(theClue);
                         playerNotebook.addDialogueTaken(this.currentDialogue);
-                        if(theClue.name == "Puddle" || theClue.name == "Chicken" || theClue.name == "Standard" || theClue.name == "Poisoned"
-                        || theClue.name == "Key" || theClue.name == "Recorder" || theClue.name == "Cellphone")
+                        if(theClue.name == "Puddle" || theClue.name == "Chicken" || theClue.name == "Key" )
                         {
                             lastClickedElement.disableInteractive();
                             if(theClue.name != "Puddle") 
@@ -144,7 +143,7 @@ class DialogueManager
                     }
                     (nextAction == "DiscoverEnd") ? currentDialogueHUD.enableDialogueUI(false): currentDialogueHUD.enableMultiple();
                 }
-                else if(nextAction == "DiscoverLetter")
+                else if(nextAction == "DiscoverLetter" || nextAction == "DiscoverCellphone" || nextAction == "DiscoverPoisoned" || nextAction == "DiscoverStandard")
                 {
                     let clueName = nextAction.substring(8, nextAction.length);
                     let letterClue = playerNotebook.getClue(clueName);

@@ -121,7 +121,10 @@ class Notebook
         this.hasTheKey = false;
     }
 
-    
+    /**
+     * We add the dialog we have just taken into our hash table
+     * @param {*} Dialogue 
+     */
     addDialogueTaken(Dialogue)
     {
         this.dialoguesTaken.add(Dialogue.ID, Dialogue);
@@ -154,6 +157,11 @@ class Notebook
         return theClue;
     }
 
+    /**
+     * We get a clue depending of its type
+     * @param {*} ClueType 
+     * @param {*} ClueIndex 
+     */
     getClueByType(ClueType, ClueIndex)
     {
         let theArray;
@@ -192,6 +200,10 @@ class Notebook
         this.writeNote(clue);
     }
 
+    /**
+     * We get the array of clues depending of the name passed as parameter
+     * @param {*} name 
+     */
     getClueArray(name)
     {
         let theArray;
@@ -391,6 +403,11 @@ class Notebook
         return answer;
     }
 
+    /**
+     * We check if the drawer has been opened before
+     * @param {*} kStarName 
+     * @param {*} openAction 
+     */
     checkIFDrawerOpen(kStarName, openAction)
     {
         let answer;

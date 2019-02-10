@@ -66,10 +66,10 @@ class UINotebookManager
         currentScene.load.image('PuddleBlackWhite', 'assets/sprites/Agenda/Items/SweatyPuddleBN.png');
         currentScene.load.image('ChickenNB', 'assets/sprites/Agenda/Items/ChickenDiamando.png');
         currentScene.load.image('ChickenBlackWhite', 'assets/sprites/Agenda/Items/ChickenDiamandoBN.png');
-        currentScene.load.image('StandardPinNB', 'assets/sprites/Agenda/Items/StandardPin.png');
-        currentScene.load.image('StandardPinBlackWhite', 'assets/sprites/Agenda/Items/StandardPinBN.png');
-        currentScene.load.image('PoisonedPinNB', 'assets/sprites/Agenda/Items/PoisonedPin.png');
-        currentScene.load.image('PoisonedPinBlackWhite', 'assets/sprites/Agenda/Items/PoisonedPinBN.png');
+        currentScene.load.image('StandardNB', 'assets/sprites/Agenda/Items/StandardPin.png');
+        currentScene.load.image('StandardBlackWhite', 'assets/sprites/Agenda/Items/StandardPinBN.png');
+        currentScene.load.image('PoisonedNB', 'assets/sprites/Agenda/Items/PoisonedPin.png');
+        currentScene.load.image('PoisonedBlackWhite', 'assets/sprites/Agenda/Items/PoisonedPinBN.png');
 
         // Items UI Elements
         currentScene.load.image('Items', 'assets/sprites/Agenda/Items.png');
@@ -77,8 +77,8 @@ class UINotebookManager
         currentScene.load.image('CellphoneBlackWhite', 'assets/sprites/Agenda/Items/ParkCellphoneBN.png');
         currentScene.load.image('LoveLetterNB', 'assets/sprites/Agenda/Items/RuruLoveLetter.png');
         currentScene.load.image('LoveLetterBlackWhite', 'assets/sprites/Agenda/Items/RuruLoveLetterBN.png');
-        currentScene.load.image('StudioKeyNB', 'assets/sprites/Agenda/Items/StudioKey.png');
-        currentScene.load.image('StudioKeyBlackWhite', 'assets/sprites/Agenda/Items/StudioKeyBN.png');
+        currentScene.load.image('StudioKeyNB', 'assets/sprites/Agenda/Items/KeyNB.png');
+        currentScene.load.image('StudioKeyBlackWhite', 'assets/sprites/Agenda/Items/KeyBlackWhite.png');
         currentScene.load.image('RecorderNB', 'assets/sprites/Agenda/Items/StudioRecorder.png');
         currentScene.load.image('RecorderBlackWhite', 'assets/sprites/Agenda/Items/StudioRecorderBN.png');
 
@@ -203,43 +203,37 @@ class UINotebookManager
         this.weaponsWindow.visible = false;
 
         let BWWeapon;
-        BWWeapon = currentScene.add.image(topBackgroundXOrigin-215, topBackgroundYOrigin+5, 'PuddleBlackWhite');
+        BWWeapon = currentScene.add.image(topBackgroundXOrigin-205, topBackgroundYOrigin+5, 'PuddleBlackWhite');
+        this.BWWeapons.push(BWWeapon);
+        BWWeapon = currentScene.add.image(topBackgroundXOrigin+10, topBackgroundYOrigin+5, 'ChickenBlackWhite');
         BWWeapon.setScale(0.5);
         this.BWWeapons.push(BWWeapon);
-        BWWeapon = currentScene.add.image(topBackgroundXOrigin+30, topBackgroundYOrigin+5, 'ChickenBlackWhite');
-        BWWeapon.setScale(0.5);
+        BWWeapon = currentScene.add.image(topBackgroundXOrigin-170, topBackgroundYOrigin+135, 'StandardBlackWhite');
         this.BWWeapons.push(BWWeapon);
-        BWWeapon = currentScene.add.image(topBackgroundXOrigin-170, topBackgroundYOrigin+135, 'StandardPinBlackWhite');
-        BWWeapon.setScale(0.15);
-        this.BWWeapons.push(BWWeapon);
-        BWWeapon = currentScene.add.image(topBackgroundXOrigin-30, topBackgroundYOrigin+135, 'PoisonedPinBlackWhite');
-        BWWeapon.setScale(0.35);
+        BWWeapon = currentScene.add.image(topBackgroundXOrigin-30, topBackgroundYOrigin+135, 'PoisonedBlackWhite');
         this.BWWeapons.push(BWWeapon);
 
         let ColorWeapon;
-        ColorWeapon = currentScene.add.image(topBackgroundXOrigin-215, topBackgroundYOrigin+5, 'PuddleNB');
-        ColorWeapon.setScale(0.5);
+        ColorWeapon = currentScene.add.image(topBackgroundXOrigin-205, topBackgroundYOrigin+5, 'PuddleNB');
         ColorWeapon.setInteractive();
         ColorWeapon.on('pointerdown', ()=> this.getClueInformation('W', 0));
         ColorWeapon.visible = false;
         this.ColorWeapons.push(ColorWeapon);
 
-        ColorWeapon = currentScene.add.image(topBackgroundXOrigin+30, topBackgroundYOrigin+5, 'ChickenNB');
+        ColorWeapon = currentScene.add.image(topBackgroundXOrigin+10, topBackgroundYOrigin+5, 'ChickenNB');
         ColorWeapon.setScale(0.5);
         ColorWeapon.setInteractive();
         ColorWeapon.on('pointerdown', ()=> this.getClueInformation('W', 1));
         ColorWeapon.visible = false;
         this.ColorWeapons.push(ColorWeapon);
 
-        ColorWeapon = currentScene.add.image(topBackgroundXOrigin-170, topBackgroundYOrigin+135, 'StandardPinNB');
-        ColorWeapon.setScale(0.15);
+        ColorWeapon = currentScene.add.image(topBackgroundXOrigin-170, topBackgroundYOrigin+135, 'StandardNB');
         ColorWeapon.setInteractive();
         ColorWeapon.on('pointerdown', ()=> this.getClueInformation('W', 2));
         ColorWeapon.visible = false;
         this.ColorWeapons.push(ColorWeapon);
 
-        ColorWeapon = currentScene.add.image(topBackgroundXOrigin-30, topBackgroundYOrigin+135, 'PoisonedPinNB');
-        ColorWeapon.setScale(0.35);
+        ColorWeapon = currentScene.add.image(topBackgroundXOrigin-30, topBackgroundYOrigin+135, 'PoisonedNB');
         ColorWeapon.setInteractive();
         ColorWeapon.on('pointerdown', ()=> this.getClueInformation('W', 3));
         ColorWeapon.visible = false;
@@ -254,36 +248,30 @@ class UINotebookManager
         this.itemsWindow.visible = false;
 
         let BWItem;
-        BWItem = currentScene.add.image(topBackgroundXOrigin-215, topBackgroundYOrigin+5, 'StudioKeyBlackWhite');
-        BWItem.setScale(0.12);
+        BWItem = currentScene.add.image(topBackgroundXOrigin-205, topBackgroundYOrigin+5, 'StudioKeyBlackWhite');
         this.BWItems.push(BWItem);
-        BWItem = currentScene.add.image(topBackgroundXOrigin+30, topBackgroundYOrigin+5, 'LoveLetterBlackWhite');
-        BWItem.setScale(0.5);
+        BWItem = currentScene.add.image(topBackgroundXOrigin+10, topBackgroundYOrigin+5, 'LoveLetterBlackWhite');
         this.BWItems.push(BWItem);
         BWItem = currentScene.add.image(topBackgroundXOrigin-170, topBackgroundYOrigin+135, 'RecorderBlackWhite');
-        BWItem.setScale(0.8); 
         this.BWItems.push(BWItem);
         BWItem = currentScene.add.image(topBackgroundXOrigin-30, topBackgroundYOrigin+135, 'CellphoneBlackWhite');
         BWItem.setScale(0.6); 
         this.BWItems.push(BWItem);
 
         let ColorItem;
-        ColorItem = currentScene.add.image(topBackgroundXOrigin-215, topBackgroundYOrigin+5, 'StudioKeyNB');
-        ColorItem.setScale(0.12);
+        ColorItem = currentScene.add.image(topBackgroundXOrigin-205, topBackgroundYOrigin+5, 'StudioKeyNB');
         ColorItem.setInteractive();
         ColorItem.on('pointerdown', ()=> this.getClueInformation('I', 0));
         ColorItem.visible = false;
         this.ColorItems.push(ColorItem);
 
-        ColorItem = currentScene.add.image(topBackgroundXOrigin+30, topBackgroundYOrigin+5, 'LoveLetterNB');
-        ColorItem.setScale(0.5);
+        ColorItem = currentScene.add.image(topBackgroundXOrigin+10, topBackgroundYOrigin+5, 'LoveLetterNB');
         ColorItem.setInteractive();
         ColorItem.on('pointerdown', ()=> this.getClueInformation('I', 1));
         ColorItem.visible = false;
         this.ColorItems.push(ColorItem);
 
         ColorItem = currentScene.add.image(topBackgroundXOrigin-170, topBackgroundYOrigin+135, 'RecorderNB');
-        ColorItem.setScale(0.8); 
         ColorItem.setInteractive();
         ColorItem.on('pointerdown', ()=> this.getClueInformation('I', 2));
         ColorItem.visible = false;
@@ -310,7 +298,7 @@ class UINotebookManager
         // Text of the Notes
         this.noteBookText = currentScene.add.text(topBackgroundXOrigin+130, topBackgroundYOrigin-100, "", 
         { fontFamily: 'Asap', fontSize: 21 , color: '#474747', align: 'left',
-        wordWrap: {width: 346},
+        wordWrap: {width: 340},
         wordWrapUseAdvanced: true
         });
 

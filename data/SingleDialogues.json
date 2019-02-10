@@ -25,7 +25,7 @@
             "GameState": 0,
             "Texts":
             [
-                "JUNG DAE SEO|||Huh! What do you want? Don't bother me..."
+                "JUNG DAE SEO|||…What do you want? ...Piss off."
             ],
             "Next": "End"
         },
@@ -35,9 +35,13 @@
             "GameState": 0,
             "Texts":
             [
-                "ASSATTARI TARI|||So, you are the detective...Have you already checked the body?",
-                "GOATMAN PETERSON|||If you mean yours... OH YEAH BABY! YOU'RE SMOKING HOT!",
-                "ASSATTARI TARI|||......................GET OUT OF HERE!!!"
+                "ASSATTARI TARI|||So you’re the detective, hmm…?",
+                "ASSATTARI TARI|||Have you checked the body yet?",
+                "GOATMAN PETERSON|||Yours seems to be quite fine∼",
+                "GOATMAN PETERSON|||…Get it, love?  Bloody fine∼",
+                "ASSATTARI TARI|||…",
+                "ASSATTARI TARI|||…",
+                "ASSATTARI TARI|||...Get out of here! Now—!"
             ],
             "Next": "GameOver"
         },
@@ -47,7 +51,9 @@
             "GameState": 0,
             "Texts":
             [
-                "LEE CHEE GO|||My best friend is dead! Leave me alone!"
+                "LEE CHEE GO|||M-my best…",
+                "LEE CHEE GO|||…",
+                "LEE CHEE GO|||B-best friend…"
             ],
             "Next": "End"
         },
@@ -59,11 +65,28 @@
             "GameState": 0,
             "Texts":
             [
-                "GOATMAN PETERSON|||OHHH NO! Park! Ohhh Baby! You are DEAD!",
-                "GOATMAN PETERSON|||Let's study your bodyyy baby!",
-                "GOATMAN PETERSON|||Your body is so bruised! You look like a Panda!",
-                "GOATMAN PETERSON|||Your seem to be stung by something on your chest.",
-                "GOATMAN PETERSON|||And what is this? You are drenched. I guess it was a steamy fall. "
+                "GOATMAN PETERSON|||Oh my, dear Park! Who would have done this to you∼?",
+                "GOATMAN PETERSON|||It appears you have quite a deep gash on the head.",
+                "GOATMAN PETERSON|||Was it from the fall? Hmmm…",
+                "GOATMAN PETERSON|||Although it’s minor, there seems to be a small sting in your chest.",
+                "GOATMAN PETERSON|||…And what’s this smell...? It’s as if you were drenched in something… Hmm…"
+            ],
+            "Next": "DiscoverEnd"
+        },
+        {
+            "ID":"SPark4xPR",
+            "Character": "Park",
+            "GameState": 0,
+            "Texts":
+            [
+                "GOATMAN PETERSON|||Oh no! What happened to your skin…?!",
+                "GOATMAN PETERSON|||Blueberry color, complexion and odor…",
+                "GOATMAN PETERSON|||…Is this what human metamorphosis looks like∼?",
+                "GOATMAN PETERSON|||It appears you have quite a deep gash on the head.",
+                "GOATMAN PETERSON|||Was it from the fall? Hmmm…",
+                "GOATMAN PETERSON|||Although it’s minor, the sting in your chest has become purple.",
+                "GOATMAN PETERSON|||…Could this be poison? …And what’s this smell...?",
+                "GOATMAN PETERSON|||It’s as if you were drenched in something… Hmm…"
             ],
             "Next": "DiscoverEnd"
         },
@@ -73,10 +96,17 @@
             "GameState": 0,
             "Texts":
             [
-                "GOATMAN PETERSON|||I have examined the body Boy! Now... Thou shall tell me what happened here!",
-                "JUNG DAE SEO|||Ugh...Fine... I was changing clothes in the dressroom when I heard a noice in the Hall... ",
-                "JUNG DAE SEO|||When I came out, I found Assattari, our manager, moving the body... ",
-                "JUNG DAE SEO|||She told me to take care of the body while she was going to call the Supah Unit."
+                "GOATMAN PETERSON|||Thy detective has seen the poor state of the corpse∼ ",
+                "GOATMAN PETERSON|||Would thou tell me, who are thee and what is the alibi thou has chosen?",
+                "JUNG DAE SEO|||…! You don’t know who I am?!",
+                "GOATMAN PETERSON|||No, do proceed.",
+                "JUNG DAE SEO|||Hm.",
+                "JUNG DAE SEO|||…I am Jung Dae Seo, a member of the band, ring any bells?!",
+                "JUNG DAE SEO|||I was changing in the Dressroom when it happened.",
+                "JUNG DAE SEO|||I heard something from the Hall, went out to look, and saw her...!",
+                "JUNG DAE SEO|||The manager was dragging the body around...",
+                "JUNG DAE SEO|||I don’t know why she hadn’t called the police, but I told her to.",
+                "JUNG DAE SEO|||…I wouldn’t trust her near Park."
             ],
             "Next": "DiscoverMultiple"
         },
@@ -86,14 +116,18 @@
             "GameState": 0,
             "Texts":
             [
-                "ASSATTARI TARI|||What have you found detective? What happened to Park?!",
-                "GOATMAN PETERSON|||Oh, my dear lady... I'm working on it!",
-                "GOATMAN PETERSON|||I shall find whoever killed him and bring him to sweeeeet JUSTICE! Oh Yeah!",
-                "GOATMAN PETERSON|||Now, I need you to tell me what happened here...",
-                "ASSATTARI TARI|||I was working on my office, Park came here to say goodbye and we he left the office",
-                "ASSATTARI TARI|||I heard a noise coming from the Hall. I went out and found him dead below the stairs.",
-                "ASSATTARI TARI|||I tried to move him to see if he was still alive but he wasn't... Damn!",
-                "GOATMAN PETERSON|||I will find the killer, It's a SUPAAAH PROMISE!"
+                "GOATMAN PETERSON|||Greetings, Miss Assattari∼",
+                "GOATMAN PETERSON|||Thou have summoned me here, have you not?",
+                "ASSATTARI TARI|||Yes Detective, good evening.",
+                "GOATMAN PETERSON|||Do please tell me everything you know, state your identity as well, with due respect.",
+                "ASSATTARI TARI|||Of course, I am Assattari Tari, manager of the band.",
+                "ASSATTARI TARI|||I’ve been with them quite a few years now, leading them to the road of perfection, you see.",
+                "GOATMAN PETERSON|||Hmm, is that right…? And pray tell, what happened here?",
+                "ASSATTARI TARI|||Park… Park came into the office this afternoon, wishing to discuss band related matters.",
+                "ASSATTARI TARI|||We did take a while at it, but he left suddenly.",
+                "ASSATTARI TARI|||…That’s when he slipped down the stairs.",
+                "ASSATTARI TARI|||When I got to him, he was—",
+                "GOATMAN PETERSON|||…I understand."
             ],
             "Next": "DiscoverMultiple"
         },
@@ -103,12 +137,18 @@
             "GameState": 0,
             "Texts":
             [
-                "GOATMAN PETERSON|||Oh... Lee... Your best friend is dead... I cannot believe neither!",
-                "LEE CHEE GO|||I...I just can't believe it...",
-                "GOATMAN PETERSON|||Don't worry bro, I'll find the killer! Now, tell me what happened...",
-                "LEE CHEE GO|||I was working on the studio with Park and Jung.",
-                "LEE CHEE GO|||When we finished, I went to the hair saloon to wait for Park. We where going to get a haircut",
-                "GOATMAN PETERSON|||I see... Thank you you beautiful bro!"
+                "GOATMAN PETERSON|||So you must be the last member of the band.",
+                "GOATMAN PETERSON|||Speak your name and your alibi, if you please∼",
+                "LEE CHEE GO|||M-my name is L-Lee Chee Go, sir!",
+                "LEE CHEE GO|||I-I went out to g-get my hair done…",
+                "LEE CHEE GO|||P-Park was supposed t-to go meet me, but…",
+                "LEE CHEE GO|||…H-he was t-to be late because of Assattari.",
+                "LEE CHEE GO|||He called me be-before going to her office, h-he said.",
+                "LEE CHEE GO|||…The next call I g-got was from Jung.",
+                "LEE CHEE GO|||He told me P-Park had…!",
+                "LEE CHEE GO|||...H-had been killed…!",
+                "LEE CHEE GO|||T-This is no a-accident, t-this is murder!",
+                "GOATMAN PETERSON|||…!"
             ],
             "Next": "DiscoverMultiple"
         },
@@ -118,16 +158,18 @@
             "GameState": 0,
             "Texts":
             [
-                "GOATMAN PETERSON|||Oh my, my, my sweet baby Goat Savior... What do we have here?",
-                "RURU SPARK|||Oh...oh.... hi?",
-                "GOATMAN PETERSON|||And who might you be little one?",
-                "RURU SPARK|||My...my name is Ruru",
-                "GOATMAN PETERSON|||I see. So, Ruru, what are you doing here? Hidden away from everyone?",
-                "RURU SPARK|||I was waiting to see my beautiful Park!",
-                "GOATMAN PETERSON|||And how did you get in here?",
-                "RURU SPARK|||I sneaked in looking for my Park when I was about to meet him,",
-                "RURU SPARK|||I got nervous and hid here",
-                "GOATMAN PETERSON|||I see"
+                "GOATMAN PETERSON|||Oh my…! Who do we have here?",
+                "RURU SPARK|||Umm… Hi…!",
+                "GOATMAN PETERSON|||And who might you be, little one?",
+                "RURU SPARK|||Ruru Spark! Park’s number one fan and destined soulmate∼!",
+                "GOATMAN PETERSON|||…!",
+                "GOATMAN PETERSON|||Do lighten me, dear… Why are you hiding here?",
+                "RURU SPARK|||…Promise not to tell?",
+                "GOATMAN PETERSON|||You have my word.",
+                "RURU SPARK|||Ruru wants to give Park a surprise∼!",
+                "GOATMAN PETERSON|||And sure, you would…",
+                "RURU SPARK|||…But it was just because it was scary upstairs.Ruru is waiting for it to end…",
+                "GOATMAN PETERSON|||…!"
             ],
             "Next": "DiscoverMultiple"
         },
@@ -141,9 +183,10 @@
             "Texts":
             [
                 "GOATMAN PETERSON|||Ok, let's see what is in your body again...",
-                "GOATMAN PETERSON|||Your body is so bruised! You look like a Panda!",
-                "GOATMAN PETERSON|||Your seem to be stung by something on your chest.",
-                "GOATMAN PETERSON|||And what is this? You are drenched. I guess it was a steamy fall. "
+                "GOATMAN PETERSON|||It appears you have quite a deep gash on the head.",
+                "GOATMAN PETERSON|||Was it from the fall? Hmmm…",
+                "GOATMAN PETERSON|||Although it’s minor, there seems to be a small sting in your chest.",
+                "GOATMAN PETERSON|||…And what’s this smell...? It’s as if you were drenched in something… Hmm…"
             ],
             "Next": "LeeMenu"
         },
@@ -1046,13 +1089,18 @@
         },
 
 
+
+
+
+
+
         {
             "ID":"JungPuddle1xUN",
             "Character": "Jung",
             "GameState": 0,
             "Texts":
             [
-                "JUNG DAE SEO|||The hell... What is this slimy thing on the stairs, it doesn't seem to be water..."
+                "JUNG DAE SEO|||The hell…! Is that slime?! Who’s on cleaning duty?!"
             ],
             "Next": "Multiple"
         },
@@ -1062,8 +1110,8 @@
             "GameState": 0,
             "Texts":
             [
-                "LEE CHEE GO|||When I got here, he was already covered in that slimy stuff.",
-                "LEE CHEE GO|||It has a familiar smell but I can't tell what it is exactly..."
+                "LEE CHEE GO|||I-I saw Park covered in that, that, slimy stuff when I got here, I swear!",
+                "LEE CHEE GO|||It s-smells familiar too… I t-think it's something I smell far too o-often."
             ],
             "Next": "Multiple"
         },
@@ -1073,9 +1121,9 @@
             "GameState": 0,
             "Texts":
             [
-                "ASSATTARI TARI|||I saw him slip and fall down the stairs because of that liquid.",
-                "ASSATTARI TARI|||I don't know if someone was there while I was talking with Park but",
-                "ASSATTARI TARI|||that puddle wasn´t there before he came into my office."
+                "ASSATTARI TARI|||The stairs you say? I didn’t see it before I came into my office.",
+                "ASSATTARI TARI|||…Ah—! Maybe that’s what he slipped on—",
+                "ASSATTARI TARI|||Who left it outside...?! Am I too lenient on the cleaning staff..?!"
             ],
             "Next": "Multiple"
         },
@@ -1086,7 +1134,7 @@
             "Texts":
             [
                 "RURU SPARK|||Eww...",
-                "RURU SPARK|||Ruru doesn't know much about that stuff, it looks gross don't get it close to me! ..."
+                "RURU SPARK|||T-that...! That isn’t Ruru’s…!"
             ],
             "Next": "Multiple"
         },
@@ -1100,9 +1148,12 @@
             "GameState": 0,
             "Texts":
             [
-                "JUNG DAE SEO|||That's something Park gifted Assatari as a thanks for her support, he always picked weird stuff as a gift...",
-                "JUNG DAE SEO|||Huh? It's a bit dented, that's a bit weird... ",
-                "JUNG DAE SEO|||I wonder if Assatari let it fell down, she's pretty careful with everything in her office."
+                "JUNG DAE SEO|||A gift from Park to Assattari.",
+                "JUNG DAE SEO|||…",
+                "JUNG DAE SEO|||Bad taste through and through, I guess.",
+                "JUNG DAE SEO|||…",
+                "JUNG DAE SEO|||Hmph. She clearly didn’t deserve it. See how it’s dented?",
+                "JUNG DAE SEO|||…Dang murderer."
             ],
             "Next": "Multiple"
         },
@@ -1112,9 +1163,9 @@
             "GameState": 0,
             "Texts":
             [
-                "LEE CHEE GO|||That chicken huh...",
-                "LEE CHEE GO|||It was a gift we gave Assatari as thanks for the wonderful work she had done for the band.",
-                "LEE CHEE GO|||It is made of a very strong glass, or at least that's what the shopkeeper said..."
+                "LEE CHEE GO|||I-It’s a gift to our manager.",
+                "LEE CHEE GO|||It was r-really expensive and m-made with very strong glass too.",
+                "LEE CHEE GO|||I-is this the murder weapon…!"
             ],
             "Next": "Multiple"
         },
@@ -1125,8 +1176,11 @@
             "Texts":
             [
                 "ASSATTARI TARI|||This...",
-                "ASSATTARI TARI|||It was a gift from the boys, it fell the other day from my desk.",
-                "ASSATTARI TARI|||I wasn't paying attention and dropped it. Everyone can be clumsy from time to time I guess..."
+                "ASSATTARI TARI|||It was a… Gift, I suppose.",
+                "ASSATTARI TARI|||I would’ve picked something different, but the gesture is what counts.",
+                "ASSATTARI TARI|||I… dropped it the other day.",
+                "ASSATTARI TARI|||I guess even someone like me can be…",
+                "ASSATTARI TARI|||Careless, sometimes."
             ],
             "Next": "Multiple"
         },
@@ -1136,10 +1190,11 @@
             "GameState": 0,
             "Texts":
             [
-                "RURU SPARK|||Haha that's a funny chicken!",
-                "RURU SPARK|||Ruru remembers she saw the band checking that thing out some months ago...",
-                "RURU SPARK|||not that she was following them... Ruru just happened to walk by...",
-                "RURU SPARK|||What a coincidence, don't you think?",
+                "RURU SPARK|||That's a funny chicken∼! ",
+                "RURU SPARK|||Ruru remembers she saw the band buying it some months ago!",
+                "RURU SPARK|||…Not that she was following them.",
+                "RURU SPARK|||... Ruru just happened to walk by.",
+                "RURU SPARK|||... What a coincidence, don't you think?",
                 "RURU SPARK|||Haha... Ruru was pretty lucky that day..."
             ],
             "Next": "Multiple"
@@ -1155,9 +1210,9 @@
             "GameState": 0,
             "Texts":
             [
-                "JUNG DAE SEO|||The hell is this?",
-                "JUNG DAE SEO|||Another of his crazy fan letters, he should just throw that away, who knows what sickening stuff is written there.",
-                "JUNG DAE SEO|||Why was Park holding onto this?"
+                "JUNG DAE SEO|||Hm...",
+                "JUNG DAE SEO|||Disturbing things belong with trash.",
+                "JUNG DAE SEO|||…It applies to Park too, in case you wonder. Just for keeping that."
             ],
             "Next": "Multiple"
         },
@@ -1167,11 +1222,10 @@
             "GameState": 0,
             "Texts":
             [
-                "LEE CHEE GO|||That's Ruru's handwritting...",
-                "LEE CHEE GO|||What was Park thinking holding onto this?",
-                "LEE CHEE GO|||Perhaps... knowing him he was preparing some evidence for a restraint order",
-                "LEE CHEE GO|||I can't think of another reason of why he would keep a letter from her",
-                "LEE CHEE GO|||He threw the other gifts she sent as soon as he got them."
+                "LEE CHEE GO|||T-that’s Ruru’s handwriting. ",
+                "LEE CHEE GO|||I-I thought he had gotten r-rid of her gifts.",
+                "LEE CHEE GO|||I-it also smells really familiar...",
+                "LEE CHEE GO|||Is that how R-Ruru smells like?"
             ],
             "Next": "Multiple"
         },
@@ -1181,8 +1235,10 @@
             "GameState": 0,
             "Texts":
             [
-                "ASSATTARI TARI|||... That girl again...",
-                "ASSATTARI TARI|||Kids these days messing around with nothing else to do and causing trouble with their naive and troublesome mindset.."
+                "ASSATTARI TARI|||Her.",
+                "ASSATTARI TARI|||Again.",
+                "ASSATTARI TARI|||…Kids these days.",
+                "ASSATTARI TARI|||Is being a stalker a viable career?"
             ],
             "Next": "Multiple"
         },
@@ -1192,11 +1248,11 @@
             "GameState": 0,
             "Texts":
             [
-                "RURU SPARK|||He was keeping my letter???",
-                "RURU SPARK|||OMG! He truly loved me, he was about to confess himself to me, Ruru is sure of that! But...",
-                "RURU SPARK|||What does it matter now?... he's DEAD...",
-                "RURU SPARK|||You need to find the culprit",
-                "RURU SPARK|||Ruru will make that trash pay for taking my Park from me!"
+                "RURU SPARK|||He kept Ruru’s letter∼?",
+                "RURU SPARK|||He was just about to confess to Ruru∼!",
+                "RURU SPARK|||…",
+                "RURU SPARK|||…But it wouldn’t matter now.",
+                "RURU SPARK|||Ruru will avenge Park. No. Matter. What."
             ],
             "Next": "Multiple"
         },
@@ -1210,9 +1266,8 @@
             "GameState": 0,
             "Texts":
             [
-                "JUNG DAE SEO|||Tsk... Those two were always messing around with my hobby...",
-                "JUNG DAE SEO|||So what if I like collecting Pins!",
-                "JUNG DAE SEO|||It pisses me off when people messes around with stuff that's none of their business."
+                "JUNG DAE SEO|||Tsk!",
+                "JUNG DAE SEO|||So Park wanted to pick a fight?!"
             ],
             "Next": "Multiple"
         },
@@ -1222,10 +1277,10 @@
             "GameState": 0,
             "Texts":
             [
-                "LEE CHEE GO|||I just wanted to mess around with Jung a little bit, and since Park and him have always been quite aggressive to each other,",
-                "LEE CHEE GO|||I thought it would be a nice way to poke him a little.",
-                "LEE CHEE GO|||I guess I thought it could help their relationship, we are a group you know...",
-                "LEE CHEE GO|||Or at least we were... Sigh..."
+                "LEE CHEE GO|||…!",
+                "LEE CHEE GO|||I-I just wanted Park to find s-some interest in j-jewelry, I swear! ",
+                "LEE CHEE GO|||M-maybe we all could ha-have bonded.",
+                "LEE CHEE GO|||…A-and maybe, n-none of this w-would’ve happened…"
             ],
             "Next": "Multiple"
         },
@@ -1235,9 +1290,8 @@
             "GameState": 0,
             "Texts":
             [
-                "ASSATTARI TARI|||The guys used to play pranks on one another, specially Lee to the other two...",
-                "ASSATTARI TARI|||I guess it is his way to express how much he wanted the group to work and enjoy themselves.",
-                "ASSATTARI TARI|||Behind scenes Park and Jung used to fight a lot..."
+                "ASSATTARI TARI|||I still ponder…",
+                "ASSATTARI TARI|||Why would men with jewelry be attractive?"
             ],
             "Next": "Multiple"
         },
@@ -1247,9 +1301,9 @@
             "GameState": 0,
             "Texts":
             [
-                "RURU SPARK|||Haha they are so cute! ",
-                "RURU SPARK|||They are lovely! Ruru wishes she were there, it would have been so fun...",
-                "RURU SPARK|||At least Ruru got to hear my Park's voice again..."
+                "RURU SPARK|||…",
+                "RURU SPARK|||…Can you give this to Ruru?",
+                "RURU SPARK|||That way Ruru can hear Park’s voice for forever…"
             ],
             "Next": "Multiple"
         },
@@ -1265,9 +1319,10 @@
             "GameState": 0,
             "Texts":
             [
-                "JUNG DAE SEO|||That diva used to like taking photos for no reason",
-                "JUNG DAE SEO|||Both Lee and I had to drag him around to stop him from taking photos with everyone...",
-                "JUNG DAE SEO|||I saw them taking that selfie this morning, I had to shout them to hurry up to enter the studio for practice..."
+                "JUNG DAE SEO|||Hm. ",
+                "JUNG DAE SEO|||The selfie... from this morning. ",
+                "JUNG DAE SEO|||…",
+                "JUNG DAE SEO|||That’s what negligent people look like…! Skipping practice and all…!"
             ],
             "Next": "Multiple"
         },
@@ -1277,10 +1332,10 @@
             "GameState": 0,
             "Texts":
             [
-                "LEE CHEE GO|||Ugh... Ruru had his cellphone, that's just...",
-                "LEE CHEE GO|||Anyway, he wanted to take a selfie to thank me for the Pin I had gifted him",
-                "LEE CHEE GO|||That was the thing we were gonna use to mess around with Jung, part of the joke was to take the pic and send it to him...",
-                "LEE CHEE GO|||Could it be that we took the joke too far?... It can't be..."
+                "LEE CHEE GO|||U-umm…",
+                "LEE CHEE GO|||P-Park took it t-this morning.",
+                "LEE CHEE GO|||H-he wanted to send that p-picture to J-Jung.",
+                "LEE CHEE GO|||I-I thought it was a b-bad idea…!"
             ],
             "Next": "Multiple"
         },
@@ -1290,8 +1345,10 @@
             "GameState": 0,
             "Texts":
             [
-                "ASSATTARI TARI|||That's the thing he was wearing during the whole day! I was wondering why he was wearing that thing.",
-                "ASSATTARI TARI|||Park never liked jewerly, and only wore the stuff Lee asked him to put on. I even gave him a necklace and not once did he use it..."
+                "ASSATTARI TARI|||Hmm…",
+                "ASSATTARI TARI|||He looked nice in there…",
+                "ASSATTARI TARI|||But that pin doesn’t suit him.",
+                "ASSATTARI TARI|||He shouldn’t have worn it."
             ],
             "Next": "Multiple"
         },
@@ -1301,8 +1358,9 @@
             "GameState": 0,
             "Texts":
             [
-                "RURU SPARK|||Hmmmm, they look cute. Ruru doesn't like that boy was standing so close to my Park.",
-                "RURU SPARK|||Jeez why can't he keep his hands off my Park!"
+                "RURU SPARK|||…",
+                "RURU SPARK|||…Can you return this to Ruru?",
+                "RURU SPARK|||It will be Ruru’s treasure for forever…"
             ],
             "Next": "Multiple"
         },
@@ -1315,10 +1373,8 @@
             "GameState": 0,
             "Texts":
             [
-                "JUNG DAE SEO|||So Lee had it? Tsk...",
-                "JUNG DAE SEO|||Yeah that Pin is pretty rare, there are only three in the world and the other two already have an owner in other parts of the world.",
-                "JUNG DAE SEO|||I wanted to get a hold of it but Lee seemed to know and got it faster than me, just to poke fun at me...",
-                "JUNG DAE SEO|||I'm just wondering why didn't he tell you he had it from the beggining?"
+                "JUNG DAE SEO|||Only three Pins like those in the world…",
+                "JUNG DAE SEO|||Damn him for taking it! …Was it jus to spite me?!"
             ],
             "Next": "Multiple"
         },
@@ -1328,8 +1384,8 @@
             "GameState": 0,
             "Texts":
             [
-                "LEE CHEE GO|||I took it from Park's body because this thingy is a pretty expensive one",
-                "LEE CHEE GO|||I didn't want to be stolen by anyone, either the Police or some here in the studio..."
+                "LEE CHEE GO|||I-it was a n-nice memory…",
+                "LEE CHEE GO|||I-I wish I could’ve k-kept it."
             ],
             "Next": "Multiple"
         },
@@ -1339,9 +1395,8 @@
             "GameState": 0,
             "Texts":
             [
-                "ASSATTARI TARI|||Yes that was the thing he was wearing on his chest",
-                "ASSATTARI TARI|||Although I though I had dented it when I hit Park with the Diamond Chicken",
-                "ASSATTARI TARI|||I guess it was my imagination, to be fair I was pretty flustered at that moment."
+                "ASSATTARI TARI|||Hmm… I thought I had dented it with the Chicken Diamondo.",
+                "ASSATTARI TARI|||Expensive pins must be quite sturdy…"
             ],
             "Next": "Multiple"
         },
@@ -1351,14 +1406,15 @@
             "GameState": 0,
             "Texts":
             [
-                "RURU SPARK|||What? Another Pin? But Ruru thought she had the only Pin...",
-                "RURU SPARK|||...",
-                "RURU SPARK|||...",
-                "RURU SPARK|||Ruru is sorry!! Ruru was just too scared... Ruru didn't want to jump on conclusions and Jung seems to scary to confront...",
-                "RURU SPARK|||Ruru didn't know what to do...",
-                "RURU SPARK|||Here you can have it..."
+                "RURU SPARK|||…",
+                "RURU SPARK|||Ruru…",
+                "RURU SPARK|||Don’t tell Jung darling, but…",
+                "RURU SPARK|||Ruru found this Pin behind the desk in the Studio.",
+                "RURU SPARK|||Ruru knew this was Park’s Pin from the selfie∼",
+                "RURU SPARK|||Isn’t it right∼?",
+                "RURU SPARK|||…But Ruru doesn’t know why there are two."
             ],
-            "Next": "Multiple"
+            "Next": "DiscoverPoisoned"
         },
 
 
@@ -1371,10 +1427,9 @@
             "GameState": 0,
             "Texts":
             [
-                "JUNG DAE SEO|||That's... another Pin?",
-                "JUNG DAE SEO|||What is going on?",
-                "JUNG DAE SEO|||I thought there were only 3 in the world and I'm sure the other two are with their respective owners...",
-                "JUNG DAE SEO|||I...I don't know where this Pin came from..."
+                "JUNG DAE SEO|||…What. Another Pin?",
+                "JUNG DAE SEO|||…",
+                "JUNG DAE SEO|||But this one’s a fake. These rare Pins don’t dent."
             ],
             "Next": "Multiple"
         },
@@ -1384,9 +1439,9 @@
             "GameState": 0,
             "Texts":
             [
-                "LEE CHEE GO|||What?",
-                "LEE CHEE GO|||There's another Pin? But...I bought the last one available and I gave it to you!",
-                "LEE CHEE GO|||Besides this one is dented..."
+                "LEE CHEE GO|||…!",
+                "LEE CHEE GO|||D-don’t tell me… ",
+                "LEE CHEE GO|||J-Jung…!"
             ],
             "Next": "Multiple"
         },
@@ -1396,9 +1451,9 @@
             "GameState": 0,
             "Texts":
             [
-                "ASSATTARI TARI|||That's the one I saw this afternoon...",
-                "ASSATTARI TARI|||So I wasn´t wrong, I did dent it",
-                "ASSATTARI TARI|||Why are there two Pins?"
+                "ASSATTARI TARI|||So it wasn’t in my head?",
+                "ASSATTARI TARI|||This one was Park’s, no doubt.",
+                "ASSATTARI TARI|||…Then Lee’s…?"
             ],
             "Next": "Multiple"
         },
@@ -1408,10 +1463,11 @@
             "GameState": 0,
             "Texts":
             [
-                "RURU SPARK|||Ru... Ruru can explain...",
-                "RURU SPARK|||Ruru saw Jung hiding this Pin in the studio while she was concealed in the closet, Ruru got curious and took it.",
-                "RURU SPARK|||Later on when Ruru was found, he came here a couple of times and asked if Ruru had taken something, Ruru had to play dumb, Ruru was terrified...",
-                "RURU SPARK|||Ruru has nothing to do with that thing!"
+                "RURU SPARK|||…",
+                "RURU SPARK|||Dear Jungie is innocent…!",
+                "RURU SPARK|||…",
+                "RURU SPARK|||He hid it when Ruru was in the closet…",
+                "RURU SPARK|||But Ruru knows he didn’t kill him!"
             ],
             "Next": "Multiple"
         },
@@ -1695,7 +1751,7 @@
                 "GOATMAN PETERSON|||…I will be taking the cellphone, for evidence purposes, of course.",
                 "RURU SPARK|||…"
             ],
-            "Next": "DiscoverEnd"
+            "Next": "DiscoverCellphone"
         },
         {
             "ID":"LeeConfrontation2x1",

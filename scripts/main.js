@@ -23,6 +23,12 @@ const gameConfig =
 };
 
 //---------------------------------------------
+// System Variables
+//--------------------------------------------
+// Local storage where we keep the state of the game
+var theStorageBaby = window.localStorage;
+
+//---------------------------------------------
 // Game Variables
 //---------------------------------------------
 
