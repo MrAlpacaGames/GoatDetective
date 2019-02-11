@@ -116,9 +116,6 @@ class InteractionManagement
             case "Start":
                 loadScene("HallScene");
             break;
-            case "Credits":
-                openCredits(true);
-            break;
             case "Mute":
                 musicManager.muteMusic();
             break;

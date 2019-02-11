@@ -112,6 +112,9 @@ var persistenceManager = new PersistenceManager();
 // Are we playing the final sequence?
 var endingPlaying = false;
 
+// Used when entering and exiting credits
+var creditsDelay = false;
+
 //---------------------------------------------
 // Screen Settings
 //---------------------------------------------
@@ -261,27 +264,6 @@ function loadScene(newScene)
     }
 }
 
-function openCredits(newValue)
-{
-    if(canSceneSwitch == true)
-    {
-        canSceneSwitch = false;
-        
-        currentScene.input.stopPropagation();
-        let newScene;
-        (newValue) ? newScene = 'CreditsScene' : newScene = 'MainMenu';
-        let destScene = this.getScene(newScene);
-        if(!newValue && currentScene.scene.key != 'MainMenu') GameManager.restartGame();
-
-        currentScene = destScene;
-
-        theGame.scene.start(newScene);
-        let timeCredits = currentScene.time.delayedCall(1000, function(){
-            canSceneSwitch = true;
-        } , currentScene);
-    }
-}
-
 function openNotebook(newValue)
 {
     if(canSceneSwitch == true && globalLockdown == false)
@@ -315,3 +297,16 @@ function getScene(sceneName)
 {
     return theGame.scene.getScene(sceneName);
 }
+
+function enableCredits(creditsImg, newValue)
+{
+    if(!creditsDelay)
+    {
+        creditsDelay = true;
+        creditsImg.visible = newValue;
+        let xTimedEvent = currentScene.time.delayedCall(1000, function(){
+            creditsDelay = false;
+        } , currentScene);
+    }
+}
+

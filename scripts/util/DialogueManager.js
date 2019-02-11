@@ -89,6 +89,10 @@ class DialogueManager
             currentDialogueHUD.multipleOptionsState = 0;
         }
         currentDialogueHUD.enableDialogueUI(true);
+        if(DialogueID == "GoatmanVictory" || DialogueID == "GoatmanDefeat")
+        {
+            currentDialogueHUD.backButton.visible = false;
+        }
         this.setDialogueText(0);
     }
 

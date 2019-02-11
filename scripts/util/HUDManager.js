@@ -178,8 +178,8 @@ class HUDManager
      */
     winScreenTouched()
     {
-        //currentScene.activateBlacEndingWindow(false);
-        currentScene.scene.start('CreditsScene');
+        currentPlayerHUD.winnerScreen.visible = false;
+        enableCredits(currentScene.gameCredits, true);
     }
 
     /**

@@ -28,6 +28,9 @@ class HallScene extends Phaser.Scene
 
         // Black Window for the end
         this.endingBlackWindow;
+
+        // Credits Screen
+        this.gameCredits;
     }
 
     //-------------------------
@@ -99,6 +102,13 @@ class HallScene extends Phaser.Scene
         // Dialogue Window
         this.dialogueHUD.createDialogueWindow();
         currentDialogueHUD = this.dialogueHUD;
+
+        // Credits Scene
+        this.gameCredits = currentScene.add.image(topBackgroundXOrigin, topBackgroundYOrigin, 'GameCredits');
+        this.gameCredits.scrollFactorX = 0;
+        this.gameCredits.setInteractive();
+        this.gameCredits.on('pointerdown', ()=> GameManager.backToTitle());
+        this.gameCredits.visible = false;
          
         // Click FX
         this.clickFx = spriteManager.createClickFx();    

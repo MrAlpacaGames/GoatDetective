@@ -16,7 +16,7 @@ class GM
          */
         this.stateOfGame = 0;
 
-        this.caseSolution = ["Lee", "Poisoned"];
+        this.caseSolution = ["Jung", "Puddle"];
     }
 
     /**
@@ -87,7 +87,7 @@ class GM
     loadLastCheckpoint()
     {
         globalLockdown = false;
-        
+
     }
 
 

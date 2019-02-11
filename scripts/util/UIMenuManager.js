@@ -5,6 +5,7 @@ class UIMenuManager
         //-------------------------
         // Attributes
         //-------------------------
+        this.gameCredits;
     }
 
     /**
@@ -17,6 +18,7 @@ class UIMenuManager
         currentScene.load.image('GoatMenu', 'assets/sprites/Menus/GoatMenu.png');
         currentScene.load.image('Fondo2', 'assets/sprites/Menus/Fondo2.png');
         currentScene.load.image('Logo', 'assets/sprites/Menus/Logo.png');
+        currentScene.load.image('GameCredits', 'assets/sprites/Menus/GameCredits.png');
 
         currentScene.load.image('FirstStart', 'assets/sprites/Menus/Play.png');
 
@@ -73,6 +75,7 @@ class UIMenuManager
 
     startMainMenu()
     {
+        let gameCredits;
         let goat = currentScene.add.image(-100, topBackgroundYOrigin+35, 'GoatMenu');
         let fondo2 = currentScene.add.image(topBackgroundXOrigin, topBackgroundYOrigin, 'Fondo2');
         fondo2.visible = false;
@@ -96,7 +99,7 @@ class UIMenuManager
         creditsBtn.on('pointerover', ()=> this.onMenuBtnInteracted(creditsHigh, true));
         creditsBtn.on('pointerdown', ()=> this.onMenuBtnInteracted(creditsHigh, true));
         creditsBtn.on('pointerup', ()=> this.onMenuBtnInteracted(creditsHigh, false));
-        creditsBtn.on('pointerup', ()=> interacionManager.interactMenu("Credits"));
+        creditsBtn.on('pointerup', ()=> enableCredits(this.gameCredits, true));
 
         creditsBtn.visible = false;
         creditsHigh.visible = false;
@@ -140,7 +143,12 @@ class UIMenuManager
             }          
         );
         timeline.play();        
-    }
+        this.gameCredits = currentScene.add.image(topBackgroundXOrigin, topBackgroundYOrigin, 'GameCredits');
+        this.gameCredits.setInteractive();
+        this.gameCredits.on('pointerdown', ()=> enableCredits(this.gameCredits, false));
+        this.gameCredits.visible = false;
+    }  
+
 
     onMenuBtnInteracted(highlighBtn, newValue)
     {
