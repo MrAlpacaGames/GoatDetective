@@ -60,6 +60,10 @@ class HallScene extends Phaser.Scene
     {      
         musicManager.createThemes();
 
+        /** This creates a hidden text that will enable the new Font*/
+        this.add.text(0, 0, 'Hero Mon', 
+        { fontFamily: 'Ailerons', fontSize: 80 , color: '#f3e307', align: 'left'});
+
         spriteManager.createEnvironment('hall', topBackgroundXOrigin+ 815, topBackgroundYOrigin - 2, 0.72);
         
         this.cameras.main.setBounds(0, 0, gameConfig.width * 2.7, gameConfig.height);

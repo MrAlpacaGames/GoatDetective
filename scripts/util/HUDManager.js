@@ -211,6 +211,11 @@ class HUDManager
         return notebook;
     }
 
+    /**
+     * Opens a Victory of Failure Screen
+     * @param {*} isVictory 
+     * @param {*} newValue 
+     */
     openSpecialScreen(isVictory, newValue)
     {
        // GameManager.canMove = !newValue;
@@ -238,18 +243,25 @@ class HUDManager
         }
     }
 
+    /**
+     * Plays the animation for the notebook when a new clue has been found
+     */
     playNewNoteMessage()
     {
         this.theNotebook.anims.play('NoteHighlight');
-    }
+    }   
 
+    /**
+     * Method that enables / disables the sprite management for the highlight of the mutte button
+     * @param {*} highlighButton 
+     */
     enablePressedButton(highlighButton)
     {
         (highlighButton.visible == false) ? highlighButton.visible = true : highlighButton.visible = false;
     }
 
     /**
-     * Enables/Disables the Highlight state of a button
+     * Enables/Disables the Highlight state of the notebook button
      * @param {*The Highlight of the button} theHighlight 
      * @param {*The Value that determines if we enable/disable the highlight of the button} newValue 
      */
@@ -322,11 +334,13 @@ class HUDManager
                     dialogueManager.startDialogue(dialogueID);
                 }
             });
-
             confrontTimeline.play();
         }
     }
 
+    /**
+     * Method that checks the mute status for all the mute buttons in the game
+     */
     checkMuteStatus()
     {
         musicManager.muteButtons.forEach(element => {

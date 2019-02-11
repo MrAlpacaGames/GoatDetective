@@ -19,6 +19,10 @@ class GM
         this.caseSolution = ["Lee", "Poisoned"];
     }
 
+    //----------------------------
+    // Functions
+    //----------------------------
+
     /**
      * Method that tries to solve the mystery. If the human and weapon are correct we open the winner window. If not
      * We open the Game Over Window
@@ -32,6 +36,10 @@ class GM
         this.showFinalDialogue(won);
     }
 
+    /**
+     * Shows the last dialogue. It can be the victory monologue or the failure monologue
+     * @param {*True if it is the victory Monologue to be played} PlayerWon 
+     */
     showFinalDialogue(PlayerWon)
     {
         let dialogueID;
@@ -49,6 +57,9 @@ class GM
         dialogueManager.startDialogue(dialogueID);
     }
 
+    /**
+     * Returns to the title screen and restarts the game
+     */
     backToTitle()
     {
         this.restartGame();        
@@ -56,6 +67,9 @@ class GM
         //theGame.scene.destroy();
     }
 
+    /**
+     * Restarts the whole game
+     */
     restartGame()
     {
         globalLockdown = false;
@@ -89,9 +103,5 @@ class GM
         globalLockdown = false;
 
     }
-
-
-    
-
     
 }

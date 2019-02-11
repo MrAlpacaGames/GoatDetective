@@ -197,7 +197,7 @@ class DialogueManager
                     musicManager.changeTheme('Lose');
                     currentPlayerHUD.openSpecialScreen(false, true);
                 }
-                if(currentDialogueHUD.currentClueTalkingTo.inDialoguesIndex <2) currentDialogueHUD.currentClueTalkingTo.updateInitialIndex();
+                if(currentDialogueHUD.currentClueTalkingTo != undefined && currentDialogueHUD.currentClueTalkingTo.inDialoguesIndex <2) currentDialogueHUD.currentClueTalkingTo.updateInitialIndex();
             }
             else // If is not last line, we continue to the next line
             {
