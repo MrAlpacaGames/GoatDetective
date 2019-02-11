@@ -116,10 +116,10 @@ class DialogueHUD
     this.accusedWeapon;
 
     // Array of Humans Images
-    this.humansImgs = [];
+    this.humansImgs;
 
     // Array of Weapons Images
-    this.weaponsImgs = [];
+    this.weaponsImgs;
 
     // Index for the human accused array
     this.accusedHumanIndex = 0;
@@ -261,6 +261,7 @@ class DialogueHUD
     //this.weapRightArrow.visible = false;
 
     // Humans
+    this.humansImgs = [];
     let AccuChar = currentScene.physics.add.staticSprite(255, 90, 'JungAccuse');
     AccuChar.scrollFactorX = 0;
     AccuChar.visible = false;
@@ -282,6 +283,7 @@ class DialogueHUD
     this.accusedCharacter.visible = false;
 
     // Weapons
+    this.weaponsImgs = [];
     let AccuWeapons = currentScene.physics.add.staticSprite(495, 90, 'PuddleAccuse');
     AccuWeapons.scrollFactorX = 0;
     AccuWeapons.setScale(0.1);
@@ -487,6 +489,14 @@ class DialogueHUD
 
     this.possibleText = dialogue;
     this.animatedText = dialogue.split('');
+    if(endingPlaying) 
+    {
+      if(dialogue == "Disgrace...!")
+      {
+        console.log("Here we should play the Epilogue Theme");
+        endingPlaying = false;
+      }
+    }
 
     this.timedEvent = currentScene.time.addEvent(
       {
@@ -626,20 +636,28 @@ class DialogueHUD
     this.parkOpened = true;
     if(isAccusation == false)
     {
-      this.multipleOptionsState = 0;
-      this.enableSingleDialogue(false);
-      this.enableMultipleOptions(2, true);
-      this.enableMultipleOptions(3, false);
-      this.enableMultipleOptions(4, false);
-      this.enableAccuseDialogue(false);
-      let texts = ["CHECK BODY"];
-      if(playerNotebook.discoveredCharacters && playerNotebook.discoveredWeapons && playerNotebook.parkDiscovered)
+      if(GameManager.stateOfGame == 4 && !playerNotebook.park2ndDiscovered) // If we check the body on the 4th state we open the new dialogue once. 
       {
-        texts.push("ACCUSE OF MURDER");
+        playerNotebook.park2ndDiscovered = true;
+        dialogueManager.startDialogue("SPark4xPR");
       }
-      this.setOptionsTexts(this.twoTextOptions, texts, false);
-
-      this.backButton.visible = false;
+      else
+      {
+        this.multipleOptionsState = 0;
+        this.enableSingleDialogue(false);
+        this.enableMultipleOptions(2, true);
+        this.enableMultipleOptions(3, false);
+        this.enableMultipleOptions(4, false);
+        this.enableAccuseDialogue(false);
+        let texts = ["CHECK BODY"];
+        if(playerNotebook.discoveredCharacters && playerNotebook.discoveredWeapons && playerNotebook.parkDiscovered)
+        {
+          texts.push("ACCUSE OF MURDER");
+        }
+        this.setOptionsTexts(this.twoTextOptions, texts, false);
+  
+        this.backButton.visible = false;
+      }
     }
     else
     {
@@ -754,7 +772,9 @@ class DialogueHUD
       if(theOption.text == "CHECK BODY")
       {
         this.enableMultipleOptions(2, false);
-        dialogueManager.startDialogue("SPark1xUN");
+        let parkID;
+        (GameManager.stateOfGame >= 4 && playerNotebook.park2ndDiscovered) ? parkID = "SPark4xPR" : parkID = "SPark1xUN";
+        dialogueManager.startDialogue(parkID);
       }
       else if(theOption.text == "ACCUSE OF MURDER")
       {
@@ -860,5 +880,4 @@ class DialogueHUD
       }, currentScene);
     }
   }
-
 }

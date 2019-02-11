@@ -14,13 +14,14 @@ class Notebook
         let jung = new Clue('Jung', "Humans", 1);
         jung.fullName = "JUNG DAE SEO";
         jung.addInitialDialogues(["SJung0xPrro", "SJung1xPR", "SJung1xUN"]);
-        jung.confrontationRequirements = ["LeeConfrontation2x1", "ParkGoatman1x4", "LeeJungx1x4", "AssattariJungx1x4", "RuruJung1x4", "JungStandard1xUN", "JungPoisoned1xUN" ];
+        jung.confrontationRequirements = ["LeeConfrontation2x1", "SPark4xPR", "LeeJung1x4", "AssattariJung1x4", "RuruJung1x4", "JungStandard1xUN", "JungPoisoned1xUN" ];
         //jung.confrontationRequirements = ['SPark1xPR'];
 
         let lee = new Clue('Lee', "Humans", 2);
         lee.fullName = "LEE CHEE GO";
         lee.addInitialDialogues(["SLee0xPrro", "SLee1xPR", "SLee1xUN"]);
         lee.confrontationRequirements = ["RuruConfrontation2x1", "JungLee1x3", "AssattariLee1x3", "RuruLee1x3", "LeeRecorder1xUN", "JungRecorder1xUN", "LeeCellphone1xUN"];
+        //lee.confrontationRequirements = ["SPark1xPR"];
 
         let assattari = new Clue('Assattari', "Humans", 3);
         assattari.fullName = "ASSATTARI TARI";
@@ -50,11 +51,11 @@ class Notebook
 
         let standardPin = new Clue('Standard', "Weapons", 2);
         standardPin.fullName = "STANDARD PIN";
-        standardPin.noteBookID = "Rare Pin";
+        standardPin.noteBookID = "Standard Pin";
 
         let poisonedPin = new Clue('Poisoned', "Weapons", 3);
         poisonedPin.fullName = "POISONED PIN";
-        poisonedPin.noteBookID = "Mysterious Poisoned Pin";
+        poisonedPin.noteBookID = "Poisoned Pin";
         poisonedPin.addInitialDialogues(["GoatmanPoisoned1xUN"]);
 
         this.weapons.push(puddle, diamondChicken, standardPin, poisonedPin);
@@ -69,7 +70,7 @@ class Notebook
         studioKey.addInitialDialogues(["GoatmanKey1xUN"]);
 
         let loveLetter = new Clue('Letter', "Items", 1);
-        loveLetter.fullName = "RURU'S LOVE LETTER";
+        loveLetter.fullName = "RURU'S LETTER";
         loveLetter.noteBookID = "Ruru Love Letter";
         loveLetter.addInitialDialogues(["GoatmanLetter1xUN"]);
 
@@ -108,11 +109,18 @@ class Notebook
 
         this.places.push(mainHall, office, dressroom, recordingStudio);
         
+        //-----------------------------------------
+        //              DRAWERS
+        //-----------------------------------------
         this.drawers = [false, false, false];
 
         this.dialoguesTaken = new HashTable();
 
+        //-----------------------------------------
+        //              GENERAL VARIABLES
+        //-----------------------------------------
         this.parkDiscovered = false;
+        this.park2ndDiscovered = false;
         this.discoveredCharacters = false;
         this.discoveredWeapons = false;
         this.discoveredItems = false;
@@ -438,6 +446,10 @@ class Notebook
         return answer;
     }
 
+    /**
+     * Function called when the state of the game has been updated
+     * @param {*} newGameState 
+     */
     updateGameState(newGameState)
     {
         // We first set the new Game State to the current Game state
@@ -447,5 +459,15 @@ class Notebook
         this.humans.forEach(temp => {
             this.writeNote(temp);
         });
+        if(GameManager.stateOfGame == 4)
+        {
+            // If we reach the 4th stage, we change the sprite of Park to the poisoned one
+            let hallScene = getScene('HallScene');
+            if(!hallScene.poisonedPark.visible)
+            {
+                hallScene.park.visible = false;
+                hallScene.poisonedPark.visible = true;
+            }
+        }
     }
 }

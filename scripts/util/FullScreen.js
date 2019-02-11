@@ -12,6 +12,7 @@ class FullScreen
 
     create()
     {
+        /** 
         let fullBtn = currentScene.add.image(topBackgroundXOrigin+435, topBackgroundYOrigin-200, 'FullScreen');
         fullBtn.alpha = 0.7;
         fullBtn.scrollFactorX = 0;
@@ -28,5 +29,6 @@ class FullScreen
                 fullBtn.setScale(1);
             } , currentScene);
         });
+        */
     }
 }

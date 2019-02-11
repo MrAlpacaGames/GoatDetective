@@ -19,7 +19,7 @@ const gameConfig =
             }
         }
     },
-    scene: [/*BootScene,*/ MainMenu, HallScene, OfficeScene,DressroomScene, StudioScene, UINotebook]
+    scene: [/*BootScene,*/ MainMenu, CreditsScene, HallScene, OfficeScene,DressroomScene, StudioScene, UINotebook]
 };
 
 //---------------------------------------------
@@ -103,7 +103,14 @@ var currentPlayerHUD;
 // Tells if there is a cinematic happening. And if it is, it doesn't allow click commands interrupt it
 var globalLockdown = false;
 
+// Loading screen used between scenes
 var loadingScreen = new LoadingScreen();
+
+// Persistence Manager
+var persistenceManager = new PersistenceManager();
+
+// Are we playing the final sequence?
+var endingPlaying = false;
 
 //---------------------------------------------
 // Screen Settings
@@ -254,8 +261,26 @@ function loadScene(newScene)
     }
 }
 
+function openCredits(newValue)
+{
+    if(canSceneSwitch == true)
+    {
+        canSceneSwitch = false;
+        
+        currentScene.input.stopPropagation();
+        let newScene;
+        (newValue) ? newScene = 'CreditsScene' : newScene = 'MainMenu';
+        let destScene = this.getScene(newScene);
+        if(!newValue && currentScene.scene.key != 'MainMenu') GameManager.restartGame();
 
+        currentScene = destScene;
 
+        theGame.scene.start(newScene);
+        let timeCredits = currentScene.time.delayedCall(1000, function(){
+            canSceneSwitch = true;
+        } , currentScene);
+    }
+}
 
 function openNotebook(newValue)
 {

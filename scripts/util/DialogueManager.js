@@ -127,7 +127,7 @@ class DialogueManager
                     if((theClue.discovered == false) || (theClue.discovered == true && theClue.clueType == "Humans"))
                     {
                         playerNotebook.discoverClue(theClue);
-                        if(theClue.name == "Puddle" || theClue.name == "Chicken" || theClue.name == "Key" )
+                        if(theClue.name == "Puddle" || theClue.name == "Chicken" || theClue.name == "Key")
                         {
                             lastClickedElement.disableInteractive();
                             if(theClue.name != "Puddle") 
@@ -146,16 +146,22 @@ class DialogueManager
                 else if(nextAction == "DiscoverLetter" || nextAction == "DiscoverCellphone" || nextAction == "DiscoverPoisoned" || nextAction == "DiscoverStandard")
                 {
                     let clueName = nextAction.substring(8, nextAction.length);
-                    let letterClue = playerNotebook.getClue(clueName);
-                    if(!letterClue.discovered)
+                    let itemClue = playerNotebook.getClue(clueName);
+                    if(nextAction == "DiscoverStandard")
+                    {
+                        playerNotebook.discoverClue(itemClue);
+                        thePlayer.player.anims.play('quiet');
+                        globalLockdown = false;
+                    }
+                    if(!itemClue.discovered)
                     {
                         this.startDialogue("Goatman"+clueName+"1xUN");
-                        currentDialogueHUD.currentClueTalkingTo = letterClue;
+                        currentDialogueHUD.currentClueTalkingTo = itemClue;
                     }
                     else
                     {
                         currentDialogueHUD.enableDialogueUI(false);
-                    }
+                    }                    
                 }
                 else if(nextAction == "End")  // We check if the next action is End. If it is we close the dialog.
                 {
@@ -177,14 +183,16 @@ class DialogueManager
                 }
                 else if(nextAction == "VictoryScreen")
                 {
-                    //musicManager.changeTheme('Victory', false);
+                    currentDialogueHUD.enableDialogueUI(false);
                     currentPlayerHUD.openSpecialScreen(true, true);
                 }
                 else if(nextAction == "LoseScreen")
                 {
+                    currentDialogueHUD.enableDialogueUI(false);
                     musicManager.changeTheme('Lose', false);
                     currentPlayerHUD.openSpecialScreen(false, true);
                 }
+                if(currentDialogueHUD.currentClueTalkingTo.inDialoguesIndex <2) currentDialogueHUD.currentClueTalkingTo.updateInitialIndex();
             }
             else // If is not last line, we continue to the next line
             {

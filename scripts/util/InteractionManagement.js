@@ -50,20 +50,8 @@ class InteractionManagement
      */
     interactWithClue(interactionObject)
     {
-        let clue = playerNotebook.getClue(interactionObject);
-        // We set the music for the conversation
-        if(clue.name == "Park" || clue.name == "Jung" || clue.name == "Lee")
-        {
-            musicManager.changeTheme('KStar', true);
-        }
-        else if(clue.name == "Assattari")
-        {
-            musicManager.changeTheme('Lioness', true);
-        }
-        else if(clue.name == "Ruru")
-        {
-            musicManager.changeTheme('BiggestFan', true);
-        }
+        if(interactionObject == "PoisonedPark") interactionObject = "Park";
+        let clue = playerNotebook.getClue(interactionObject);   
 
         // We open the clue
         let dialogueID;
@@ -86,6 +74,20 @@ class InteractionManagement
             currentDialogueHUD.currentClueTalkingTo = clue;
             dialogueID = clue.getCurrentInitialDialogue();
             dialogueManager.startDialogue(dialogueID);
+        }
+
+        // We set the music for the conversation
+        if(clue.name == "Park" || clue.name == "Jung" || clue.name == "Lee")
+        {
+            musicManager.changeTheme('KStar', true);
+        }
+        else if(clue.name == "Assattari")
+        {
+            musicManager.changeTheme('Lioness', true);
+        }
+        else if(clue.name == "Ruru")
+        {
+            musicManager.changeTheme('BiggestFan', true);
         }
     }
 
@@ -115,7 +117,7 @@ class InteractionManagement
                 loadScene("HallScene");
             break;
             case "Credits":
-
+                openCredits(true);
             break;
             case "Mute":
                 musicManager.muteMusic();

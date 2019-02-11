@@ -19,6 +19,15 @@ class HallScene extends Phaser.Scene
 
         // Player HUD of this scene
         this.playerHUD = new HUDManager();
+
+        // Park
+        this.park;
+        
+        // Poisoned Park
+        this.poisonedPark;
+
+        // Black Window for the end
+        this.endingBlackWindow;
     }
 
     //-------------------------
@@ -64,7 +73,9 @@ class HallScene extends Phaser.Scene
         let sweatyPuddle = spriteManager.createItem('Puddle', topBackgroundXOrigin+400, topBackgroundYOrigin+210, 0.35);
 
         // Characters Creation
-        let park = spriteManager.createStaticCharacter('Park', topBackgroundXOrigin+200, topBackgroundYOrigin+200, 0.25);
+        this.park = spriteManager.createStaticCharacter('Park', topBackgroundXOrigin+200, topBackgroundYOrigin+200, 0.25);
+        this.poisonedPark = spriteManager.createStaticCharacter('PoisonedPark', topBackgroundXOrigin+202, topBackgroundYOrigin+194, 0.42);
+        this.poisonedPark.visible = false;
 
         if(GameManager.stateOfGame == 0)
         {
@@ -75,14 +86,19 @@ class HallScene extends Phaser.Scene
         }        
         thePlayer.reloadPlayer();
         thePlayer.assignOnEvents();
-        
-        // Dialogue Window
-        this.dialogueHUD.createDialogueWindow();
-        currentDialogueHUD = this.dialogueHUD;
-
+                
         // HUD
         this.playerHUD.createHUD();
         currentPlayerHUD = this.playerHUD;
+
+        // Ending Black Window
+        this.endingBlackWindow = currentScene.add.image(topBackgroundXOrigin, topBackgroundYOrigin, 'Fondo');
+        this.endingBlackWindow.scrollFactorX = 0;
+        this.endingBlackWindow.visible = false;
+
+        // Dialogue Window
+        this.dialogueHUD.createDialogueWindow();
+        currentDialogueHUD = this.dialogueHUD;
          
         // Click FX
         this.clickFx = spriteManager.createClickFx();    
@@ -102,6 +118,16 @@ class HallScene extends Phaser.Scene
 
         musicManager.changeTheme('Exploring', false);
         this.beginScene();
+        globalLockdown = false;
+        endingPlaying = false;
+    }
+
+    activateBlacEndingWindow(newValue)
+    {
+        let newGlobalLockdownVal;
+        (newValue) ? newGlobalLockdownVal = true : newGlobalLockdownVal = false;
+        globalLockdown = newGlobalLockdownVal;
+        this.endingBlackWindow.visible = newValue;
     }
 
 

@@ -14,6 +14,28 @@ class SpriteManagement
 
     preloadCharacters()
     {
+        let sceneName = currentScene.scene.key;
+        switch(sceneName)
+        {
+            case 'HallScene':
+                currentScene.load.image('Park', 'assets/sprites/Characters/Park.png');
+                currentScene.load.image('PoisonedPark', 'assets/sprites/Characters/PoisonedPark.png');
+                currentScene.load.spritesheet('Jung', 'assets/sprites/Characters/Jung.png',
+                {frameWidth: 326.125, frameHeight: 691});
+            break;
+            case 'OfficeScene':
+                currentScene.load.spritesheet('Assattari', 'assets/sprites/Characters/Productora.png',
+                {frameWidth: 266.75, frameHeight: 636});
+            break;
+            case 'StudioScene':
+                currentScene.load.spritesheet('Ruru', 'assets/sprites/Characters/Ruru.png',
+                {frameWidth: 422.75, frameHeight: 1002});
+            break;  
+            case 'DressroomScene':
+                currentScene.load.spritesheet('Lee', 'assets/sprites/Characters/Lee2.png',
+                {frameWidth: 395.5, frameHeight: 1133});
+            break;  
+        }
         currentScene.load.spritesheet('ClickFire', 'assets/sprites/Particles/NeoClick.png',
         {frameWidth: 64, frameHeight: 64});
 
@@ -21,21 +43,7 @@ class SpriteManagement
         {frameWidth: 370.57, frameHeight: 758});
 
         currentScene.load.spritesheet('ConfrontGoat', 'assets/sprites/Characters/ConfrontGoat.png',
-        {frameWidth: 416, frameHeight: 758});
-
-        currentScene.load.spritesheet('Assattari', 'assets/sprites/Characters/Productora.png',
-        {frameWidth: 266.75, frameHeight: 636});
-
-        currentScene.load.image('Park', 'assets/sprites/Characters/Park.png');
-
-        currentScene.load.spritesheet('Lee', 'assets/sprites/Characters/Lee2.png',
-        {frameWidth: 395.5, frameHeight: 1133});
-
-        currentScene.load.spritesheet('Jung', 'assets/sprites/Characters/Jung.png',
-        {frameWidth: 326.125, frameHeight: 691});
-
-        currentScene.load.spritesheet('Ruru', 'assets/sprites/Characters/Ruru.png',
-        {frameWidth: 422.75, frameHeight: 1002});
+        {frameWidth: 416, frameHeight: 758});        
     }
 
     preloadEnvironment()
@@ -118,7 +126,7 @@ class SpriteManagement
         newCharacter = currentScene.physics.add.staticSprite(posX, posY, character).setScale(scale);
         newCharacter.setName(character);
         newCharacter.refreshBody();
-        if(character != 'Park')
+        if(character != 'Park' && character != 'PoisonedPark')
         {
             if(currentScene.anims.get(character+'Idle') == undefined)
             {

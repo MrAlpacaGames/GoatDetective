@@ -166,7 +166,20 @@ class HUDManager
                     GameManager.backToTitle();
                 });
             break;
+            case "Winner":
+                // If the player touchs the victory screen it goes to the credits
+                theButton.on('pointerdown', ()=> this.winScreenTouched());
+            break;
         }
+    }
+
+    /**
+     * Function that send us to the credits after we have won the game
+     */
+    winScreenTouched()
+    {
+        //currentScene.activateBlacEndingWindow(false);
+        currentScene.scene.start('CreditsScene');
     }
 
     /**
@@ -202,7 +215,8 @@ class HUDManager
     {
        // GameManager.canMove = !newValue;
         if(isVictory == false)
-        {
+        {            
+            // We activate the screen
             this.gameOverScreen.visible = newValue;
             this.retryButton.visible = newValue;
             this.titleScreen.visible = newValue;
@@ -210,6 +224,17 @@ class HUDManager
         else
         {
             this.winnerScreen.visible = newValue;
+            if(newValue)
+            {
+                currentDialogueHUD.enableDialogueUI(false);
+                currentScene.activateBlacEndingWindow(false);
+                // We delay activate the interactiveness of the screen
+                let activateScreen = currentScene.time.delayedCall(1500, function(){
+                    currentPlayerHUD.winnerScreen.setInteractive();
+                });
+                // We play the victory song
+                musicManager.changeTheme('Win', false);
+            }
         }
     }
 
@@ -230,8 +255,11 @@ class HUDManager
      */
     enableHighlight(theHighlight, newValue)
     {
-        theHighlight.visible = newValue;
-        this.notifyHUDInteracted(newValue);
+        if(!globalLockdown)
+        {
+            theHighlight.visible = newValue;
+            this.notifyHUDInteracted(newValue);
+        }
     }
 
     /**

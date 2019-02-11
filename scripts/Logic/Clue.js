@@ -68,11 +68,33 @@ class Clue
     getCurrentInitialDialogue()
     {
         let answer;
+        let tempIndex;
         if(this.clueType == "Weapons" || this.clueType == "Items")
         {
             answer = this.initialDialogues[0];
         }
         else
+        {
+            if(GameManager.stateOfGame > 0 && this.inDialoguesIndex < 1) // We have already discovered the body but not talked the first time
+            {
+                tempIndex = 1;
+            }
+            else if(GameManager.stateOfGame == 0)
+            {
+                (this.name == 'Park') ? tempIndex = 1 : tempIndex = 0;
+            }
+            else if(GameManager.stateOfGame > 0 && this.inDialoguesIndex >= 1)
+            {
+                tempIndex = 2;
+            }
+            answer = this.initialDialogues[tempIndex];
+        }
+        return answer;
+    }
+
+    updateInitialIndex()
+    {
+        if(this.clueType == "Humans")
         {
             if(GameManager.stateOfGame > 0 && this.inDialoguesIndex < 1) // We have already discovered the body but not talked the first time
             {
@@ -86,9 +108,7 @@ class Clue
             {
                 this.inDialoguesIndex = 2;
             }
-            answer = this.initialDialogues[this.inDialoguesIndex];
         }
-        return answer;
     }
 
     getName()

@@ -42,7 +42,7 @@ class MusicManager
             // Lose Theme
             currentScene.load.audio('LoseLoop','assets/audio/music/LoseTheme.mp3');
             // Win Theme
-            //currentScene.load.audio('KStarLoop','assets/audio/music/KStarLoop.mp3');
+            currentScene.load.audio('WinLoop','assets/audio/music/WinTheme.mp3');
         }
         else if(currentScene.scene.key == 'HallScene')
         {
@@ -99,6 +99,10 @@ class MusicManager
                 newSong.loop = true;
                 this.loopThemes.add(newSong.key, newSong);
                 newSong = this.createTheme('LoseLoop');
+                newSong.volume = 0.8;
+                newSong.loop = true;
+                this.singleHits.add(newSong.key, newSong);
+                newSong = this.createTheme('WinLoop');
                 newSong.volume = 0.8;
                 newSong.loop = true;
                 this.singleHits.add(newSong.key, newSong);
@@ -286,16 +290,13 @@ class MusicManager
      */
     muteMusic()
     {
-        if(globalLockdown == false)
+        if(theGame.sound.volume == 0)
         {
-            if(theGame.sound.volume == 0)
-            {
-                theGame.sound.volume = 1;
-            }
-            else if(theGame.sound.volume == 1)
-            {
-                theGame.sound.volume = 0;
-            }
+            theGame.sound.volume = 1;
+        }
+        else if(theGame.sound.volume == 1)
+        {
+            theGame.sound.volume = 0;
         }
     }
     

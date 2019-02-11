@@ -35,18 +35,34 @@ class GM
     showFinalDialogue(PlayerWon)
     {
         let dialogueID;
-        (PlayerWon) ? dialogueID = "GoatmanVictory" : dialogueID = "GoatmanDefeat"; 
+        globalLockdown = true;
+        if(PlayerWon)
+        {
+            dialogueID = "GoatmanVictory";
+            currentScene.activateBlacEndingWindow(true);
+            endingPlaying = true;
+        }
+        else
+        {
+            dialogueID = "GoatmanDefeat";
+        }
         dialogueManager.startDialogue(dialogueID);
     }
 
     backToTitle()
+    {
+        this.restartGame();        
+        theGame.scene.start('MainMenu');
+        //theGame.scene.destroy();
+    }
+
+    restartGame()
     {
         // GM Values
         this.canMove = true;
         this.HUDInteracted = false;
         this.stateOfGame = 0;
 
-        globalLockdown = false;
         // Notebook Restart
         playerNotebook = undefined;
         playerNotebook = new Notebook();
@@ -64,13 +80,6 @@ class GM
         });
         musicManager.mainWebSound.stop();
         musicManager.mainWebSound = undefined;
-        theGame.scene.start('MainMenu');
-        //theGame.scene.destroy();
-    }
-
-    restartGame()
-    {
-        
     }
 
 
