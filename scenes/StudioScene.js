@@ -51,8 +51,8 @@ class StudioScene extends Phaser.Scene
         musicManager.createThemes();
         spriteManager.createEnvironment('studio', topBackgroundXOrigin+ 763, topBackgroundYOrigin - 2, 0.72);
         
-        this.cameras.main.setBounds(0, 0, gameConfig.width * 2.59, gameConfig.height);
-        this.physics.world.setBounds(topBackgroundXOrigin+225, 0, gameConfig.width * 1.42, gameConfig.height -16 );        
+        this.cameras.main.setBounds(390, 0, gameConfig.width * 2.58, gameConfig.height);
+        this.physics.world.setBounds(topBackgroundXOrigin+230, 0, gameConfig.width * 1.42, gameConfig.height -16 );        
         
         // Environment
         let hallDoor = spriteManager.createEnvironment('studioToHall', topBackgroundXOrigin+ 1735, topBackgroundYOrigin+97.1, 0.72);
@@ -62,7 +62,7 @@ class StudioScene extends Phaser.Scene
         this.ruru.setFlip(true);
 
          // Items Creation
-        let recorder = spriteManager.createItem('Recorder', topBackgroundXOrigin+42, topBackgroundYOrigin+172, 0.75);
+        let recorder = spriteManager.createItem('Recorder', topBackgroundXOrigin+74, topBackgroundYOrigin+175, 0.73);
 
         // Main Player
         this.playerSprite = spriteManager.createPlayer(topBackgroundXOrigin+1550,  topBackgroundYOrigin+90);
