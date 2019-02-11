@@ -341,7 +341,7 @@ class UINotebookManager
 
     updateOnOpen()
     {
-        musicManager.changeTheme('Notebook', false);
+        musicManager.changeTheme('Notebook');
         // Set initial state
         this.setVisible("I", false);
         this.setVisible("W", false);

@@ -293,7 +293,7 @@ function openNotebook(newValue)
         canSceneSwitch = false;
         currentScene = destScene;    
 
-        if(!newValue) musicManager.changeTheme(musicManager.themeBeforeNotebook, false);
+        if(!newValue) musicManager.changeTheme(musicManager.themeBeforeNotebook);
 
 
         let timedEvent = currentScene.time.delayedCall(150, function(){

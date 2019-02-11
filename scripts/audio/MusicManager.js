@@ -15,6 +15,8 @@ class MusicManager
         this.singleHits = new HashTable();
         this.introThemes = new HashTable();
         this.loopThemes = new HashTable();    
+
+        this.themes = new HashTable();
         
         this.muteButtons = [];
     }    
@@ -81,76 +83,77 @@ class MusicManager
     createThemes()
     {
         let sceneName = currentScene.scene.key;
-        let newSong;
+        let newIntro;
+        let newLoop;
         switch(sceneName)
         {
             case 'UINotebook':
-                newSong = this.createTheme('NotebookLoop');
-                newSong.volume = 0.8;
-                newSong.loop = true;
-                this.singleHits.add(newSong.key, newSong);
+                newLoop = this.createTheme('NotebookLoop');
+                newLoop.volume = 0.8;
+                newLoop.loop = true;
+                this.themes.add('Notebook', [undefined, newLoop]);
             break;
             case "MainMenu":
-                newSong = this.createTheme('MainIntro');
-                newSong.volume = 0;
-                this.introThemes.add(newSong.key, newSong);
-                newSong = this.createTheme('MainLoop');
-                newSong.volume = 0.8;
-                newSong.loop = true;
-                this.loopThemes.add(newSong.key, newSong);
-                newSong = this.createTheme('LoseLoop');
-                newSong.volume = 0.8;
-                newSong.loop = true;
-                this.singleHits.add(newSong.key, newSong);
-                newSong = this.createTheme('WinLoop');
-                newSong.volume = 0.8;
-                newSong.loop = true;
-                this.singleHits.add(newSong.key, newSong);
+                newIntro = this.createTheme('MainIntro');
+                newIntro.volume = 0;
+                newLoop = this.createTheme('MainLoop');
+                newLoop.volume = 0.8;
+                newLoop.loop = true;
+                this.themes.add('Main', [newIntro, newLoop]);
+
+                newLoop = this.createTheme('LoseLoop');
+                newLoop.volume = 0.8;
+                newLoop.loop = true;
+                this.themes.add('Lose', [undefined, newLoop]);
+
+                newLoop = this.createTheme('WinLoop');
+                newLoop.volume = 0.8;
+                newLoop.loop = true;
+                this.themes.add('Win', [undefined, newLoop]);
+
             break;
             case "HallScene":
-                newSong = this.createTheme('ExploringLoop');
-                newSong.volume = 0.8;
-                newSong.loop = true;
-                this.singleHits.add(newSong.key, newSong);
-                newSong = this.createTheme('KStarIntro');
-                newSong.volume = 0;
-                this.introThemes.add(newSong.key, newSong);
-                newSong = this.createTheme('KStarLoop');
-                newSong.volume = 0.8;
-                newSong.loop = true;
-                this.loopThemes.add(newSong.key, newSong);
-                newSong = this.createTheme('ConfrontIntro');
-                newSong.volume = 0;
-                this.introThemes.add(newSong.key, newSong);
-                newSong = this.createTheme('ConfrontLoop');
-                newSong.volume = 0.8;
-                newSong.loop = true;
-                this.loopThemes.add(newSong.key, newSong);
-                newSong = this.createTheme('AccusationIntro');
-                newSong.volume = 0;
-                this.introThemes.add(newSong.key, newSong);
-                newSong = this.createTheme('AccusationLoop');
-                newSong.volume = 0.8;
-                newSong.loop = true;
-                this.loopThemes.add(newSong.key, newSong);
+                newLoop = this.createTheme('ExploringLoop');
+                newLoop.volume = 0.8;
+                newLoop.loop = true;
+                this.themes.add('Exploring', [undefined, newLoop]);
+
+                newIntro = this.createTheme('KStarIntro');
+                newIntro.volume = 0;
+                newLoop = this.createTheme('KStarLoop');
+                newLoop.volume = 0.8;
+                newLoop.loop = true;
+                this.themes.add('KStar', [newIntro, newLoop]);
+
+                newIntro = this.createTheme('ConfrontIntro');
+                newIntro.volume = 0;
+                newLoop = this.createTheme('ConfrontLoop');
+                newLoop.volume = 0.8;
+                newLoop.loop = true;
+                this.themes.add('Confront', [newIntro, newLoop]);
+
+                newIntro = this.createTheme('AccusationIntro');
+                newIntro.volume = 0;
+                newLoop = this.createTheme('AccusationLoop');
+                newLoop.volume = 0.8;
+                newLoop.loop = true;
+                this.themes.add('Accusation', [newIntro, newLoop]);
             break;
             case "OfficeScene":
-                newSong = this.createTheme('LionessIntro');
-                newSong.volume = 0;
-                this.introThemes.add(newSong.key, newSong);
-                newSong = this.createTheme('LionessLoop');
-                newSong.volume = 0.8;
-                newSong.loop = true;
-                this.loopThemes.add(newSong.key, newSong);
+                newIntro = this.createTheme('LionessIntro');
+                newIntro.volume = 0;
+                newLoop = this.createTheme('LionessLoop');
+                newLoop.volume = 0.8;
+                newLoop.loop = true;
+                this.themes.add('Lioness', [newIntro, newLoop]);
             break;
             case "StudioScene":
-                newSong = this.createTheme('BiggestFanIntro');
-                newSong.volume = 0;
-                this.introThemes.add(newSong.key, newSong);
-                newSong = this.createTheme('BiggestFanLoop');
-                newSong.volume = 0.8;
-                newSong.loop = true;
-                this.loopThemes.add(newSong.key, newSong);
+                newIntro = this.createTheme('BiggestFanIntro');
+                newIntro.volume = 0;
+                newLoop = this.createTheme('BiggestFanLoop');
+                newLoop.volume = 0.8;
+                newLoop.loop = true;
+                this.themes.add('BiggestFan', [newIntro, newLoop]);
             break;
         }
     }
@@ -170,25 +173,11 @@ class MusicManager
 
     /**
      * Function that gets the theme song from the hash tables
-     * @param {*Is an intro song} isIntro 
      * @param {*Name of the theme} themeName 
      */
-    getTheme(isIntro, themeName)
+    getTheme( themeName)
     {
-        let theme;
-        let nameEnding;
-        let songName;
-        (isIntro) ? nameEnding = 'Intro' : nameEnding = 'Loop';
-        songName = themeName + nameEnding;
-        if(themeName == 'Win' || themeName == 'Lose' || themeName == 'Exploring'
-        || themeName == 'Notebook')
-        {
-            theme = this.singleHits.get(songName);
-        }
-        else
-        {
-            (isIntro) ? theme = this.introThemes.get(songName) : theme = this.loopThemes.get(songName);
-        }
+        let theme = this.themes.get(themeName);
         return theme;
     }
 
@@ -198,19 +187,33 @@ class MusicManager
     /**
      * Function that plays a theme song
      * @param {*name of the theme song to be played } themeName 
-     * @param {*Tells if it is an intro or not} isIntro 
      */
-    playThemeSong(themeName, isIntro)
+    playThemeSong(themeName)
     {
         if(this.mainWebSound == undefined)
         {
-            if(isIntro)
+            let themeToPlay = this.getTheme(themeName);
+            if(themeToPlay[0] != undefined) // This means it has an intro
             {
-                this.mainPossibleLoop = this.getTheme(false, themeName);
+                this.mainWebSound = themeToPlay[0];
+                this.mainPossibleLoop = themeToPlay[1];
             }
-            this.mainWebSound = this.getTheme(true, themeName);
+            else
+            {
+                this.mainWebSound = themeToPlay[1];
+            }
             this.mainWebSound.play();
             this.executeFading(true, this.mainWebSound);
+        }
+        else
+        {
+            if(themeName == "Exploring")
+            {
+                this.mainWebSound.pause();
+                this.mainWebSound = this.getTheme(themeName)[1];
+                this.mainWebSound.volume = 0.8;
+                (this.mainWebSound.isPaused) ? this.mainWebSound.resume() : this.mainWebSound.play();
+            }
         }
     }
 
@@ -245,10 +248,18 @@ class MusicManager
             {
                 if(!isFadingIn) // If we are fading out. Once we fade out the current song, we fade in the next one
                 {
-                    musicManager.mainWebSound.stop();
+                    musicManager.mainWebSound.pause();
                     musicManager.mainWebSound = possibleNewSong;
+                    if(possibleNewSong.isPaused)
+                    {
+                        // Sí está pausado el nuevo. Lo resumo y pauso el viejo
+                        musicManager.mainWebSound.resume();
+                    }
+                    else
+                    {
+                        musicManager.mainWebSound.play();
+                    }
                     musicManager.mainWebSound.volume = 0;
-                    musicManager.mainWebSound.play();
                     musicManager.executeFading(true, musicManager.mainWebSound);
                 }
             }
@@ -262,17 +273,24 @@ class MusicManager
     /**
      * Function that changes the theme to a new One
      * @param {*Name of the new Theme Name} newTheme
-     * @param {*Is the new song directly an intro} isIntro
      */
-    changeTheme(newTheme, isIntro)
+    changeTheme(newTheme)
     {
         if(this.mainWebSound != undefined )
         {
-            let newSong = this.getTheme(isIntro, newTheme);
-            if(isIntro)
+            let songToPlayIn;
+            let themeToPlay = this.getTheme(newTheme);
+            if(themeToPlay[0] != undefined) // Has an intro
             {
-                this.mainPossibleLoop = this.getTheme(false, newTheme);
+                (themeToPlay[1].isPaused) ? songToPlayIn = themeToPlay[1] : songToPlayIn = themeToPlay[0];
+                this.mainPossibleLoop = themeToPlay[1];
             }
+            else
+            {
+                // Is a loop
+                songToPlayIn = themeToPlay[1];
+            }
+
             if(newTheme == 'Notebook')
             {
                 let reduction;
@@ -280,10 +298,16 @@ class MusicManager
                 let lastTheme = this.mainWebSound.key.substring(0, this.mainWebSound.key.length - reduction);
                 this.themeBeforeNotebook = lastTheme;
             }
+            if(newTheme == "Confront") 
+            {
+                this.mainWebSound = themeToPlay[0];
+                this.mainWebSound.stop();
+            }
             // We fade out the current song
-            this.executeFading(false, this.mainWebSound, newSong);
+            this.executeFading(false, this.mainWebSound, songToPlayIn);
         }
     }
+
 
     /**
      * Function that mutes/desmutes the music and sfx in the whole game

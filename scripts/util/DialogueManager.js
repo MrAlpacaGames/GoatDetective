@@ -189,7 +189,7 @@ class DialogueManager
                 else if(nextAction == "LoseScreen")
                 {
                     currentDialogueHUD.enableDialogueUI(false);
-                    musicManager.changeTheme('Lose', false);
+                    musicManager.changeTheme('Lose');
                     currentPlayerHUD.openSpecialScreen(false, true);
                 }
                 if(currentDialogueHUD.currentClueTalkingTo.inDialoguesIndex <2) currentDialogueHUD.currentClueTalkingTo.updateInitialIndex();

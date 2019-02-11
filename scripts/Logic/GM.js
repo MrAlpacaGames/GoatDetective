@@ -58,6 +58,7 @@ class GM
 
     restartGame()
     {
+        globalLockdown = false;
         // GM Values
         this.canMove = true;
         this.HUDInteracted = false;
@@ -85,7 +86,8 @@ class GM
 
     loadLastCheckpoint()
     {
-
+        globalLockdown = false;
+        
     }
 
 

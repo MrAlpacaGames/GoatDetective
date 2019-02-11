@@ -233,7 +233,7 @@ class HUDManager
                     currentPlayerHUD.winnerScreen.setInteractive();
                 });
                 // We play the victory song
-                musicManager.changeTheme('Win', false);
+                musicManager.changeTheme('Win');
             }
         }
     }
@@ -305,7 +305,7 @@ class HUDManager
                 },
                 onComplete: function()
                 {
-                    musicManager.changeTheme('Confront', true);
+                    musicManager.changeTheme('Confront');
                     sfxManager.playSFX(4);
                 }
             });

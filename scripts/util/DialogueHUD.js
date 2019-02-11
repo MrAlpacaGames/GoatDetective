@@ -603,7 +603,7 @@ class DialogueHUD
     if(!newValue)
     {
       currentScene.tweens.killAll();
-      //musicManager.changeTheme('Exploring', false);
+      musicManager.playThemeSong('Exploring');
     }
     this.isEnabled = newValue;
     this.enableSingleDialogue(newValue);
@@ -661,7 +661,7 @@ class DialogueHUD
     }
     else
     {
-      musicManager.changeTheme('Accusation', true);
+      musicManager.changeTheme('Accusation');
 
       this.multipleOptionsState = 1;
       this.enableMultipleOptions(2, false);
@@ -796,7 +796,7 @@ class DialogueHUD
         if(this.parkOpened == true)
         {
           this.openParkOptions(false);
-          musicManager.changeTheme('KStar', true);
+          musicManager.changeTheme('KStar');
         }
         else
         {

@@ -79,15 +79,15 @@ class InteractionManagement
         // We set the music for the conversation
         if(clue.name == "Park" || clue.name == "Jung" || clue.name == "Lee")
         {
-            musicManager.changeTheme('KStar', true);
+            musicManager.changeTheme('KStar');
         }
         else if(clue.name == "Assattari")
         {
-            musicManager.changeTheme('Lioness', true);
+            musicManager.changeTheme('Lioness');
         }
         else if(clue.name == "Ruru")
         {
-            musicManager.changeTheme('BiggestFan', true);
+            musicManager.changeTheme('BiggestFan');
         }
     }
 
