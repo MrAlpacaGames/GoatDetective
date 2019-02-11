@@ -16,7 +16,7 @@ class GM
          */
         this.stateOfGame = 0;
 
-        this.caseSolution = ["Jung", "Puddle"];
+        this.caseSolution = ["Lee", "Poisoned"];
     }
 
     /**
