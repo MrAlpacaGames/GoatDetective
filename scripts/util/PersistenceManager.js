@@ -6,6 +6,19 @@ class PersistenceManager
         // Variables
         //-------------------------
         this.savedState = this.getSavedState();
+
+        //-----------------------------
+        // State of Park
+        //-----------------------------
+        this.perXWhitePark;
+        this.perXPoisonedPark;
+
+        //-----------------------------
+        // Weapons
+        //-----------------------------
+        this.perXPuddle;
+        this.perXChicken;
+        this.perXKey;
     }
 
     //-------------------------

@@ -200,7 +200,11 @@ class Notebook
         if(clue.name == "Park")
         {
             this.parkDiscovered = true;
-            if(GameManager.stateOfGame == 0) GameManager.stateOfGame = 1;  
+            if(GameManager.stateOfGame == 0)
+            {
+                GameManager.stateOfGame = 1;  
+                persistenceManager.updateSaveState(GameManager.stateOfGame);
+            }
         } 
         clue.discovered = true;
         if(clue.name != "Hall")
@@ -453,7 +457,11 @@ class Notebook
     updateGameState(newGameState)
     {
         // We first set the new Game State to the current Game state
-        if(newGameState <=5) GameManager.stateOfGame = newGameState;
+        if(newGameState <=5) 
+        {
+            GameManager.stateOfGame = newGameState;
+            persistenceManager.updateSaveState(GameManager.stateOfGame);
+        }
         console.log("Current Game State is: "+GameManager.stateOfGame);
         // We then update all the notebook notes for all character clues
         this.humans.forEach(temp => {

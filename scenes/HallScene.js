@@ -130,7 +130,6 @@ class HallScene extends Phaser.Scene
 
         onSceneEnterNotebook(this.scene.key);
 
-        musicManager.changeTheme('Exploring');
         this.beginScene();
         globalLockdown = false;
         endingPlaying = false;

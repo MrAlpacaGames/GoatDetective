@@ -169,7 +169,11 @@ class DialogueManager
                 }
                 else if(nextAction == "End" || nextAction == "IntroductionEnd")  // We check if the next action is End. If it is we close the dialog.
                 {
-                    if("IntroductionEnd") globalLockdown = false;
+                    if("IntroductionEnd")
+                    {
+                        globalLockdown = false;
+                        musicManager.changeTheme('Exploring');
+                    } 
                     currentDialogueHUD.enableDialogueUI(false);
                 }
                 else if(nextAction == "Multiple") // We open a multiple dialogue options
