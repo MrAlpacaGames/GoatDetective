@@ -133,7 +133,7 @@ class UIMenuManager
                     fondo2.visible = true;
                     let timedEvent = currentScene.time.delayedCall(1300, function()
                     {
-                        musicManager.playThemeSong('Main', true);
+                        musicManager.playThemeSong('Main');
                         startBtn.visible = true;
                         creditsBtn.visible = true;
                         muteBtn.visible = true;

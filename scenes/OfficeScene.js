@@ -19,6 +19,9 @@ class OfficeScene extends Phaser.Scene
 
         // Player HUD of this scene
         this.playerHUD = new HUDManager();
+
+        // Chicken Diamando
+        this.chickenDiamando;
     }
 
     preload()
@@ -51,7 +54,7 @@ class OfficeScene extends Phaser.Scene
         let officeDoor = spriteManager.createEnvironment('offToHall', topBackgroundXOrigin+ 1791, topBackgroundYOrigin+97, 0.72);
 
         // Items Creation
-        let chickenDiamando = spriteManager.createItem('Chicken', topBackgroundXOrigin+60, topBackgroundYOrigin+60, 0.25);
+        this.chickenDiamando = spriteManager.createItem('Chicken', topBackgroundXOrigin+60, topBackgroundYOrigin+60, 0.25);
 
         // Characters Creation
         let assattari = spriteManager.createStaticCharacter('Assattari', topBackgroundXOrigin+200, topBackgroundYOrigin+100, 0.43);

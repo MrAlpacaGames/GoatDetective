@@ -12,10 +12,6 @@ class MusicManager
 
         this.themeBeforeNotebook;
         
-        this.singleHits = new HashTable();
-        this.introThemes = new HashTable();
-        this.loopThemes = new HashTable();    
-
         this.themes = new HashTable();
         
         this.muteButtons = [];
@@ -214,6 +210,14 @@ class MusicManager
                 this.mainWebSound.volume = 0.8;
                 (this.mainWebSound.isPaused) ? this.mainWebSound.resume() : this.mainWebSound.play();
             }
+            else if(themeName == 'Main')
+            {
+                this.mainWebSound.stop();
+                let mainT = this.getTheme(themeName);
+                this.mainWebSound = mainT[0];
+                this.mainPossibleLoop = mainT[1];
+                this.mainWebSound.play();
+            }
         }
     }
 
@@ -243,7 +247,7 @@ class MusicManager
             volume: newVolume,
 
             ease: 'Linear',
-            duration: 100,
+            duration: 300,
             onComplete: function()
             {
                 if(!isFadingIn) // If we are fading out. Once we fade out the current song, we fade in the next one
@@ -308,7 +312,6 @@ class MusicManager
         }
     }
 
-
     /**
      * Function that mutes/desmutes the music and sfx in the whole game
      */
@@ -335,6 +338,28 @@ class MusicManager
             this.mainWebSound = this.mainPossibleLoop;
             this.playNoFade(this.mainWebSound);
         }
+    }
+
+    /**
+     * We stop all the songs so they can be played from the beginning
+     */
+    restartAllMusic()
+    {
+        let mainArray = theGame.sound.sounds;
+        mainArray.forEach(element => {
+            if(element.key != "MainIntro" && element.key != "MainLoop") element.stop();
+        });
+        /** 
+        this.themes.table.forEach(element => {
+            let secondArray = element[0][1];
+            secondArray.forEach(secondTemp =>{
+                if(secondTemp != undefined)
+                {
+                    secondTemp.stop();
+                }
+            });
+        });
+        */
     }
 
 }

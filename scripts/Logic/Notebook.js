@@ -478,4 +478,52 @@ class Notebook
             }
         }
     }
+
+    eraseAllNotes()
+    {
+        this.humans.forEach(element => {
+            element.noteBookIndex = "";
+            element.noteBookIndex = 0;
+        });
+    }
+
+    loadNotebook(newGameState)
+    {
+        if(newGameState > 0)
+        {
+            if(this.dialoguesTaken != undefined && this.dialoguesTaken.table.length > 0)
+            {
+                this.dialoguesTaken = undefined;
+                this.dialoguesTaken = new HashTable();
+            }
+
+            this.eraseAllNotes();
+            let cluesToWriteNotes = [];            
+
+            if(newGameState > 0)
+            {
+                // In the state 1+ we have already talked the first time with Park
+                this.dialoguesTaken.add('SGoatman0x0', dialogueManager.dialoguesHashTable.get('SGoatman0x0'));
+                this.dialoguesTaken.add('SPark1xPR', dialogueManager.dialoguesHashTable.get('SPark1xPR'));
+
+                // We set Park to its new status
+                this.humans[0].discovered = true;
+                this.humans[0].inDialoguesIndex = 1;
+                this.humans[0].inDialoguesIndex = 1;
+
+                cluesToWriteNotes.push(this.humans[0]);
+
+                this.parkDiscovered = true;
+
+                if(newGameState > 1)
+                {
+                    // In the State 2+ we have already talked and discovered
+                }
+            }
+
+            cluesToWriteNotes.forEach(element => {
+                this.writeNote(element);
+            });
+        }
+    }
 }

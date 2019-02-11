@@ -31,6 +31,9 @@ class HallScene extends Phaser.Scene
 
         // Credits Screen
         this.gameCredits;
+
+        // Sweaty Puddle
+        this.sweatyPuddle;
     }
 
     //-------------------------
@@ -47,18 +50,13 @@ class HallScene extends Phaser.Scene
         this.playerHUD.preload();
         
         musicManager.preloadMusic();
-
-
-        if(hasStartedGame == false)
-        {
-            dialogueManager.preloadJson();
-            sfxManager.preloadSFX();
-        }
+        sfxManager.preloadSFX();
     }
 
     create()
     {      
         musicManager.createThemes();
+        sfxManager.createSFX();
 
         /** This creates a hidden text that will enable the new Font*/
         this.add.text(0, 0, 'Hero Mon', 
@@ -77,20 +75,18 @@ class HallScene extends Phaser.Scene
         let dressroom = spriteManager.createEnvironment('dressromDoor', topBackgroundXOrigin+1790.5, topBackgroundYOrigin+32.5, 0.72);
 
         // Items Creation
-        let sweatyPuddle = spriteManager.createItem('Puddle', topBackgroundXOrigin+400, topBackgroundYOrigin+210, 0.35);
+        this.sweatyPuddle = spriteManager.createItem('Puddle', topBackgroundXOrigin+400, topBackgroundYOrigin+210, 0.35);
 
         // Characters Creation
         this.park = spriteManager.createStaticCharacter('Park', topBackgroundXOrigin+200, topBackgroundYOrigin+200, 0.25);
         this.poisonedPark = spriteManager.createStaticCharacter('PoisonedPark', topBackgroundXOrigin+202, topBackgroundYOrigin+194, 0.42);
         this.poisonedPark.visible = false;
 
-        if(GameManager.stateOfGame == 0)
-        {
-            let jung = spriteManager.createStaticCharacter('Jung', topBackgroundXOrigin+1000, topBackgroundYOrigin+80, 0.42);
-            
-            // Main Player
-            this.playerSprite = spriteManager.createPlayer(topBackgroundXOrigin,  topBackgroundYOrigin+90);
-        }        
+        let jung = spriteManager.createStaticCharacter('Jung', topBackgroundXOrigin+1000, topBackgroundYOrigin+80, 0.42);
+        
+        // Main Player
+        this.playerSprite = spriteManager.createPlayer(topBackgroundXOrigin,  topBackgroundYOrigin+90);
+
         thePlayer.reloadPlayer();
         thePlayer.assignOnEvents();
                 
@@ -122,15 +118,11 @@ class HallScene extends Phaser.Scene
         {
             // If this is the first time we get to this scene we initialize the main game objects like the notebook
             hasStartedGame = true;
-            
-            dialogueManager.createDialogues();
-            sfxManager.createSFX();
-
         }
 
         onSceneEnterNotebook(this.scene.key);
 
-        this.beginScene();
+        //this.beginScene();
         globalLockdown = false;
         endingPlaying = false;
     }
@@ -148,16 +140,11 @@ class HallScene extends Phaser.Scene
     {
         let timedEvent = currentScene.time.delayedCall(120, function()
         {
-            switch(GameManager.stateOfGame)
+            if(GameManager.stateOfGame == 0)
             {
-                case 0:
-                    dialogueManager.startDialogue("SGoatman0x0");
-                    globalLockdown = true;
-                break;
-                case 1:
-
-                break;
-            }    
+                dialogueManager.startDialogue("SGoatman0x0");
+                globalLockdown = true;
+            }  
         } , currentScene);
     }
 

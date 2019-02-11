@@ -26,19 +26,19 @@ class SFXManager
         let supah;
         if(currentScene.scene.key == "MainMenu")
         {
-            supah = currentScene.sound.add('ZafSupah'); 
+            supah = theGame.sound.add('ZafSupah'); 
             this.menusSFX.push(supah);
 
         }
         else
         {
-            supah = currentScene.sound.add('OpenDoor');
+            supah = theGame.sound.add('OpenDoor');
             this.menusSFX.push(supah);
-            supah = currentScene.sound.add('WriteNote');
+            supah = theGame.sound.add('WriteNote');
             this.menusSFX.push(supah);
-            supah = currentScene.sound.add('Explosion');
+            supah = theGame.sound.add('Explosion');
             this.menusSFX.push(supah);
-            supah = currentScene.sound.add('HammerHit');
+            supah = theGame.sound.add('HammerHit');
             this.menusSFX.push(supah);
         }
     }

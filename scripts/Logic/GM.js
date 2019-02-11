@@ -100,8 +100,12 @@ class GM
 
     loadLastCheckpoint()
     {
-        globalLockdown = false;
-
+        this.restartGame();
+        let themeToPlay;
+        (persistenceManager.savedState == 0) ? themeToPlay = "Main" : themeToPlay = "Exploring";
+        theGame.scene.start('MainMenu');
+        musicManager.playThemeSong(themeToPlay);
+        persistenceManager.reloadGameState();
     }
     
 }

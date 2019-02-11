@@ -115,6 +115,7 @@ class InteractionManagement
         {
             case "Start":
                 loadScene("HallScene");
+                if(persistenceManager.getSavedState() > 0) musicManager.changeTheme('Exploring');
             break;
             case "Mute":
                 musicManager.muteMusic();

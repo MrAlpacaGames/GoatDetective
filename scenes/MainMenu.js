@@ -25,6 +25,7 @@ class MainMenu extends Phaser.Scene
         musicManager.preloadMusic();
         sfxManager.preloadSFX();
         fullScreenPower.preload();
+        dialogueManager.preloadJson();
     }
 
     create()
@@ -35,6 +36,7 @@ class MainMenu extends Phaser.Scene
         menuSpriteManager.createMenu();
         fullScreenPower.create();
 
+        dialogueManager.createDialogues();
         // We set the volumes for all the game
     }
 

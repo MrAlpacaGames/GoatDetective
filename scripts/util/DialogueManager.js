@@ -136,7 +136,7 @@ class DialogueManager
                             lastClickedElement.disableInteractive();
                             if(theClue.name != "Puddle") 
                             {
-                                lastClickedElement.destroy();
+                                lastClickedElement.visible = false;
                             }
                         }
                         else
