@@ -172,6 +172,7 @@ class DialogueManager
                     if("IntroductionEnd")
                     {
                         globalLockdown = false;
+                        currentScene.endingBlackWindow.visible = false;
                         musicManager.changeTheme('Exploring');
                     } 
                     currentDialogueHUD.enableDialogueUI(false);
@@ -193,6 +194,8 @@ class DialogueManager
                 else if(nextAction == "VictoryScreen")
                 {
                     currentDialogueHUD.enableDialogueUI(false);
+                    globalLockdown = true;
+                    musicManager.changeTheme('Win');
                     currentPlayerHUD.openSpecialScreen(true, true);
                 }
                 else if(nextAction == "LoseScreen")
@@ -202,6 +205,14 @@ class DialogueManager
                     currentPlayerHUD.openSpecialScreen(false, true);
                 }
                 if(currentDialogueHUD.currentClueTalkingTo != undefined && currentDialogueHUD.currentClueTalkingTo.inDialoguesIndex <2) currentDialogueHUD.currentClueTalkingTo.updateInitialIndex();
+                if(nextAction == "ConfrontationEnd" || nextAction == "DiscoverCellphone"
+                || nextAction == "DiscoverStandard")
+                {
+                    let theHuman = currentDialogueHUD.currentClueTalkingTo;
+                    // Once we finish the confrontation we advance to the next game state and we set the has been confronted state to true
+                    playerNotebook.updateGameState(GameManager.stateOfGame+1);
+                    theHuman.hasBeenConfronted = true;
+                }
             }
             else // If is not last line, we continue to the next line
             {

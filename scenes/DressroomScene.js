@@ -58,7 +58,7 @@ class DressroomScene extends Phaser.Scene
         this.studioKey = spriteManager.createItem('Key', topBackgroundXOrigin+600, topBackgroundYOrigin+50, 0.35);
         this.studioKey.visible = false;
         this.studioKey.angle = 90;
-        if(playerNotebook.parkDiscovered && GameManager.stateOfGame > 0)
+        if(playerNotebook.parkDiscovered && playerNotebook.hasTheKey == false)
         {
             this.studioKey.visible = true;
         }
@@ -98,11 +98,19 @@ class DressroomScene extends Phaser.Scene
         this.input.on('pointerdown', () => spriteManager.clickEffect(this.clickFx, this.input.activePointer));
 
         onSceneEnterNotebook(this.scene.key);
+        //-------------------------------------
+        // ON LOAD
+        //------------------------------------
+        if(GameManager.stateOfGame > 1)
+        {
+            // On state +2 we have already discovered the key.
+            this.studioKey.visible = false;
+        }
     }
 
     makeKeyVisible()
     {
-        if(this.studioKey != undefined && playerNotebook.parkDiscovered && GameManager.stateOfGame > 0) this.studioKey.visible = true;
+        if(this.studioKey != undefined && playerNotebook.hasTheKey == false && playerNotebook.parkDiscovered && GameManager.stateOfGame > 0) this.studioKey.visible = true;
     }
 
     update()

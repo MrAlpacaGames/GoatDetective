@@ -80,6 +80,13 @@ class OfficeScene extends Phaser.Scene
 
         onSceneEnterNotebook(this.scene.key);
 
+        //-------------------------------------
+        // ON LOAD
+        //------------------------------------
+        if(GameManager.stateOfGame > 1)
+        {
+            this.chickenDiamando.visible = false;
+        }
     }
 
     update()

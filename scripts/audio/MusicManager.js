@@ -26,12 +26,7 @@ class MusicManager
     //--------------------------------------------------------------------------------
     preloadMusic()
     {
-        if(currentScene.scene.key == "UINotebook")
-        {
-            // Pensativo
-            currentScene.load.audio('NotebookLoop','assets/audio/music/Pensativo.mp3');
-        }
-        else if(currentScene.scene.key == "MainMenu")
+        if(currentScene.scene.key == "MainMenu")
         {
             // Main Theme
             currentScene.load.audio('MainIntro','assets/audio/music/MainIntro.mp3');
@@ -40,13 +35,15 @@ class MusicManager
             // Lose Theme
             currentScene.load.audio('LoseLoop','assets/audio/music/LoseTheme.mp3');
             // Win Theme
-            currentScene.load.audio('WinLoop','assets/audio/music/WinTheme.mp3');
-        }
-        else if(currentScene.scene.key == 'HallScene')
-        {
+            currentScene.load.audio('WinIntro','assets/audio/music/WinIntro.mp3');
+            currentScene.load.audio('WinLoop','assets/audio/music/WinLoop.mp3');
             // Exploring Theme
             currentScene.load.audio('ExploringLoop','assets/audio/music/Exploring.mp3');
-            
+        }
+        else if(currentScene.scene.key == 'HallScene')
+        {            
+            // Pensativo Theme
+            currentScene.load.audio('NotebookLoop','assets/audio/music/Pensativo.mp3');
             // KStar Theme
             currentScene.load.audio('KStarIntro','assets/audio/music/KStarIntro.mp3');
             currentScene.load.audio('KStarLoop','assets/audio/music/KStarLoop.mp3');
@@ -58,6 +55,9 @@ class MusicManager
             // Accusation Theme
             currentScene.load.audio('AccusationIntro','assets/audio/music/AccusationIntro.mp3');
             currentScene.load.audio('AccusationLoop','assets/audio/music/AccusationLoop.mp3');
+
+            // Epilogue Theme
+            currentScene.load.audio('EpilogueLoop','assets/audio/music/Epilogue.mp3');
         }
         else if(currentScene.scene.key == 'OfficeScene')
         {
@@ -83,12 +83,6 @@ class MusicManager
         let newLoop;
         switch(sceneName)
         {
-            case 'UINotebook':
-                newLoop = this.createTheme('NotebookLoop');
-                newLoop.volume = 0.8;
-                newLoop.loop = true;
-                this.themes.add('Notebook', [undefined, newLoop]);
-            break;
             case "MainMenu":
                 newIntro = this.createTheme('MainIntro');
                 newIntro.volume = 0;
@@ -102,18 +96,23 @@ class MusicManager
                 newLoop.loop = true;
                 this.themes.add('Lose', [undefined, newLoop]);
 
+                newIntro = this.createTheme('WinIntro');
+                newIntro.volume = 0.8;
                 newLoop = this.createTheme('WinLoop');
                 newLoop.volume = 0.8;
                 newLoop.loop = true;
-                this.themes.add('Win', [undefined, newLoop]);
-
-            break;
-            case "HallScene":
+                this.themes.add('Win', [newIntro, newLoop]);
+                
                 newLoop = this.createTheme('ExploringLoop');
                 newLoop.volume = 0.8;
                 newLoop.loop = true;
                 this.themes.add('Exploring', [undefined, newLoop]);
-
+            break;
+            case "HallScene":
+                newLoop = this.createTheme('NotebookLoop');
+                newLoop.volume = 0.8;
+                newLoop.loop = true;
+                this.themes.add('Notebook', [undefined, newLoop]);
                 newIntro = this.createTheme('KStarIntro');
                 newIntro.volume = 0;
                 newLoop = this.createTheme('KStarLoop');
@@ -134,6 +133,11 @@ class MusicManager
                 newLoop.volume = 0.8;
                 newLoop.loop = true;
                 this.themes.add('Accusation', [newIntro, newLoop]);
+
+                newLoop = this.createTheme('EpilogueLoop');
+                newLoop.volume = 0.8;
+                newLoop.loop = true;
+                this.themes.add('Epilogue', [undefined, newLoop]);
             break;
             case "OfficeScene":
                 newIntro = this.createTheme('LionessIntro');
@@ -349,17 +353,6 @@ class MusicManager
         mainArray.forEach(element => {
             if(element.key != "MainIntro" && element.key != "MainLoop") element.stop();
         });
-        /** 
-        this.themes.table.forEach(element => {
-            let secondArray = element[0][1];
-            secondArray.forEach(secondTemp =>{
-                if(secondTemp != undefined)
-                {
-                    secondTemp.stop();
-                }
-            });
-        });
-        */
     }
 
 }

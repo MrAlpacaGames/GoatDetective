@@ -66,6 +66,7 @@ class InteractionManagement
         
         if(interactionObject == "Park" && clue.discovered == true)
         {
+            currentDialogueHUD.currentClueTalkingTo = clue;
             currentDialogueHUD.openParkOptions(false);
             GameManager.canMove = false;
         }
@@ -73,13 +74,21 @@ class InteractionManagement
         {
             currentDialogueHUD.currentClueTalkingTo = clue;
             dialogueID = clue.getCurrentInitialDialogue();
+            if(interactionObject == "Recorder" && playerNotebook.dialoguesTaken.get("RuruConfrontation2x1") == undefined)
+            {
+                dialogueID = "SGoatman0xErr3";
+            }
             dialogueManager.startDialogue(dialogueID);
         }
 
         // We set the music for the conversation
-        if(clue.name == "Park" || clue.name == "Jung" || clue.name == "Lee")
+        if(clue.name == "Jung" || clue.name == "Lee")
         {
             musicManager.changeTheme('KStar');
+        }
+        else if(clue.name == "Park" )
+        {
+            musicManager.changeTheme('Notebook');
         }
         else if(clue.name == "Assattari")
         {
@@ -94,7 +103,7 @@ class InteractionManagement
     interactDrawer(interactionObject)
     {
         let ID;
-        if(interactionObject == "ParkDrawer" && playerNotebook.dialoguesTaken.get("SRuru1xPR") == undefined) // If it's Park Drawer we check if we have already talked with Ruru
+        if(interactionObject == "ParkDrawer" && playerNotebook.dialoguesTaken.get("AssattariConfrontation2x1") == undefined) // If it's Park Drawer we check if we have already talked with Ruru
         {
             ID = "SGoatman0xErr2";
         }
@@ -115,6 +124,7 @@ class InteractionManagement
         {
             case "Start":
                 loadScene("HallScene");
+                persistenceManager.reloadGameState();
                 if(persistenceManager.getSavedState() > 0) musicManager.changeTheme('Exploring');
             break;
             case "Mute":

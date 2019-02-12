@@ -72,10 +72,10 @@ class HallScene extends Phaser.Scene
 
         let stairs = spriteManager.createEnvironment('officeDoor', topBackgroundXOrigin+813, topBackgroundYOrigin+78, 0.72);
 
-        let dressroom = spriteManager.createEnvironment('dressromDoor', topBackgroundXOrigin+1790.5, topBackgroundYOrigin+32.5, 0.72);
+        let dressroom = spriteManager.createEnvironment('dressromDoor', topBackgroundXOrigin+1789, topBackgroundYOrigin+32.5, 0.72);
 
         // Items Creation
-        this.sweatyPuddle = spriteManager.createItem('Puddle', topBackgroundXOrigin+400, topBackgroundYOrigin+210, 0.35);
+        this.sweatyPuddle = spriteManager.createItem('Puddle', topBackgroundXOrigin+410, topBackgroundYOrigin+210, 0.25);
 
         // Characters Creation
         this.park = spriteManager.createStaticCharacter('Park', topBackgroundXOrigin+200, topBackgroundYOrigin+200, 0.25);
@@ -97,7 +97,7 @@ class HallScene extends Phaser.Scene
         // Ending Black Window
         this.endingBlackWindow = currentScene.add.image(topBackgroundXOrigin, topBackgroundYOrigin, 'Fondo');
         this.endingBlackWindow.scrollFactorX = 0;
-        this.endingBlackWindow.visible = false;
+        //this.endingBlackWindow.visible = false;
 
         // Dialogue Window
         this.dialogueHUD.createDialogueWindow();
@@ -122,9 +122,29 @@ class HallScene extends Phaser.Scene
 
         onSceneEnterNotebook(this.scene.key);
 
-        //this.beginScene();
+        this.beginScene();
         globalLockdown = false;
         endingPlaying = false;
+
+        //-------------------------------------
+        // ON LOAD
+        //------------------------------------
+        if(GameManager.stateOfGame != 0)
+        {
+            this.park.visible = true;
+            this.poisonedPark.visible = false;
+            this.endingBlackWindow.visible = false;
+
+            if(GameManager.stateOfGame > 1)
+            {
+                this.sweatyPuddle.disableInteractive();
+                if(GameManager.stateOfGame >= 4)
+                {
+                    this.park.visible = false;
+                    this.poisonedPark.visible = true;
+                }
+            }
+        }
     }
 
     activateBlacEndingWindow(newValue)

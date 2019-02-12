@@ -14,24 +14,25 @@ class Notebook
         let jung = new Clue('Jung', "Humans", 1);
         jung.fullName = "JUNG DAE SEO";
         jung.addInitialDialogues(["SJung0xPrro", "SJung1xPR", "SJung1xUN"]);
-        jung.confrontationRequirements = ["LeeConfrontation2x1", "SPark4xPR", "LeeJung1x4", "AssattariJung1x4", "RuruJung1x4", "JungStandard1xUN", "JungPoisoned1xUN" ];
+        jung.confrontationRequirements = ["JungPark1x4", "AssattariPark1x4", "LeePark1x4", "RuruPark1x4","LeeConfrontation2x1", "SPark4xPR", "LeeJung1x4", "AssattariJung1x4", "RuruJung1x4", "JungStandard1xUN", "JungPoisoned1xUN" ];
         //jung.confrontationRequirements = ['SPark1xPR'];
 
         let lee = new Clue('Lee', "Humans", 2);
         lee.fullName = "LEE CHEE GO";
         lee.addInitialDialogues(["SLee0xPrro", "SLee1xPR", "SLee1xUN"]);
-        lee.confrontationRequirements = ["RuruConfrontation2x1", "JungLee1x3", "AssattariLee1x3", "RuruLee1x3", "LeeRecorder1xUN", "JungRecorder1xUN", "LeeCellphone1xUN"];
+        lee.confrontationRequirements = ["JungPark1x3", "AssattariPark1x3", "LeePark1x3", "RuruPark1x3","RuruConfrontation2x1", "JungLee1x3", "AssattariLee1x3", "RuruLee1x3", "LeeRecorder1xUN", "JungRecorder1xUN", "LeeCellphone1xUN"];
         //lee.confrontationRequirements = ["SPark1xPR"];
 
         let assattari = new Clue('Assattari', "Humans", 3);
         assattari.fullName = "ASSATTARI TARI";
         assattari.addInitialDialogues(["SAssattari0xPrro", "SAssattari1xPR", "SAssattari1xUN"]);
-        assattari.confrontationRequirements = ["RuruAssattari1x1", "AssattariChicken1xUN", "AssattariPark1x1"];
+        assattari.confrontationRequirements = ["JungPark1x1", "AssattariPark1x1", "LeePark1x1", "RuruPark1x1","RuruAssattari1x1", "AssattariChicken1xUN", "AssattariPark1x1"];
 
         let ruru = new Clue('Ruru', "Humans", 4);
         ruru.fullName = "RURU SPARK";
         ruru.addInitialDialogues(["","SRuru1xPR", "SRuru1xUN"]);
-        ruru.confrontationRequirements = ["AssattariConfrontation2x1", "AssattariRuru1x2", "LeePuddle1xUN", "AssattariPuddle1xUN", "LeeLetter1xUN", "RuruLetter1xUN"];
+        ruru.confrontationRequirements = ["JungPark1x2", "AssattariPark1x2", "LeePark1x2", "RuruPark1x2","AssattariConfrontation2x1", "AssattariRuru1x2", "LeePuddle1xUN", "AssattariPuddle1xUN", "LeeLetter1xUN", "RuruLetter1xUN"];
+        //ruru.confrontationRequirements = ["SPark1xPR"];
 
         this.humans.push(park, jung, lee, assattari, ruru);
         
@@ -76,7 +77,7 @@ class Notebook
 
 
         let recorder = new Clue('Recorder', "Items", 2);
-        recorder.fullName = "STUDIO RECORDER";
+        recorder.fullName = "STUDIO RECORD";
         recorder.noteBookID = "Studio Recorder";
         recorder.addInitialDialogues(["GoatmanRecorder1xUN"]);
 
@@ -206,8 +207,12 @@ class Notebook
                 persistenceManager.updateSaveState(GameManager.stateOfGame);
             }
         } 
+        if(this.discoveredCharacters == false && clue.name != "Park" && clue.clueType == "Humans") this.discoveredCharacters = true;
+        if(this.discoveredWeapons == false  && clue.clueType == "Weapons") this.discoveredWeapons = true;
+        if(this.discoveredItems == false && clue.name != "Key" && clue.clueType == "Items") this.discoveredItems = true;
+
         clue.discovered = true;
-        if(clue.name != "Hall")
+        if(clue.name != "Hall" && clue.clueType != "Places")
             this.playDiscoverSFX();
         this.writeNote(clue);
     }
@@ -222,17 +227,14 @@ class Notebook
         if(name == "Park" || name == "Jung" || name == "Lee" || name == "Ruru"|| name == "Assattari")
         {
             theArray = this.humans;
-            if(this.discoveredCharacters == false && name != "Park") this.discoveredCharacters = true;
         }
         else if(name == "Puddle" || name == "Chicken" || name == "Standard" || name == "Poisoned")
         {
             theArray = this.weapons;
-            if(this.discoveredWeapons == false) this.discoveredWeapons = true;
         }
         else if(name == "Letter" || name == "Recorder" || name == "Cellphone" || name == "Key")
         {
             theArray = this.items;
-            if(this.discoveredItems == false && name != "Key") this.discoveredItems = true;
         }
         else if(name == "Hall" || name == "Office" || name == "Dressroom" || name == "Studio")
         {
@@ -462,7 +464,6 @@ class Notebook
             GameManager.stateOfGame = newGameState;
             persistenceManager.updateSaveState(GameManager.stateOfGame);
         }
-        console.log("Current Game State is: "+GameManager.stateOfGame);
         // We then update all the notebook notes for all character clues
         this.humans.forEach(temp => {
             this.writeNote(temp);
@@ -487,6 +488,10 @@ class Notebook
         });
     }
 
+    /**
+     * Function that loads the Notebook with information depending of the current Game State
+     * @param {*New Game State from which we'll start loading information into the notebook} newGameState 
+     */
     loadNotebook(newGameState)
     {
         if(newGameState > 0)
@@ -507,17 +512,107 @@ class Notebook
                 this.dialoguesTaken.add('SPark1xPR', dialogueManager.dialoguesHashTable.get('SPark1xPR'));
 
                 // We set Park to its new status
-                this.humans[0].discovered = true;
-                this.humans[0].inDialoguesIndex = 1;
-                this.humans[0].inDialoguesIndex = 1;
-
-                cluesToWriteNotes.push(this.humans[0]);
+                this.setClueToDiscovered(this.humans[0], cluesToWriteNotes);
+                this.discoveredCharacters = true
 
                 this.parkDiscovered = true;
 
                 if(newGameState > 1)
                 {
-                    // In the State 2+ we have already talked and discovered
+                    /** 
+                     * In the State 2+ we have already talked and discovered the Puddle.
+                     * We have Confronted Assattari. We have already discovered the chicken. 
+                     * We also have discovered all the places and humans
+                     */                    
+                    this.discoveredPlaces = true;
+                    for(let i = 0; i < this.places.length ; i++)
+                    {
+                        //---------------------- HUMANS -----------------------------------
+                        this.setClueToDiscovered(this.humans[i+1], cluesToWriteNotes);
+                        //---------------------- PLACES -----------------------------------
+                        this.setClueToDiscovered(this.places[i], cluesToWriteNotes);
+                    }
+
+                    //---------------------- WEAPONS AND ITEMS -----------------------------------
+                    this.discoveredWeapons = true;
+                    // Puddle Discovered
+                    this.setClueToDiscovered(this.weapons[0], cluesToWriteNotes);
+                    // Chicken Diamando Discovered
+                    this.setClueToDiscovered(this.weapons[1], cluesToWriteNotes);
+                    // Key Discovered
+                    this.setClueToDiscovered(this.items[0], cluesToWriteNotes);
+                    this.hasTheKey = true;
+                    
+                    //-------------------- DIALOGUES TAKEN -----------------------------
+                    this.dialoguesTaken.add('SJung1xPR', dialogueManager.dialoguesHashTable.get('SJung1xPR'));
+                    this.dialoguesTaken.add('SAssattari1xPR', dialogueManager.dialoguesHashTable.get('SAssattari1xPR'));
+                    this.dialoguesTaken.add('SRuru1xPR', dialogueManager.dialoguesHashTable.get('SRuru1xPR'));
+                    this.dialoguesTaken.add('SLee1xPR', dialogueManager.dialoguesHashTable.get('SRuru1xPR'));
+                    this.dialoguesTaken.add('GoatmanKey1xUN', dialogueManager.dialoguesHashTable.get('GoatmanKey1xUN'));
+                    this.dialoguesTaken.add('LeePuddle1xUN', dialogueManager.dialoguesHashTable.get('LeePuddle1xUN'));
+                    this.dialoguesTaken.add('JungPuddle1xUN', dialogueManager.dialoguesHashTable.get('JungPuddle1xUN'));
+                    this.dialoguesTaken.add('AssattariPuddle1xUN', dialogueManager.dialoguesHashTable.get('AssattariPuddle1xUN'));
+                    this.dialoguesTaken.add('RuruPuddle1xUN', dialogueManager.dialoguesHashTable.get('RuruPuddle1xUN'));
+
+                    this.dialoguesTaken.add('JungPark1x1', dialogueManager.dialoguesHashTable.get('JungPark1x1'));
+                    this.dialoguesTaken.add('LeePark1x1', dialogueManager.dialoguesHashTable.get('LeePark1x1'));
+                    this.dialoguesTaken.add('AssattariPark1x1', dialogueManager.dialoguesHashTable.get('AssattariPark1x1'));
+                    this.dialoguesTaken.add('RuruPark1x1', dialogueManager.dialoguesHashTable.get('RuruPark1x1'));
+
+                    // Confrontation with Assattari Done
+                    this.dialoguesTaken.add('AssattariConfrontation2x1', dialogueManager.dialoguesHashTable.get('AssattariConfrontation2x1'));
+                    
+                    if(newGameState > 2) // We have accused Ruru
+                    {
+                        this.discoveredItems = true;
+                        // We got Park's Cellphone
+                        // In that moment we have already checked Ruru's Love Letter
+                        // Love Letter Discovered
+                        this.setClueToDiscovered(this.items[1], cluesToWriteNotes);
+                        // Park's Cellphone Discovered
+                        this.setClueToDiscovered(this.items[3], cluesToWriteNotes);
+
+                        //-------------------- DIALOGUES TAKEN -----------------------------
+                        this.dialoguesTaken.add('RuruConfrontation2x1', dialogueManager.dialoguesHashTable.get('RuruConfrontation2x1'));
+                        this.dialoguesTaken.add('GoatmanLetter1xUN', dialogueManager.dialoguesHashTable.get('GoatmanLetter1xUN'));
+                        this.dialoguesTaken.add('GoatmanParkDrawer1xUN', dialogueManager.dialoguesHashTable.get('GoatmanParkDrawer1xUN'));
+                        
+                        this.dialoguesTaken.add('JungPark1x2', dialogueManager.dialoguesHashTable.get('JungPark1x2'));
+                        this.dialoguesTaken.add('LeePark1x2', dialogueManager.dialoguesHashTable.get('LeePark1x2'));
+                        this.dialoguesTaken.add('AssattariPark1x2', dialogueManager.dialoguesHashTable.get('AssattariPark1x2'));
+                        this.dialoguesTaken.add('RuruPark1x2', dialogueManager.dialoguesHashTable.get('RuruPark1x2'));
+                        
+                        if(newGameState > 3) // We have accused Lee
+                        {
+                            // Studio Record Discovered
+                            this.setClueToDiscovered(this.items[2], cluesToWriteNotes);
+
+                            // Standard Pin Discovered
+                            this.setClueToDiscovered(this.weapons[2], cluesToWriteNotes);
+
+                                                    //-------------------- DIALOGUES TAKEN -----------------------------
+                            this.dialoguesTaken.add('LeeConfrontation2x1', dialogueManager.dialoguesHashTable.get('LeeConfrontation2x1'));
+                            this.dialoguesTaken.add('JungPark1x3', dialogueManager.dialoguesHashTable.get('JungPark1x3'));
+                            this.dialoguesTaken.add('LeePark1x3', dialogueManager.dialoguesHashTable.get('LeePark1x3'));
+                            this.dialoguesTaken.add('AssattariPark1x3', dialogueManager.dialoguesHashTable.get('AssattariPark1x3'));
+                            this.dialoguesTaken.add('RuruPark1x3', dialogueManager.dialoguesHashTable.get('RuruPark1x3'));
+                            if(newGameState > 4) // We have accused Jung
+                            {
+                                // Poisoned Pin Discovered
+                                // Pin Discovered
+                                this.setClueToDiscovered(this.weapons[3], cluesToWriteNotes);
+
+                                // We have already discovered Park poisoned body
+                                this.dialoguesTaken.add('SPark4xPR', dialogueManager.dialoguesHashTable.get('SPark4xPR'));
+                                this.dialoguesTaken.add('JungConfrontation2x1', dialogueManager.dialoguesHashTable.get('JungConfrontation2x1'));
+
+                                this.dialoguesTaken.add('JungPark1x4', dialogueManager.dialoguesHashTable.get('JungPark1x4'));
+                                this.dialoguesTaken.add('LeePark1x4', dialogueManager.dialoguesHashTable.get('LeePark1x4'));
+                                this.dialoguesTaken.add('AssattariPark1x4', dialogueManager.dialoguesHashTable.get('AssattariPark1x4'));
+                                this.dialoguesTaken.add('RuruPark1x4', dialogueManager.dialoguesHashTable.get('RuruPark1x4'));
+                            }
+                        }   
+                    }
                 }
             }
 
@@ -525,5 +620,13 @@ class Notebook
                 this.writeNote(element);
             });
         }
+    }
+
+    setClueToDiscovered(clue, arrayOfWritingNotes)
+    {
+        clue.discovered = true;
+        (clue.clueType == "Humans") ? clue.inDialoguesIndex = 1 : clue.inDialoguesIndex = 0;
+        (clue.clueType == "Humans") ? clue.noteBookIndex = 1 : clue.noteBookIndex = 0;
+        arrayOfWritingNotes.push(clue);
     }
 }

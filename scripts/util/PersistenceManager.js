@@ -5,7 +5,7 @@ class PersistenceManager
         //-------------------------
         // Variables
         //-------------------------
-        this.savedState = this.getSavedState();
+        this.savedState;
 
         // There are the thing we must have in mind to update when we want to load the new state of the game again
 
@@ -35,7 +35,7 @@ class PersistenceManager
         // Change to false. Only when we win the game or we lose it
         //---------------------------------------------------------
         this.hasCompletedLoading = false;
-        this.clearGameState();
+        //this.clearGameState();
     }
 
     //-------------------------
@@ -58,7 +58,7 @@ class PersistenceManager
     {
         this.savedState = newState;
         localStorage.setItem('GoatGameState', newState);
-        console.log("Game State Changed. New State is: "+this.savedState);
+        console.log("Game State Changed. New State is: "+localStorage.getItem('GoatGameState'));
     }
 
     /**
@@ -89,33 +89,17 @@ class PersistenceManager
      */
     reloadGameState()
     {
-        //this.savedState = this.getSavedState();
-        this.updateSaveState(2);
+        //this.updateSaveState(0);
+        this.savedState = this.getSavedState();
 
         // First we update the Game State
-        GameManager.stateOfGame = this.savedState;
+        GameManager.stateOfGame = parseInt(this.savedState);
 
         // I. We need to set the notebook in its new state
         playerNotebook.loadNotebook(this.savedState);
-        // II. We need to set the scenes to the new state
-        //this.reloadScenariosItems();
 
         // III. We restart all the theme songs available
-        musicManager.restartAllMusic();
-    }
-
-    reloadScenariosItems()
-    {       
-        if(GameManager.stateOfGame > 1)
-        {
-            // We are +2 state of game and we have already taken the key and the chicken. 
-            // We also have interacted with the recorder
-            let hall = getScene('HallScene');
-            hall.sweatyPuddle.disableInteractive();
-
-            let office = getScene('OfficeScene');
-            office.chickenDiamando.visible = false;
-        }
+        //musicManager.restartAllMusic();
     }
 
     retry()

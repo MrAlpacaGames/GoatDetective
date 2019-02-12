@@ -1734,6 +1734,18 @@
             ],
             "Next": "End"
         },
+        
+        {
+            "ID":"SGoatman0xErr3",
+            "Character": "Goatman",
+            "GameState": 0,
+            "Texts":
+            [
+                "GOATMAN PETERSON|||The gods won't shine a light upon this object...",
+                "GOATMAN PETERSON|||For now."
+            ],
+            "Next": "End"
+        },
 
 
 

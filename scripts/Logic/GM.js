@@ -54,6 +54,7 @@ class GM
         {
             dialogueID = "GoatmanDefeat";
         }
+        musicManager.changeTheme('Accusation');
         dialogueManager.startDialogue(dialogueID);
     }
 
@@ -62,7 +63,9 @@ class GM
      */
     backToTitle()
     {
-        this.restartGame();        
+        this.restartGame();   
+        persistenceManager.savedState = 0;
+        persistenceManager.clearGameState();     
         theGame.scene.start('MainMenu');
         //theGame.scene.destroy();
     }
@@ -97,14 +100,19 @@ class GM
         musicManager.mainWebSound = undefined;
     }
 
-
+    /**
+     * Loads the last checkpoint when the player loses
+     */
     loadLastCheckpoint()
     {
+        let lastGlobalVolumeSaved = theGame.sound.volume;
         this.restartGame();
         let themeToPlay;
         (persistenceManager.savedState == 0) ? themeToPlay = "Main" : themeToPlay = "Exploring";
-        theGame.scene.start('MainMenu');
+        theGame.scene.start('HallScene');
         musicManager.playThemeSong(themeToPlay);
+        theGame.sound.volume = lastGlobalVolumeSaved;
+        currentPlayerHUD.checkMuteStatus();
         persistenceManager.reloadGameState();
     }
     

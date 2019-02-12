@@ -349,6 +349,7 @@ class UINotebookManager
         this.setVisible("H", true);
     }
 
+    // Function that sets visible the items of a zone
     setVisible(Zone, NewValue)
     {
         if(NewValue == true) this.currentClues = playerNotebook.getInformation(Zone);

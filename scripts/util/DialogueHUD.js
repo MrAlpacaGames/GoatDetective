@@ -160,10 +160,11 @@ class DialogueHUD
     currentScene.load.image('JungAccuse', 'assets/sprites/HUD/Accuse/JungAccuse.png');
     currentScene.load.image('LeeAccuse', 'assets/sprites/HUD/Accuse/LeeAccuse.png');
     currentScene.load.image('RuruAccuse', 'assets/sprites/HUD/Accuse/RuruAccuse.png');
-    currentScene.load.image('ChickenAccuse', 'assets/sprites/Items/ChickenDiamondo.png');
-    currentScene.load.image('PuddleAccuse', 'assets/sprites/Items/Puddle.png');
-    currentScene.load.image('StandardAccuse', 'assets/sprites/Agenda/Items/StandardPin.png');
-    currentScene.load.image('PoisonedAccuse', 'assets/sprites/Agenda/Items/PoisonedPin.png');
+
+    currentScene.load.image('PuddleAccuse', 'assets/sprites/HUD/Accuse/PuddleAccuse.png');
+    currentScene.load.image('ChickenAccuse', 'assets/sprites/HUD/Accuse/ChickenAccuse.png');
+    currentScene.load.image('StandardAccuse', 'assets/sprites/HUD/Accuse/StandardAccuse.png');
+    currentScene.load.image('PoisonedAccuse', 'assets/sprites/HUD/Accuse/PoisonAccuse.png');
 
     
     currentScene.load.image('nextBtn', 'assets/sprites/HUD/Siguiente.png');
@@ -229,7 +230,7 @@ class DialogueHUD
     this.fourOptionsBack.scrollFactorX = 0;
     
     // Array of positions
-    let fourPositions = [175, 365, 555, 745];
+    let fourPositions = [185, 365, 550, 750];
     this.fourTextOptions = currentScene.add.container();
     this.createMultipleOptionsButtons(4, fourPositions, this.fourTextOptions);
 
@@ -286,22 +287,18 @@ class DialogueHUD
     this.weaponsImgs = [];
     let AccuWeapons = currentScene.physics.add.staticSprite(495, 90, 'PuddleAccuse');
     AccuWeapons.scrollFactorX = 0;
-    AccuWeapons.setScale(0.1);
     AccuWeapons.visible = false;
     this.weaponsImgs.push(AccuWeapons);  
     AccuWeapons = currentScene.physics.add.staticSprite(495, 90, 'ChickenAccuse');
     AccuWeapons.scrollFactorX = 0;
-    AccuWeapons.setScale(0.15);
     AccuWeapons.visible = false;
     this.weaponsImgs.push(AccuWeapons);
     AccuWeapons = currentScene.physics.add.staticSprite(495, 90, 'StandardAccuse');
     AccuWeapons.scrollFactorX = 0;
-    AccuWeapons.setScale(0.1);
     AccuWeapons.visible = false;
     this.weaponsImgs.push(AccuWeapons);
     AccuWeapons = currentScene.physics.add.staticSprite(495, 90, 'PoisonedAccuse');
     AccuWeapons.scrollFactorX = 0;
-    AccuWeapons.setScale(0.2);
     AccuWeapons.visible = false;
     this.weaponsImgs.push(AccuWeapons);
 
@@ -493,7 +490,7 @@ class DialogueHUD
     {
       if(dialogue == "Disgrace...!")
       {
-        console.log("Here we should play the Epilogue Theme");
+        musicManager.changeTheme('Epilogue');
         endingPlaying = false;
       }
     }
@@ -661,8 +658,6 @@ class DialogueHUD
     }
     else
     {
-      musicManager.changeTheme('Accusation');
-
       this.multipleOptionsState = 1;
       this.enableMultipleOptions(2, false);
       this.enableAccuseDialogue(true);
