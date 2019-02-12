@@ -10,8 +10,11 @@ class FullScreen
         currentScene.load.image('FullScreen','assets/sprites/HUD/FullscreenBtn.png');
     }
 
+    /**
+     * Creates the fullscreen button
+     */
     create()
-    {
+    {        
         let browser = theGame.device.browser;
         let os = theGame.device.os;
         if(!browser.firefox && !browser.mobileSafari)

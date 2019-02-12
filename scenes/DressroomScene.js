@@ -47,16 +47,16 @@ class DressroomScene extends Phaser.Scene
     create()
     {      
         musicManager.createThemes();
-        spriteManager.createEnvironment('dressroom', topBackgroundXOrigin+ 763, topBackgroundYOrigin - 2, 0.72);
+        spriteManager.createEnvironment('dressroom', topBackgroundXOrigin+ 763, topBackgroundYOrigin+3, 0.72);
         
         this.cameras.main.setBounds(0, 0, gameConfig.width * 2.59, gameConfig.height);
-        this.physics.world.setBounds(280, 0, gameConfig.width * 1.8, gameConfig.height -16 );        
+        this.physics.world.setBounds(280, 0, gameConfig.width * 1.8, gameConfig.height -22 );        
         
         // Environment
-        let hallDoor = spriteManager.createEnvironment('dressToHall', 246, topBackgroundYOrigin+75, 0.72);
+        let hallDoor = spriteManager.createEnvironment('dressToHall', 247, topBackgroundYOrigin+85, 0.72);
 
         // Items Creation
-        this.studioKey = spriteManager.createItem('Key', topBackgroundXOrigin+600, topBackgroundYOrigin+50, 0.35);
+        this.studioKey = spriteManager.createItem('Key', topBackgroundXOrigin+600, topBackgroundYOrigin+55, 0.35);
         this.studioKey.visible = false;
         this.studioKey.angle = 90;
         if(playerNotebook.parkDiscovered && playerNotebook.hasTheKey == false)

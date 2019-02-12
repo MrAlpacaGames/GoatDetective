@@ -188,7 +188,6 @@ class DialogueManager
                 }
                 else if(nextAction == "GameOver")
                 {
-
                     GameManager.showFinalDialogue(false);              
                 }
                 else if(nextAction == "VictoryScreen")
