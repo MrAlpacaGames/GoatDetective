@@ -83,8 +83,8 @@ class UIMenuManager
         startHigh.visible = false;
 
         // Continue Btn
-        let continueBtn = currentScene.add.image(topBackgroundXOrigin-190, topBackgroundYOrigin+128, 'ContinueBtn');
-        let continueHigh = currentScene.add.image(topBackgroundXOrigin-190, topBackgroundYOrigin+128, 'ContinueHigh');
+        let continueBtn = currentScene.add.image(topBackgroundXOrigin-186, topBackgroundYOrigin+128, 'ContinueBtn');
+        let continueHigh = currentScene.add.image(topBackgroundXOrigin-186, topBackgroundYOrigin+128, 'ContinueHigh');
         continueBtn.setInteractive();
         continueBtn.on('pointerover', ()=> this.onMenuBtnInteracted(continueHigh, true));
         continueBtn.on('pointerdown', ()=> this.onMenuBtnInteracted(continueHigh, true));
@@ -96,8 +96,8 @@ class UIMenuManager
         continueHigh.visible = false;
 
         // Credits Btn
-        let creditsBtn = currentScene.add.image(topBackgroundXOrigin-300, topBackgroundYOrigin+128, 'CreditsBtn');
-        let creditsHigh = currentScene.add.image(topBackgroundXOrigin-300, topBackgroundYOrigin+128, 'CreditsHigh');
+        let creditsBtn = currentScene.add.image(topBackgroundXOrigin-308, topBackgroundYOrigin+128, 'CreditsBtn');
+        let creditsHigh = currentScene.add.image(topBackgroundXOrigin-308, topBackgroundYOrigin+128, 'CreditsHigh');
         creditsBtn.setInteractive();
         creditsBtn.on('pointerover', ()=> this.onMenuBtnInteracted(creditsHigh, true));
         creditsBtn.on('pointerdown', ()=> this.onMenuBtnInteracted(creditsHigh, true));
@@ -109,8 +109,8 @@ class UIMenuManager
         creditsHigh.visible = false;
 
         // Mute Btn
-        let muteBtn = currentScene.add.image(topBackgroundXOrigin-375, topBackgroundYOrigin+128, 'MenuMuteBtn');
-        let muteHigh = currentScene.add.image(topBackgroundXOrigin-375.9, topBackgroundYOrigin+128, 'MenuMuteHigh');
+        let muteBtn = currentScene.add.image(topBackgroundXOrigin-395, topBackgroundYOrigin+128, 'MenuMuteBtn');
+        let muteHigh = currentScene.add.image(topBackgroundXOrigin-395.9, topBackgroundYOrigin+128, 'MenuMuteHigh');
         muteBtn.setInteractive();
         muteBtn.on('pointerover', ()=> this.onMenuBtnInteracted(muteHigh, true));
         muteBtn.on('pointerdown', ()=> this.onMenuBtnInteracted(muteHigh, true));
