@@ -10,7 +10,7 @@ class BootScene extends Phaser.Scene
     preload()
     {
         currentScene = this;
-        currentScene.load.image('gameLogo', 'assets/sprites/Menus/MrAlpacaLogo.png');
+        currentScene.load.image('gameLogo', 'assets/sprites/Menus/MrAlpacaLogoX.png');
         currentScene.load.image('Fondo', 'assets/sprites/Menus/Fondo.png');
         currentScene.load.image('Loading', 'assets/sprites/Menus/Loading.png');
     }
