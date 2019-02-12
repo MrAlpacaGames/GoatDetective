@@ -55,7 +55,7 @@ class SpriteManagement
                 currentScene.load.image('hall', 'assets/sprites/Scenarios/Hall/theHalldo.png');
                 currentScene.load.image('studioDoor', 'assets/sprites/Scenarios/Hall/studio_doorsX.png');
                 currentScene.load.image('dressromDoor', 'assets/sprites/Scenarios/Hall/dressroom_doorsX.png');
-                currentScene.load.image('officeDoor', 'assets/sprites/Scenarios/Hall/Stairs.png');
+                currentScene.load.image('officeDoor', 'assets/sprites/Scenarios/Hall/HallStairs.png');
                 currentScene.load.image('Puddle', 'assets/sprites/Items/Puddle.png');
             break;
             case 'OfficeScene':
