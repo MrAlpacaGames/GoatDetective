@@ -73,22 +73,21 @@ class InteractionManagement
         else
         {
             currentDialogueHUD.currentClueTalkingTo = clue;
-            dialogueID = clue.getCurrentInitialDialogue();
             if(interactionObject == "Recorder" && playerNotebook.dialoguesTaken.get("RuruConfrontation2x1") == undefined)
             {
                 dialogueID = "SGoatman0xErr3";
+            }
+            else
+            {
+                dialogueID = clue.getCurrentInitialDialogue();
             }
             dialogueManager.startDialogue(dialogueID);
         }
 
         // We set the music for the conversation
-        if(clue.name == "Jung" || clue.name == "Lee")
+        if(clue.name == "Park" || clue.name == "Jung" || clue.name == "Lee")
         {
             musicManager.changeTheme('KStar');
-        }
-        else if(clue.name == "Park" )
-        {
-            musicManager.changeTheme('Notebook');
         }
         else if(clue.name == "Assattari")
         {
@@ -103,7 +102,7 @@ class InteractionManagement
     interactDrawer(interactionObject)
     {
         let ID;
-        if(interactionObject == "ParkDrawer" && playerNotebook.dialoguesTaken.get("AssattariConfrontation2x1") == undefined) // If it's Park Drawer we check if we have already talked with Ruru
+        if(interactionObject == "ParkDrawer" && playerNotebook.dialoguesTaken.get("SRuru1xPR") == undefined) // If it's Park Drawer we check if we have already talked with Ruru
         {
             ID = "SGoatman0xErr2";
         }
@@ -123,8 +122,13 @@ class InteractionManagement
         switch(option)
         {
             case "Start":
-                loadScene("HallScene");
+                persistenceManager.clearGameState();
                 persistenceManager.reloadGameState();
+                loadScene("HallScene");
+            break;
+            case "Continue":
+                persistenceManager.reloadGameState();
+                loadScene("HallScene");
                 if(persistenceManager.getSavedState() > 0) musicManager.changeTheme('Exploring');
             break;
             case "Mute":

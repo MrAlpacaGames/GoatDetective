@@ -167,6 +167,13 @@ function createButton(scene, name, imageID, posX, posY, scaleX, scaleY, textX, t
     assignButtonBehaviour(scene, btn, toggleBtn, name);        
 }
 
+/**
+ * Assign button behaviour in the Main Menu
+ * @param {*} scene 
+ * @param {*} button 
+ * @param {*} highButton 
+ * @param {*} name 
+ */
 function assignButtonBehaviour(scene, button, highButton, name)
 {
     button.on('pointerdown', function()
@@ -192,11 +199,10 @@ function assignButtonBehaviour(scene, button, highButton, name)
     }
 }
 
-function startWorld()
-{
-    
-}
-
+/**
+ * Mutes/Desmutes the sound in the whole game
+ * @param {*} scene 
+ */
 function muteTheWorld(scene)
 {
     if(soundContextResumed == false)
@@ -264,6 +270,10 @@ function loadScene(newScene)
     }
 }
 
+/**
+ * Opens the notebook
+ * @param {*} newValue 
+ */
 function openNotebook(newValue)
 {
     if(canSceneSwitch == true && globalLockdown == false)
@@ -277,34 +287,47 @@ function openNotebook(newValue)
 
         if(!newValue) musicManager.changeTheme(musicManager.themeBeforeNotebook);
 
-
         let timedEvent = currentScene.time.delayedCall(150, function(){
             canSceneSwitch = true;
+            globalLockdown = false;
             if(notebookOpened == true)
                 if(destScene.scene.key == "UINotebook") notebookSpriteManager.updateOnOpen();
         } , currentScene);
     }
 }
 
+/**
+ * Called everytime the player enters a new room.
+ * @param {*} newSceneName 
+ */
 function onSceneEnterNotebook(newSceneName)
 {
     let sceneName = newSceneName.slice(0, newSceneName.length-5);
     let theClue = playerNotebook.getClue(sceneName);
-    playerNotebook.discoverClue(theClue);
+    if(!theClue.discovered) playerNotebook.discoverClue(theClue);
 }
 
+/**
+ * Gets the scene according to its name
+ * @param {*} sceneName 
+ */
 function getScene(sceneName)
 {
     return theGame.scene.getScene(sceneName);
 }
 
+/**
+ * Enables the credits Image
+ * @param {*} creditsImg 
+ * @param {*} newValue 
+ */
 function enableCredits(creditsImg, newValue)
 {
     if(!creditsDelay)
     {
         creditsDelay = true;
         creditsImg.visible = newValue;
-        let xTimedEvent = currentScene.time.delayedCall(1000, function(){
+        let xTimedEvent = currentScene.time.delayedCall(2000, function(){
             creditsDelay = false;
         } , currentScene);
     }

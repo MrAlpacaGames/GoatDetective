@@ -14,24 +14,24 @@ class Notebook
         let jung = new Clue('Jung', "Humans", 1);
         jung.fullName = "JUNG DAE SEO";
         jung.addInitialDialogues(["SJung0xPrro", "SJung1xPR", "SJung1xUN"]);
-        jung.confrontationRequirements = ["JungPark1x4", "AssattariPark1x4", "LeePark1x4", "RuruPark1x4","LeeConfrontation2x1", "SPark4xPR", "LeeJung1x4", "AssattariJung1x4", "RuruJung1x4", "JungStandard1xUN", "JungPoisoned1xUN" ];
+        jung.confrontationRequirements = ["LeeConfrontation2x1", "SPark4xPR", "LeeJung1x4", "AssattariJung1x4", "RuruJung1x4", "JungStandard1xUN", "JungPoisoned1xUN" ];
         //jung.confrontationRequirements = ['SPark1xPR'];
 
         let lee = new Clue('Lee', "Humans", 2);
         lee.fullName = "LEE CHEE GO";
         lee.addInitialDialogues(["SLee0xPrro", "SLee1xPR", "SLee1xUN"]);
-        lee.confrontationRequirements = ["JungPark1x3", "AssattariPark1x3", "LeePark1x3", "RuruPark1x3","RuruConfrontation2x1", "JungLee1x3", "AssattariLee1x3", "RuruLee1x3", "LeeRecorder1xUN", "JungRecorder1xUN", "LeeCellphone1xUN"];
+        lee.confrontationRequirements = ["LeeJung1x3","RuruConfrontation2x1", "JungLee1x3", "AssattariLee1x3", "RuruLee1x3", "LeeRecorder1xUN", "JungRecorder1xUN", "LeeCellphone1xUN"];
         //lee.confrontationRequirements = ["SPark1xPR"];
 
         let assattari = new Clue('Assattari', "Humans", 3);
         assattari.fullName = "ASSATTARI TARI";
         assattari.addInitialDialogues(["SAssattari0xPrro", "SAssattari1xPR", "SAssattari1xUN"]);
-        assattari.confrontationRequirements = ["JungPark1x1", "AssattariPark1x1", "LeePark1x1", "RuruPark1x1","RuruAssattari1x1", "AssattariChicken1xUN", "AssattariPark1x1"];
+        assattari.confrontationRequirements = ["JungAssattari1x1", "LeeAssattari1x1", "RuruAssattari1x1", "AssattariChicken1xUN", "AssattariPark1x1"];
 
         let ruru = new Clue('Ruru', "Humans", 4);
         ruru.fullName = "RURU SPARK";
         ruru.addInitialDialogues(["","SRuru1xPR", "SRuru1xUN"]);
-        ruru.confrontationRequirements = ["JungPark1x2", "AssattariPark1x2", "LeePark1x2", "RuruPark1x2","AssattariConfrontation2x1", "AssattariRuru1x2", "LeePuddle1xUN", "AssattariPuddle1xUN", "LeeLetter1xUN", "RuruLetter1xUN"];
+        ruru.confrontationRequirements = ["LeeRuru1x2", "AssattariConfrontation2x1", "AssattariRuru1x2", "LeePuddle1xUN", "AssattariPuddle1xUN", "LeeLetter1xUN", "RuruLetter1xUN"];
         //ruru.confrontationRequirements = ["SPark1xPR"];
 
         this.humans.push(park, jung, lee, assattari, ruru);
@@ -212,7 +212,7 @@ class Notebook
         if(this.discoveredItems == false && clue.name != "Key" && clue.clueType == "Items") this.discoveredItems = true;
 
         clue.discovered = true;
-        if(clue.name != "Hall" && clue.clueType != "Places")
+        if(clue.name != "Hall")
             this.playDiscoverSFX();
         this.writeNote(clue);
     }
@@ -554,11 +554,6 @@ class Notebook
                     this.dialoguesTaken.add('AssattariPuddle1xUN', dialogueManager.dialoguesHashTable.get('AssattariPuddle1xUN'));
                     this.dialoguesTaken.add('RuruPuddle1xUN', dialogueManager.dialoguesHashTable.get('RuruPuddle1xUN'));
 
-                    this.dialoguesTaken.add('JungPark1x1', dialogueManager.dialoguesHashTable.get('JungPark1x1'));
-                    this.dialoguesTaken.add('LeePark1x1', dialogueManager.dialoguesHashTable.get('LeePark1x1'));
-                    this.dialoguesTaken.add('AssattariPark1x1', dialogueManager.dialoguesHashTable.get('AssattariPark1x1'));
-                    this.dialoguesTaken.add('RuruPark1x1', dialogueManager.dialoguesHashTable.get('RuruPark1x1'));
-
                     // Confrontation with Assattari Done
                     this.dialoguesTaken.add('AssattariConfrontation2x1', dialogueManager.dialoguesHashTable.get('AssattariConfrontation2x1'));
                     
@@ -577,11 +572,6 @@ class Notebook
                         this.dialoguesTaken.add('GoatmanLetter1xUN', dialogueManager.dialoguesHashTable.get('GoatmanLetter1xUN'));
                         this.dialoguesTaken.add('GoatmanParkDrawer1xUN', dialogueManager.dialoguesHashTable.get('GoatmanParkDrawer1xUN'));
                         
-                        this.dialoguesTaken.add('JungPark1x2', dialogueManager.dialoguesHashTable.get('JungPark1x2'));
-                        this.dialoguesTaken.add('LeePark1x2', dialogueManager.dialoguesHashTable.get('LeePark1x2'));
-                        this.dialoguesTaken.add('AssattariPark1x2', dialogueManager.dialoguesHashTable.get('AssattariPark1x2'));
-                        this.dialoguesTaken.add('RuruPark1x2', dialogueManager.dialoguesHashTable.get('RuruPark1x2'));
-                        
                         if(newGameState > 3) // We have accused Lee
                         {
                             // Studio Record Discovered
@@ -592,10 +582,6 @@ class Notebook
 
                                                     //-------------------- DIALOGUES TAKEN -----------------------------
                             this.dialoguesTaken.add('LeeConfrontation2x1', dialogueManager.dialoguesHashTable.get('LeeConfrontation2x1'));
-                            this.dialoguesTaken.add('JungPark1x3', dialogueManager.dialoguesHashTable.get('JungPark1x3'));
-                            this.dialoguesTaken.add('LeePark1x3', dialogueManager.dialoguesHashTable.get('LeePark1x3'));
-                            this.dialoguesTaken.add('AssattariPark1x3', dialogueManager.dialoguesHashTable.get('AssattariPark1x3'));
-                            this.dialoguesTaken.add('RuruPark1x3', dialogueManager.dialoguesHashTable.get('RuruPark1x3'));
                             if(newGameState > 4) // We have accused Jung
                             {
                                 // Poisoned Pin Discovered
@@ -605,11 +591,6 @@ class Notebook
                                 // We have already discovered Park poisoned body
                                 this.dialoguesTaken.add('SPark4xPR', dialogueManager.dialoguesHashTable.get('SPark4xPR'));
                                 this.dialoguesTaken.add('JungConfrontation2x1', dialogueManager.dialoguesHashTable.get('JungConfrontation2x1'));
-
-                                this.dialoguesTaken.add('JungPark1x4', dialogueManager.dialoguesHashTable.get('JungPark1x4'));
-                                this.dialoguesTaken.add('LeePark1x4', dialogueManager.dialoguesHashTable.get('LeePark1x4'));
-                                this.dialoguesTaken.add('AssattariPark1x4', dialogueManager.dialoguesHashTable.get('AssattariPark1x4'));
-                                this.dialoguesTaken.add('RuruPark1x4', dialogueManager.dialoguesHashTable.get('RuruPark1x4'));
                             }
                         }   
                     }
@@ -626,7 +607,8 @@ class Notebook
     {
         clue.discovered = true;
         (clue.clueType == "Humans") ? clue.inDialoguesIndex = 1 : clue.inDialoguesIndex = 0;
-        (clue.clueType == "Humans") ? clue.noteBookIndex = 1 : clue.noteBookIndex = 0;
+        //(clue.clueType == "Humans") ? clue.noteBookIndex = 1 : clue.noteBookIndex = 0;
+        clue.noteBookIndex = 0;
         arrayOfWritingNotes.push(clue);
     }
 }

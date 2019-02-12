@@ -89,7 +89,7 @@ class PersistenceManager
      */
     reloadGameState()
     {
-        //this.updateSaveState(0);
+        //this.updateSaveState(4);
         this.savedState = this.getSavedState();
 
         // First we update the Game State

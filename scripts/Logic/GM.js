@@ -109,11 +109,13 @@ class GM
         this.restartGame();
         let themeToPlay;
         (persistenceManager.savedState == 0) ? themeToPlay = "Main" : themeToPlay = "Exploring";
+        persistenceManager.reloadGameState();
         theGame.scene.start('HallScene');
         musicManager.playThemeSong(themeToPlay);
         theGame.sound.volume = lastGlobalVolumeSaved;
-        currentPlayerHUD.checkMuteStatus();
-        persistenceManager.reloadGameState();
+        let timedMuteCheck = currentScene.time.delayedCall(150, function(){
+            currentPlayerHUD.checkMuteStatus();
+        } , currentScene);
     }
     
 }

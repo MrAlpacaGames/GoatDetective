@@ -7,23 +7,23 @@ class UINotebookManager
         //-------------------------
         // Humans UI Elements
         this.humansWindow;
-        this.BWHumans = [];
-        this.ColorHumans = [];
+        this.BWHumans;
+        this.ColorHumans;
 
         // Places UI Elements
         this.placesWindow;
-        this.BWPlaces = [];
-        this.ColorPlaces = [];
+        this.BWPlaces;
+        this.ColorPlaces;
 
         // Weapons UI Elements
         this.weaponsWindow;  
-        this.BWWeapons = [];
-        this.ColorWeapons = [];
+        this.BWWeapons;
+        this.ColorWeapons;
 
         // Items UI Elements
         this.itemsWindow;
-        this.BWItems = [];
-        this.ColorItems = [];
+        this.BWItems;
+        this.ColorItems;
         
         // Text
         this.noteTitle;
@@ -100,6 +100,7 @@ class UINotebookManager
         this.humansWindow = currentScene.add.image(topBackgroundXOrigin, topBackgroundYOrigin, 'Humans');
 
         // Black & White
+        this.BWHumans = [];
         let BWChar;
         BWChar = currentScene.add.image(topBackgroundXOrigin-230, topBackgroundYOrigin+5, 'RuruBlackWhite');
         this.BWHumans.push(BWChar);
@@ -113,6 +114,7 @@ class UINotebookManager
         this.BWHumans.push(BWChar);
 
         // Color
+        this.ColorHumans = [];
         let character;
         character = currentScene.add.image(topBackgroundXOrigin+30, topBackgroundYOrigin+5, 'ParkNB');
         character.setInteractive();
@@ -153,6 +155,7 @@ class UINotebookManager
         this.placesWindow.visible = false;
 
         let BWPlace;
+        this.BWPlaces = [];
         BWPlace = currentScene.add.image(topBackgroundXOrigin-190, topBackgroundYOrigin+3, 'HallBlackWhite');
         this.BWPlaces.push(BWPlace);
         BWPlace = currentScene.add.image(topBackgroundXOrigin-10, topBackgroundYOrigin+3, 'OfficeBlackWhite');
@@ -163,6 +166,7 @@ class UINotebookManager
         this.BWPlaces.push(BWPlace);
 
         let ColorPlace;
+        this.ColorPlaces = [];
         ColorPlace = currentScene.add.image(topBackgroundXOrigin-190, topBackgroundYOrigin+3, 'HallNB');
         ColorPlace.setInteractive();
         ColorPlace.on('pointerdown', ()=> this.getClueInformation('P', 0));
@@ -195,6 +199,7 @@ class UINotebookManager
         this.weaponsWindow.visible = false;
 
         let BWWeapon;
+        this.BWWeapons = [];
         BWWeapon = currentScene.add.image(topBackgroundXOrigin-190, topBackgroundYOrigin+8, 'PuddleBlackWhite');
         this.BWWeapons.push(BWWeapon);
         BWWeapon = currentScene.add.image(topBackgroundXOrigin-10, topBackgroundYOrigin+4, 'ChickenBlackWhite');
@@ -205,6 +210,7 @@ class UINotebookManager
         this.BWWeapons.push(BWWeapon);
 
         let ColorWeapon;
+        this.ColorWeapons = [];
         ColorWeapon = currentScene.add.image(topBackgroundXOrigin-190, topBackgroundYOrigin+8, 'PuddleNB');
         ColorWeapon.setInteractive();
         ColorWeapon.on('pointerdown', ()=> this.getClueInformation('W', 0));
@@ -238,6 +244,7 @@ class UINotebookManager
         this.itemsWindow.visible = false;
 
         let BWItem;
+        this.BWItems = [];
         BWItem = currentScene.add.image(topBackgroundXOrigin-190, topBackgroundYOrigin+8, 'StudioKeyBlackWhite');
         this.BWItems.push(BWItem);
         BWItem = currentScene.add.image(topBackgroundXOrigin-5, topBackgroundYOrigin+9, 'LoveLetterBlackWhite');
@@ -248,6 +255,7 @@ class UINotebookManager
         this.BWItems.push(BWItem);
 
         let ColorItem;
+        this.ColorItems = [];
         ColorItem = currentScene.add.image(topBackgroundXOrigin-190, topBackgroundYOrigin+8, 'StudioKeyNB');
         ColorItem.setInteractive();
         ColorItem.on('pointerdown', ()=> this.getClueInformation('I', 0));

@@ -169,7 +169,7 @@ class DialogueManager
                 }
                 else if(nextAction == "End" || nextAction == "IntroductionEnd")  // We check if the next action is End. If it is we close the dialog.
                 {
-                    if("IntroductionEnd")
+                    if(nextAction == "IntroductionEnd")
                     {
                         globalLockdown = false;
                         currentScene.endingBlackWindow.visible = false;
@@ -201,6 +201,7 @@ class DialogueManager
                 else if(nextAction == "LoseScreen")
                 {
                     currentDialogueHUD.enableDialogueUI(false);
+                    globalLockdown = true;
                     musicManager.changeTheme('Lose');
                     currentPlayerHUD.openSpecialScreen(false, true);
                 }
@@ -208,7 +209,19 @@ class DialogueManager
                 if(nextAction == "ConfrontationEnd" || nextAction == "DiscoverCellphone"
                 || nextAction == "DiscoverStandard")
                 {
-                    let theHuman = currentDialogueHUD.currentClueTalkingTo;
+                    let theHuman;
+                    if(nextAction == "DiscoverCellphone")
+                    {
+                        theHuman = playerNotebook.humans[4];
+                    }
+                    else if(nextAction == "DiscoverStandard")
+                    {
+                        theHuman = playerNotebook.humans[2];
+                    }
+                    else
+                    {
+                        theHuman = currentDialogueHUD.currentClueTalkingTo;
+                    }                    
                     // Once we finish the confrontation we advance to the next game state and we set the has been confronted state to true
                     playerNotebook.updateGameState(GameManager.stateOfGame+1);
                     theHuman.hasBeenConfronted = true;

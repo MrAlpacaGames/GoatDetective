@@ -24,6 +24,7 @@ class UIMenuManager
 
         currentScene.load.image('StartBtn', 'assets/sprites/Menus/Start.png');
         currentScene.load.image('StartHigh', 'assets/sprites/Menus/Start2.png');
+        currentScene.load.image('ContinueBtn', 'assets/sprites/Menus/Continue.png');
         currentScene.load.image('MenuMuteBtn', 'assets/sprites/Menus/Mute.png');
         currentScene.load.image('MenuMuteHigh', 'assets/sprites/Menus/Mute2.png');
         currentScene.load.image('CreditsBtn', 'assets/sprites/Menus/Credits.png');
@@ -82,34 +83,53 @@ class UIMenuManager
         let logo = currentScene.add.image(topBackgroundXOrigin, topBackgroundYOrigin, 'Logo');
         //logo.visible = false;
         
+        // Start Btn
         let startBtn = currentScene.add.image(topBackgroundXOrigin-40, topBackgroundYOrigin+125, 'StartBtn');
         let startHigh = currentScene.add.image(topBackgroundXOrigin-40, topBackgroundYOrigin+125, 'StartHigh');
         startBtn.setInteractive();
         startBtn.on('pointerover', ()=> this.onMenuBtnInteracted(startHigh, true));
         startBtn.on('pointerdown', ()=> this.onMenuBtnInteracted(startHigh, true));
         startBtn.on('pointerup', ()=> this.onMenuBtnInteracted(startHigh, false));
+        startBtn.on('pointerout', ()=> this.onMenuBtnInteracted(startHigh, false));
         startBtn.on('pointerup', ()=> interacionManager.interactMenu("Start"));
 
         startBtn.visible = false;
         startHigh.visible = false;
 
-        let creditsBtn = currentScene.add.image(topBackgroundXOrigin-190, topBackgroundYOrigin+128, 'CreditsBtn');
-        let creditsHigh = currentScene.add.image(topBackgroundXOrigin-190, topBackgroundYOrigin+128, 'CreditsHigh');
+        // Continue Btn
+        let continueBtn = currentScene.add.image(topBackgroundXOrigin-190, topBackgroundYOrigin+128, 'ContinueBtn');
+        let continueHigh = currentScene.add.image(topBackgroundXOrigin-190, topBackgroundYOrigin+128, 'CreditsHigh');
+        continueBtn.setInteractive();
+        continueBtn.on('pointerover', ()=> this.onMenuBtnInteracted(continueHigh, true));
+        continueBtn.on('pointerdown', ()=> this.onMenuBtnInteracted(continueHigh, true));
+        continueBtn.on('pointerup', ()=> this.onMenuBtnInteracted(continueHigh, false));
+        continueBtn.on('pointerout', ()=> this.onMenuBtnInteracted(continueHigh, false));
+        continueBtn.on('pointerup', ()=> interacionManager.interactMenu("Continue"));
+
+        continueBtn.visible = false;
+        continueHigh.visible = false;
+
+        // Credits Btn
+        let creditsBtn = currentScene.add.image(topBackgroundXOrigin-300, topBackgroundYOrigin+128, 'CreditsBtn');
+        let creditsHigh = currentScene.add.image(topBackgroundXOrigin-300, topBackgroundYOrigin+128, 'CreditsHigh');
         creditsBtn.setInteractive();
         creditsBtn.on('pointerover', ()=> this.onMenuBtnInteracted(creditsHigh, true));
         creditsBtn.on('pointerdown', ()=> this.onMenuBtnInteracted(creditsHigh, true));
         creditsBtn.on('pointerup', ()=> this.onMenuBtnInteracted(creditsHigh, false));
+        creditsBtn.on('pointerout', ()=> this.onMenuBtnInteracted(creditsHigh, false));
         creditsBtn.on('pointerup', ()=> enableCredits(this.gameCredits, true));
 
         creditsBtn.visible = false;
         creditsHigh.visible = false;
 
-        let muteBtn = currentScene.add.image(topBackgroundXOrigin-280, topBackgroundYOrigin+128, 'MenuMuteBtn');
-        let muteHigh = currentScene.add.image(topBackgroundXOrigin-280, topBackgroundYOrigin+128, 'MenuMuteHigh');
+        // Mute Btn
+        let muteBtn = currentScene.add.image(topBackgroundXOrigin-375, topBackgroundYOrigin+128, 'MenuMuteBtn');
+        let muteHigh = currentScene.add.image(topBackgroundXOrigin-375.9, topBackgroundYOrigin+128, 'MenuMuteHigh');
         muteBtn.setInteractive();
         muteBtn.on('pointerover', ()=> this.onMenuBtnInteracted(muteHigh, true));
         muteBtn.on('pointerdown', ()=> this.onMenuBtnInteracted(muteHigh, true));
         muteBtn.on('pointerup', ()=> this.onMenuBtnInteracted(muteHigh, false));
+        muteBtn.on('pointerout', ()=> this.onMenuBtnInteracted(muteHigh, false));
         muteBtn.on('pointerup', ()=> interacionManager.interactMenu("Mute"));
 
         muteBtn.visible = false;
@@ -135,6 +155,7 @@ class UIMenuManager
                     {
                         musicManager.playThemeSong('Main');
                         startBtn.visible = true;
+                        continueBtn.visible = true;
                         creditsBtn.visible = true;
                         muteBtn.visible = true;
 
