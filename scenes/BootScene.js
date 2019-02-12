@@ -10,7 +10,7 @@ class BootScene extends Phaser.Scene
     preload()
     {
         currentScene = this;
-        currentScene.load.image('gameLogo', 'assets/sprites/Menus/MrAlpacaLogoX.png');
+        currentScene.load.image('gameLogo', 'assets/sprites/Menus/MrAlpacaLogo.png');
         currentScene.load.image('Fondo', 'assets/sprites/Menus/Fondo.png');
         currentScene.load.image('Loading', 'assets/sprites/Menus/Loading.png');
     }
@@ -27,7 +27,7 @@ class BootScene extends Phaser.Scene
         let alpacaLogo = this.add.image(topBackgroundXOrigin, topBackgroundYOrigin, 'gameLogo');
         alpacaLogo.setScale(0.4);
 
-        this.time.delayedCall(500, this.changeScene, [], this);
+        this.time.delayedCall(2200, this.changeScene, [], this);
     }
 
     changeScene()
