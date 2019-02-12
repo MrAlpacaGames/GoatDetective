@@ -69,7 +69,7 @@ class SpriteManagement
                 currentScene.load.image('Recorder', 'assets/sprites/Scenarios/Studio/soundDesk.png');
                 break;  
                 case 'DressroomScene':
-                currentScene.load.image('dressroom', 'assets/sprites/Scenarios/Dressroom/Dressroom.png');
+                currentScene.load.image('dressroom', 'assets/sprites/Scenarios/Dressroom/DressroomX.png');
                 currentScene.load.image('dressToHall', 'assets/sprites/Scenarios/Dressroom/dressroomIndoor.png');
                 currentScene.load.image('Key', 'assets/sprites/Items/MagicKey.png');
                 currentScene.load.image('Drawer', 'assets/sprites/Scenarios/Dressroom/drawer.png');
