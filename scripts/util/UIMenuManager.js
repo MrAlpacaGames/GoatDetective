@@ -17,14 +17,15 @@ class UIMenuManager
         currentScene.load.image('Loading', 'assets/sprites/Menus/Loading.png');
         currentScene.load.image('GoatMenu', 'assets/sprites/Menus/GoatMenu.png');
         currentScene.load.image('Fondo2', 'assets/sprites/Menus/Fondo2.png');
-        currentScene.load.image('Logo', 'assets/sprites/Menus/Logo.png');
-        currentScene.load.image('GameCredits', 'assets/sprites/Menus/GameCredits.png');
+        currentScene.load.image('Logo', 'assets/sprites/Menus/GoatLogo.png');
+        currentScene.load.image('GameCredits', 'assets/sprites/Menus/GamuCreditso.png');
 
         currentScene.load.image('FirstStart', 'assets/sprites/Menus/Play.png');
 
         currentScene.load.image('StartBtn', 'assets/sprites/Menus/Start.png');
         currentScene.load.image('StartHigh', 'assets/sprites/Menus/Start2.png');
         currentScene.load.image('ContinueBtn', 'assets/sprites/Menus/Continue.png');
+        currentScene.load.image('ContinueHigh', 'assets/sprites/Menus/Continue2.png');
         currentScene.load.image('MenuMuteBtn', 'assets/sprites/Menus/Mute.png');
         currentScene.load.image('MenuMuteHigh', 'assets/sprites/Menus/Mute2.png');
         currentScene.load.image('CreditsBtn', 'assets/sprites/Menus/Credits.png');
@@ -83,7 +84,7 @@ class UIMenuManager
 
         // Continue Btn
         let continueBtn = currentScene.add.image(topBackgroundXOrigin-190, topBackgroundYOrigin+128, 'ContinueBtn');
-        let continueHigh = currentScene.add.image(topBackgroundXOrigin-190, topBackgroundYOrigin+128, 'CreditsHigh');
+        let continueHigh = currentScene.add.image(topBackgroundXOrigin-190, topBackgroundYOrigin+128, 'ContinueHigh');
         continueBtn.setInteractive();
         continueBtn.on('pointerover', ()=> this.onMenuBtnInteracted(continueHigh, true));
         continueBtn.on('pointerdown', ()=> this.onMenuBtnInteracted(continueHigh, true));

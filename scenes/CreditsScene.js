@@ -14,7 +14,7 @@ class CreditsScene extends Phaser.Scene
     preload()
     {
         currentScene = this;
-        currentScene.load.image('GameCredits', 'assets/sprites/Menus/GameCredits.png');
+        currentScene.load.image('GameCredits', 'assets/sprites/Menus/GamuCreditso.png');
     }
 
     create()
