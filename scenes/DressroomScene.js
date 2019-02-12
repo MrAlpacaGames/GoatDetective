@@ -35,7 +35,7 @@ class DressroomScene extends Phaser.Scene
         spriteManager.preloadEnvironment();
         this.playerHUD.preload();
         this.dialogueHUD.preloadDialogue();
-
+        musicManager.preloadMusic();
 
         if(hasStartedGame == false)
         {
@@ -46,6 +46,7 @@ class DressroomScene extends Phaser.Scene
 
     create()
     {      
+        musicManager.createThemes();
         spriteManager.createEnvironment('dressroom', topBackgroundXOrigin+ 763, topBackgroundYOrigin - 2, 0.72);
         
         this.cameras.main.setBounds(0, 0, gameConfig.width * 2.59, gameConfig.height);

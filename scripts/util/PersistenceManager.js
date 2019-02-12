@@ -97,14 +97,5 @@ class PersistenceManager
 
         // I. We need to set the notebook in its new state
         playerNotebook.loadNotebook(this.savedState);
-
-        // III. We restart all the theme songs available
-        //musicManager.restartAllMusic();
-    }
-
-    retry()
-    {
-        currentScene.scene.start('HallScene');
-        musicManager.playThemeSong('Main');
     }
 }

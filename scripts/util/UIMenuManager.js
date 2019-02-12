@@ -54,26 +54,11 @@ class UIMenuManager
             firstBtn.destroy();
         });
         firstBtn.on('pointerup', () => this.startMainMenu());
-        
-        
-        firstBtn.on('pointerdown', ()=> this.toFullScreen());
     }
 
-    toFullScreen()
-    {
-        //openFullScreen();
-        //theGame.scale.fullScreenScaleMode = Phaser.ScaleManager.NO_SCALE;
-        /** 
-        let canvas = currentScene.sys.game.canvas;
-        let fullscreen = currentScene.sys.game.device.fullscreen;
-        if(!fullscreen.available)
-        {
-            return;
-        }
-        canvas[fullscreen.request]();
-        */
-    }
-
+    /**
+     * Starts the Main Menu Animation
+     */
     startMainMenu()
     {
         let gameCredits;

@@ -16,6 +16,8 @@ class MainMenu extends Phaser.Scene
     {
         // We assign the current scene to the main menu
         currentScene = this;
+        loadingScreen.createLoadingScreen();
+
         // We preload the images required for the menu
         menuSpriteManager.preloadMenu();  
         
@@ -30,6 +32,9 @@ class MainMenu extends Phaser.Scene
 
     create()
     {
+        this.time.delayedCall(150, function(){
+            globalLockdown = false;
+        }, [], this);
         musicManager.createThemes();
         sfxManager.createSFX();
 

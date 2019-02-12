@@ -34,9 +34,7 @@ class MusicManager
 
             // Lose Theme
             currentScene.load.audio('LoseLoop','assets/audio/music/LoseTheme.mp3');
-            // Win Theme
-            currentScene.load.audio('WinIntro','assets/audio/music/WinIntro.mp3');
-            currentScene.load.audio('WinLoop','assets/audio/music/WinLoop.mp3');
+
             // Exploring Theme
             currentScene.load.audio('ExploringLoop','assets/audio/music/Exploring.mp3');
         }
@@ -46,11 +44,7 @@ class MusicManager
             currentScene.load.audio('NotebookLoop','assets/audio/music/Pensativo.mp3');
             // KStar Theme
             currentScene.load.audio('KStarIntro','assets/audio/music/KStarIntro.mp3');
-            currentScene.load.audio('KStarLoop','assets/audio/music/KStarLoop.mp3');
-
-            // Confront Theme
-            currentScene.load.audio('ConfrontIntro','assets/audio/music/ConfrontIntro.mp3');
-            currentScene.load.audio('ConfrontLoop','assets/audio/music/ConfrontLoop.mp3');
+            currentScene.load.audio('KStarLoop','assets/audio/music/KStarLoop.mp3');            
 
             // Accusation Theme
             currentScene.load.audio('AccusationIntro','assets/audio/music/AccusationIntro.mp3');
@@ -61,6 +55,10 @@ class MusicManager
         }
         else if(currentScene.scene.key == 'OfficeScene')
         {
+            // Confront Theme
+            currentScene.load.audio('ConfrontIntro','assets/audio/music/ConfrontIntro.mp3');
+            currentScene.load.audio('ConfrontLoop','assets/audio/music/ConfrontLoop.mp3');
+
             // Assattari Theme
             currentScene.load.audio('LionessIntro','assets/audio/music/LionessEyesIntro.mp3');
             currentScene.load.audio('LionessLoop','assets/audio/music/LionessEyesLoop.mp3');
@@ -70,6 +68,12 @@ class MusicManager
             // Assattari Theme
             currentScene.load.audio('BiggestFanIntro','assets/audio/music/BiggestFanIntro.mp3');
             currentScene.load.audio('BiggestFanLoop','assets/audio/music/BiggestFanLoop.mp3');
+        }
+        else if(currentScene.scene.key == 'DressroomScene')
+        {
+            // Win Theme
+            currentScene.load.audio('WinIntro','assets/audio/music/WinIntro.mp3');
+            currentScene.load.audio('WinLoop','assets/audio/music/WinLoop.mp3');
         }
     }
 
@@ -95,13 +99,6 @@ class MusicManager
                 newLoop.volume = 0.8;
                 newLoop.loop = true;
                 this.themes.add('Lose', [undefined, newLoop]);
-
-                newIntro = this.createTheme('WinIntro');
-                newIntro.volume = 0.8;
-                newLoop = this.createTheme('WinLoop');
-                newLoop.volume = 0.8;
-                newLoop.loop = true;
-                this.themes.add('Win', [newIntro, newLoop]);
                 
                 newLoop = this.createTheme('ExploringLoop');
                 newLoop.volume = 0.8;
@@ -120,13 +117,6 @@ class MusicManager
                 newLoop.loop = true;
                 this.themes.add('KStar', [newIntro, newLoop]);
 
-                newIntro = this.createTheme('ConfrontIntro');
-                newIntro.volume = 0;
-                newLoop = this.createTheme('ConfrontLoop');
-                newLoop.volume = 0.8;
-                newLoop.loop = true;
-                this.themes.add('Confront', [newIntro, newLoop]);
-
                 newIntro = this.createTheme('AccusationIntro');
                 newIntro.volume = 0;
                 newLoop = this.createTheme('AccusationLoop');
@@ -140,6 +130,13 @@ class MusicManager
                 this.themes.add('Epilogue', [undefined, newLoop]);
             break;
             case "OfficeScene":
+                newIntro = this.createTheme('ConfrontIntro');
+                newIntro.volume = 0;
+                newLoop = this.createTheme('ConfrontLoop');
+                newLoop.volume = 0.8;
+                newLoop.loop = true;
+                this.themes.add('Confront', [newIntro, newLoop]);
+
                 newIntro = this.createTheme('LionessIntro');
                 newIntro.volume = 0;
                 newLoop = this.createTheme('LionessLoop');
@@ -154,6 +151,14 @@ class MusicManager
                 newLoop.volume = 0.8;
                 newLoop.loop = true;
                 this.themes.add('BiggestFan', [newIntro, newLoop]);
+            break;
+            case "DressroomScene":
+                newIntro = this.createTheme('WinIntro');
+                newIntro.volume = 0.8;
+                newLoop = this.createTheme('WinLoop');
+                newLoop.volume = 0.8;
+                newLoop.loop = true;
+                this.themes.add('Win', [newIntro, newLoop]);
             break;
         }
     }
