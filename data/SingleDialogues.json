@@ -68,7 +68,7 @@
                 "GOATMAN PETERSON|||Oh my, dear Park! Who would have done this to you∼?",
                 "GOATMAN PETERSON|||It appears you have quite a deep gash on the head.",
                 "GOATMAN PETERSON|||Was it from the fall? Hmmm...",
-                "GOATMAN PETERSON|||Although it’s minor, there seems to be a small sting in your chest.",
+                "GOATMAN PETERSON|||Although it’s minor, there seems to be a small sting on your chest.",
                 "GOATMAN PETERSON|||...And what’s this smell...? It’s as if you were drenched in something... Hmm..."
             ],
             "Next": "DiscoverEnd"
@@ -84,7 +84,7 @@
                 "GOATMAN PETERSON|||...Is this what human metamorphosis looks like∼?",
                 "GOATMAN PETERSON|||It appears you have quite a deep gash on the head.",
                 "GOATMAN PETERSON|||Was it from the fall? Hmmm...",
-                "GOATMAN PETERSON|||Although it’s minor, the sting in your chest has become purple.",
+                "GOATMAN PETERSON|||Although it’s minor, the sting on your chest has become purple.",
                 "GOATMAN PETERSON|||...Could this be poison? ...And what’s this smell...?",
                 "GOATMAN PETERSON|||It’s as if you were drenched in something... Hmm..."
             ],
@@ -605,7 +605,7 @@
                 "ASSATTARI TARI|||Oh, so she told you about us...",
                 "ASSATTARI TARI|||I wouldn’t trust a prowler like her at all.",
                 "ASSATTARI TARI|||A murderer can send disturbing letters.",
-                "ASSATTARI TARI|||...Would she already have erased the evidence?"
+                "ASSATTARI TARI|||...Could she already have erased the evidence?"
             ],
             "Next": "Multiple"
         }
@@ -1756,7 +1756,7 @@
             "GameState": 0,
             "Texts":
             [
-                "GOATMAN PETERSON|||It seems to be the longest puddle in existance...",
+                "GOATMAN PETERSON|||It seems to be the longest puddle in existence...",
                 "GOATMAN PETERSON|||Curious complexion and density... ",
                 "GOATMAN PETERSON|||...",
                 "GOATMAN PETERSON|||Fascinating taste...!",
@@ -1915,7 +1915,7 @@
                 "GOATMAN PETERSON|||Did you, or did you not, throw the Diamondo Chicken at Park, Miss Assattari?",
                 "ASSATTARI TARI|||What are you talking about?",
                 "ASSATTARI TARI|||Like I had previously said, I dropped it.",
-                "GOATMAN PETERSON|||I, the great Goatman Detective! The one and only, the best int the world, I ∼!",
+                "GOATMAN PETERSON|||I, the great Goatman Detective! The one and only, the best in the world, I ∼!",
                 "GOATMAN PETERSON|||—Ahem.",
                 "GOATMAN PETERSON|||Tasted blood on the very statue you possess, you see.",
                 "GOATMAN PETERSON|||...But it doesn’t end there, no!",
@@ -1985,7 +1985,7 @@
                 "GOATMAN PETERSON|||Is your scent not in the letter, lowly human?",
                 "RURU SPARK|||Of course∼",
                 "RURU SPARK|||How else would Park remember Ruru, ugly goat?!",
-                "GOATMAN PETERSON|||...Then, human, why is your scent in this Slippery Puddle?! ",
+                "GOATMAN PETERSON|||...Then, human, why is your scent in this Sweaty Puddle?! ",
                 "RURU SPARK|||...!",
                 "RURU SPARK|||T-That...!",
                 "RURU SPARK|||That isn’t Ruru’s...!",

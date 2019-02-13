@@ -64,7 +64,7 @@ class UIMenuManager
     {
         // We check if the player is on mobile and open fullscreen
         let os = theGame.device.os;
-        if(!os.desktop && !os.macOS)
+        if(os.android || os.iOS || os.iPad || os.iPhone || os.windowsPhone)
         {
             openFullScreen();
         }

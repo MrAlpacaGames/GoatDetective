@@ -387,7 +387,7 @@ class UINotebookManager
                 colorArray = this.ColorWeapons;
                 BWArray = this.BWWeapons;
                 if(NewValue == true) this.setTitle("WEAPONS");
-                if(NewValue == true) this.setText("Here are the details of all the possible weapons that could have been used to killed Park.");
+                if(NewValue == true) this.setText("Here are the details of all the possible weapons that could have been used to kill Park.");
             break;
             case "I":
                 // We set the value for the items window
@@ -395,7 +395,7 @@ class UINotebookManager
                 colorArray = this.ColorItems;
                 BWArray = this.BWItems;
                 if(NewValue == true) this.setTitle("ITEMS");
-                if(NewValue == true) this.setText("Here are the details of all the possible items");
+                if(NewValue == true) this.setText("Here are the details of all the items");
             break;
         }
 
