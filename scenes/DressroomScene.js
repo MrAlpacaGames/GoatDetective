@@ -65,15 +65,15 @@ class DressroomScene extends Phaser.Scene
         }
 
         // Jung Drawer
-        let drawer = spriteManager.createDrawer('JungDrawer', 'Drawer', topBackgroundXOrigin+373.5, topBackgroundYOrigin+98, 0.63);
+        let drawer = spriteManager.createDrawer('JungDrawer', 'Drawer', topBackgroundXOrigin+373.5, topBackgroundYOrigin+102, 0.63);
         drawer.setScale(0.72, 0.64);
 
         // Park Drawer
-        drawer = spriteManager.createDrawer('ParkDrawer', 'Drawer', topBackgroundXOrigin+784.5, topBackgroundYOrigin+98, 0.63);
+        drawer = spriteManager.createDrawer('ParkDrawer', 'Drawer', topBackgroundXOrigin+784.5, topBackgroundYOrigin+102, 0.63);
         drawer.setScale(0.72, 0.64);
 
         // Lee Drawer
-        drawer = spriteManager.createDrawer('LeeDrawer', 'Drawer', topBackgroundXOrigin+1189, topBackgroundYOrigin+98, 0.63);
+        drawer = spriteManager.createDrawer('LeeDrawer', 'Drawer', topBackgroundXOrigin+1189, topBackgroundYOrigin+102, 0.63);
         drawer.setScale(0.72, 0.64);
 
         // Characters

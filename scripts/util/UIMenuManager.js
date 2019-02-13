@@ -62,6 +62,13 @@ class UIMenuManager
      */
     startMainMenu()
     {
+        // We check if the player is on mobile and open fullscreen
+        let os = theGame.device.os;
+        if(!os.desktop && !os.macOS)
+        {
+            openFullScreen();
+        }
+        
         let gameCredits;
         let goat = currentScene.add.image(-100, topBackgroundYOrigin+35, 'GoatMenu');
         let fondo2 = currentScene.add.image(topBackgroundXOrigin, topBackgroundYOrigin, 'Fondo2');

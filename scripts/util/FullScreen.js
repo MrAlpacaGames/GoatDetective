@@ -17,6 +17,8 @@ class FullScreen
     {        
         let browser = theGame.device.browser;
         let os = theGame.device.os;
+        //window.alert("Is Mac: "+os.macOS + " - Is iOS: "+os.iOS + " - Is iPhone: "+os.iPhone + " - Is desktop: "+os.desktop +" - Is Android: "+os.android);   
+        
         if(!browser.firefox && !browser.mobileSafari)
         {
             let fullBtn = currentScene.add.image(topBackgroundXOrigin+440, topBackgroundYOrigin-230, 'FullScreen');
