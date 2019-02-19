@@ -2,7 +2,8 @@
 
 AddType font/ttf .ttf
 AddType font/eot .eot
-AddType font/otf .otf
+AddType Asap-Regular/otf .otf
+AddType Asap-Bold/otf .otf
 AddType font/woff .woff
 
 <FilesMatch "\.(ttf|otf|eot|woff)$">
