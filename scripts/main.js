@@ -26,15 +26,7 @@ const gameConfig =
 // System Variables
 //--------------------------------------------
 // Local storage where we keep the state of the game
-var theStorageBaby;
-try
-{
-    theStorageBaby = window.localStorage;
-}
-catch(err)
-{
-    theStorageBaby = undefined;
-}
+var theStorageBaby = window.localStorage;
 
 //---------------------------------------------
 // Game Variables
