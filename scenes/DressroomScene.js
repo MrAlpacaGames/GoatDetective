@@ -53,7 +53,7 @@ class DressroomScene extends Phaser.Scene
         this.physics.world.setBounds(280, 0, gameConfig.width * 1.8, gameConfig.height -22 );        
         
         // Environment
-        let hallDoor = spriteManager.createEnvironment('dressToHall', 247, topBackgroundYOrigin+85, 0.72);
+        let hallDoor = spriteManager.createEnvironment('dressToHall', 250, topBackgroundYOrigin+88, 0.72);
 
         // Items Creation
         this.studioKey = spriteManager.createItem('Key', topBackgroundXOrigin+600, topBackgroundYOrigin+55, 0.35);
