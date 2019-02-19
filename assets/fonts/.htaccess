@@ -1,8 +1,9 @@
 # BEGIN REQUIRED FOR WEBFONTS
 
-AddType fonts/Asap-Regular.otf
-AddType fonts/Asap-Bold.otf
-
+AddType font/ttf .ttf
+AddType font/eot .eot
+AddType font/otf .otf
+AddType font/woff .woff
 
 <FilesMatch "\.(ttf|otf|eot|woff)$">
     <IfModule mod_headers.c>
