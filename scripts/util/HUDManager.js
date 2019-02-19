@@ -86,14 +86,14 @@ class HUDManager
          this.assignBehaviour(this.gameOverScreen, "GameOver");
 
          this.retryButton = currentScene.add.text(topBackgroundXOrigin-80, topBackgroundYOrigin+77, "RETRY", 
-         { fontFamily: 'Asap', fontSize: 23 , color: '#f9e26e', align: 'center',
+         { fontFamily: regularFontName, fontSize: 23 , color: '#f9e26e', align: 'center',
          wordWrap: {width: 200},
          wordWrapUseAdvanced: true
          });
          this.assignBehaviour(this.retryButton, "Retry");
 
          this.titleScreen = currentScene.add.text(topBackgroundXOrigin+35, topBackgroundYOrigin+77, "TITLE SCREEN", 
-         { fontFamily: 'Asap', fontSize: 23 , color: '#f9e26e', align: 'center',
+         { fontFamily: regularFontName, fontSize: 23 , color: '#f9e26e', align: 'center',
          wordWrap: {width: 200},
          wordWrapUseAdvanced: true
          });

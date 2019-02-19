@@ -184,14 +184,14 @@ class DialogueHUD
     this.singleDialogueBackground = currentScene.physics.add.staticSprite(500, 100, 'SDialogBack');
     this.singleDialogueBackground.scrollFactorX = 0;
 
-    this.characterName = currentScene.add.text(140, 60, "", { fontFamily: 'Asap-Bold', fontSize: 20 , color: '#f9e26e', align: 'right',
+    this.characterName = currentScene.add.text(140, 60, "", { fontFamily: boldFontName, fontSize: 20 , color: '#f9e26e', align: 'right',
     wordWrap: {width: 110},
     wordWrapUseAdvanced: true
     });
     this.characterName.scrollFactorX = 0;
 
     // We create the static text
-    this.dialogueText = currentScene.add.text(300, 45, "", { fontFamily: 'Asap', fontSize: 25 , color: '#f9e26e', align: 'left',
+    this.dialogueText = currentScene.add.text(300, 45, "", { fontFamily: regularFontName, fontSize: 25 , color: '#f9e26e', align: 'left',
     wordWrap: {width: 530},
     wordWrapUseAdvanced: true
     });
@@ -362,7 +362,7 @@ class DialogueHUD
    */
   createTextOption(array, xPosition, yPosition, optionName)
   {
-    let xOption = currentScene.add.text(xPosition, yPosition, optionName, { fontFamily: 'Asap-Bold', fontSize: 20 , color: '#f9e26e', align: 'center',
+    let xOption = currentScene.add.text(xPosition, yPosition, optionName, { fontFamily: boldFontName, fontSize: 20 , color: '#f9e26e', align: 'center',
     wordWrap: {width: 110},
     wordWrapUseAdvanced: true
     });

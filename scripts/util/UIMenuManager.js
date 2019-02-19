@@ -55,6 +55,13 @@ class UIMenuManager
             firstBtn.destroy();
         });
         firstBtn.on('pointerup', () => this.startMainMenu());
+
+        // We set the fonts according to the browser
+        if(theGame.device.browser.firefox)
+        {
+            boldFontName = 'Asap-Regular';
+            regularFontName = 'Asap-Regular';
+        }
     }
 
     /**

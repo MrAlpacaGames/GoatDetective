@@ -134,6 +134,10 @@ var soundContextResumed = false;
 
 var fullScreenPower = new FullScreen();
 
+let boldFontName = 'Asap-Bold';
+
+let regularFontName = 'Asap';
+
 
 //-----------------------------------
 // Functions

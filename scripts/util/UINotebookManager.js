@@ -219,13 +219,13 @@ class UINotebookManager
         // Text Title of the Note
         // Text Dialogue
         this.noteTitle = currentScene.add.text(topBackgroundXOrigin+130, topBackgroundYOrigin-140, "", 
-        { fontFamily: 'Asap-Bold', fontSize: 25 , color: '#474747', align: 'left',
+        { fontFamily: boldFontName, fontSize: 25 , color: '#474747', align: 'left',
         wordWrap: {width: 280},
         wordWrapUseAdvanced: true
         });
         // Text of the Notes
         this.noteBookText = currentScene.add.text(topBackgroundXOrigin+130, topBackgroundYOrigin-100, "", 
-        { fontFamily: 'Asap', fontSize: 21 , color: '#474747', align: 'left',
+        { fontFamily: regularFontName, fontSize: 21 , color: '#474747', align: 'left',
         wordWrap: {width: 340},
         wordWrapUseAdvanced: true
         });
