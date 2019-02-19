@@ -59,8 +59,10 @@ class HallScene extends Phaser.Scene
         sfxManager.createSFX();
 
         /** This creates a hidden text that will enable the new Font*/
-        this.add.text(0, 0, 'Hero Mon', 
-        { fontFamily: 'Ailerons', fontSize: 80 , color: '#f3e307', align: 'left'});
+        this.add.text(0, 0, '', 
+        { fontFamily: 'Asap-Bold', fontSize: 80 , color: '#f3e307', align: 'left'});
+        this.add.text(0, 0, '', 
+        { fontFamily: 'Asap', fontSize: 80 , color: '#f3e307', align: 'left'});
 
         spriteManager.createEnvironment('hall', topBackgroundXOrigin+ 815, topBackgroundYOrigin - 2, 0.72);
         

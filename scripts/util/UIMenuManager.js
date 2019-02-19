@@ -62,6 +62,11 @@ class UIMenuManager
             boldFontName = 'Asap-Regular';
             regularFontName = 'Asap-Regular';
         }
+        else
+        {
+            boldFontName = 'Asap-Bold';
+            regularFontName = 'Asap';
+        }
     }
 
     /**

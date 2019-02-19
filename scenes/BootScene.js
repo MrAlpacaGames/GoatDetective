@@ -18,7 +18,9 @@ class BootScene extends Phaser.Scene
     create()
     {
         this.add.text(0, 0, '', 
-        { fontFamily: 'Ailerons', fontSize: 80 , color: '#f3e307', align: 'left'});
+        { fontFamily: 'Asap', fontSize: 80 , color: '#f3e307', align: 'left'});
+        this.add.text(0, 0, '', 
+        { fontFamily: 'Asap-Bold', fontSize: 80 , color: '#f3e307', align: 'left'});
 
         var progressBar = currentScene.add.graphics();
         progressBar.fillStyle(0xFC1F4E, 1);

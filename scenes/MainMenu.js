@@ -22,7 +22,9 @@ class MainMenu extends Phaser.Scene
         menuSpriteManager.preloadMenu();  
         
         this.add.text(0, 0, '', 
-        { fontFamily: 'Ailerons', fontSize: 80 , color: '#f3e307', align: 'left'});
+        { fontFamily: 'Asap', fontSize: 80 , color: '#f3e307', align: 'left'});
+        this.add.text(0, 0, '', 
+        { fontFamily: 'Asap-Bold', fontSize: 80 , color: '#f3e307', align: 'left'});
        
         musicManager.preloadMusic();
         sfxManager.preloadSFX();

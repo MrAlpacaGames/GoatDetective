@@ -165,7 +165,7 @@ function createButton(scene, name, imageID, posX, posY, scaleX, scaleY, textX, t
     {
         // Button Text
         scene.add.text(posX-textX, posY-textY, name, 
-            { fontFamily: 'Ailerons', fontSize: 36 , color: '#000000', align: 'center'});
+            { fontFamily: 'Asap-Bold', fontSize: 36 , color: '#000000', align: 'center'});
     }
     
     assignButtonBehaviour(scene, btn, toggleBtn, name);        
