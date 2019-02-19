@@ -6,10 +6,9 @@
             "Notes":
             [
                 "A mysterious slime found on the stairs of the main hall.",
-                "The source seems to come from Assattari's office door.",
-                "Peculiar smell, delicious taste.",
-                "Park slipped on it apparently.\n",
-                "Could this be a murder weapon...?"
+                "The source seems to come from the Manager's office.",
+                "Peculiar smell, delicious taste.\n",
+                "Can this be a murder weapon...?"
             ]
         },
         {
@@ -37,13 +36,13 @@
             "Notes":
             [
                 "A recording of a conversation between Park & Lee:",
-                "- Lee: 'I-It will be fun...!'",
-                "- Park: 'You know I don't like wearing jewerly..'",
+                "- Lee: 'I-It will be fun...! '",
+                "- Park: 'You know I don't like wearing jewelry...'",
                 "- Lee: 'It's to c-celebrate today's event.'",
                 "- Park: 'Still, I don't see the point on wearing it the whole day.'",
-                "- Lee: '...If Jung sees you wear it, he will be pissed.'",
+                "- Lee: '...If Jung sees you wear it, he will be pissed. '",
                 "- Park: '... Really? Haha! If that's the case let's do it!'",
-                "- Lee: 'Remember... Don't take it off.'"
+                "- Lee: 'Remember to wear it… the whole day.'"
             ]
         },
         {
@@ -51,7 +50,7 @@
             "Notes":
             [
                 "Park's cellphone with a selfie.\nHe seems to be wearing a Pin on his jacket.",
-                "The Pin’s position matches the puncture in his chest..."
+                "The Pin’s position matches the puncture on his chest..."
             ]
         },
         {
@@ -80,7 +79,7 @@
             "ClueName": "Studio Key",
             "Notes":
             [
-                "Magnificent key for the Recording Studio Room."
+                "A magnificent key to open up the Record Studio door."
             ]
         },
 
@@ -100,10 +99,9 @@
             "ClueName": "Hall",
             "Notes":
             [
-                "The main hall of the studio.\n",
-                "Park's body was found here.",
-                "It is a pretty elegant place filled with lots of stuff of the band, Trophies & Posters.",
-                "Park appears to have died here."
+                "The Main Hall of the Studio.\n",
+                "Park’s body was found here, and perhaps, this is where he died.",
+                "It seems to be a place where theIt seems to be a place where the band’s greatest achievements are exhibited."
             ]
         },
         {
@@ -119,7 +117,7 @@
             "ClueName": "Studio",
             "Notes":
             [
-                "The record studio.\n",
+                "The Record Studio.\n",
                 "...Why was this place locked?",
                 "Looks nice though, a strange scent lingers.",
                 "Where have I smelled it before, I wonder...?"
@@ -146,7 +144,7 @@
             "ClueName": "Assattari",
             "Notes":
             [
-                "- Orderly and rational, clearly the adult of the group.",
+                "- A beautiful human female. She seems to be level headeded.",
                 "- An office affair with Park, quite unexpected∼ Violent when enraged.",
                 "- Became nostalgic... and regretful?",
                 "- Still thinks about Park. She’s awfully calm...",
@@ -157,7 +155,7 @@
             "ClueName": "Ruru",
             "Notes":
             [
-                "- Curious little girl... A tad eerie when angered.",
+                "- Curious little girl… A tad eerie somehow.",
                 "- Strong animosity towards Assatari. No wonder...",
                 "- She’s petrified with shock. Serves her right...!",
                 "- Is she regaining composture?",

@@ -55,7 +55,7 @@ class Notebook
         standardPin.noteBookID = "Standard Pin";
 
         let poisonedPin = new Clue('Poisoned', "Weapons", 3);
-        poisonedPin.fullName = "POISONED PIN";
+        poisonedPin.fullName = "IDENTICAL PIN";
         poisonedPin.noteBookID = "Poisoned Pin";
         poisonedPin.addInitialDialogues(["GoatmanPoisoned1xUN"]);
 
@@ -77,7 +77,7 @@ class Notebook
 
 
         let recorder = new Clue('Recorder', "Items", 2);
-        recorder.fullName = "STUDIO RECORD";
+        recorder.fullName = "STUDIO RECORDING";
         recorder.noteBookID = "Studio Recorder";
         recorder.addInitialDialogues(["GoatmanRecorder1xUN"]);
 

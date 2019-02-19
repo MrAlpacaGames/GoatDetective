@@ -371,7 +371,7 @@ class UINotebookManager
                 colorArray = this.ColorHumans;
                 BWArray = this.BWHumans;
                 if(NewValue == true) this.setTitle("HUMANS");
-                if(NewValue == true) this.setText("Here are the details of everyone involved in Park's death.");
+                if(NewValue == true) this.setText("This is where I, Goatman, keep the relevant information about humans related to the case.");
             break; 
             case "P":
                 // We set the value for the places window
@@ -379,7 +379,7 @@ class UINotebookManager
                 colorArray = this.ColorPlaces;
                 BWArray = this.BWPlaces;
                 if(NewValue == true) this.setTitle("PLACES");
-                if(NewValue == true) this.setText("Here are the details of all the possible places where Park could have been killed.");
+                if(NewValue == true) this.setText("These are the rooms in --- Studio Building. I may find some clues hidden inside.");
             break;  
             case "W":
                 // We set the value for the weapons window
@@ -387,7 +387,7 @@ class UINotebookManager
                 colorArray = this.ColorWeapons;
                 BWArray = this.BWWeapons;
                 if(NewValue == true) this.setTitle("WEAPONS");
-                if(NewValue == true) this.setText("Here are the details of all the possible weapons that could have been used to kill Park.");
+                if(NewValue == true) this.setText("These are the possible murder weapons I have found to date.");
             break;
             case "I":
                 // We set the value for the items window
@@ -395,7 +395,7 @@ class UINotebookManager
                 colorArray = this.ColorItems;
                 BWArray = this.BWItems;
                 if(NewValue == true) this.setTitle("ITEMS");
-                if(NewValue == true) this.setText("Here are the details of all the items");
+                if(NewValue == true) this.setText("Details of items involved in the case are written here.");
             break;
         }
 
