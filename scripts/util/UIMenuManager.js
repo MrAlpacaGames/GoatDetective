@@ -59,8 +59,8 @@ class UIMenuManager
         // We set the fonts according to the browser
         if(theGame.device.browser.firefox)
         {
-            boldFontName = 'Asap-Regular';
-            regularFontName = 'Asap-Regular';
+            boldFontName = 'Asap-Bold';
+            regularFontName = 'Asap';
         }
         else
         {
