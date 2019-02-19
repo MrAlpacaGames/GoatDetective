@@ -46,9 +46,12 @@ class PersistenceManager
      */
     getSavedState()
     {
-        let answer = localStorage.getItem('GoatGameState');
-        if(answer == undefined) answer = 0;
-        return answer;
+        if(theStorageBaby != undefined)
+        {
+            let answer = localStorage.getItem('GoatGameState');
+            if(answer == undefined) answer = 0;
+            return answer;
+        }
     }
 
     /**
@@ -56,9 +59,11 @@ class PersistenceManager
      */
     updateSaveState(newState)
     {
-        this.savedState = newState;
-        localStorage.setItem('GoatGameState', newState);
-        console.log("Game State Changed. New State is: "+localStorage.getItem('GoatGameState'));
+        if(theStorageBaby != undefined)
+        {
+            this.savedState = newState;
+            localStorage.setItem('GoatGameState', newState);
+        }
     }
 
     /**
@@ -66,7 +71,10 @@ class PersistenceManager
      */
     clearGameState()
     {
-        localStorage.clear();
+        if(theStorageBaby != undefined)
+        {
+            localStorage.clear();
+        }
     }
     
     /**
