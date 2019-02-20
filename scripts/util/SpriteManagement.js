@@ -53,19 +53,19 @@ class SpriteManagement
         {
             case 'HallScene':
                 currentScene.load.image('hall', 'assets/sprites/Scenarios/Hall/theHalldo.png');
-                currentScene.load.image('studioDoor', 'assets/sprites/Scenarios/Hall/studio_doorsX.png');
-                currentScene.load.image('dressromDoor', 'assets/sprites/Scenarios/Hall/dressroom_doorsX.png');
+                currentScene.load.image('studioDoor', 'assets/sprites/Scenarios/Hall/Hall_studioDoor.png');
+                currentScene.load.image('dressromDoor', 'assets/sprites/Scenarios/Hall/Hall_dressroomDoor.png');
                 currentScene.load.image('officeDoor', 'assets/sprites/Scenarios/Hall/HallStairs.png');
                 currentScene.load.image('Puddle', 'assets/sprites/Items/Puddle.png');
             break;
             case 'OfficeScene':
                 currentScene.load.image('office', 'assets/sprites/Scenarios/Office/Office.png');
-                currentScene.load.image('offToHall', 'assets/sprites/Scenarios/Office/officeDoor.png');
+                currentScene.load.image('offToHall', 'assets/sprites/Scenarios/Office/officeinDoor.png');
                 currentScene.load.image('Chicken', 'assets/sprites/Items/ChickenDiamondo.png');
             break;
             case 'StudioScene':
                 currentScene.load.image('studio', 'assets/sprites/Scenarios/Studio/Record.png');
-                currentScene.load.image('studioToHall', 'assets/sprites/Scenarios/Studio/record_door.png');
+                currentScene.load.image('studioToHall', 'assets/sprites/Scenarios/Studio/record_inDoor.png');
                 currentScene.load.image('Recorder', 'assets/sprites/Scenarios/Studio/soundDesk.png');
                 break;  
                 case 'DressroomScene':
