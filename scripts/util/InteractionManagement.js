@@ -102,7 +102,7 @@ class InteractionManagement
     interactDrawer(interactionObject)
     {
         let ID;
-        if(interactionObject == "ParkDrawer" && playerNotebook.dialoguesTaken.get("SRuru1xPR") == undefined) // If it's Park Drawer we check if we have already talked with Ruru
+        if(interactionObject == "ParkDrawer" && playerNotebook.dialoguesTaken.get("SRuru1xPR") == undefined && GameManager.stateOfGame == 2) // If it's Park Drawer we check if we have already talked with Ruru
         {
             ID = "SGoatman0xErr2";
         }
