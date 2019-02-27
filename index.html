@@ -101,15 +101,36 @@
         var windowHeight = window.innerHeight;
         var windowRatio = windowWidth / windowHeight;
         var gameRatio = theGame.config.width / theGame.config.height;
-        if(windowRatio < gameRatio){
-            canvas.style.width = windowWidth + "px";
-            canvas.style.height = (windowWidth / gameRatio) + "px";
+        if((gameRatio > 1.6 && gameRatio < 1.8) && (windowRatio > 1.7 && windowRatio < 1.8)) // The Ratios are the same, we can scale and it will fit
+        {
+            canvas.style.width = (windowWidth*0.85) + "px";
+            canvas.style.height = (windowHeight*0.85) + "px";
+            textRatio = 1;
+            //theSnitchText = "Same Ratios :D ";
         }
-        else{
-            canvas.style.width = (windowHeight * gameRatio) + "px";
-            canvas.style.height = windowHeight + "px";
+        else
+        {
+            if(windowRatio < gameRatio) // If the screen ratio is less than the Game Ratio. It means the width is less than the height
+            {
+                canvas.style.width = windowWidth + "px";
+                canvas.style.height = (windowWidth / gameRatio) + "px";
+                textRatio = 0.9;
+                //theSnitchText = "Height more than width |||";
+            }
+            else // This means that the screen of the device is higher than the game ratio In that case we reduce the height 
+            {
+                let screenPercentage = (1.777777778 / windowRatio);
+                canvas.style.width = ((windowHeight * gameRatio)*screenPercentage) + "px";
+                canvas.style.height = (windowHeight*screenPercentage) + "px";
+                textRatio = screenPercentage;
+                //theSnitchText = "Widht more than height ||| ";
+            }
+            //theSnitchText += "Width: "+canvas.style.width + " - Height: "+canvas.style.height + " && WRatio: "+windowRatio + " ::: Text Ratio: "+textRatio;
         }
-        //openFullScreen();
+        if(theGame.device.os.desktop)
+        {
+            textRatio = 1;
+        }
     }
 
     function webAudioTouchUnlock(context)

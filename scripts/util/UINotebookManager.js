@@ -220,7 +220,7 @@ class UINotebookManager
         // Text Dialogue
         this.noteTitle = currentScene.add.text(topBackgroundXOrigin+130, topBackgroundYOrigin-140, "", 
         { fontFamily: boldFontName, fontSize: 25 , color: '#474747', align: 'left',
-        wordWrap: {width: 280},
+        wordWrap: {width: 320},
         wordWrapUseAdvanced: true
         });
         // Text of the Notes

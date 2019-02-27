@@ -138,6 +138,8 @@ let boldFontName = 'Asap-Bold';
 
 let regularFontName = 'Asap';
 
+var textRatio = 1;
+
 
 //-----------------------------------
 // Functions
