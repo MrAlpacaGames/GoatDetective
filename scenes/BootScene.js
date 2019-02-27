@@ -30,7 +30,6 @@ class BootScene extends Phaser.Scene
         alpacaLogo.setScale(0.4);
 
         this.time.delayedCall(2200, this.changeScene, [], this);
-		doTheResize();
     }
 
     changeScene()
