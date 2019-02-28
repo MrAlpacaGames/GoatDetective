@@ -863,7 +863,7 @@ class DialogueHUD
         if(direction == 1)
         {
           this.accusedHumanIndex++;
-          if(this.accusedHumanIndex == this.discHIndexes.length)
+          if(this.accusedHumanIndex >= this.discHIndexes.length)
           {
             this.accusedHumanIndex = 0;
           }
@@ -885,7 +885,7 @@ class DialogueHUD
         if(direction == 1)
         {
           this.accusedWeaponIndex++;
-          if(this.accusedWeaponIndex == this.discWIndexes.length)
+          if(this.accusedWeaponIndex >= this.discWIndexes.length)
           {
             this.accusedWeaponIndex = 0;
           }
