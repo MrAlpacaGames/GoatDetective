@@ -168,7 +168,10 @@ class DialogueHUD
 
     
     currentScene.load.image('nextBtn', 'assets/sprites/HUD/Siguiente.png');
-    currentScene.load.image('ConfrontBtn', 'assets/sprites/HUD/ConfrontButton.png');
+	
+	currentScene.load.image('ConfrontBtn', 'assets/sprites/HUD/ConfrontBtn.png');
+    currentScene.load.spritesheet('ConfrontAnimated', 'assets/sprites/HUD/ConfrontBtnAnim.png',
+    {frameWidth: 237.8, frameHeight: 140});
   }
   
   /**
@@ -319,7 +322,7 @@ class DialogueHUD
     this.createButtonBehaviour(this.backButton,'backBtn');
     this.backButton.visible = false;
 
-    this.confrontBtn = currentScene.physics.add.staticSprite(835,505, 'ConfrontBtn');  
+    this.confrontBtn = this.createConfrontButton(842, 465);
     this.createButtonBehaviour(this.confrontBtn, 'ConfrontBtn');
     this.confrontBtn.visible = false;
 
@@ -443,6 +446,34 @@ class DialogueHUD
         theButton.on('pointerdown', ()=> this.changeAccusedClue("Weapons", 1));
       break;
     }
+  }
+
+  /**
+   * Function that animates the confrontation button
+   * @param {*} posX 
+   * @param {*} posY 
+   */
+  createConfrontButton(posX, posY)
+  {
+    let confrontAni = currentScene.add.sprite(posX, posY, 'ConfrontAnimated');
+        
+    //  Our player animations, turning, walking left and walking right.
+    if(currentScene.anims.get('ConfrontIdle') == undefined && currentScene.anims.get('ConfrontHigh') == undefined)
+    {
+        currentScene.anims.create({
+            key: 'ConfrontHigh',
+            frames: currentScene.anims.generateFrameNumbers('ConfrontAnimated', { frames: [0,1,2,3,4] }),
+            frameRate: 8
+        });
+        currentScene.anims.create({
+            key: 'ConfrontIdle',
+            frames: [ { key: 'ConfrontAnimated', frame: 0 } ],
+            frameRate: 1
+        });
+        confrontAni.anims.play('ConfrontIdle');
+    }
+    confrontAni.scrollFactorX = 0;
+    return confrontAni;
   }
 
   //------------------------------------------------------------------------------------------------
@@ -611,6 +642,7 @@ class DialogueHUD
     this.enableAccuseDialogue(false);   
 
     // We activate/deactivate the confront button
+    this.confrontBtn.anims.play('ConfrontIdle');
     this.confrontBtn.visible = false;
 
     if(newValue == false)
@@ -697,6 +729,7 @@ class DialogueHUD
         if(meetsRequirements == true)
         {
           this.confrontBtn.visible = true;
+          this.confrontBtn.anims.play('ConfrontHigh');
         }
       }
       let optionsTexts = [];

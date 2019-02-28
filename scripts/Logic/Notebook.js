@@ -21,7 +21,6 @@ class Notebook
         lee.fullName = "LEE CHEE GO";
         lee.addInitialDialogues(["SLee0xPrro", "SLee1xPR", "SLee1xUN"]);
         lee.confrontationRequirements = ["LeeJung1x3","RuruConfrontation2x1", "JungLee1x3", "AssattariLee1x3", "RuruLee1x3", "LeeRecorder1xUN", "JungRecorder1xUN", "LeeCellphone1xUN"];
-        //lee.confrontationRequirements = ["SPark1xPR"];
 
         let assattari = new Clue('Assattari', "Humans", 3);
         assattari.fullName = "ASSATTARI TARI";
@@ -32,7 +31,6 @@ class Notebook
         ruru.fullName = "RURU SPARK";
         ruru.addInitialDialogues(["","SRuru1xPR", "SRuru1xUN"]);
         ruru.confrontationRequirements = ["LeeRuru1x2", "AssattariConfrontation2x1", "AssattariRuru1x2", "LeePuddle1xUN", "AssattariPuddle1xUN", "LeeLetter1xUN", "RuruLetter1xUN"];
-        //ruru.confrontationRequirements = ["SPark1xPR"];
 
         this.humans.push(park, jung, lee, assattari, ruru);
         
