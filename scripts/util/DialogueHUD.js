@@ -170,8 +170,8 @@ class DialogueHUD
     currentScene.load.image('nextBtn', 'assets/sprites/HUD/Siguiente.png');
 	
 	currentScene.load.image('ConfrontBtn', 'assets/sprites/HUD/ConfrontBtn.png');
-    currentScene.load.spritesheet('ConfrontAnimated', 'assets/sprites/HUD/ConfrontBtnAnim.png',
-    {frameWidth: 237.8, frameHeight: 140});
+    currentScene.load.spritesheet('ConfrontAnimated', 'assets/sprites/HUD/ConfrontBtnAnimX.png',
+    {frameWidth: 239, frameHeight: 140});
   }
   
   /**
@@ -463,7 +463,7 @@ class DialogueHUD
         currentScene.anims.create({
             key: 'ConfrontHigh',
             frames: currentScene.anims.generateFrameNumbers('ConfrontAnimated', { frames: [0,1,2,3,4] }),
-            frameRate: 8
+            frameRate: 12
         });
         currentScene.anims.create({
             key: 'ConfrontIdle',
