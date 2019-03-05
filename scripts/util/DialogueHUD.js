@@ -701,8 +701,10 @@ class DialogueHUD
       this.discWIndexes = playerNotebook.getDiscoveredClues("Weapons");
 
       this.accusedCharacter = this.humansImgs[this.discHIndexes[0]];
+      this.accusedHumanIndex = 0;
       this.accusedCharacter.visible = true;
       this.accusedWeapon = this.weaponsImgs[this.discWIndexes[0]];
+      this.accusedWeaponIndex = 0;
       this.accusedWeapon.visible = true;
     }
   }

@@ -66,6 +66,7 @@ class PersistenceManager
      */
     clearGameState()
     {
+        this.savedState = 0;
         localStorage.clear();
     }
     

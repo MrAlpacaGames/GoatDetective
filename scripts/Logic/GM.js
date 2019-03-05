@@ -63,11 +63,8 @@ class GM
      */
     backToTitle()
     {
-        this.restartGame();   
-        persistenceManager.savedState = 0;
-        persistenceManager.clearGameState();     
+        this.restartGame();      
         theGame.scene.start('MainMenu');
-        //theGame.scene.destroy();
     }
 
     /**
