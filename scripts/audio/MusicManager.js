@@ -37,6 +37,10 @@ class MusicManager
 
             // Exploring Theme
             currentScene.load.audio('ExploringLoop','assets/audio/music/Exploring.mp3');
+			
+			// Win Theme
+            currentScene.load.audio('WinIntro','assets/audio/music/WinIntro.mp3');
+            currentScene.load.audio('WinLoop','assets/audio/music/WinLoop.mp3');
         }
         else if(currentScene.scene.key == 'HallScene')
         {            
@@ -69,12 +73,6 @@ class MusicManager
             currentScene.load.audio('BiggestFanIntro','assets/audio/music/BiggestFanIntro.mp3');
             currentScene.load.audio('BiggestFanLoop','assets/audio/music/BiggestFanLoop.mp3');
         }
-        else if(currentScene.scene.key == 'DressroomScene')
-        {
-            // Win Theme
-            currentScene.load.audio('WinIntro','assets/audio/music/WinIntro.mp3');
-            currentScene.load.audio('WinLoop','assets/audio/music/WinLoop.mp3');
-        }
     }
 
     /**
@@ -104,6 +102,13 @@ class MusicManager
                 newLoop.volume = 0.8;
                 newLoop.loop = true;
                 this.themes.add('Exploring', [undefined, newLoop]);
+				
+				newIntro = this.createTheme('WinIntro');
+                newIntro.volume = 0.8;
+                newLoop = this.createTheme('WinLoop');
+                newLoop.volume = 0.8;
+                newLoop.loop = true;
+                this.themes.add('Win', [newIntro, newLoop]);
             break;
             case "HallScene":
                 newLoop = this.createTheme('NotebookLoop');
@@ -151,14 +156,6 @@ class MusicManager
                 newLoop.volume = 0.8;
                 newLoop.loop = true;
                 this.themes.add('BiggestFan', [newIntro, newLoop]);
-            break;
-            case "DressroomScene":
-                newIntro = this.createTheme('WinIntro');
-                newIntro.volume = 0.8;
-                newLoop = this.createTheme('WinLoop');
-                newLoop.volume = 0.8;
-                newLoop.loop = true;
-                this.themes.add('Win', [newIntro, newLoop]);
             break;
         }
     }
